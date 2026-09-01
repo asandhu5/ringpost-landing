@@ -7,7 +7,6 @@ import { ChannelsSection } from "@/components/landing/channels-section";
 import { MarketingSection } from "@/components/landing/marketing-section";
 import { MetricsSection } from "@/components/landing/metrics-section";
 import { TrustSection } from "@/components/landing/trust-section";
-import { IncludedSection } from "@/components/landing/included-section";
 import { VerticalsSection } from "@/components/landing/verticals-section";
 import { FaqSection } from "@/components/landing/faq-section";
 import { CtaSection } from "@/components/landing/cta-section";
@@ -36,34 +35,32 @@ export default function Home() {
       {/* 2 — the proof: a missed call becoming a booking */}
       <LiveDemoSection />
 
-      {/* 3 — what it does */}
+      {/* 3 — what it does, and the complete offer itemised (these were
+             two sections saying the same thing; merged) */}
       <FeaturesSection />
 
       {/* 4 — "this is my trade": the generic promise made specific */}
       <VerticalsSection />
 
-      {/* 5 — the complete offer, itemised */}
-      <IncludedSection />
-
-      {/* 6 — how it fits into the day */}
+      {/* 5 — how it fits into the day */}
       <HowItWorksSection />
 
-      {/* 7 — where customers actually reach you */}
+      {/* 6 — where customers actually reach you */}
       <ChannelsSection />
 
-      {/* 8 — the growth side */}
+      {/* 7 — the growth side */}
       <MarketingSection />
 
-      {/* 9 — always on */}
+      {/* 8 — always on */}
       <MetricsSection />
 
-      {/* 10 — why the answers can be trusted */}
+      {/* 9 — why the answers can be trusted */}
       <TrustSection />
 
-      {/* 11 — the last objections, answered before the ask */}
+      {/* 10 — the last objections, answered before the ask */}
       <FaqSection />
 
-      {/* 12 — book a call */}
+      {/* 11 — book a call */}
       <CtaSection />
 
       <FooterSection />

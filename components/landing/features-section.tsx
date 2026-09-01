@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Parallax,
   Reveal,
   Scramble,
   SplitText,
-  TiltCard,
 } from "@/components/landing/motion/primitives";
-import { useInView, useIsMobileDevice } from "@/hooks/use-motion";
+import {
+  useInView,
+  useIsMobileDevice,
+  useReducedMotion,
+} from "@/hooks/use-motion";
 import {
   MaskReveal,
   ScrollLine,
@@ -24,50 +27,130 @@ const heroFeature = {
   stat: { value: "24/7", label: "on every channel your customers use" },
 };
 
-const features = [
+/* ------------------------------------------------------------------ *
+ *  Merged in from the old separate "What's included" section.
+ *
+ *  Those two sections were saying the same thing twice: seven prose
+ *  cards describing capabilities, then an itemised checklist of the
+ *  same capabilities. The checklist survived because it does the job
+ *  the prose couldn't — a sceptical owner deciding whether this is
+ *  worth the money wants the count and the specifics, not adjectives.
+ *  Anything the dropped prose covered is still made in full elsewhere:
+ *  missed-call recovery has the live demo, marketing and reviews have
+ *  their own sections and vertical scenarios.
+ * ------------------------------------------------------------------ */
+const groups = [
   {
-    number: "02",
-    title: "Missed-call recovery",
-    description:
-      "If a call goes unanswered, RingPost texts the customer back within about 90 seconds — turning a lost call into a real conversation instead of a customer who books somewhere else.",
+    key: "answering",
+    label: "Answering",
+    headline: "Every conversation, picked up",
+    items: [
+      { name: "Phone calls", detail: "answered live, 24/7" },
+      { name: "Text messages", detail: "replied to instantly" },
+      { name: "WhatsApp", detail: "chats handled end to end" },
+      { name: "Instagram DMs", detail: "answered in the inbox" },
+      { name: "Facebook Messenger", detail: "answered in the inbox" },
+      { name: "Email", detail: "read, answered, and routed" },
+      { name: "Website chat", detail: "widget on your own site" },
+      { name: "Missed-call text-back", detail: "within about 90 seconds" },
+    ],
   },
   {
-    number: "03",
-    title: "Real booking, on your calendar",
-    description:
-      "Customers book an appointment through any channel and it lands on your own Google Calendar automatically. No double-booking, no manual entry.",
+    key: "booking",
+    label: "Booking & customers",
+    headline: "Real appointments, real records",
+    items: [
+      { name: "Booking on any channel", detail: "call, text, DM, or email" },
+      { name: "Google Calendar sync", detail: "written automatically" },
+      { name: "No double-booking", detail: "slots checked before offering" },
+      { name: "No manual entry", detail: "nothing to retype" },
+      { name: "Customer records", detail: "built from every conversation" },
+      { name: "Contact details", detail: "who they are, how to reach them" },
+      { name: "Preferred channel", detail: "stored per customer" },
+      { name: "Last visit", detail: "tracked automatically" },
+      { name: "Searchable list", detail: "you never build it by hand" },
+    ],
   },
   {
-    number: "04",
-    title: "A customer list that builds itself",
-    description:
-      "Every conversation and booking adds to a searchable customer record — who they are, how to reach them, the channel they prefer, and when they last visited. You never build it by hand.",
+    key: "marketing",
+    label: "Marketing",
+    headline: "Content made, posted, and watched",
+    items: [
+      { name: "Promo images", detail: "generated on-brand" },
+      { name: "Short videos", detail: "generated on-brand" },
+      { name: "Seasonal offers", detail: "made for you" },
+      { name: "Your logo composited", detail: "onto every asset" },
+      { name: "Your pricing composited", detail: "onto every asset" },
+      { name: "Instagram · Facebook · TikTok", detail: "published from one place" },
+      { name: "YouTube · X · LinkedIn", detail: "published from one place" },
+      { name: "Threads · Bluesky · Pinterest", detail: "published from one place" },
+    ],
   },
   {
-    number: "05",
-    title: "Marketing content, generated for you",
-    description:
-      "On-brand promo images and short videos are created automatically — a seasonal offer, a promo photo — with your own logo and pricing composited right in.",
+    key: "reviews",
+    label: "Reviews & dashboard",
+    headline: "Reputation handled, all in one view",
+    items: [
+      { name: "Reviews read", detail: "as they come in" },
+      { name: "Replies drafted", detail: "for you to approve" },
+      { name: "Pattern spotting", detail: "repeated complaints flagged" },
+      { name: "One owner dashboard", detail: "every conversation" },
+      { name: "Bookings in one place", detail: "nothing to cross-check" },
+      { name: "Customers in one place", detail: "the whole list" },
+      { name: "Content in one place", detail: "made and scheduled" },
+      { name: "One login", detail: "not five different tools" },
+    ],
   },
-  {
-    number: "06",
-    title: "Publish everywhere that matters",
-    description:
-      "Post across Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Bluesky, and Pinterest from one place — instead of managing nine apps yourself.",
-  },
-  {
-    number: "07",
-    title: "Review & reputation management",
-    description:
-      "RingPost reads incoming reviews, drafts thoughtful replies for you to approve, and flags patterns worth knowing — like several recent reviews raising the same complaint — so you can fix real problems.",
-  },
-  {
-    number: "08",
-    title: "One simple dashboard",
-    description:
-      "Every conversation, booking, customer, and post lives in one owner dashboard. No separate logins for five different tools.",
-  },
-];
+] as const;
+
+/* A card that lights up radially from wherever the pointer sits. */
+function GlowItem({
+  name,
+  detail,
+  index,
+}: {
+  name: string;
+  detail: string;
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  const reduced = useReducedMotion();
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={(e) => {
+        if (reduced) return;
+        const r = e.currentTarget.getBoundingClientRect();
+        setPos({ x: e.clientX - r.left, y: e.clientY - r.top });
+      }}
+      onMouseLeave={() => setPos(null)}
+      className="group relative overflow-hidden border border-foreground/10 bg-foreground/[0.02] p-5 transition-colors duration-500 hover:border-[var(--brand-pink)]/40"
+      style={{ transitionDelay: `${index * 12}ms` }}
+    >
+      {pos && (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: `radial-gradient(190px circle at ${pos.x}px ${pos.y}px, rgba(236,168,214,0.16), transparent 70%)`,
+          }}
+        />
+      )}
+
+      <div className="relative z-10 flex items-start gap-3">
+        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-pink)]/50 transition-all duration-500 group-hover:scale-150 group-hover:bg-[var(--brand-pink)]" />
+        <div>
+          <span className="block text-sm font-medium leading-snug">{name}</span>
+          <span className="mt-1 block text-xs leading-snug text-muted-foreground">
+            {detail}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 /* ------------------------------------------------------------------ *
  *  ParticleVisualization — a drifting field of message-dots behind
@@ -198,6 +281,9 @@ function ParticleVisualization() {
 
 export function FeaturesSection() {
   const [ref, inView] = useInView<HTMLElement>({ threshold: 0.05 });
+  const [active, setActive] = useState(0);
+  const group = groups[active];
+  const total = groups.reduce((n, g) => n + g.items.length, 0);
 
   return (
     <section
@@ -231,10 +317,19 @@ export function FeaturesSection() {
             <div className="lg:col-span-5 lg:pb-4">
               <Reveal delay={260}>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  RingPost answers your customers, books your appointments,
-                  remembers everyone, and handles your marketing — so a missed
-                  call never turns into a missed customer.
+                  Not a phone bot with add-ons. Every capability below runs on
+                  the same system, the same customer records, and the same
+                  dashboard — so a missed call never turns into a missed
+                  customer.
                 </p>
+                <div className="mt-6 flex items-baseline gap-3">
+                  <span className="font-display text-4xl text-[var(--brand-pink)]">
+                    {total}
+                  </span>
+                  <span className="font-mono text-sm text-muted-foreground">
+                    things it does for you
+                  </span>
+                </div>
               </Reveal>
             </div>
           </div>
@@ -283,46 +378,65 @@ export function FeaturesSection() {
           </div>
         </ScrollScrub>
 
-        {/* Capability grid */}
-        <VelocitySkew strength={2}>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-          {features.map((feature, index) => (
-            <Reveal key={feature.number} delay={index * 70} distance={32}>
-              <TiltCard max={4} className="h-full">
-                <div className="group relative h-full overflow-hidden border border-foreground/10 bg-foreground/[0.02] p-8 lg:p-10 transition-colors duration-500 hover:border-foreground/30 hover:bg-foreground/[0.05]">
-                  <span className="relative z-10 font-mono text-sm text-muted-foreground">
-                    {feature.number}
-                  </span>
-                  <h3 className="relative z-10 mt-3 mb-4 font-display text-2xl transition-transform duration-500 group-hover:translate-x-1">
-                    {feature.title}
-                  </h3>
-                  <p className="relative z-10 leading-relaxed text-muted-foreground">
-                    {feature.description}
-                  </p>
-
-                  {/* sweep underline */}
-                  <div className="absolute bottom-0 left-0 right-0 h-px overflow-hidden bg-foreground/10">
-                    <div className="h-full w-0 bg-gradient-to-r from-[var(--brand-pink)] to-foreground transition-all duration-700 group-hover:w-full" />
-                  </div>
-                </div>
-              </TiltCard>
-            </Reveal>
-          ))}
-
-          {/* trailing note keeps the 3-col grid balanced at 8 items */}
-          <Reveal delay={features.length * 70} distance={32}>
-            <div className="flex h-full flex-col justify-end border border-dashed border-foreground/15 p-8 lg:p-10">
-              <span className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                All eight, one system
+        {/* Everything itemised — group switcher */}
+        <div className="mb-10 mt-4 grid gap-2 sm:grid-cols-2 lg:mt-6 lg:grid-cols-4">
+          {groups.map((g, i) => (
+            <button
+              key={g.key}
+              type="button"
+              onClick={() => setActive(i)}
+              onMouseEnter={() => setActive(i)}
+              aria-pressed={active === i}
+              className={`group relative overflow-hidden border-t-2 px-1 pb-2 pt-4 text-left transition-all duration-500 ${
+                active === i
+                  ? "border-[var(--brand-pink)]"
+                  : "border-foreground/15 hover:border-foreground/40"
+              }`}
+            >
+              <span
+                className={`block font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-500 ${
+                  active === i ? "text-[var(--brand-pink)]" : "text-muted-foreground"
+                }`}
+              >
+                {g.label}
               </span>
-              <p className="mt-3 text-muted-foreground">
-                None of this is a separate subscription. It&apos;s one front desk
-                that answers, books, remembers, and markets.
-              </p>
+              <span
+                className={`mt-1.5 block text-lg transition-colors duration-500 ${
+                  active === i ? "text-foreground" : "text-muted-foreground"
+                }`}
+              >
+                {g.items.length} included
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* active group */}
+        <div key={group.key} className="animate-bubble-in">
+          <h3 className="mb-6 font-display text-2xl lg:text-3xl">
+            {group.headline}
+          </h3>
+
+          <VelocitySkew strength={2}>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {group.items.map((item, i) => (
+                <GlowItem
+                  key={item.name}
+                  name={item.name}
+                  detail={item.detail}
+                  index={i}
+                />
+              ))}
             </div>
-          </Reveal>
-          </div>
-        </VelocitySkew>
+          </VelocitySkew>
+        </div>
+
+        <Reveal delay={200}>
+          <p className="mt-10 border-t border-foreground/10 pt-6 font-mono text-sm text-muted-foreground">
+            Set up on your business&apos;s own services, prices, hours, and
+            policies — whatever kind of business you run.
+          </p>
+        </Reveal>
 
         <ScrollLine className="mt-20" />
       </div>
