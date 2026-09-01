@@ -2,7 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { Parallax, Reveal } from "@/components/landing/motion/primitives";
-import { BOOKING_URL, CONTACT_EMAIL, SITE } from "@/lib/site";
+import { BOOKING_URL, CONTACT_EMAIL, LEGAL_LINKS, LOGIN_URL, SITE } from "@/lib/site";
 
 /* The template's "Developers" column (Docs / SDK / API / Status) has
    been removed — RingPost is a done-for-you service, not a developer
@@ -13,23 +13,21 @@ const footerLinks = {
     { name: "How it works", href: "#how-it-works" },
     { name: "Channels", href: "#channels" },
     { name: "Marketing", href: "#marketing" },
-    { name: "Trust", href: "#trust" },
+    { name: "FAQ", href: "#faq" },
   ],
   Company: [
     { name: "Book a call", href: BOOKING_URL },
     { name: "Contact", href: `mailto:${CONTACT_EMAIL}` },
+    { name: "Sign in", href: LOGIN_URL },
   ],
-  Legal: [
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
-  ],
+  Legal: LEGAL_LINKS,
 } as const;
 
-const socialLinks = [
-  { name: "Instagram", href: "#" },
-  { name: "Facebook", href: "#" },
-  { name: "LinkedIn", href: "#" },
-];
+/* Deliberately empty until the accounts actually exist. A footer full of
+   links to "#" reads worse than no social links at all — it's the first
+   thing that makes a small site feel like an unfinished template.
+   TODO: add { name, href } entries once the real profiles are live. */
+const socialLinks: { name: string; href: string }[] = [];
 
 export function FooterSection() {
   return (
@@ -66,18 +64,20 @@ export function FooterSection() {
                 your marketing running.
               </p>
 
-              <div className="flex gap-6">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="group flex items-center gap-1 text-sm text-white/40 transition-colors hover:text-white"
-                  >
-                    {link.name}
-                    <ArrowUpRight className="h-3 w-3 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
-                  </a>
-                ))}
-              </div>
+              {socialLinks.length > 0 ? (
+                <div className="flex gap-6">
+                  {socialLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className="group flex items-center gap-1 text-sm text-white/40 transition-colors hover:text-white"
+                    >
+                      {link.name}
+                      <ArrowUpRight className="h-3 w-3 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+                    </a>
+                  ))}
+                </div>
+              ) : null}
             </Reveal>
 
             {/* Link columns */}

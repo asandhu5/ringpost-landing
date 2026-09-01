@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Magnetic } from "@/components/landing/motion/primitives";
-import { BOOKING_URL, NAV_LINKS } from "@/lib/site";
+import { BOOKING_URL, LOGIN_URL, NAV_LINKS } from "@/lib/site";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -121,8 +121,21 @@ export function Navigation() {
             })}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center shrink-0">
+          {/* Desktop CTA — "Sign in" stays a quiet text link so it serves
+              existing customers without competing with the primary action
+              for a first-time visitor's attention. */}
+          <div className="hidden md:flex items-center gap-6 shrink-0">
+            <a
+              href={LOGIN_URL}
+              className={`text-sm transition-colors duration-300 whitespace-nowrap ${
+                isScrolled
+                  ? "text-foreground/60 hover:text-foreground"
+                  : "text-white/60 hover:text-white"
+              }`}
+            >
+              Sign in
+            </a>
+
             <Magnetic strength={0.28}>
               <Button
                 asChild
@@ -186,6 +199,15 @@ export function Navigation() {
             }`}
             style={{ transitionDelay: isMobileMenuOpen ? "300ms" : "0ms" }}
           >
+            <Button
+              asChild
+              variant="outline"
+              className="flex-1 border-foreground/20 rounded-full h-14 text-base"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <a href={LOGIN_URL}>Sign in</a>
+            </Button>
+
             <Button
               asChild
               className="flex-1 bg-foreground text-background rounded-full h-14 text-base"

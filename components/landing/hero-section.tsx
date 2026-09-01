@@ -8,10 +8,14 @@ import { VelocitySkew } from "@/components/landing/motion/scroll-primitives";
    doing something, rather than a static claim. */
 const words = ["answering", "booking", "replying", "open"];
 
+/* The third stat is the only place in the hero that signals this is more
+   than an answering service. "Front desk" alone reads as an AI receptionist,
+   which anchors a visitor against the $25–125/mo tools in that category —
+   naming the three pillars here costs nothing and resets that early. */
 const HERO_STATS = [
   { value: "24/7", label: "every message answered instantly" },
   { value: "~90 sec", label: "missed-call text follow-up" },
-  { value: "1", label: "dashboard for your whole front desk" },
+  { value: "1", label: "dashboard for calls, content and reviews" },
 ];
 
 /* ------------------------------------------------------------------ *
