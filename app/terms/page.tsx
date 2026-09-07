@@ -29,7 +29,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of Service"
-      updated="1 September 2026"
+      updated="4 September 2026"
       intro={`These terms govern your use of ${SITE.name}. They're written to be readable rather than impressive — if anything here is unclear, ask us before you agree to it.`}
     >
       <h2>1. What RingPost is</h2>
@@ -116,29 +116,63 @@ export default function TermsPage() {
       </p>
 
       <h2>6. Acceptable use</h2>
-      <p>You agree not to use the Service to:</p>
-      <ul>
-        <li>
-          send unsolicited, illegal, deceptive or abusive communications to
-          anyone;
-        </li>
-        <li>
-          break any applicable law, including telemarketing, anti-spam or
-          consumer protection law;
-        </li>
-        <li>
-          reverse-engineer, disrupt, or gain unauthorised access to the Service
-          or the systems behind it;
-        </li>
-        <li>harass, defraud or impersonate any person or business;</li>
-        <li>resell the Service to third parties without our written consent.</li>
-      </ul>
       <p>
-        We may suspend or terminate an account that breaches this section, with
-        notice where the situation reasonably allows it.
+        Your use of the Service is governed by our{" "}
+        <a href="/acceptable-use">Acceptable Use Policy</a>, which forms part of these terms. It sets
+        out what may not be created, requested or published through the Service, and what conduct is
+        not permitted. Read it — the content filter in the product enforces it, and a refusal you do
+        not expect will make more sense with it in front of you.
+      </p>
+      <p>
+        We may suspend or terminate an account that breaches that policy, with notice where the
+        situation reasonably allows it. Where content is unlawful we may be required to report it.
       </p>
 
-      <h2>7. AI-generated content and its limits</h2>
+      <h2>7. Your customers&rsquo; data, and your responsibilities for it</h2>
+      <p>
+        The Service handles personal data belonging to <em>your</em> customers — names, phone
+        numbers, email addresses, the content of their messages and calls, and their booking history.
+        You are the controller of that data and we are your processor. The full terms of that
+        relationship, including sub-processors, retention, deletion and breach notification, are in
+        the <a href="/data-processing">Data Processing Addendum</a>, which forms part of these terms.
+      </p>
+      <p>As the business your customers are contacting, you are responsible for:</p>
+      <ul>
+        <li>
+          having a lawful basis for contacting the people you contact, and for any customer list you
+          bring with you;
+        </li>
+        <li>
+          publishing your own privacy notice to your customers, covering the fact that messages and
+          calls to your business may be answered by an AI, recorded and transcribed;
+        </li>
+        <li>
+          complying with marketing and telemarketing law where your customers are — consent, opt-out
+          and calling-hours rules are yours to meet, not ours;
+        </li>
+        <li>
+          keeping the call-recording announcement enabled unless your own legal advice supports
+          turning it off. See{" "}
+          <a href="/ai-disclosure">Call Recording and AI Disclosure</a>.
+        </li>
+      </ul>
+
+      <h2>8. Third-party platforms</h2>
+      <p>
+        The Service connects to platforms you already use, including Google Calendar, WhatsApp,
+        Instagram and Facebook, as well as telephony, messaging and publishing providers. When you
+        connect any of those accounts, you authorise RingPost to act on that connected account on
+        your business&rsquo;s behalf within the permissions and scope you grant.
+      </p>
+      <p>
+        Those platforms have their own terms, and they enforce them against your account, not ours. A
+        platform may suspend an account, change an API, revoke access, or refuse a post for reasons
+        entirely outside our control. We pass through whatever those platforms allow and no more, and
+        we are not liable for their decisions, outages or policy changes. Where a connection breaks
+        we will tell you in the dashboard so you can reconnect it.
+      </p>
+
+      <h2>9. AI-generated content and its limits</h2>
       <p>
         The Service uses AI to generate replies, content and recommendations.
         We&rsquo;ve built real safeguards — prices, hours and availability the
@@ -154,7 +188,7 @@ export default function TermsPage() {
         negligence or wilful misconduct.
       </p>
 
-      <h2>8. Availability</h2>
+      <h2>10. Availability</h2>
       <p>
         We aim to keep the Service reliable but don&rsquo;t guarantee
         uninterrupted access. Maintenance, outages at a third-party provider we
@@ -164,14 +198,14 @@ export default function TermsPage() {
         otherwise.
       </p>
 
-      <h2>9. Intellectual property</h2>
+      <h2>11. Intellectual property</h2>
       <p>
         The Service — its software, design and underlying technology — belongs
         to us or our licensors. These terms give you the right to use the
         Service as intended, and nothing more.
       </p>
 
-      <h2>10. Limitation of liability</h2>
+      <h2>12. Limitation of liability</h2>
       <p>
         To the maximum extent the law allows, we aren&rsquo;t liable for
         indirect, incidental, special, consequential or punitive damages,
@@ -180,29 +214,42 @@ export default function TermsPage() {
         us in the twelve months before the claim.
       </p>
 
-      <h2>11. Termination</h2>
+      <h2>13. Termination, and what happens to your data</h2>
       <p>
         We may suspend or end your access if you materially breach these terms,
         don&rsquo;t pay applicable fees, or act in a way we reasonably believe
         harms the Service, other users or third parties. You may cancel at any
         time under the <a href="/refund-policy">Refund Policy</a>.
       </p>
+      <p>
+        When your account ends, your data does not disappear that afternoon. You may export your
+        customer records, conversation history and bookings in a machine-readable format, and we will
+        help you do it. Data is retained for <strong>60 days</strong> after termination so you have
+        time to complete that export or change your mind, and is then deleted from live systems, with
+        backups ageing out within a further 30 days. Ask us to delete sooner and we will.
+      </p>
+      <p>
+        Two things go with it: any phone number we provisioned for you is released unless you arrange
+        to port it out first, and any connected social or calendar account is disconnected — those
+        accounts remain yours and are unaffected. Full detail is in the{" "}
+        <a href="/data-processing">Data Processing Addendum</a>.
+      </p>
 
-      <h2>12. Changes to these terms</h2>
+      <h2>14. Changes to these terms</h2>
       <p>
         We may update these terms. If a change is material we&rsquo;ll tell you
         — by email — before it takes effect. Continuing to use the Service
         afterwards means you accept the updated terms.
       </p>
 
-      <h2>13. Governing law</h2>
+      <h2>15. Governing law</h2>
       <p>
         These terms are governed by the laws of the Islamic Republic of
         Pakistan, where the Service is operated from, without regard to
         conflict-of-law rules.
       </p>
 
-      <h2>14. Contact</h2>
+      <h2>16. Contact</h2>
       <p>
         Questions about these terms:{" "}
         <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>. General

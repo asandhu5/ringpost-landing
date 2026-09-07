@@ -19,10 +19,39 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      updated="1 September 2026"
-      intro="This explains what RingPost collects, what we do with it, and who else touches it. We've named every third party involved rather than hiding behind “trusted partners”."
+      updated="4 September 2026"
+      intro="This explains what RingPost collects, what we do with it, and who else touches it. There are two different sets of people here — businesses who sign up, and their customers who never did — and this policy treats them separately, because the second group is the one that matters most. We've named every third party involved rather than hiding behind “trusted partners”."
     >
-      <h2>1. What we collect</h2>
+      <h2>1. Two kinds of people, two different relationships</h2>
+      <p>
+        Almost everything below turns on this distinction, so it comes first.
+      </p>
+      <p>
+        <strong>Businesses.</strong> If you sign up for RingPost, we are the controller of your
+        account data. You chose to be here, and this policy is our agreement with you about it.
+      </p>
+      <p>
+        <strong>Your customers.</strong> When someone calls, texts or messages a business that uses
+        RingPost, their personal data passes through our systems. They never signed up with us and in
+        most cases have never heard of us. For that data, <strong>the business is the controller and
+        we are only the processor</strong> — we hold it on that business&rsquo;s instructions, and we
+        do not decide what happens to it.
+      </p>
+      <p>
+        This has a practical consequence worth stating plainly. If you are a customer of a business
+        that uses RingPost and you want your data seen, corrected or deleted, ask that business. They
+        can do it themselves in their dashboard, and we will help them if it needs more than that. We
+        will not act on your data without their instruction, because it is not ours to act on. The
+        full terms of that arrangement are in our{" "}
+        <a href="/data-processing">Data Processing Addendum</a>.
+      </p>
+      <p>
+        What we will never do with a business&rsquo;s customers&rsquo; data, on anyone&rsquo;s
+        instruction: sell it, use it to advertise to those people, use it to train an AI model of our
+        own, or use it to benefit any other business on the platform.
+      </p>
+
+      <h2>2. What we collect</h2>
 
       <h3>Information you give us</h3>
       <ul>
@@ -43,11 +72,6 @@ export default function PrivacyPage() {
 
       <h3>Information collected as you use the Service</h3>
       <ul>
-        <li>
-          Conversations between your customers and your AI receptionist, on
-          every connected channel — call audio and transcripts, SMS, WhatsApp,
-          Instagram, Facebook, email, and web chat.
-        </li>
         <li>Bookings and appointment records.</li>
         <li>Reviews synced from platforms you connect.</li>
         <li>
@@ -55,7 +79,43 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
-      <h2>2. What we use it for</h2>
+      <h3>Information about your customers — the part that matters most</h3>
+      <p>
+        This is data about people who contacted your business, not people who signed up with us. We
+        hold it on your instruction, as your processor.
+      </p>
+      <ul>
+        <li>
+          <strong>Contact details</strong> — name, phone number, email address, and social media
+          handle where they messaged from one.
+        </li>
+        <li>
+          <strong>The content of their conversations</strong> with your business, on every connected
+          channel: SMS, WhatsApp, Instagram and Facebook messages and comments, email and web chat.
+        </li>
+        <li>
+          <strong>Call audio and transcripts.</strong> Calls answered by the AI may be recorded and
+          transcribed. Recording is announced at the start of the call by default — see{" "}
+          <a href="/ai-disclosure">Call Recording and AI Disclosure</a>.
+        </li>
+        <li>
+          <strong>Booking history</strong> — what they booked, when, with whom, and whether they
+          turned up.
+        </li>
+        <li>
+          <strong>Anything they volunteer in a message.</strong> A customer may mention a health
+          condition to a clinic or a gym without being asked. We do not solicit it and the Service is
+          not designed to hold it, but where it appears in a message it is stored as ordinary message
+          content. Having a lawful basis for that is yours as controller.
+        </li>
+        <li>
+          <strong>Contact preferences</strong> — which channel they use, and whether they have opted
+          out. A customer who replies STOP is opted out immediately and automatically, and that
+          decision is honoured across every channel.
+        </li>
+      </ul>
+
+      <h2>3. What we use it for</h2>
       <ul>
         <li>
           Running the Service — generating AI responses grounded in your real
@@ -79,7 +139,7 @@ export default function PrivacyPage() {
         </strong>
       </p>
 
-      <h2>3. Who else touches your data</h2>
+      <h2>4. Who else touches your data</h2>
       <p>
         Running this Service means sending some data to specialist providers.
         Here is every one of them and what they do:
@@ -134,7 +194,77 @@ export default function PrivacyPage() {
         case we&rsquo;d tell affected users.
       </p>
 
-      <h2>4. Security</h2>
+      <h2>5. Meta platforms — WhatsApp, Instagram and Facebook</h2>
+      <h3>WhatsApp</h3>
+      <p>
+        When a business connects WhatsApp Business Platform, we access message content, the
+        sender&rsquo;s name and handle or phone identifier, and message timestamps. We use that
+        information so the business&rsquo;s AI assistant can read and reply to WhatsApp messages,
+        answer questions from the business&rsquo;s own records and take bookings on the
+        business&rsquo;s behalf.
+      </p>
+      <h3>Instagram</h3>
+      <p>
+        When a business connects Instagram, we access direct-message content, the sender&rsquo;s
+        name and handle, message timestamps, and public comments on that business&rsquo;s Instagram
+        posts. We use that information so the AI assistant can read and reply to messages and
+        comments, answer questions from the business&rsquo;s own records and take bookings on the
+        business&rsquo;s behalf.
+      </p>
+      <h3>Facebook</h3>
+      <p>
+        When a business connects Facebook, we access Messenger content, the sender&rsquo;s name and
+        handle, message timestamps, and public comments on that business&rsquo;s Facebook posts. We
+        use that information so the AI assistant can read and reply to messages and comments, answer
+        questions from the business&rsquo;s own records and take bookings on the business&rsquo;s
+        behalf.
+      </p>
+      <p>
+        For all three Meta platforms, message and comment data is stored in the business&rsquo;s
+        RingPost account while it is active so conversation history, bookings and human handover
+        remain available. After account termination it is retained for up to 60 days for export or
+        reactivation and then deleted from live systems; backup copies age out within a further 30
+        days. Connected-account tokens are encrypted at rest and removed when the connection or
+        account is deleted.
+      </p>
+      <p>
+        We never use WhatsApp, Instagram or Facebook message content to train an AI model, never sell
+        it, and never use it for advertising. Businesses and their end customers can request
+        deletion by following our <a href="/data-deletion">Data Deletion Instructions</a>.
+      </p>
+
+      <h2>6. Google user data</h2>
+      <p>
+        RingPost requests the Google Calendar scope{" "}
+        <strong>https://www.googleapis.com/auth/calendar</strong>. Full calendar access is required
+        rather than read-only access because RingPost both checks availability and writes
+        appointments booked through the Service into the connected calendar.
+      </p>
+      <p>
+        We read existing calendar events only to compute busy times and determine whether a proposed
+        appointment slot is free. We write appointments that customers book through RingPost. We
+        never read event titles, descriptions or attendees for any purpose other than determining
+        whether a time slot is free.
+      </p>
+      <p>
+        Google access and refresh tokens are encrypted at rest and retained only while the calendar
+        remains connected. Disconnecting Google Calendar removes the stored tokens. Availability and
+        appointment information is retained with the business&rsquo;s booking records under the
+        retention periods in this policy. Google user data is shared only with Google as needed to
+        operate the calendar connection and with infrastructure providers that process it for
+        RingPost under contract; it is never sold, used for advertising or used to train an AI
+        model.
+      </p>
+      <p>
+        RingPost&apos;s use and transfer of information received from Google APIs to any other app
+        will adhere to the{" "}
+        <a href="https://developers.google.com/terms/api-services-user-data-policy">
+          Google API Services User Data Policy
+        </a>
+        , including the Limited Use requirements.
+      </p>
+
+      <h2>7. Security</h2>
       <p>
         We take reasonable technical and organisational measures to protect your
         data: sensitive values such as stored access tokens are encrypted at
@@ -148,7 +278,7 @@ export default function PrivacyPage() {
         affected customers where it matters.
       </p>
 
-      <h2>5. How long we keep it</h2>
+      <h2>8. How long we keep it</h2>
       <p>
         We keep your business&rsquo;s data while your account is active, and for
         a reasonable period afterwards in case you want to reactivate or export
@@ -156,12 +286,14 @@ export default function PrivacyPage() {
         required to keep it longer for legal or accounting reasons.
       </p>
 
-      <h2>6. Your rights</h2>
+      <h2>9. Your rights</h2>
       <p>
         Depending on where you are, you may have the right to access, correct,
-        export or delete your personal data. Email{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> and we&rsquo;ll
-        respond to legitimate requests within a reasonable time.
+        export or delete your personal data. Follow our{" "}
+        <a href="/data-deletion">Data Deletion Instructions</a> or email{" "}
+        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>. We acknowledge
+        deletion requests within 72 hours and complete verified requests within
+        30 days.
       </p>
       <p>
         If one of <em>your</em> customers wants to exercise similar rights over
@@ -170,7 +302,7 @@ export default function PrivacyPage() {
         behalf.
       </p>
 
-      <h2>7. Cookies</h2>
+      <h2>10. Cookies</h2>
       <p>
         This site and the dashboard use cookies for essential functions such as
         keeping you signed in, and for basic analytics. You can control cookies
@@ -178,27 +310,27 @@ export default function PrivacyPage() {
         Service.
       </p>
 
-      <h2>8. Children</h2>
+      <h2>11. Children</h2>
       <p>
         The Service is for business owners and isn&rsquo;t directed at children.
         We don&rsquo;t knowingly collect personal information from anyone under
         16.
       </p>
 
-      <h2>9. International processing</h2>
+      <h2>12. International processing</h2>
       <p>
         Your data may be processed and stored outside your own country by the
         providers listed above. Using the Service means consenting to that,
         under the terms of this policy.
       </p>
 
-      <h2>10. Changes</h2>
+      <h2>13. Changes</h2>
       <p>
         We may update this policy. Material changes will be communicated by
         email before they take effect.
       </p>
 
-      <h2>11. Contact</h2>
+      <h2>14. Contact</h2>
       <p>
         Questions about this policy or your data:{" "}
         <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.

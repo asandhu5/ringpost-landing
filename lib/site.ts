@@ -13,7 +13,7 @@
  * better than asking someone to compose an email.
  */
 export const BOOKING_URL =
-  "mailto:hello@ringpost.tech?subject=Book%20a%20call%20with%20RingPost";
+  "mailto:support@ringpost.tech?subject=Book%20a%20call%20with%20RingPost";
 
 /** General enquiries. Deliverable via the verified ringpost.tech domain. */
 export const CONTACT_EMAIL = "hello@ringpost.tech";
@@ -49,5 +49,9 @@ export const NAV_LINKS = [
 export const LEGAL_LINKS = [
   { name: "Privacy", href: "/privacy" },
   { name: "Terms", href: "/terms" },
+  { name: "Acceptable use", href: "/acceptable-use" },
+  { name: "Data processing", href: "/data-processing" },
+  { name: "Recording & AI", href: "/ai-disclosure" },
+  { name: "Data deletion", href: "/data-deletion" },
   { name: "Refunds", href: "/refund-policy" },
 ] as const;

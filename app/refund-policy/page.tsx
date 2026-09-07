@@ -25,25 +25,38 @@ export default function RefundPolicyPage() {
   return (
     <LegalPage
       title="Refund Policy"
-      updated="1 September 2026"
+      updated="4 September 2026"
       intro="Short, and meant to be clear. If something here doesn't seem fair in your situation, email us — we'd rather sort it out than hide behind a policy page."
     >
+      <h2>How you are billed</h2>
+      <p>
+        There are exactly two charges: a <strong>one-time setup fee</strong> and a{" "}
+        <strong>monthly subscription</strong>. Both are shown on the{" "}
+        <a href="/pricing">pricing page</a>. There is no contract, no minimum term, and no
+        per-message or per-minute usage charge.
+      </p>
+
       <h2>The one-time setup fee</h2>
       <p>
-        The setup fee pays for real, individual work: configuring your AI
-        receptionist on your own services and prices, connecting your channels,
-        and getting your account genuinely working.
+        The setup fee pays for real, individual work: configuring your AI receptionist on your own
+        services and prices, connecting your channels, building your knowledge base, and testing it
+        against real conversations for your trade before it answers a single customer.
       </p>
       <ul>
         <li>
-          <strong>Before onboarding work begins</strong> — change your mind and
-          we&rsquo;ll refund it in full, no questions.
+          <strong>Before your AI goes live</strong> — refunded in full, no questions, even if we have
+          already started. If the product turns out to be wrong for your business we would rather not
+          have your money.
         </li>
         <li>
-          <strong>Once onboarding work has begun</strong> — the setup fee is
-          non-refundable, because the work it pays for has been done.
+          <strong>Once your AI has started answering customers</strong> — the setup fee is not
+          refundable from that point, because the work it pays for has been done and delivered.
         </li>
       </ul>
+      <p>
+        &ldquo;Live&rdquo; means the first real customer conversation your AI handles, not the day we
+        start work. You will know exactly when that happens, because you switch it on.
+      </p>
 
       <h2>The monthly subscription</h2>
       <ul>
@@ -58,6 +71,26 @@ export default function RefundPolicyPage() {
           you&rsquo;ve already paid for.
         </li>
       </ul>
+
+      <h2>If it does not suit your business</h2>
+      <p>
+        Tell us during setup and the setup fee comes back in full. After you are live, cancel the
+        monthly subscription whenever you like — there is nothing to negotiate and no retention call.
+      </p>
+
+      <h2>What happens to your data if you leave</h2>
+      <p>
+        It stays yours. Your customer list, conversation history and bookings can be exported to you
+        in a machine-readable format, and we will help you do it. Data is kept for{" "}
+        <strong>60 days</strong> after your account ends so you have time to complete that export,
+        then deleted from live systems. Ask us to delete sooner and we will. Full detail is in the{" "}
+        <a href="/data-processing">Data Processing Addendum</a>.
+      </p>
+      <p>
+        Two practical things to arrange before you go: if we provisioned a phone number for you, tell
+        us if you want to port it out rather than have it released; and any social or calendar
+        account you connected is simply disconnected — those accounts were always yours.
+      </p>
 
       <h2>If we got the billing wrong</h2>
       <p>
