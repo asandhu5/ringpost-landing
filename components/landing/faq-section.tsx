@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     q: "How long does setup take?",
-    a: "We set each business up individually rather than handing you a signup form and wishing you luck. Once we have your services, prices, hours and policies, most of the configuration happens on our side. The realistic bottleneck is external: connecting a phone number and getting messaging approvals through the carriers and platforms can take days to a few weeks depending on the channel. We'll tell you what applies to you on the call.",
+    a: "We configure each business individually rather than handing you a signup form and wishing you luck. Once we have your services, prices, hours and policies, most of the configuration happens on our side. The realistic bottleneck is external: connecting a phone number and getting messaging approvals through the carriers and platforms can take days to a few weeks depending on the channel. We'll tell you what applies to you on the call.",
   },
   {
     q: "I already have someone answering the phone. Why would I need this?",

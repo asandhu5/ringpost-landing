@@ -5,8 +5,8 @@ import { Parallax, Reveal } from "@/components/landing/motion/primitives";
 import { BOOKING_URL, CONTACT_EMAIL, LEGAL_LINKS, LOGIN_URL, SITE } from "@/lib/site";
 
 /* The template's "Developers" column (Docs / SDK / API / Status) has
-   been removed — RingPost is a done-for-you service, not a developer
-   platform. There is deliberately no Pricing link anywhere. */
+   been removed — RingPost is a business-facing SaaS product, not a developer
+   platform. Pricing is linked directly for clarity. */
 const footerLinks = {
   Product: [
     { name: "Features", href: "#features" },

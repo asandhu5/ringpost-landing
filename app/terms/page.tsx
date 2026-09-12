@@ -68,9 +68,9 @@ export default function TermsPage() {
           activated.
         </li>
         <li>
-          Payments are processed by <strong>Paddle.com Market Limited</strong>,
-          our payment processor and merchant of record. When you pay, you also
-          accept Paddle&rsquo;s own buyer terms.
+          Payments are processed securely by our designated payment provider. The
+          applicable payment provider&rsquo;s checkout terms and privacy notice
+          apply to payment processing.
         </li>
         <li>
           Subscription fees are billed in advance on a recurring basis and
@@ -81,8 +81,8 @@ export default function TermsPage() {
           Service until it&rsquo;s resolved.
         </li>
         <li>
-          Fees are quoted in US Dollars. If Paddle bills you in another
-          currency, the converted amount is what applies.
+          Fees are quoted in US Dollars. If the payment provider processes the
+          transaction in another currency, the converted amount is what applies.
         </li>
       </ul>
 

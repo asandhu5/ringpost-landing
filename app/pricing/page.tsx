@@ -29,11 +29,11 @@ const MONTHLY_INCLUDES = [
   ["Bookings", "Real appointments written to your calendar, with no double-booking"],
   ["Customers", "A customer record built automatically from every conversation"],
   ["Reminders", "Confirmations and reminders sent for you by text"],
-  ["Content", "Four on-brand images and a short video made for you every day, with your logo applied"],
-  ["Posting", "Published across Instagram, Facebook, TikTok, YouTube, X, LinkedIn and more from one place"],
+  ["Content", "AI-assisted business content created from your information and brand assets, for your team to review"],
+  ["Publishing", "Content can be reviewed and scheduled for supported platforms from one workspace"],
   ["Reviews", "Reviews read as they arrive, replies drafted for your approval, patterns flagged"],
-  ["Comments", "Comments on your posts answered in your voice"],
-  ["Win-backs", "One message, written with AI help, texted to customers who have drifted away"],
+  ["Business communications", "AI-assisted replies and follow-ups organized for your team to review"],
+  ["Follow-ups", "Customer follow-ups organized and prepared for your team to review"],
   ["Insights", "What your calls, bookings, reviews and posts are actually telling you"],
 ];
 
@@ -145,10 +145,10 @@ export default function PricingPage() {
             What you are actually comparing it to
           </h2>
           <p className="mb-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
-            Not another app. A part-time receptionist costs somewhere around{" "}
+            Not another basic answering tool. A part-time receptionist costs somewhere around{" "}
             {money(PRICING.comparison.receptionistMonthly)} a month, works one shift, and goes home. This one
-            answers at 9pm on a Sunday, on every channel at once, and never puts anyone on hold. It also
-            writes your posts, replies to your reviews and brings back customers who drifted off.
+            answers at 9pm on a Sunday, on every channel at once, and never puts anyone on hold. RingPost also
+            keeps customer follow-ups, reviews and business content organized in the same workspace.
           </p>
           <p className="max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
             The simpler version: if your average booking is around{" "}

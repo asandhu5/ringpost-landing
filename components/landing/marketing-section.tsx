@@ -246,7 +246,7 @@ export function MarketingSection() {
         <Reveal delay={280}>
           <p className="mx-auto mt-8 max-w-xl text-xl leading-relaxed text-muted-foreground">
             RingPost helps your business stay connected with customers through
-            AI-assisted content, customer follow-ups, appointment reminders, and
+            customer follow-ups, appointment reminders, business content, and
             review management—all from one workspace.
           </p>
         </Reveal>
@@ -307,10 +307,10 @@ export function MarketingSection() {
             <Reveal delay={200}>
               <div className="mt-10 border-t border-foreground/10 pt-6">
                 <span className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  Supported business channels
+                  Connected business platforms
                 </span>
                 <p className="mt-2 text-muted-foreground">
-                  Connect the channels and platforms your business already uses.
+                  Connect the business platforms and channels your team already uses. Review and approve AI-assisted content before it is published.
                 </p>
               </div>
             </Reveal>
