@@ -37,11 +37,11 @@ const metrics = [
 ];
 
 const TICKER = [
-  "Answers every call & text",
+  "Answers customer enquiries",
   "Books into your calendar",
-  "Replies on social & email",
-  "Posts your marketing",
-  "Watches your reviews",
+  "Organizes conversations",
+  "Helps with customer follow-ups",
+  "Keeps reviews organized",
   "All from one dashboard",
 ];
 

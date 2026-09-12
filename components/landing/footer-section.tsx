@@ -12,7 +12,8 @@ const footerLinks = {
     { name: "Features", href: "#features" },
     { name: "How it works", href: "#how-it-works" },
     { name: "Channels", href: "#channels" },
-    { name: "Marketing", href: "#marketing" },
+    { name: "Business tools", href: "#marketing" },
+    { name: "Pricing", href: "/pricing" },
     { name: "FAQ", href: "#faq" },
   ],
   Company: [
@@ -59,9 +60,9 @@ export function FooterSection() {
               </a>
 
               <p className="mb-8 max-w-xs text-sm leading-relaxed text-white/50">
-                The AI front desk for local business. Answers every call and
-                message, books real appointments onto your calendar, and keeps
-                your marketing running.
+                AI front-desk software for local service businesses. Manage
+                customer conversations, appointments, follow-ups and business workflows
+                from one place.
               </p>
 
               {socialLinks.length > 0 ? (

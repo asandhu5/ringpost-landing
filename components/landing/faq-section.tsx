@@ -39,11 +39,11 @@ const faqs = [
     // tools and read our price as absurd. This resets the category before
     // they ever reach the cost question further down.
     q: "How is this different from the cheaper AI receptionists I've seen?",
-    a: "Those answer your phone, and most of them do it well. That's roughly a quarter of what RingPost does. The rest is the work that never gets done because nobody has time for it: marketing content made and published across eleven platforms, reviews read and answered, patterns flagged when several customers say the same thing, and customers who haven't been back in a while quietly followed up. If all you need is someone to pick up the phone, a cheaper tool will do that fine. RingPost is for owners who also don't have a marketing person.",
+    a: "Traditional AI receptionists focus primarily on answering calls. RingPost combines the front desk with customer conversations, appointment management, customer records, follow-ups, review management, and AI-assisted business tools in one workspace. If all you need is a basic phone answering tool, a simpler product may be a better fit.",
   },
   {
-    q: "Do I have to write the marketing content myself?",
-    a: "No. It's made from your own services, prices and brand voice, as finished images and short videos, with your logo and pricing already composited onto them. Everything lands in an approvals queue where you can edit it, approve it or bin it before anything goes out in your name. If you'd rather it just run, you can switch autopilot on per platform.",
+    q: "Do I have to create business content myself?",
+    a: "No. RingPost can help create on-brand business content using your business information and brand assets. You can review, edit, approve, and schedule content before it is published through supported platforms.",
   },
   {
     q: "What does it actually do about reviews?",

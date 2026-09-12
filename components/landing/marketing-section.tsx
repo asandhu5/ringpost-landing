@@ -30,22 +30,22 @@ const PLATFORMS = [
 /* Three stages of the background marketing loop. */
 const STAGES = [
   {
-    key: "generate",
-    label: "Generate",
-    title: "Marketing content, made for you",
-    body: "Fresh on-brand images and a short video are made for you every morning, with your own logo and pricing already on them.",
+    key: "followup",
+    label: "Follow up",
+    title: "Stay on top of customer follow-ups",
+    body: "RingPost helps your team keep track of appointment reminders and customer follow-ups so important conversations don't get forgotten.",
   },
   {
-    key: "publish",
-    label: "Publish",
-    title: "Posted everywhere that matters",
-    body: "One place to manage all of it, instead of a dozen apps. RingPost pushes the post out across every platform your customers actually use.",
+    key: "content",
+    label: "Content",
+    title: "AI-assisted business content",
+    body: "Create on-brand images, short videos and business content with AI, then review and schedule it from one workspace.",
   },
   {
     key: "reviews",
     label: "Reviews",
-    title: "Reviews read and answered",
-    body: "RingPost reads incoming reviews, drafts thoughtful replies for you to approve, and flags patterns worth knowing, like several recent reviews raising the same complaint.",
+    title: "Reviews read and organized",
+    body: "RingPost reads incoming reviews, drafts thoughtful replies for your approval, and flags repeated complaints so you can address the underlying issue.",
   },
 ] as const;
 
@@ -82,10 +82,10 @@ function PublishBoard({ stage }: { stage: number }) {
       {/* header */}
       <div className="flex items-center justify-between border-b border-foreground/10 px-5 py-3.5">
         <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-          Content studio
+        Business workspace
         </span>
         <span className="font-mono text-[11px] text-[var(--brand-pink)]">
-          {stage === 0 ? "GENERATING" : stage === 1 ? "PUBLISHING" : "MONITORING"}
+          {stage === 0 ? "FOLLOWING UP" : stage === 1 ? "CREATING" : "MONITORING"}
         </span>
       </div>
 
@@ -113,16 +113,16 @@ function PublishBoard({ stage }: { stage: number }) {
 
             <div className="absolute bottom-5 left-5">
               <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
-                Your offer
+                Your business
               </span>
               <span className="mt-1 block font-display text-2xl text-white lg:text-3xl">
-                Seasonal promo
+                Business update
               </span>
             </div>
 
             <div className="absolute bottom-5 right-5 rounded-full border border-white/25 px-3 py-1">
               <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/70">
-                Your logo · your rates
+                Your brand · your information
               </span>
             </div>
           </div>
@@ -131,7 +131,7 @@ function PublishBoard({ stage }: { stage: number }) {
         {/* platform chips */}
         <div className="mb-2 flex items-center justify-between">
           <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-            Destinations
+            Supported channels
           </span>
           <span className="font-mono text-[11px] tabular-nums text-muted-foreground">
             {published}/{PLATFORMS.length}
@@ -228,15 +228,15 @@ export function MarketingSection() {
         <Reveal>
           <span className="mb-8 inline-flex items-center justify-center gap-4 font-mono text-sm text-muted-foreground">
             <span className="h-px w-12 bg-foreground/20" />
-            <Scramble text="Marketing" />
+            <Scramble text="Business tools" />
             <span className="h-px w-12 bg-foreground/20" />
           </span>
         </Reveal>
 
         <h2 className="font-display text-6xl leading-[0.9] tracking-tight md:text-7xl lg:text-[128px]">
-          <SplitText text="Marketing that" stagger={70} />
+          <SplitText text="Customer growth" stagger={70} />
           <SplitText
-            text="runs itself."
+          text="without the busywork."
             delay={180}
             stagger={70}
             className="text-muted-foreground"
@@ -245,9 +245,9 @@ export function MarketingSection() {
 
         <Reveal delay={280}>
           <p className="mx-auto mt-8 max-w-xl text-xl leading-relaxed text-muted-foreground">
-            The work that always slides to the bottom of the list. RingPost makes
-            the content, posts it everywhere, and keeps an eye on what people are
-            saying back.
+            RingPost helps your business stay connected with customers through
+            AI-assisted content, customer follow-ups, appointment reminders, and
+            review management—all from one workspace.
           </p>
         </Reveal>
       </div>
@@ -307,11 +307,10 @@ export function MarketingSection() {
             <Reveal delay={200}>
               <div className="mt-10 border-t border-foreground/10 pt-6">
                 <span className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  Every platform, one place
+                  Supported business channels
                 </span>
                 <p className="mt-2 text-muted-foreground">
-                  Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads,
-                  Bluesky, and Pinterest.
+                  Connect the channels and platforms your business already uses.
                 </p>
               </div>
             </Reveal>

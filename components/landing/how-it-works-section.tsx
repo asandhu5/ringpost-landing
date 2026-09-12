@@ -34,10 +34,10 @@ const steps = [
   },
   {
     number: "04",
-    title: "It grows your business",
-    subtitle: "in the background",
+    title: "Your team stays on top",
+    subtitle: "without the busywork",
     description:
-      "Meanwhile RingPost is making content, posting it and watching your reviews, without you doing any of it.",
+    "RingPost helps organize customer follow-ups, appointment reminders, business content and review activity alongside your front-desk workflow.",
   },
 ];
 

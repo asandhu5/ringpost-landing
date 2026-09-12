@@ -25,8 +25,7 @@ const SETUP_INCLUDES = [
 ];
 
 const MONTHLY_INCLUDES = [
-  ["Answering", "Every call, text and message answered 24/7 on every connected channel, with no limit"],
-  ["Missed calls", "Anyone who rings out gets called back automatically, usually within 90 seconds"],
+  ["Answering", "Customer conversations managed 24/7 across connected channels, subject to third-party provider policies and fair-use limitations"],  ["Missed calls", "Anyone who rings out gets called back automatically, usually within 90 seconds"],
   ["Bookings", "Real appointments written to your calendar, with no double-booking"],
   ["Customers", "A customer record built automatically from every conversation"],
   ["Reminders", "Confirmations and reminders sent for you by text"],
@@ -39,10 +38,10 @@ const MONTHLY_INCLUDES = [
 ];
 
 const MONEY_FAQS = [
-  {
-    q: "How do I pay, and is it secure?",
-    a: `Payments are handled by Paddle, who act as the merchant of record. That means Paddle, not ${SITE.name}, processes the card, issues the invoice and handles sales tax or VAT wherever you are. Your card details never touch our systems and we never see them.`,
-  },
+{
+  q: "How do I pay, and is it secure?",
+  a: `Payments are processed securely by our payment provider. Your card details are handled directly by the payment provider and are not stored by ${SITE.name}.`,
+},
   {
     q: "Is there a contract?",
     a: "No. The monthly fee is month to month. Cancel any time and you will not be billed again after the current month.",
@@ -56,8 +55,8 @@ const MONEY_FAQS = [
     a: "Tell us during setup and the setup fee comes back in full. We would rather not take money from a business the product is wrong for.",
   },
   {
-    q: "What does unlimited actually mean?",
-    a: "Calls, texts and messages are genuinely unlimited. There is no per-message or per-minute charge, and no overage bill. Content generation runs to a fair daily allowance rather than being uncapped, because every image has a real cost behind it. Most businesses never reach it, and we will talk to you before anything changes, never after.",
+    q: "Are there usage limits?",
+    a: "RingPost is designed to support ongoing customer conversations across connected channels. Actual availability, messaging limits, carrier requirements, platform policies and fair-use limits may vary by third-party provider and region. Content generation may also have reasonable usage limits.",
   },
   {
     q: "Do I keep my data if I leave?",
@@ -105,8 +104,9 @@ export default function PricingPage() {
             </div>
             <p className="mb-7 text-sm text-muted-foreground">{PRICING.setup.caption}</p>
             <p className="mb-5 text-[15px] leading-relaxed text-foreground/90">
-              This is the difference between an AI that sounds generic and one your customers cannot tell from
-              your best receptionist. It is done by us, not by you:
+              This implementation configures RingPost around your actual business,
+              including your services, prices, hours, policies, communication preferences,
+              and appointment workflows.
             </p>
             <ul className="space-y-3">
               {SETUP_INCLUDES.map((item) => (
@@ -160,13 +160,11 @@ export default function PricingPage() {
 
         <div className="mb-16 rounded-2xl border border-foreground/12 p-7 lg:p-9">
           <h2 className="mb-3 font-display text-2xl tracking-tight text-foreground">How payment is handled</h2>
-          <p className="max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
-            All payments run through <strong className="text-foreground">Paddle</strong>, our merchant of
-            record. Paddle is a regulated payments company that handles the checkout, the invoice and any sales
-            tax or VAT owed in your country. Your card details go to Paddle directly and are never stored by
-            us. We only ever see that an invoice was paid. Refunds we approve are issued back through Paddle
-            to your original payment method.
-          </p>
+            <p className="max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
+              Payments are processed securely by our payment provider. Your card details are handled directly by
+              the payment provider and are never stored by us. Payment processing, invoices, taxes, and refunds
+              are handled according to the applicable payment provider&apos;s terms.
+            </p>
         </div>
 
         <h2 className="mb-8 font-display text-3xl tracking-tight text-foreground">The money questions</h2>

@@ -6,16 +6,16 @@ import { VelocitySkew } from "@/components/landing/motion/scroll-primitives";
 
 /* The verb cycles so the headline reads as a desk that is always
    doing something, rather than a static claim. */
-const words = ["answering", "booking", "posting", "replying", "winning back"];
+const words = ["answering", "booking", "organizing", "replying", "following up"];
 
 /* The third stat is the only place in the hero that signals this is more
    than an answering service. "Front desk" alone reads as an AI receptionist,
    which anchors a visitor against the $25–125/mo tools in that category —
    naming the three pillars here costs nothing and resets that early. */
 const HERO_STATS = [
-  { value: "24/7", label: "calls, texts and DMs answered instantly" },
-  { value: "~90 sec", label: "missed calls rung back automatically" },
-  { value: "1", label: "place for bookings, content, reviews and win-backs" },
+  { value: "24/7", label: "AI-powered customer support" },
+  { value: "~90 sec", label: "Typical missed-call response" },
+  { value: "1", label: "workspace for customers, conversations and bookings" },
 ];
 
 /* ------------------------------------------------------------------ *
@@ -268,7 +268,7 @@ export function HeroSection() {
                   transition: "transform 900ms cubic-bezier(0.16,1,0.3,1) 200ms",
                 }}
               />
-              The AI front office for local business
+              AI front-desk software for local service businesses
             </span>
           </div>
 
@@ -291,10 +291,9 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
             }`}
           >
-            A missed call is a customer booking somewhere else. RingPost answers every
-            call, text and message, rings back the ones you miss, books the appointment,
-            posts your marketing, replies to your reviews and brings back customers who
-            drifted away, while you get on with the work.
+            RingPost is an AI-powered front desk for local service businesses. It helps manage customer
+            enquiries, conversations and appointments across the channels your business already uses,
+            while keeping everything organized in one place.
           </p>
         </div>
       </div>

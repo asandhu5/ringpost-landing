@@ -23,7 +23,7 @@ const heroFeature = {
   number: "01",
   title: "An AI receptionist on every channel",
   description:
-    "RingPost answers phone calls, texts, WhatsApp, Instagram and Facebook messages instantly, 24/7. It's trained on your own services, prices, hours, and policies, and it never invents an answer: every price and time it gives is looked up from your real business data in the moment.",
+"RingPost is an AI-powered front desk that helps manage customer conversations across supported channels 24/7. It uses your own services, prices, hours, and policies to provide accurate answers and assist with appointments.",
   stat: { value: "24/7", label: "on every channel your customers use" },
 };
 
@@ -71,19 +71,19 @@ const groups = [
       { name: "Searchable list", detail: "you never build it by hand" },
     ],
   },
-  {
-    key: "marketing",
-    label: "Marketing",
-    headline: "Content made, posted, and watched",
+{
+    key: "growth",
+    label: "Business tools",
+    headline: "Content and customer follow-ups",
     items: [
-      { name: "Promo images", detail: "generated on-brand" },
-      { name: "Short videos", detail: "generated on-brand" },
-      { name: "Seasonal offers", detail: "made for you" },
-      { name: "Your logo composited", detail: "onto every asset" },
-      { name: "Your pricing composited", detail: "onto every asset" },
-      { name: "Instagram · Facebook · TikTok", detail: "published from one place" },
-      { name: "YouTube · X · LinkedIn", detail: "published from one place" },
-      { name: "Threads · Bluesky · Pinterest", detail: "published from one place" },
+      { name: "Business content", detail: "AI-assisted and on-brand" },
+      { name: "Short videos", detail: "AI-assisted and on-brand" },
+      { name: "Business updates", detail: "created from your information" },
+      { name: "Brand assets", detail: "applied to generated content" },
+      { name: "Customer follow-ups", detail: "organized in one workspace" },
+      { name: "Appointment reminders", detail: "managed alongside bookings" },
+      { name: "Content scheduling", detail: "reviewed before publishing" },
+      { name: "Supported platforms", detail: "managed from one place" },
     ],
   },
   {

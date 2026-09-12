@@ -34,11 +34,11 @@ export default function TermsPage() {
     >
       <h2>1. What RingPost is</h2>
       <p>
-        RingPost is an AI-powered receptionist and business-growth platform for
-        local service businesses. It answers customer communications across
-        phone, SMS, WhatsApp, Instagram, Facebook, email and website chat;
-        schedules and manages appointments; generates and publishes marketing
-        content; and helps manage customer reviews.
+        RingPost is AI-powered front-desk software for local service businesses.
+        It helps businesses manage customer communications across supported
+        channels, schedule and manage appointments, maintain customer records,
+        coordinate follow-ups, and use AI-assisted business tools including
+        content and review management.
       </p>
       <p>
         The Service is operated by <strong>Muhammad Ahmed, trading as RingPost</strong>{" "}

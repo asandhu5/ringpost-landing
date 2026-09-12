@@ -31,9 +31,9 @@ export const LOGIN_URL = `${DASHBOARD_URL}/login`;
 
 export const SITE = {
   name: "RingPost",
-  tagline: "The AI front office for local business",
+  tagline: "AI front-desk software for local service businesses",
   description:
-    "RingPost answers every call, text and message for your local business 24/7, rings back the ones you miss, books real appointments into your calendar, posts your marketing, replies to your reviews and wins back customers who drifted away, all from one dashboard.",
+  "RingPost is AI-powered front-desk software for local service businesses. Manage customer conversations, enquiries, appointments, follow-ups and business workflows from one dashboard.",
   url: "https://ringpost.tech",
   year: new Date().getFullYear(),
 } as const;
@@ -42,7 +42,7 @@ export const NAV_LINKS = [
   { name: "Features", href: "#features" },
   { name: "How it works", href: "#how-it-works" },
   { name: "Channels", href: "#channels" },
-  { name: "Marketing", href: "#marketing" },
+  { name: "Business tools", href: "#marketing" },
   { name: "FAQ", href: "#faq" },
   { name: "Pricing", href: "/pricing" },
 ] as const;
