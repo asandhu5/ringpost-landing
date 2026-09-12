@@ -19,13 +19,14 @@ const SETUP_INCLUDES = [
   "A knowledge base built from how your business actually works, not a template",
   "Your calendar connected both ways, so bookings land where you already look",
   "Your brand voice tuned: how it greets people, what it never says, when it fetches you",
-  "Your social accounts connected for posting, comments and messages",
+  "Supported business channels connected for the features you choose to use",
   "Your logo and colours loaded so generated content comes out on-brand",
   "Tested against real conversations for your trade before it answers a single customer",
 ];
 
 const MONTHLY_INCLUDES = [
-  ["Answering", "Customer conversations managed 24/7 across connected channels, subject to third-party provider policies and fair-use limitations"],  ["Missed calls", "Anyone who rings out gets called back automatically, usually within 90 seconds"],
+  ["Answering", "Customer conversations managed 24/7 across connected channels, subject to third-party provider policies and fair-use limitations"],
+  ["Missed calls", "Missed-call follow-up can be configured for connected phone services, subject to carrier and regional requirements"],
   ["Bookings", "Real appointments written to your calendar, with no double-booking"],
   ["Customers", "A customer record built automatically from every conversation"],
   ["Reminders", "Confirmations and reminders sent for you by text"],
@@ -34,7 +35,7 @@ const MONTHLY_INCLUDES = [
   ["Reviews", "Reviews read as they arrive, replies drafted for your approval, patterns flagged"],
   ["Business communications", "AI-assisted replies and follow-ups organized for your team to review"],
   ["Follow-ups", "Customer follow-ups organized and prepared for your team to review"],
-  ["Insights", "What your calls, bookings, reviews and posts are actually telling you"],
+  ["Insights", "A clearer view of calls, bookings, reviews and business activity from one workspace"],
 ];
 
 const MONEY_FAQS = [
@@ -44,7 +45,7 @@ const MONEY_FAQS = [
 },
   {
     q: "Is there a contract?",
-    a: "No. The monthly fee is month to month. Cancel any time and you will not be billed again after the current month.",
+    a: "No. The monthly fee is month to month. You can cancel at any time, and cancellation takes effect at the end of the billing period already paid for.",
   },
   {
     q: "Is the setup fee refundable?",
@@ -56,7 +57,7 @@ const MONEY_FAQS = [
   },
   {
     q: "Are there usage limits?",
-    a: "RingPost is designed to support ongoing customer conversations across connected channels. Actual availability, messaging limits, carrier requirements, platform policies and fair-use limits may vary by third-party provider and region. Content generation may also have reasonable usage limits.",
+    a: "RingPost is designed to support ongoing customer conversations across connected channels. Actual availability, messaging limits, carrier requirements, platform policies, regional rules and fair-use limits may vary by third-party provider. Reasonable usage limits may also apply to certain AI features.",
   },
   {
     q: "Do I keep my data if I leave?",
@@ -90,8 +91,8 @@ export default function PricingPage() {
           One product. One price. Built around your business.
         </h1>
         <p className="mb-14 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          {SITE.name} is not software you configure yourself. We set it up around how your business actually
-          works (your services, your prices, your hours, your voice) and test it before it answers anybody.
+          {SITE.name} is software configured around how your business actually works. We set up your services, prices,
+          hours, policies, connected channels and workflows, then test the configuration before it goes live.
         </p>
 
         <div className="mb-16 grid gap-6 lg:grid-cols-2">
@@ -145,16 +146,16 @@ export default function PricingPage() {
             What you are actually comparing it to
           </h2>
           <p className="mb-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
-            Not another basic answering tool. A part-time receptionist costs somewhere around{" "}
-            {money(PRICING.comparison.receptionistMonthly)} a month, works one shift, and goes home. This one
-            answers at 9pm on a Sunday, on every channel at once, and never puts anyone on hold. RingPost also
-            keeps customer follow-ups, reviews and business content organized in the same workspace.
+            A part-time receptionist costs somewhere around{" "}
+            {money(PRICING.comparison.receptionistMonthly)} a month and works a defined shift. RingPost is
+            software that can remain available across connected channels and keeps customer conversations,
+            appointments, follow-ups, reviews and business content organized in one workspace.
           </p>
           <p className="max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
             The simpler version: if your average booking is around{" "}
-            {money(PRICING.comparison.averageBookingValue)}, {SITE.name} has paid for itself once it saves{" "}
-            <strong className="text-foreground">{bookingsToBreakEven} bookings a month</strong> that would
-            otherwise have gone to voicemail. Most local businesses miss more than that in a week.
+            {money(PRICING.comparison.averageBookingValue)}, the monthly fee is roughly equivalent to{" "}
+            <strong className="text-foreground">{bookingsToBreakEven} additional bookings</strong>. Your actual
+            results will depend on your business, demand and how you use the Service.
           </p>
         </div>
 

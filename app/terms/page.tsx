@@ -21,15 +21,14 @@ export const metadata: Metadata = {
  *    honest default while the operator is based there and unincorporated.
  *    Revisit on incorporation elsewhere.
  *
- * These are drafts written to be genuinely usable and to satisfy Paddle's
- * verification requirements — not a substitute for a lawyer's review once
- * there is real revenue to protect.
+ * These terms are intended to describe the Service clearly and accurately.
+ * They are not a substitute for legal advice.
  */
 export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of Service"
-      updated="4 September 2026"
+      updated="12 September 2026"
       intro={`These terms govern your use of ${SITE.name}. They're written to be readable rather than impressive. If anything here is unclear, ask us before you agree to it.`}
     >
       <h2>1. What RingPost is</h2>

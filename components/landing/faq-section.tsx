@@ -43,7 +43,7 @@ const faqs = [
   },
   {
     q: "Do I have to create business content myself?",
-    a: "No. RingPost can help create on-brand business content using your business information and brand assets. You can review, edit, approve, and schedule content before it is published through supported platforms.",
+    a: "No. RingPost can help create on-brand business content using your business information and brand assets. Your team can review, edit, approve, and schedule content before it is published through supported platforms.",
   },
   {
     q: "What does it actually do about reviews?",
@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     q: "How long does setup take?",
-    a: "We configure each business individually rather than handing you a signup form and wishing you luck. Once we have your services, prices, hours and policies, most of the configuration happens on our side. The realistic bottleneck is external: connecting a phone number and getting messaging approvals through the carriers and platforms can take days to a few weeks depending on the channel. We'll tell you what applies to you on the call.",
+    a: "We configure each business individually rather than handing you a generic setup form. Once we have your services, prices, hours and policies, we configure the workspace and test the connected workflows. External approvals for phone and messaging services can take additional time depending on the carrier, platform and region.",
   },
   {
     q: "I already have someone answering the phone. Why would I need this?",
@@ -59,7 +59,7 @@ const faqs = [
   },
   {
     q: "What does it cost?",
-    a: "$1,699 once for setup, then $899 a month. No tiers, no per-message pricing, no surprise overage bills, and no contract. The full breakdown of what's included is on our pricing page.",
+    a: "$1,699 once for setup, then $899 a month. There are no tiers or long-term contract. Third-party carrier, messaging or platform charges and requirements, if any, are disclosed during setup and may apply separately.",
   },
   {
     q: "Who owns my customer data?",

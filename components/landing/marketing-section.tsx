@@ -27,7 +27,7 @@ const PLATFORMS = [
   "Pinterest",
 ];
 
-/* Three stages of the background marketing loop. */
+/* Three stages of the business-tools workflow. */
 const STAGES = [
   {
     key: "followup",
@@ -52,7 +52,7 @@ const STAGES = [
 const STAGE_MS = 5200;
 
 /* ------------------------------------------------------------------ *
- *  PublishBoard — a post being composed, then fanned out to all nine
+ *  A business update being composed, then prepared for connected platforms
  *  platforms one by one. This is the section's proof, not decoration:
  *  it shows the nine-apps-into-one claim rather than asserting it.
  * ------------------------------------------------------------------ */
@@ -234,7 +234,7 @@ export function MarketingSection() {
         </Reveal>
 
         <h2 className="font-display text-6xl leading-[0.9] tracking-tight md:text-7xl lg:text-[128px]">
-          <SplitText text="Customer growth" stagger={70} />
+          <SplitText text="Stay connected" stagger={70} />
           <SplitText
           text="without the busywork."
             delay={180}
