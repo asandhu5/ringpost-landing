@@ -26,7 +26,7 @@ export default function RefundPolicyPage() {
     <LegalPage
       title="Refund Policy"
       updated="4 September 2026"
-      intro="Short, and meant to be clear. If something here doesn't seem fair in your situation, email us — we'd rather sort it out than hide behind a policy page."
+      intro="Short, and meant to be clear. If something here doesn't seem fair in your situation, email us. We'd rather sort it out than hide behind a policy page."
     >
       <h2>How you are billed</h2>
       <p>
@@ -44,12 +44,12 @@ export default function RefundPolicyPage() {
       </p>
       <ul>
         <li>
-          <strong>Before your AI goes live</strong> — refunded in full, no questions, even if we have
+          <strong>Before your AI goes live</strong>: refunded in full, no questions, even if we have
           already started. If the product turns out to be wrong for your business we would rather not
           have your money.
         </li>
         <li>
-          <strong>Once your AI has started answering customers</strong> — the setup fee is not
+          <strong>Once your AI has started answering customers</strong>: the setup fee is not
           refundable from that point, because the work it pays for has been done and delivered.
         </li>
       </ul>
@@ -63,7 +63,7 @@ export default function RefundPolicyPage() {
         <li>You can cancel at any time.</li>
         <li>
           Cancellation takes effect at the <strong>end of the billing period
-          you&rsquo;ve already paid for</strong> — you keep access until then,
+          you&rsquo;ve already paid for</strong>: you keep access until then,
           and you aren&rsquo;t billed again afterwards.
         </li>
         <li>
@@ -75,7 +75,7 @@ export default function RefundPolicyPage() {
       <h2>If it does not suit your business</h2>
       <p>
         Tell us during setup and the setup fee comes back in full. After you are live, cancel the
-        monthly subscription whenever you like — there is nothing to negotiate and no retention call.
+        monthly subscription whenever you like. There is nothing to negotiate and no retention call.
       </p>
 
       <h2>What happens to your data if you leave</h2>
@@ -89,13 +89,13 @@ export default function RefundPolicyPage() {
       <p>
         Two practical things to arrange before you go: if we provisioned a phone number for you, tell
         us if you want to port it out rather than have it released; and any social or calendar
-        account you connected is simply disconnected — those accounts were always yours.
+        account you connected is simply disconnected. Those accounts were always yours.
       </p>
 
       <h2>If we got the billing wrong</h2>
       <p>
         If you were charged after cancelling, charged the wrong amount, or
-        charged twice — tell us. We&rsquo;ll investigate and put a genuine
+        charged twice, tell us. We&rsquo;ll investigate and put a genuine
         billing error right promptly. That isn&rsquo;t a goodwill gesture,
         it&rsquo;s just correct.
       </p>

@@ -6,16 +6,16 @@ import { VelocitySkew } from "@/components/landing/motion/scroll-primitives";
 
 /* The verb cycles so the headline reads as a desk that is always
    doing something, rather than a static claim. */
-const words = ["answering", "booking", "replying", "open"];
+const words = ["answering", "booking", "posting", "replying", "winning back"];
 
 /* The third stat is the only place in the hero that signals this is more
    than an answering service. "Front desk" alone reads as an AI receptionist,
    which anchors a visitor against the $25–125/mo tools in that category —
    naming the three pillars here costs nothing and resets that early. */
 const HERO_STATS = [
-  { value: "24/7", label: "every message answered instantly" },
-  { value: "~90 sec", label: "missed-call text follow-up" },
-  { value: "1", label: "dashboard for calls, content and reviews" },
+  { value: "24/7", label: "calls, texts and DMs answered instantly" },
+  { value: "~90 sec", label: "missed calls rung back automatically" },
+  { value: "1", label: "place for bookings, content, reviews and win-backs" },
 ];
 
 /* ------------------------------------------------------------------ *
@@ -268,14 +268,14 @@ export function HeroSection() {
                   transition: "transform 900ms cubic-bezier(0.16,1,0.3,1) 200ms",
                 }}
               />
-              The AI front desk for local business
+              The AI front office for local business
             </span>
           </div>
 
           {/* Headline */}
           <h1 className="text-left text-[clamp(2.4rem,6vw,7rem)] font-display leading-[0.92] tracking-tight text-white mb-12">
             <span className="block whitespace-nowrap">
-              <HeadlineLine text="Your front desk," baseDelay={250} />
+              <HeadlineLine text="Your whole front office," baseDelay={250} />
             </span>
             <span className="block whitespace-nowrap">
               <HeadlineLine text="always " baseDelay={700} />
@@ -291,9 +291,10 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
             }`}
           >
-            A missed call is a customer booking somewhere else. RingPost picks up
-            every call, text and message, books the appointment, and keeps your
-            marketing running while you work.
+            A missed call is a customer booking somewhere else. RingPost answers every
+            call, text and message, rings back the ones you miss, books the appointment,
+            posts your marketing, replies to your reviews and brings back customers who
+            drifted away, while you get on with the work.
           </p>
         </div>
       </div>

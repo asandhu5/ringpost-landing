@@ -28,8 +28,8 @@ const verticals = [
     label: "Salons & spas",
     icon: Scissors,
     headline: "The grid hasn't moved in three weeks.",
-    body: "You finish a colour you're genuinely proud of and mean to post it. Then it's eight o'clock, you're sweeping up, and it never happens. Three weeks later your Instagram looks abandoned to anyone deciding where to book. RingPost generates the posts from your own services and prices — your logo and pricing already on them — and puts them out.",
-    detail: "Nine platforms. Your branding. Nothing posts until you approve it.",
+    body: "You finish a colour you're genuinely proud of and mean to post it. Then it's eight o'clock, you're sweeping up, and it never happens. Three weeks later your Instagram looks abandoned to anyone deciding where to book. RingPost makes the posts from your own services and prices, with your logo and pricing already on them, and puts them out.",
+    detail: "Eleven platforms. Your branding. Nothing posts until you approve it.",
   },
   {
     id: "dental",
@@ -44,7 +44,7 @@ const verticals = [
     label: "Gyms & studios",
     icon: Dumbbell,
     headline: "Enquiries arrive at 10pm, not 10am.",
-    body: "Someone decides to join at eleven at night, messages your Instagram, and hears nothing until morning — by which point the impulse is gone. RingPost answers then, with your real class times and membership pricing, and books the trial session while they still want it.",
+    body: "Someone decides to join at eleven at night, messages your Instagram, and hears nothing until morning. By then the impulse is gone. RingPost answers then, with your real class times and membership pricing, and books the trial session while they still want it.",
     detail: "Answers on Instagram and WhatsApp, where fitness enquiries actually arrive.",
   },
   {
@@ -52,7 +52,7 @@ const verticals = [
     label: "Restaurants",
     icon: UtensilsCrossed,
     headline: "Four people said the same thing and nobody noticed.",
-    body: "You read reviews one at a time, between shifts, weeks apart — so you never spot that four of them this month mention the wait on a Friday. RingPost reads every one as it lands, drafts a reply in your voice for you to approve, and tells you when several customers are independently saying the same thing.",
+    body: "You read reviews one at a time, between shifts, weeks apart, so you never spot that four of them this month mention the wait on a Friday. RingPost reads every one as it lands, drafts a reply in your voice for you to approve, and tells you when several customers are independently saying the same thing.",
     detail: "Every review answered. Patterns surfaced before they become a rating.",
   },
   {
@@ -60,7 +60,7 @@ const verticals = [
     label: "Auto & detailing",
     icon: Car,
     headline: "You're under a car, not next to a phone.",
-    body: "Quotes are the whole game and they always come by phone. RingPost answers with your actual pricing for the job they're describing, books them into a real slot, and texts a confirmation — while you keep working.",
+    body: "Quotes are the whole game and they always come by phone. RingPost answers with your actual pricing for the job they're describing, books them into a real slot, and texts a confirmation while you keep working.",
     detail: "Quotes from your real price list, never a guess.",
   },
   {
@@ -68,7 +68,7 @@ const verticals = [
     label: "Consultations",
     icon: Scale,
     headline: "The first call decides whether they hire you.",
-    body: "A prospective client rings three firms. The one that answers gets the consultation. RingPost picks up on the first ring, captures what the matter is about, and books the initial consultation into your calendar — without you leaving what you're doing.",
+    body: "A prospective client rings three firms. The one that answers gets the consultation. RingPost picks up on the first ring, captures what the matter is about, and books the initial consultation into your calendar without you leaving what you're doing.",
     detail: "Captures the enquiry, books the consult, never gives legal advice.",
   },
 ];
@@ -177,7 +177,7 @@ export function VerticalsSection() {
 
         <Reveal delay={340}>
           <p className="mt-8 text-sm text-muted-foreground">
-            Not on this list? Every one of these runs on the same platform —
+            Not on this list? Every one of these runs on the same platform, so
             you get the answering, the booking, the content and the reviews
             whichever trade you&rsquo;re in.
           </p>

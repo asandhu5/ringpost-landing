@@ -26,8 +26,8 @@ export default function AcceptableUsePage() {
       <p>
         This policy applies to you as a customer of {SITE.name}, to anyone you give access to your
         account, and to any content you create, upload, generate or publish using the Service. Where
-        the Service acts on your behalf — answering a customer, drafting a reply, generating an image
-        — you remain responsible for what it does for you within these limits.
+        the Service acts on your behalf (answering a customer, drafting a reply, generating an image),
+        you remain responsible for what it does for you within these limits.
       </p>
 
       <h2>2. Prohibited content</h2>
@@ -71,7 +71,7 @@ export default function AcceptableUsePage() {
         The test we apply is intent and framing, not anatomy. A waxing clinic showing a treated leg
         under clinical lighting is ordinary trade marketing. The same subject framed erotically is
         not. If you believe a request of yours was refused wrongly, tell us at{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> — we would rather correct a false
+        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>. We would rather correct a false
         refusal than leave a real business unable to advertise.
       </p>
 
@@ -95,8 +95,8 @@ export default function AcceptableUsePage() {
           <a href="/ai-disclosure">Call Recording and AI Disclosure</a> statement.
         </li>
         <li>
-          Give regulated advice you are not qualified or licensed to give — medical, legal,
-          financial or otherwise — or configure the Service to do so on your behalf.
+          Give regulated advice you are not qualified or licensed to give (medical, legal,
+          financial or otherwise), or configure the Service to do so on your behalf.
         </li>
         <li>
           Attempt to bypass, disable or manipulate the Service&rsquo;s safety checks, guardrails or

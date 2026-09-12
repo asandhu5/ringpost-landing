@@ -16,7 +16,7 @@ const steps = [
     title: "They reach out",
     subtitle: "any channel",
     description:
-      "A customer calls, texts, DMs, messages, or emails you — on whichever channel they already prefer.",
+      "A customer calls, texts or messages you on whichever channel they already use.",
   },
   {
     number: "02",
@@ -30,14 +30,14 @@ const steps = [
     title: "You see it all",
     subtitle: "one dashboard",
     description:
-      "The conversation, the booking, and the customer all show up in one dashboard — with nothing to set up or manage day to day.",
+      "The conversation, the booking and the customer all show up in one dashboard, with nothing to manage day to day.",
   },
   {
     number: "04",
     title: "It grows your business",
     subtitle: "in the background",
     description:
-      "Meanwhile RingPost is generating content, posting it, and watching your reviews — without you having to do any of it.",
+      "Meanwhile RingPost is making content, posting it and watching your reviews, without you doing any of it.",
   },
 ];
 

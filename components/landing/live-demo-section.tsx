@@ -25,12 +25,12 @@ type Beat = {
 };
 
 const BEATS: Beat[] = [
-  { at: 0, kind: "event", text: "Incoming call — 07:42 pm", meta: "You're with a customer. It rings out." },
+  { at: 0, kind: "event", text: "Incoming call, 7:42 pm", meta: "You're with a customer. It rings out." },
   { at: 1500, kind: "system", text: "Missed call detected", meta: "RingPost takes over" },
-  { at: 3200, kind: "us", text: "Hi — sorry we missed you just now. This is the front desk. Can I help you book something in?" },
+  { at: 3200, kind: "us", text: "Hi, sorry we missed you just now. This is the front desk. Can I help you book something in?" },
   { at: 6200, kind: "them", text: "hi! do you have anything free this saturday?" },
   { at: 9000, kind: "system", text: "Reading your calendar and price list", meta: "live lookup" },
-  { at: 11200, kind: "us", text: "We do — Saturday 11:30 am or 3:00 pm is open. I can quote you from our current price list and it usually takes about two hours." },
+  { at: 11200, kind: "us", text: "We do. Saturday 11:30 am or 3:00 pm is open, and it usually takes about two hours." },
   { at: 14500, kind: "them", text: "11:30 works" },
   { at: 16800, kind: "us", text: "Booked you in for Saturday 11:30 am. You'll get a reminder the day before." },
   { at: 19000, kind: "event", text: "Added to Google Calendar", meta: "Sat · 11:30 am · new booking" },
@@ -213,7 +213,7 @@ export function LiveDemoSection() {
 
             <ScrollCharStagger
               className="mb-10 max-w-md text-lg leading-relaxed"
-              text="This is the part owners feel first. The phone rings while you're working, nobody can reach it, and the caller moves on to the next name on the list. RingPost texts them back before that happens — and finishes the booking."
+              text="This is the part owners feel first. The phone rings while you're working, nobody can reach it, and the caller moves on to the next name on the list. RingPost gets back to them before that happens, and finishes the booking."
             />
 
             <div className="space-y-5">

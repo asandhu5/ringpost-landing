@@ -34,7 +34,7 @@ export default function AiDisclosurePage() {
         person it says that it is not.
       </p>
       <p>
-        This is not a limitation we tolerate — it is the position we take. A business that says
+        This is not a limitation we tolerate. It is the position we take. A business that says
         openly that its front desk is an AI reads as confident and modern. One that is caught
         pretending otherwise loses the customer and the argument at the same time.
       </p>
@@ -98,7 +98,7 @@ export default function AiDisclosurePage() {
           caller believe they are speaking to a named human employee.
         </li>
         <li>
-          Honour a caller&rsquo;s request not to be recorded — the assistant will pass such a request
+          Honour a caller&rsquo;s request not to be recorded. The assistant will pass such a request
           to you, and you should take that call yourself.
         </li>
         <li>
@@ -144,7 +144,7 @@ export default function AiDisclosurePage() {
       <h2>8. Questions</h2>
       <p>
         Email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>. If you are a caller rather
-        than a {SITE.name} customer, contact the business you called — they hold the recording and we
+        than a {SITE.name} customer, contact the business you called. They hold the recording and we
         process it on their instructions.
       </p>
     </LegalPage>

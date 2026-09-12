@@ -44,7 +44,7 @@ export default function DataProcessingPage() {
       </p>
       <p>
         {SITE.name} is the <strong>processor</strong>. We process that data only to provide the
-        Service and only on your documented instructions — which, in practice, are the settings,
+        Service and only on your documented instructions, which, in practice, are the settings,
         knowledge and configuration in your account, plus this addendum and the Terms.
       </p>
       <p>
@@ -137,7 +137,7 @@ export default function DataProcessingPage() {
       </p>
       <p>
         Unless you ask us to delete sooner, data is retained for <strong>60 days</strong> after
-        termination — long enough to change your mind or complete an export — and is then deleted
+        termination (long enough to change your mind or complete an export) and is then deleted
         from live systems. Backups age out within a further 30 days. We may retain records we are
         legally required to keep, such as invoices, for the period the law requires.
       </p>

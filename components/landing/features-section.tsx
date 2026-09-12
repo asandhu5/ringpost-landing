@@ -23,7 +23,7 @@ const heroFeature = {
   number: "01",
   title: "An AI receptionist on every channel",
   description:
-    "RingPost answers phone calls, texts, WhatsApp, Instagram and Facebook messages, email, and website chat — instantly, 24/7. It's trained on your own services, prices, hours, and policies, and it never invents an answer: every price and time it gives is looked up from your real business data in the moment.",
+    "RingPost answers phone calls, texts, WhatsApp, Instagram and Facebook messages instantly, 24/7. It's trained on your own services, prices, hours, and policies, and it never invents an answer: every price and time it gives is looked up from your real business data in the moment.",
   stat: { value: "24/7", label: "on every channel your customers use" },
 };
 
@@ -319,7 +319,7 @@ export function FeaturesSection() {
                 <p className="text-xl text-muted-foreground leading-relaxed">
                   Not a phone bot with add-ons. Every capability below runs on
                   the same system, the same customer records, and the same
-                  dashboard — so a missed call never turns into a missed
+                  dashboard, so a missed call never turns into a missed
                   customer.
                 </p>
                 <div className="mt-6 flex items-baseline gap-3">
@@ -434,7 +434,7 @@ export function FeaturesSection() {
         <Reveal delay={200}>
           <p className="mt-10 border-t border-foreground/10 pt-6 font-mono text-sm text-muted-foreground">
             Set up on your business&apos;s own services, prices, hours, and
-            policies — whatever kind of business you run.
+            policies, whatever kind of business you run.
           </p>
         </Reveal>
 

@@ -54,7 +54,7 @@ export function CtaSection() {
 
                   <Reveal delay={280}>
                     <p className="mb-12 max-w-xl text-xl leading-relaxed text-muted-foreground">
-                      We set RingPost up for one business at a time — connecting
+                      We set RingPost up for one business at a time, connecting
                       your channels, loading your real services, prices and
                       hours, and hooking it up to your calendar. Book a call and
                       we&apos;ll walk you through it.
@@ -89,7 +89,7 @@ export function CtaSection() {
 
                   <Reveal delay={460}>
                     <p className="mt-8 font-mono text-sm text-muted-foreground">
-                      Set up for you — nothing to install, nothing to configure.
+                      Set up for you. Nothing to install, nothing to configure.
                     </p>
                   </Reveal>
                 </div>

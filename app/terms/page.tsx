@@ -30,7 +30,7 @@ export default function TermsPage() {
     <LegalPage
       title="Terms of Service"
       updated="4 September 2026"
-      intro={`These terms govern your use of ${SITE.name}. They're written to be readable rather than impressive — if anything here is unclear, ask us before you agree to it.`}
+      intro={`These terms govern your use of ${SITE.name}. They're written to be readable rather than impressive. If anything here is unclear, ask us before you agree to it.`}
     >
       <h2>1. What RingPost is</h2>
       <p>
@@ -77,7 +77,7 @@ export default function TermsPage() {
           continue until cancelled.
         </li>
         <li>
-          Keep your payment details current — a failed payment may suspend the
+          Keep your payment details current. A failed payment may suspend the
           Service until it&rsquo;s resolved.
         </li>
         <li>
@@ -96,7 +96,7 @@ export default function TermsPage() {
       <h2>5. Your data</h2>
       <ul>
         <li>
-          You own your business&rsquo;s data — your customer information,
+          You own your business&rsquo;s data: your customer information,
           conversation history, and anything you provide to us.
         </li>
         <li>
@@ -106,7 +106,7 @@ export default function TermsPage() {
         <li>
           You&rsquo;re responsible for having the right to give us any customer
           data you enter, and for complying with the communications and data
-          protection laws that apply to you — including consent rules for SMS
+          protection laws that apply to you, including consent rules for SMS
           and marketing messages.
         </li>
       </ul>
@@ -120,7 +120,7 @@ export default function TermsPage() {
         Your use of the Service is governed by our{" "}
         <a href="/acceptable-use">Acceptable Use Policy</a>, which forms part of these terms. It sets
         out what may not be created, requested or published through the Service, and what conduct is
-        not permitted. Read it — the content filter in the product enforces it, and a refusal you do
+        not permitted. Read it. The content filter in the product enforces it, and a refusal you do
         not expect will make more sense with it in front of you.
       </p>
       <p>
@@ -130,7 +130,7 @@ export default function TermsPage() {
 
       <h2>7. Your customers&rsquo; data, and your responsibilities for it</h2>
       <p>
-        The Service handles personal data belonging to <em>your</em> customers — names, phone
+        The Service handles personal data belonging to <em>your</em> customers: names, phone
         numbers, email addresses, the content of their messages and calls, and their booking history.
         You are the controller of that data and we are your processor. The full terms of that
         relationship, including sub-processors, retention, deletion and breach notification, are in
@@ -147,7 +147,7 @@ export default function TermsPage() {
           calls to your business may be answered by an AI, recorded and transcribed;
         </li>
         <li>
-          complying with marketing and telemarketing law where your customers are — consent, opt-out
+          complying with marketing and telemarketing law where your customers are: consent, opt-out
           and calling-hours rules are yours to meet, not ours;
         </li>
         <li>
@@ -175,13 +175,13 @@ export default function TermsPage() {
       <h2>9. AI-generated content and its limits</h2>
       <p>
         The Service uses AI to generate replies, content and recommendations.
-        We&rsquo;ve built real safeguards — prices, hours and availability the
+        We&rsquo;ve built real safeguards: prices, hours and availability the
         AI states are looked up from your own business data at the moment
         it&rsquo;s asked, not invented. But AI systems can still get things
         wrong.
       </p>
       <p>
-        You should review outputs where it reasonably matters — particularly
+        You should review outputs where it reasonably matters, particularly
         marketing content before it&rsquo;s published in your name. We
         aren&rsquo;t liable for an inaccuracy or omission in AI-generated
         communications or content, except where it results from our gross
@@ -200,7 +200,7 @@ export default function TermsPage() {
 
       <h2>11. Intellectual property</h2>
       <p>
-        The Service — its software, design and underlying technology — belongs
+        The Service (its software, design and underlying technology) belongs
         to us or our licensors. These terms give you the right to use the
         Service as intended, and nothing more.
       </p>
@@ -230,7 +230,7 @@ export default function TermsPage() {
       </p>
       <p>
         Two things go with it: any phone number we provisioned for you is released unless you arrange
-        to port it out first, and any connected social or calendar account is disconnected — those
+        to port it out first, and any connected social or calendar account is disconnected. Those
         accounts remain yours and are unaffected. Full detail is in the{" "}
         <a href="/data-processing">Data Processing Addendum</a>.
       </p>
@@ -238,7 +238,7 @@ export default function TermsPage() {
       <h2>14. Changes to these terms</h2>
       <p>
         We may update these terms. If a change is material we&rsquo;ll tell you
-        — by email — before it takes effect. Continuing to use the Service
+        by email before it takes effect. Continuing to use the Service
         afterwards means you accept the updated terms.
       </p>
 

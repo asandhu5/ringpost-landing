@@ -23,15 +23,15 @@ import { BOOKING_URL, CONTACT_EMAIL } from "@/lib/site";
 const faqs = [
   {
     q: "Do I have to change my phone number?",
-    a: "No. Your existing number keeps working exactly as it does now — RingPost sits alongside it. If you'd rather have a separate number for the AI to answer, we can set one up for you during onboarding. Either way, nothing about how customers already reach you has to change.",
+    a: "No. Your existing number keeps working exactly as it does now. RingPost sits alongside it. If you'd rather have a separate number for the AI to answer, we can set one up for you during onboarding. Either way, nothing about how customers already reach you has to change.",
   },
   {
     q: "What happens if the AI doesn't know the answer?",
-    a: "It hands the conversation to you rather than guessing. You'll see it flagged in your dashboard, and you can take over the conversation yourself at any point. The AI only states prices, hours and availability that it has just looked up from your real business data — if it doesn't have the answer, it says so and escalates instead of inventing one.",
+    a: "It hands the conversation to you rather than guessing. You'll see it flagged in your dashboard, and you can take over the conversation yourself at any point. The AI only states prices, hours and availability that it has just looked up from your real business data. If it doesn't have the answer, it says so and escalates instead of inventing one.",
   },
   {
     q: "Will my customers know they're talking to an AI?",
-    a: "On a phone call it introduces itself as the business's virtual receptionist — that's both the honest thing to do and, in many places, a legal requirement. In text and messaging it answers in your business's voice. We don't pretend a machine is a person, and we'd steer you away from any setup that did.",
+    a: "On a phone call it introduces itself as the business's AI assistant. That's the honest thing to do and, in many places, a legal requirement. In text and messaging it answers in your business's voice. We don't pretend a machine is a person, and we'd steer you away from any setup that did.",
   },
   {
     // The single most important answer on this page. A visitor who leaves
@@ -39,15 +39,15 @@ const faqs = [
     // tools and read our price as absurd. This resets the category before
     // they ever reach the cost question further down.
     q: "How is this different from the cheaper AI receptionists I've seen?",
-    a: "Those answer your phone, and most of them do it well. That's roughly a quarter of what RingPost does. The rest is the work that never gets done because nobody has time for it: marketing content generated and published across nine platforms, reviews read and answered, patterns flagged when several customers say the same thing, and customers who haven't been back in a while quietly followed up. If all you need is someone to pick up the phone, a cheaper tool will do that fine. RingPost is for owners who also don't have a marketing person.",
+    a: "Those answer your phone, and most of them do it well. That's roughly a quarter of what RingPost does. The rest is the work that never gets done because nobody has time for it: marketing content made and published across eleven platforms, reviews read and answered, patterns flagged when several customers say the same thing, and customers who haven't been back in a while quietly followed up. If all you need is someone to pick up the phone, a cheaper tool will do that fine. RingPost is for owners who also don't have a marketing person.",
   },
   {
     q: "Do I have to write the marketing content myself?",
-    a: "No. It's generated from your own business — your services, your prices, your brand voice — as finished images and short videos, with your logo and pricing already composited onto them. Everything lands in an approvals queue where you can edit it, approve it or bin it before anything goes out in your name. If you'd rather it just run, you can switch autopilot on per platform.",
+    a: "No. It's made from your own services, prices and brand voice, as finished images and short videos, with your logo and pricing already composited onto them. Everything lands in an approvals queue where you can edit it, approve it or bin it before anything goes out in your name. If you'd rather it just run, you can switch autopilot on per platform.",
   },
   {
     q: "What does it actually do about reviews?",
-    a: "It reads every review as it arrives, drafts a reply in your voice, and holds it for you — nothing is posted in your name until you approve it. It also watches for patterns across reviews. If four people this month independently mention the same thing, it tells you, instead of leaving you to spot it yourself across weeks of reading them one at a time between jobs.",
+    a: "It reads every review as it arrives, drafts a reply in your voice, and holds it for you. Nothing is posted in your name until you approve it. It also watches for patterns across reviews. If four people this month independently mention the same thing, it tells you, instead of leaving you to spot it yourself across weeks of reading them one at a time between jobs.",
   },
   {
     q: "How long does setup take?",
@@ -55,19 +55,19 @@ const faqs = [
   },
   {
     q: "I already have someone answering the phone. Why would I need this?",
-    a: "Because nobody answers every call. The AI covers the gaps — evenings, weekends, the twenty minutes your receptionist is with a customer, the call that comes in while the phone's already engaged. It's not a replacement for your team; it's what catches the calls your team was never going to reach.",
+    a: "Because nobody answers every call. The AI covers the gaps: evenings, weekends, the twenty minutes your receptionist is with a customer, the call that comes in while the phone's already engaged. It works alongside your team and catches the calls they were never going to reach.",
   },
   {
     q: "What does it cost?",
-    a: "A one-time setup fee plus a flat monthly fee — no tiers, no per-message pricing, no surprise overage bills. We quote it on the call once we understand your business, because setup genuinely differs between a two-chair salon and a multi-room clinic.",
+    a: "$1,699 once for setup, then $899 a month. No tiers, no per-message pricing, no surprise overage bills, and no contract. The full breakdown of what's included is on our pricing page.",
   },
   {
     q: "Who owns my customer data?",
-    a: "You do. Your customer list, conversation history and bookings are yours — we process them to run the service for you and nothing else. We don't sell data to anyone. Every third party involved in running the platform is named openly in our privacy policy rather than hidden behind a phrase like “trusted partners”.",
+    a: "You do. Your customer list, conversation history and bookings are yours. We process them to run the service for you and nothing else. We don't sell data to anyone. Every third party involved in running the platform is named openly in our privacy policy rather than hidden behind a phrase like “trusted partners”.",
   },
   {
     q: "Can I cancel?",
-    a: "Yes, any time. Cancelling takes effect at the end of the billing period you've already paid for — no lock-in contract, no notice period, no cancellation fee. The full detail is in our refund policy.",
+    a: "Yes, any time. Cancelling takes effect at the end of the billing period you've already paid for. No lock-in contract, no notice period, no cancellation fee. The full detail is in our refund policy.",
   },
 ];
 
@@ -100,7 +100,7 @@ export function FaqSection() {
 
             <Reveal delay={320}>
               <p className="mb-8 max-w-sm text-base leading-relaxed text-muted-foreground">
-                If yours isn&rsquo;t here, ask it directly — a real answer beats
+                If yours isn&rsquo;t here, ask it directly. A real answer beats
                 a page of marketing copy.
               </p>
             </Reveal>

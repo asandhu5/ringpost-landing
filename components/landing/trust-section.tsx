@@ -40,7 +40,7 @@ const trustPoints = [
     icon: UserCheck,
     title: "Trained on your business",
     description:
-      "It's set up on your own services, prices, hours, and policies — so it answers the way your front desk would, not the way a generic chatbot would.",
+      "It's set up on your own services, prices, hours and policies, so it answers the way your own front desk would.",
   },
 ];
 
@@ -205,7 +205,7 @@ export function TrustSection() {
 
           <ScrollCharStagger
             className="max-w-2xl text-xl leading-relaxed"
-            text="The fastest way to lose a customer is to quote someone a price you don't charge or a time you can't honour. RingPost only says what's true about your business — every answer is read from your own data at the moment it replies."
+            text="The fastest way to lose a customer is to quote someone a price you don't charge or a time you can't honour. RingPost only says what's true about your business. Every answer is read from your own data at the moment it replies."
           />
         </div>
 

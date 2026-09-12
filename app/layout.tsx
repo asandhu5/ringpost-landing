@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SITE } from '@/lib/site'
+import { SiteChat } from '@/components/site-chat/site-chat'
 import './globals.css'
 
 const instrumentSans = Instrument_Sans({
@@ -26,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE.name} — Your AI front desk. Never miss another customer.`,
+    default: `${SITE.name}: your AI front office. Never miss another customer.`,
     template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
@@ -37,16 +38,17 @@ export const metadata: Metadata = {
     'appointment booking',
     'local business',
     'AI front desk',
+    'AI front office',
   ],
   openGraph: {
-    title: `${SITE.name} — Your AI front desk`,
+    title: `${SITE.name}: your AI front office`,
     description: SITE.description,
     siteName: SITE.name,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE.name} — Your AI front desk`,
+    title: `${SITE.name}: your AI front office`,
     description: SITE.description,
   },
   robots: { index: true, follow: true },
@@ -70,6 +72,7 @@ export default function RootLayout({
     <html lang="en" className="bg-background">
       <body className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         {children}
+        <SiteChat />
         <Analytics />
       </body>
     </html>

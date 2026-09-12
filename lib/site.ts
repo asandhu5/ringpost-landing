@@ -31,9 +31,9 @@ export const LOGIN_URL = `${DASHBOARD_URL}/login`;
 
 export const SITE = {
   name: "RingPost",
-  tagline: "The AI front desk for local business",
+  tagline: "The AI front office for local business",
   description:
-    "RingPost answers every call, text, and message for your local business 24/7, books real appointments into your calendar, and handles your marketing — all from one dashboard.",
+    "RingPost answers every call, text and message for your local business 24/7, rings back the ones you miss, books real appointments into your calendar, posts your marketing, replies to your reviews and wins back customers who drifted away, all from one dashboard.",
   url: "https://ringpost.tech",
   year: new Date().getFullYear(),
 } as const;
@@ -44,7 +44,15 @@ export const NAV_LINKS = [
   { name: "Channels", href: "#channels" },
   { name: "Marketing", href: "#marketing" },
   { name: "FAQ", href: "#faq" },
+  { name: "Pricing", href: "/pricing" },
 ] as const;
+
+export const PRICING = {
+  currency: "$",
+  setup: { amount: 1699, label: "One-time setup", caption: "Paid once, before anything goes live." },
+  monthly: { amount: 899, label: "Then monthly", caption: "Everything below, every month. Cancel any time." },
+  comparison: { receptionistMonthly: 2800, averageBookingValue: 150 },
+} as const;
 
 export const LEGAL_LINKS = [
   { name: "Privacy", href: "/privacy" },

@@ -33,19 +33,19 @@ const STAGES = [
     key: "generate",
     label: "Generate",
     title: "Marketing content, made for you",
-    body: "On-brand promo images and short videos are created automatically — a seasonal offer, a promo photo — with your own logo and pricing composited right in.",
+    body: "Fresh on-brand images and a short video are made for you every morning, with your own logo and pricing already on them.",
   },
   {
     key: "publish",
     label: "Publish",
     title: "Posted everywhere that matters",
-    body: "One place to manage all of it, instead of nine. RingPost pushes the post out across every platform your customers actually use.",
+    body: "One place to manage all of it, instead of a dozen apps. RingPost pushes the post out across every platform your customers actually use.",
   },
   {
     key: "reviews",
     label: "Reviews",
     title: "Reviews read and answered",
-    body: "RingPost reads incoming reviews, drafts thoughtful replies for you to approve, and flags patterns worth knowing — like several recent reviews raising the same complaint.",
+    body: "RingPost reads incoming reviews, drafts thoughtful replies for you to approve, and flags patterns worth knowing, like several recent reviews raising the same complaint.",
   },
 ] as const;
 
@@ -193,7 +193,7 @@ function PublishBoard({ stage }: { stage: number }) {
             </span>
           </div>
           <p className="mt-2 text-sm text-muted-foreground">
-            Replies drafted for your approval — and repeated complaints flagged
+            Replies drafted for your approval, and repeated complaints flagged
             so you can fix the real problem.
           </p>
         </div>
@@ -307,7 +307,7 @@ export function MarketingSection() {
             <Reveal delay={200}>
               <div className="mt-10 border-t border-foreground/10 pt-6">
                 <span className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  Nine platforms, one place
+                  Every platform, one place
                 </span>
                 <p className="mt-2 text-muted-foreground">
                   Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads,

@@ -160,8 +160,8 @@ export function ChannelsSection() {
 
               <Reveal delay={280}>
                 <p className="mt-8 max-w-lg text-xl leading-relaxed text-muted-foreground">
-                  Customers reach you however they like — phone, text, WhatsApp,
-                  Instagram, Facebook, email, or your website. RingPost answers
+                  Customers reach you however they like: phone, text, WhatsApp,
+                  Instagram or Facebook. RingPost answers
                   all of them in one place.
                 </p>
               </Reveal>
@@ -183,8 +183,8 @@ export function ChannelsSection() {
                   <span className="text-2xl text-muted-foreground">channels</span>
                 </div>
                 <p className="max-w-md text-muted-foreground">
-                  Calls, texts, WhatsApp, Instagram, Messenger, email, and web
-                  chat — every conversation lands in one shared inbox your whole
+                  Calls, texts, WhatsApp, Instagram and Messenger. Every
+                  conversation lands in one shared inbox your whole
                   team can see.
                 </p>
               </div>

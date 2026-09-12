@@ -20,7 +20,7 @@ export default function PrivacyPage() {
     <LegalPage
       title="Privacy Policy"
       updated="4 September 2026"
-      intro="This explains what RingPost collects, what we do with it, and who else touches it. There are two different sets of people here — businesses who sign up, and their customers who never did — and this policy treats them separately, because the second group is the one that matters most. We've named every third party involved rather than hiding behind “trusted partners”."
+      intro="This explains what RingPost collects, what we do with it, and who else touches it. There are two different sets of people here: businesses who sign up, and their customers who never did. This policy treats them separately, because the second group is the one that matters most. We've named every third party involved rather than hiding behind “trusted partners”."
     >
       <h2>1. Two kinds of people, two different relationships</h2>
       <p>
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
         <strong>Your customers.</strong> When someone calls, texts or messages a business that uses
         RingPost, their personal data passes through our systems. They never signed up with us and in
         most cases have never heard of us. For that data, <strong>the business is the controller and
-        we are only the processor</strong> — we hold it on that business&rsquo;s instructions, and we
+        we are only the processor</strong>: we hold it on that business&rsquo;s instructions, and we
         do not decide what happens to it.
       </p>
       <p>
@@ -56,16 +56,16 @@ export default function PrivacyPage() {
       <h3>Information you give us</h3>
       <ul>
         <li>
-          Business account details — business name, owner name, email, phone
+          Business account details: business name, owner name, email, phone
           number, business type, and address if you provide one.
         </li>
         <li>
-          Business configuration — your services, prices, hours, policies and
+          Business configuration: your services, prices, hours, policies and
           knowledge-base content. This is what your AI receptionist answers
           from.
         </li>
         <li>
-          Payment information — collected and processed directly by Paddle. We
+          Payment information: collected and processed directly by Paddle. We
           never see or store your full card details.
         </li>
       </ul>
@@ -75,18 +75,18 @@ export default function PrivacyPage() {
         <li>Bookings and appointment records.</li>
         <li>Reviews synced from platforms you connect.</li>
         <li>
-          Usage and log data — timestamps, which features are used, error logs.
+          Usage and log data: timestamps, which features are used, error logs.
         </li>
       </ul>
 
-      <h3>Information about your customers — the part that matters most</h3>
+      <h3>Information about your customers: the part that matters most</h3>
       <p>
         This is data about people who contacted your business, not people who signed up with us. We
         hold it on your instruction, as your processor.
       </p>
       <ul>
         <li>
-          <strong>Contact details</strong> — name, phone number, email address, and social media
+          <strong>Contact details</strong>: name, phone number, email address, and social media
           handle where they messaged from one.
         </li>
         <li>
@@ -95,11 +95,11 @@ export default function PrivacyPage() {
         </li>
         <li>
           <strong>Call audio and transcripts.</strong> Calls answered by the AI may be recorded and
-          transcribed. Recording is announced at the start of the call by default — see{" "}
+          transcribed. Recording is announced at the start of the call by default. See{" "}
           <a href="/ai-disclosure">Call Recording and AI Disclosure</a>.
         </li>
         <li>
-          <strong>Booking history</strong> — what they booked, when, with whom, and whether they
+          <strong>Booking history</strong>: what they booked, when, with whom, and whether they
           turned up.
         </li>
         <li>
@@ -109,7 +109,7 @@ export default function PrivacyPage() {
           content. Having a lawful basis for that is yours as controller.
         </li>
         <li>
-          <strong>Contact preferences</strong> — which channel they use, and whether they have opted
+          <strong>Contact preferences</strong>: which channel they use, and whether they have opted
           out. A customer who replies STOP is opted out immediately and automatically, and that
           decision is honoured across every channel.
         </li>
@@ -118,7 +118,7 @@ export default function PrivacyPage() {
       <h2>3. What we use it for</h2>
       <ul>
         <li>
-          Running the Service — generating AI responses grounded in your real
+          Running the Service: generating AI responses grounded in your real
           business data.
         </li>
         <li>Processing bookings and sending confirmations and reminders.</li>
@@ -146,41 +146,41 @@ export default function PrivacyPage() {
       </p>
       <ul>
         <li>
-          <strong>Anthropic</strong> — the AI that understands and writes
+          <strong>Anthropic</strong>: the AI that understands and writes
           conversation replies.
         </li>
         <li>
-          <strong>Twilio</strong> — phone numbers, calls and SMS.
+          <strong>Twilio</strong>: phone numbers, calls and SMS.
         </li>
         <li>
-          <strong>Meta</strong> — WhatsApp, Instagram and Facebook messaging.
+          <strong>Meta</strong>: WhatsApp, Instagram and Facebook messaging.
         </li>
         <li>
-          <strong>Deepgram</strong> and <strong>Cartesia</strong> — turning call
+          <strong>Deepgram</strong> and <strong>Cartesia</strong>: turning call
           audio into text, and replies back into speech.
         </li>
         <li>
-          <strong>Postmark</strong> / <strong>Resend</strong> — sending and
+          <strong>Postmark</strong> / <strong>Resend</strong>: sending and
           receiving email.
         </li>
         <li>
-          <strong>Google</strong> — Calendar sync, and review data where you
+          <strong>Google</strong>: Calendar sync, and review data where you
           connect it.
         </li>
         <li>
-          <strong>OpenAI</strong> and <strong>fal.ai</strong> — generating
+          <strong>OpenAI</strong> and <strong>fal.ai</strong>: generating
           marketing images and video.
         </li>
         <li>
-          <strong>Blotato</strong> and <strong>Upload-Post</strong> — publishing
+          <strong>Blotato</strong> and <strong>Upload-Post</strong>: publishing
           content to social platforms.
         </li>
         <li>
-          <strong>Paddle</strong> — billing and payment processing.
+          <strong>Paddle</strong>: billing and payment processing.
         </li>
         <li>
           <strong>Render</strong>, <strong>Vercel</strong> and{" "}
-          <strong>Cloudflare</strong> — hosting, storage and content delivery.
+          <strong>Cloudflare</strong>: hosting, storage and content delivery.
         </li>
       </ul>
       <p>
@@ -190,11 +190,11 @@ export default function PrivacyPage() {
       </p>
       <p>
         We may also disclose information where the law requires it, to protect
-        our legal rights, or in connection with a business transfer — in which
+        our legal rights, or in connection with a business transfer, in which
         case we&rsquo;d tell affected users.
       </p>
 
-      <h2>5. Meta platforms — WhatsApp, Instagram and Facebook</h2>
+      <h2>5. Meta platforms: WhatsApp, Instagram and Facebook</h2>
       <h3>WhatsApp</h3>
       <p>
         When a business connects WhatsApp Business Platform, we access message content, the
@@ -286,7 +286,29 @@ export default function PrivacyPage() {
         required to keep it longer for legal or accounting reasons.
       </p>
 
-      <h2>9. Your rights</h2>
+      <h2 id="website-chat">9. The chat on this website</h2>
+      <p>
+        The chat assistant on ringpost.tech is an AI. When you use it, we keep what
+        you type and what it replies, plus any name, email address, phone number or
+        business name you choose to give us, so our team can follow up and so we
+        can see which questions the website isn&rsquo;t answering well. We use it
+        only to reply to you and to improve the website and product. We don&rsquo;t
+        sell it or use it to advertise to you elsewhere.
+      </p>
+      <p>
+        Chat transcripts are kept for 12 months and then deleted. If you book a demo
+        call, the booking itself is kept like any other business record. The replies
+        are generated by our AI provider, named in section 4, which processes the text
+        only to produce the reply. To have your chat deleted sooner, email{" "}
+        <a href="mailto:support@ringpost.tech">support@ringpost.tech</a>.
+      </p>
+      <p>
+        The &ldquo;Try it live&rdquo; mode lets you chat with a sample business. It
+        is a demonstration: nothing you book there creates a real appointment with a
+        real business.
+      </p>
+
+      <h2>10. Your rights</h2>
       <p>
         Depending on where you are, you may have the right to access, correct,
         export or delete your personal data. Follow our{" "}
@@ -297,12 +319,12 @@ export default function PrivacyPage() {
       </p>
       <p>
         If one of <em>your</em> customers wants to exercise similar rights over
-        data held in your account, they should contact your business directly —
-        you hold the customer relationship, and we process that data on your
+        data held in your account, they should contact your business directly.
+        You hold the customer relationship, and we process that data on your
         behalf.
       </p>
 
-      <h2>10. Cookies</h2>
+      <h2>11. Cookies</h2>
       <p>
         This site and the dashboard use cookies for essential functions such as
         keeping you signed in, and for basic analytics. You can control cookies
@@ -310,27 +332,27 @@ export default function PrivacyPage() {
         Service.
       </p>
 
-      <h2>11. Children</h2>
+      <h2>12. Children</h2>
       <p>
         The Service is for business owners and isn&rsquo;t directed at children.
         We don&rsquo;t knowingly collect personal information from anyone under
         16.
       </p>
 
-      <h2>12. International processing</h2>
+      <h2>13. International processing</h2>
       <p>
         Your data may be processed and stored outside your own country by the
         providers listed above. Using the Service means consenting to that,
         under the terms of this policy.
       </p>
 
-      <h2>13. Changes</h2>
+      <h2>14. Changes</h2>
       <p>
         We may update this policy. Material changes will be communicated by
         email before they take effect.
       </p>
 
-      <h2>14. Contact</h2>
+      <h2>15. Contact</h2>
       <p>
         Questions about this policy or your data:{" "}
         <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
