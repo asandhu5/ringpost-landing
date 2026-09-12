@@ -236,15 +236,16 @@ export default function PrivacyPage() {
       <h2>6. Google user data</h2>
       <p>
         RingPost requests the Google Calendar scope{" "}
-        <strong>https://www.googleapis.com/auth/calendar</strong>. Full calendar access is required
+        <strong>https://www.googleapis.com/auth/calendar.events</strong>. Full calendar access is required
         rather than read-only access because RingPost both checks availability and writes
         appointments booked through the Service into the connected calendar.
       </p>
       <p>
         We read existing calendar events only to compute busy times and determine whether a proposed
-        appointment slot is free. We write appointments that customers book through RingPost. We
-        never read event titles, descriptions or attendees for any purpose other than determining
-        whether a time slot is free.
+        appointment slot is free. We write appointments that customers book through RingPost.
+        RingPost uses Google Calendar event information only as necessary to determine availability
+        and manage appointments created through RingPost. It does not use calendar event content for
+        advertising, profiling, or AI model training.
       </p>
       <p>
         Google access and refresh tokens are encrypted at rest and retained only while the calendar
