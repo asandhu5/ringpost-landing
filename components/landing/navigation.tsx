@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Magnetic } from "@/components/landing/motion/primitives";
-import { BOOKING_URL, LOGIN_URL, NAV_LINKS } from "@/lib/site";
+import { LOGIN_URL, NAV_LINKS, SIGNUP_URL } from "@/lib/site";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -146,7 +146,7 @@ export function Navigation() {
                     : "bg-white hover:bg-white/90 text-black px-6"
                 }`}
               >
-                <a href={BOOKING_URL}>Book a call</a>
+                <a href={SIGNUP_URL}>Get started</a>
               </Button>
             </Magnetic>
           </div>
@@ -213,7 +213,7 @@ export function Navigation() {
               className="flex-1 bg-foreground text-background rounded-full h-14 text-base"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <a href={BOOKING_URL}>Book a call</a>
+              <a href={SIGNUP_URL}>Get started</a>
             </Button>
           </div>
         </div>

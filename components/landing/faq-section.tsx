@@ -62,6 +62,14 @@ const faqs = [
     a: "$1,699 once for setup, then $899 a month. There are no tiers or long-term contract. Third-party carrier, messaging or platform charges and requirements, if any, are disclosed during setup and may apply separately.",
   },
   {
+    q: "Is there a free trial?",
+    a: "No. Every business is set up individually before it goes live, so instead of a trial we'll show you RingPost working on a call first. After that it's month to month, and you can cancel any time.",
+  },
+  {
+    q: "Which social platforms can it post to?",
+    a: "Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest and Google Business Profile. You connect your own accounts, approve each post (or switch on autopilot), and see views and engagement for every post, with a link straight to it once it's live.",
+  },
+  {
     q: "Who owns my customer data?",
     a: "You do. Your customer list, conversation history and bookings are yours. We process them to run the service for you and nothing else. We don't sell data to anyone. Every third party involved in running the platform is named openly in our privacy policy rather than hidden behind a phrase like “trusted partners”.",
   },

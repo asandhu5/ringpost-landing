@@ -291,9 +291,9 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
             }`}
           >
-            RingPost is an AI-powered front desk for local service businesses. It helps manage customer
-            enquiries, conversations and appointments across the channels your business already uses,
-            while keeping everything organized in one place.
+            RingPost answers your calls, texts, WhatsApp, Instagram, Messenger, email and website chat,
+            books real appointments from your own prices and hours, replies to reviews, and makes and
+            posts your social content once you approve it. All from one dashboard on your phone.
           </p>
         </div>
       </div>

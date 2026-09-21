@@ -14,7 +14,7 @@ import {
   ScrollLine,
 } from "@/components/landing/motion/scroll-primitives";
 
-/* The nine platforms named in the brief. Order is the brief's order. */
+/* The nine platforms RingPost publishes to. */
 const PLATFORMS = [
   "Instagram",
   "Facebook",
@@ -23,8 +23,8 @@ const PLATFORMS = [
   "X",
   "LinkedIn",
   "Threads",
-  "Bluesky",
   "Pinterest",
+  "Google Business",
 ];
 
 /* Three stages of the business-tools workflow. */

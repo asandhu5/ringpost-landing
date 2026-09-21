@@ -2,7 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { Parallax, Reveal } from "@/components/landing/motion/primitives";
-import { BOOKING_URL, CONTACT_EMAIL, LEGAL_LINKS, LOGIN_URL, SITE } from "@/lib/site";
+import { BOOKING_URL, CONTACT_EMAIL, LEGAL_LINKS, LOGIN_URL, SIGNUP_URL, SITE } from "@/lib/site";
 
 /* The template's "Developers" column (Docs / SDK / API / Status) has
    been removed — RingPost is a business-facing SaaS product, not a developer
@@ -17,6 +17,7 @@ const footerLinks = {
     { name: "FAQ", href: "#faq" },
   ],
   Company: [
+    { name: "Get started", href: SIGNUP_URL },
     { name: "Book a call", href: BOOKING_URL },
     { name: "Contact", href: `mailto:${CONTACT_EMAIL}` },
     { name: "Sign in", href: LOGIN_URL },

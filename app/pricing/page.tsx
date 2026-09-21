@@ -30,12 +30,16 @@ const MONTHLY_INCLUDES = [
   ["Bookings", "Real appointments written to your calendar, with no double-booking"],
   ["Customers", "A customer record built automatically from every conversation"],
   ["Reminders", "Confirmations and reminders sent for you by text"],
-  ["Content", "AI-assisted business content created from your information and brand assets, for your team to review"],
-  ["Publishing", "Content can be reviewed and scheduled for supported platforms from one workspace"],
+  ["Content", "AI photos and short videos of your services every day, your own uploads captioned for you, and campaigns with the offer written onto the image"],
+  ["Publishing", "Posts to Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest and Google Business Profile after you approve them, with views, engagement and a link to every live post"],
+  ["Knowledge", "Reads your website and PDFs, is set up for your trade (nearly 50 business types), and tells you which questions it couldn't answer"],
+  ["Calls", "A voice you choose, call recording with transcripts, and a handover to you whenever a customer needs a person"],
   ["Reviews", "Reviews read as they arrive, replies drafted for your approval, patterns flagged"],
   ["Business communications", "AI-assisted replies and follow-ups organized for your team to review"],
   ["Follow-ups", "Customer follow-ups organized and prepared for your team to review"],
-  ["Insights", "A clearer view of calls, bookings, reviews and business activity from one workspace"],
+  ["Insights", "Weekly insights on calls, bookings, reviews and posts, plus Talk to AI: ask about your own numbers in plain words"],
+  ["Win-back", "Messages to customers who haven't been back, drafted for you to send"],
+  ["On your phone", "Add the dashboard to your home screen and get a push notification when a customer needs you"],
 ];
 
 const MONEY_FAQS = [
@@ -43,6 +47,10 @@ const MONEY_FAQS = [
   q: "How do I pay, and is it secure?",
   a: `Payments are processed securely by our payment provider. Your card details are handled directly by the payment provider and are not stored by ${SITE.name}.`,
 },
+  {
+    q: "Is there a free trial?",
+    a: "No. Each business is configured individually before it answers anyone, so there is no trial period. It is month to month after setup, and you can cancel at any time.",
+  },
   {
     q: "Is there a contract?",
     a: "No. The monthly fee is month to month. You can cancel at any time, and cancellation takes effect at the end of the billing period already paid for.",

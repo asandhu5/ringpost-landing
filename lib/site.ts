@@ -22,18 +22,19 @@ export const CONTACT_EMAIL = "hello@ringpost.tech";
 export const SUPPORT_EMAIL = "support@ringpost.tech";
 
 /**
- * Where business owners log in. This is the dashboard app (a separate
- * deployment from this marketing site).
- * TODO: confirm once the dashboard is deployed to its real subdomain.
+ * Where business owners sign up and log in: the dashboard app, a separate deployment
+ * from this marketing site. Set NEXT_PUBLIC_DASHBOARD_URL per environment (it is read at
+ * build time); the fallback is the production dashboard.
  */
-export const DASHBOARD_URL = "https://app.ringpost.tech";
+export const DASHBOARD_URL = (process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://app.ringpost.tech").replace(/\/$/, "");
 export const LOGIN_URL = `${DASHBOARD_URL}/login`;
+export const SIGNUP_URL = `${DASHBOARD_URL}/signup`;
 
 export const SITE = {
   name: "RingPost",
   tagline: "AI front-desk software for local service businesses",
   description:
-  "RingPost is AI-powered front-desk software for local service businesses. Manage customer conversations, enquiries, appointments, follow-ups and business workflows from one dashboard.",
+    "RingPost answers your calls, texts, WhatsApp, Instagram, Messenger, email and website chat 24/7, books real appointments, replies to reviews, and makes and posts your social content. Built for local service businesses.",
   url: "https://ringpost.tech",
   year: new Date().getFullYear(),
 } as const;
@@ -50,7 +51,7 @@ export const NAV_LINKS = [
 export const PRICING = {
   currency: "$",
   setup: { amount: 1699, label: "One-time setup", caption: "Paid once, before anything goes live." },
-  monthly: { amount: 899, label: "Then monthly", caption: "Everything below, every month. Cancel any time." },
+  monthly: { amount: 899, label: "Then monthly", caption: "Everything below, every month. No free trial, no contract, cancel any time." },
   comparison: { receptionistMonthly: 2800, averageBookingValue: 150 },
 } as const;
 
