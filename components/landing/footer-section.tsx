@@ -2,7 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { Parallax, Reveal } from "@/components/landing/motion/primitives";
-import { BOOKING_URL, CONTACT_EMAIL, LEGAL_LINKS, LOGIN_URL, SIGNUP_URL, SITE } from "@/lib/site";
+import { BOOKING_URL, COMPANY, CONTACT_EMAIL, LEGAL_LINKS, LOGIN_URL, SIGNUP_URL, SITE } from "@/lib/site";
 
 /* The template's "Developers" column (Docs / SDK / API / Status) has
    been removed — RingPost is a business-facing SaaS product, not a developer
@@ -109,7 +109,7 @@ export function FooterSection() {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 md:flex-row">
           <p className="text-sm text-white/30">
-            &copy; {SITE.year} {SITE.name}. All rights reserved.
+            &copy; {SITE.year} {COMPANY.legalName}. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4 text-sm text-white/30">

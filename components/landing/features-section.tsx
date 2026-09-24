@@ -46,7 +46,7 @@ const groups = [
     headline: "Every conversation, picked up",
     items: [
       { name: "Phone calls", detail: "answered live, 24/7, in a voice you choose" },
-      { name: "Missed-call text-back", detail: "a text within about 90 seconds" },
+      { name: "Missed-call text-back", detail: "a friendly text within seconds" },
       { name: "Text messages", detail: "replied to instantly" },
       { name: "WhatsApp", detail: "chats handled end to end" },
       { name: "Instagram DMs", detail: "answered in the inbox" },
@@ -95,12 +95,12 @@ const groups = [
     headline: "Posts made, approved by you, published",
     items: [
       { name: "Daily content", detail: "AI photos and short videos of your services" },
-      { name: "Your own uploads", detail: "your photos and videos, captioned for you" },
-      { name: "Campaigns", detail: "offers written onto the image" },
-      { name: "Captions per platform", detail: "each network gets its own" },
+      { name: "Your own uploads", detail: "your photos and videos, captioned for you", plan: "Growth" },
+      { name: "Campaigns", detail: "offers written onto the image", plan: "Command Center" },
+      { name: "Captions per platform", detail: "each network gets its own", plan: "Growth" },
       { name: "Approvals", detail: "nothing posts until you say so" },
-      { name: "Nine platforms", detail: "Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest, Google Business Profile" },
-      { name: "Post insights", detail: "views and engagement per post" },
+      { name: "Eight platforms", detail: "Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest", plan: "Growth" },
+      { name: "Post insights", detail: "views and engagement per post", plan: "Command Center" },
       { name: "Live post links", detail: "open any published post in one tap" },
     ],
   },
@@ -109,11 +109,11 @@ const groups = [
     label: "Reviews & growth",
     headline: "Reputation and repeat business",
     items: [
-      { name: "Review replies", detail: "drafted for Google reviews, you approve" },
-      { name: "Comment replies", detail: "on your posts, drafted for you" },
-      { name: "Win-back messages", detail: "to customers who haven't been back" },
-      { name: "Weekly insights", detail: "what's working and what isn't" },
-      { name: "Talk to AI", detail: "ask about your own numbers in plain words" },
+      { name: "Review replies", detail: "drafted for Google reviews, you approve", plan: "Command Center" },
+      { name: "Comment replies", detail: "on your posts, drafted for you", plan: "Command Center" },
+      { name: "Win-back messages", detail: "to customers who haven't been back", plan: "Command Center" },
+      { name: "Weekly insights", detail: "what's working and what isn't", plan: "Command Center" },
+      { name: "Talk to AI", detail: "ask about your own numbers in plain words", plan: "Growth" },
       { name: "Phone app", detail: "add it to your home screen" },
       { name: "Push notifications", detail: "when a customer needs you" },
       { name: "One dashboard", detail: "calls, messages, bookings and posts" },
@@ -126,10 +126,13 @@ function GlowItem({
   name,
   detail,
   index,
+  plan,
 }: {
   name: string;
   detail: string;
   index: number;
+  /** The plan a feature starts on; features on every plan carry no badge. */
+  plan?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
@@ -160,7 +163,14 @@ function GlowItem({
       <div className="relative z-10 flex items-start gap-3">
         <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-pink)]/50 transition-all duration-500 group-hover:scale-150 group-hover:bg-[var(--brand-pink)]" />
         <div>
-          <span className="block text-sm font-medium leading-snug">{name}</span>
+          <span className="block text-sm font-medium leading-snug">
+            {name}
+            {plan && (
+              <span className="ml-2 inline-block rounded-full border border-[var(--brand-pink)]/40 px-2 py-[1px] align-middle font-mono text-[10px] uppercase tracking-[0.08em] text-[var(--brand-pink)]">
+                {plan === "Command Center" ? "Command Center" : `${plan}+`}
+              </span>
+            )}
+          </span>
           <span className="mt-1 block text-xs leading-snug text-muted-foreground">
             {detail}
           </span>
@@ -442,6 +452,7 @@ export function FeaturesSection() {
                   key={item.name}
                   name={item.name}
                   detail={item.detail}
+                  plan={"plan" in item ? (item as { plan?: string }).plan : undefined}
                   index={i}
                 />
               ))}
@@ -452,7 +463,8 @@ export function FeaturesSection() {
         <Reveal delay={200}>
           <p className="mt-10 border-t border-foreground/10 pt-6 font-mono text-sm text-muted-foreground">
             Set up on your business&apos;s own services, prices, hours, and
-            policies, whatever kind of business you run.
+            policies, whatever kind of business you run. Anything without a badge
+            is on every plan; a badge shows the plan it starts on.
           </p>
         </Reveal>
 

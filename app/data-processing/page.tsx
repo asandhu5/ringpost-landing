@@ -10,13 +10,16 @@ export const metadata: Metadata = {
 
 const SUBPROCESSORS = [
   ["Anthropic", "Conversation understanding and reply drafting", "United States"],
-  ["OpenAI", "Image generation and knowledge search indexing", "United States"],
-  ["fal.ai", "Short video generation", "United States"],
+  ["OpenAI", "Voice calls, backup conversation replies, image generation, safety checks and knowledge search indexing", "United States"],
+  ["Runway", "Short video generation", "United States"],
+  ["SerpAPI", "Reading public Google reviews", "United States"],
+  ["Deepgram", "Speech-to-text for calls and voice notes", "United States"],
+  ["Cartesia", "Text-to-speech for calls", "United States"],
   ["Twilio", "Phone numbers, calls, SMS and call recording", "United States"],
   ["Meta Platforms", "WhatsApp, Instagram and Facebook messaging", "United States / Ireland"],
   ["Blotato", "Instagram and Facebook posting, DMs and comments", "United States"],
   ["Upload-Post", "Posting and analytics on other social platforms", "United States"],
-  ["Google", "Calendar synchronisation and Business Profile reviews", "United States"],
+  ["Google", "Calendar synchronisation and sign-in with Google", "United States"],
   ["Resend", "Transactional email delivery", "United States"],
   ["Paddle", "Payment processing and invoicing", "United Kingdom"],
 ];

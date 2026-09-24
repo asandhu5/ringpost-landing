@@ -15,6 +15,17 @@
 export const BOOKING_URL =
   "mailto:support@ringpost.tech?subject=Book%20a%20call%20with%20RingPost";
 
+/**
+ * The operating company. The name is reserved with the SECP (Pakistan) and appears on
+ * every legal page and the footer. No registration number is shown until the company
+ * is incorporated, and no street address is published.
+ */
+export const COMPANY = {
+  legalName: "RingPost (SMC-Private) Limited",
+  city: "Islamabad, Pakistan",
+  governingLaw: "Pakistan",
+} as const;
+
 /** General enquiries. Deliverable via the verified ringpost.tech domain. */
 export const CONTACT_EMAIL = "hello@ringpost.tech";
 
@@ -44,14 +55,86 @@ export const NAV_LINKS = [
   { name: "How it works", href: "#how-it-works" },
   { name: "Channels", href: "#channels" },
   { name: "Business tools", href: "#marketing" },
+  { name: "Plans", href: "#plans" },
   { name: "FAQ", href: "#faq" },
   { name: "Pricing", href: "/pricing" },
 ] as const;
 
+/**
+ * The locked pricing (2026-09-23). Mirrors packages/core/src/billing/plans.ts in the
+ * product repo — change both together. Never say "unlimited": every plan shows its
+ * real numbers.
+ */
+export type PlanId = "front_desk" | "growth" | "command_center";
+
+export interface Plan {
+  id: PlanId;
+  name: string;
+  monthly: number;
+  tagline: string;
+  minutes: number;
+  messages: number;
+  images: string;
+  videos: string;
+  highlight?: boolean;
+}
+
 export const PRICING = {
   currency: "$",
-  setup: { amount: 1699, label: "One-time setup", caption: "Paid once, before anything goes live." },
-  monthly: { amount: 899, label: "Then monthly", caption: "Everything below, every month. No free trial, no contract, cancel any time." },
+  setup: { amount: 499, label: "One-time setup", caption: "Paid once, the same on every plan. Your 7-day free trial starts the moment it is paid." },
+  trial: { days: 7, minutesPerDay: 20, maxMinutes: 140, messages: 200 },
+  setupCredit: { amount: 249.5, afterDays: 60 },
+  plans: [
+    {
+      id: "front_desk",
+      name: "Front Desk",
+      monthly: 499,
+      tagline: "Every call and message answered, and a steady stream of posts.",
+      minutes: 400,
+      messages: 1500,
+      images: "2 AI images a day",
+      videos: "1 AI video a week",
+    },
+    {
+      id: "growth",
+      name: "Growth",
+      monthly: 999,
+      tagline: "Front Desk, plus your own uploads, auto-posting with captions and Talk to AI.",
+      minutes: 650,
+      messages: 3000,
+      images: "4 AI images a day",
+      videos: "1 AI video a day",
+      highlight: true,
+    },
+    {
+      id: "command_center",
+      name: "Command Center",
+      monthly: 1399,
+      tagline: "The whole front of house: campaigns, reviews, insights and win-backs.",
+      minutes: 1000,
+      messages: 5000,
+      images: "4 AI images a day + 10 extra a week on request",
+      videos: "1 AI video a day + 3 extra a week on request",
+    },
+  ] as Plan[],
+  /** Which plan a feature starts on — used for the badges on the homepage. */
+  featurePlan: {
+    uploads: "Growth",
+    autoPosting: "Growth",
+    advisor: "Growth",
+    commentReplies: "Command Center",
+    campaigns: "Command Center",
+    insights: "Command Center",
+    postInsights: "Command Center",
+    reviews: "Command Center",
+    winback: "Command Center",
+  },
+  topUps: [
+    { label: "100 extra calling minutes", price: 15 },
+    { label: "1,000 extra messages", price: 10 },
+    { label: "20 extra images", price: 12 },
+    { label: "5 extra videos", price: 18 },
+  ],
   comparison: { receptionistMonthly: 2800, averageBookingValue: 150 },
 } as const;
 

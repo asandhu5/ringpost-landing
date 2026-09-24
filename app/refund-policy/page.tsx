@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
-import { SITE, SUPPORT_EMAIL } from "@/lib/site";
+import { PRICING, SITE, SUPPORT_EMAIL } from "@/lib/site";
+
+const money = (n: number) => `${PRICING.currency}${n.toLocaleString("en-US", { minimumFractionDigits: n % 1 ? 2 : 0 })}`;
 
 export const metadata: Metadata = {
   title: "Refund Policy",
@@ -9,73 +11,69 @@ export const metadata: Metadata = {
 };
 
 /**
- * ⚠️ A REAL BUSINESS DECISION, NOT A DEFAULT TO LEAVE UNREAD:
- *
- * This takes the common SaaS position — setup fee non-refundable once
- * onboarding work has begun, subscription cancellable any time effective
- * at period end, no prorated refunds mid-period.
- *
- * The alternative worth weighing: a short money-back window (e.g. "full
- * refund within 14 days") materially lowers the perceived risk of a
- * four-figure upfront fee for a first-time client who has never heard of
- * you. That can be the difference between a signature and a "let me think
- * about it". Decide this deliberately.
+ * Matches the pricing locked on 2026-09-23 (lib/site.ts PRICING): full setup refund
+ * during the 7-day trial, the day-60 credit after, setup non-refundable once the trial
+ * has ended. The product implements exactly this (cancel during trial → cancel + refund).
  */
 export default function RefundPolicyPage() {
   return (
     <LegalPage
       title="Refund Policy"
-      updated="4 September 2026"
+      updated="23 September 2026"
       intro="Short, and meant to be clear. If something here doesn't seem fair in your situation, email us. We'd rather sort it out than hide behind a policy page."
     >
       <h2>How you are billed</h2>
       <p>
-        There are exactly two charges: a <strong>one-time setup fee</strong> and a{" "}
-        <strong>monthly subscription</strong>. Both are shown on the{" "}
-        <a href="/pricing">pricing page</a>. There is no contract, no minimum term, and no
-        per-message or per-minute usage charge.
+        There is a <strong>one-time setup fee</strong> of {money(PRICING.setup.amount)} and then{" "}
+        <strong>one monthly plan</strong> (Front Desk, Growth or Command Center), all shown on the{" "}
+        <a href="/pricing">pricing page</a>. There is no contract and no minimum term. Top-up packs
+        are only charged when you choose to buy one.
       </p>
 
-      <h2>The one-time setup fee</h2>
-      <p>
-        The setup fee pays for real, individual work: configuring your AI receptionist on your own
-        services and prices, connecting your channels, building your knowledge base, and testing it
-        against real conversations for your trade before it answers a single customer.
-      </p>
+      <h2>The {PRICING.trial.days}-day free trial</h2>
       <ul>
         <li>
-          <strong>Before your AI goes live</strong>: refunded in full, no questions, even if we have
-          already started. If the product turns out to be wrong for your business we would rather not
-          have your money.
+          Your free trial starts the moment the setup fee is paid, and your AI starts answering
+          straight away.
         </li>
         <li>
-          <strong>Once your AI has started answering customers</strong>: the setup fee is not
-          refundable from that point, because the work it pays for has been done and delivered.
+          <strong>Cancel at any time during the trial and the setup fee is refunded in full</strong>,
+          automatically, with no questions. Your plan never starts.
+        </li>
+        <li>
+          If you don&rsquo;t cancel, your chosen plan is billed on day 8, on the card you used for
+          setup. We remind you a day or two before.
         </li>
       </ul>
-      <p>
-        &ldquo;Live&rdquo; means the first real customer conversation your AI handles, not the day we
-        start work. You will know exactly when that happens, because you switch it on.
-      </p>
 
-      <h2>The monthly subscription</h2>
+      <h2>After the trial</h2>
       <ul>
-        <li>You can cancel at any time.</li>
         <li>
-          Cancellation takes effect at the <strong>end of the billing period
-          you&rsquo;ve already paid for</strong>: you keep access until then,
-          and you aren&rsquo;t billed again afterwards.
+          The setup fee is <strong>not refundable</strong> once the trial has ended: the setup work it
+          pays for has been done and delivered.
         </li>
         <li>
-          We don&rsquo;t refund part-months for time left in a period
-          you&rsquo;ve already paid for.
+          <strong>Day-60 credit:</strong> once you have been on a paid plan for{" "}
+          {PRICING.setupCredit.afterDays} days, half of the setup fee ({money(PRICING.setupCredit.amount)}) is
+          credited against your next invoice, whichever plan you are on by then.
+        </li>
+        <li>
+          You can cancel your plan at any time. Cancellation takes effect at the{" "}
+          <strong>end of the month you&rsquo;ve already paid for</strong>: you keep access until then
+          and aren&rsquo;t billed again.
+        </li>
+        <li>
+          We don&rsquo;t refund part-months for time left in a period you&rsquo;ve already paid for.
+          If you move to a smaller plan, the unused part of the month is credited to your next
+          invoice.
         </li>
       </ul>
 
       <h2>If it does not suit your business</h2>
       <p>
-        Tell us during setup and the setup fee comes back in full. After you are live, cancel the
-        monthly subscription whenever you like. There is nothing to negotiate and no retention call.
+        Use the trial: cancel within the {PRICING.trial.days} days and the setup fee comes back in full.
+        After that, cancel the monthly plan whenever you like. There is nothing to negotiate and no
+        retention call.
       </p>
 
       <h2>What happens to your data if you leave</h2>
@@ -111,8 +109,10 @@ export default function RefundPolicyPage() {
 
       <h2>How to cancel or ask for a refund</h2>
       <p>
-        Email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> with your
-        business name and what you&rsquo;d like to do. We aim to reply within
+        During the trial, cancel from <strong>Usage</strong> in your dashboard and the refund is
+        automatic. Otherwise, cancel from <strong>Plan &amp; billing</strong>, or email{" "}
+        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> with your business name and what
+        you&rsquo;d like to do. We aim to reply within
         two business days.
       </p>
 

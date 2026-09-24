@@ -14,7 +14,7 @@ const words = ["answering", "booking", "organizing", "replying", "following up"]
    naming the three pillars here costs nothing and resets that early. */
 const HERO_STATS = [
   { value: "24/7", label: "AI-powered customer support" },
-  { value: "~90 sec", label: "Typical missed-call response" },
+  { value: "Seconds", label: "Until a missed caller gets a text back" },
   { value: "1", label: "workspace for customers, conversations and bookings" },
 ];
 

@@ -59,15 +59,15 @@ const faqs = [
   },
   {
     q: "What does it cost?",
-    a: "$1,699 once for setup, then $899 a month. There are no tiers or long-term contract. Third-party carrier, messaging or platform charges and requirements, if any, are disclosed during setup and may apply separately.",
+    a: "A one-time $499 setup, then one of three plans: Front Desk at $499 a month, Growth at $999 a month or Command Center at $1,399 a month. No long-term contract, and after 60 paid days half the setup fee ($249.50) comes off your next invoice. Third-party carrier or platform charges, if any, are disclosed during setup.",
   },
   {
     q: "Is there a free trial?",
-    a: "No. Every business is set up individually before it goes live, so instead of a trial we'll show you RingPost working on a call first. After that it's month to month, and you can cancel any time.",
+    a: "Yes, on every plan. The 7-day free trial starts the moment the setup fee is paid: 20 calling minutes a day (unused minutes carry over) and 200 messages for the week. Cancel during the trial and the setup fee is refunded in full; otherwise your plan starts on day 8, month to month.",
   },
   {
     q: "Which social platforms can it post to?",
-    a: "Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest and Google Business Profile. You connect your own accounts, approve each post (or switch on autopilot), and see views and engagement for every post, with a link straight to it once it's live.",
+    a: "Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads and Pinterest, on the Growth and Command Center plans. You connect your own accounts, approve each post (or switch on autopilot), and on Command Center see views and engagement for every post, with a link straight to it once it's live.",
   },
   {
     q: "Who owns my customer data?",

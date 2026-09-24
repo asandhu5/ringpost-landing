@@ -71,12 +71,13 @@ const STRUCTURED_DATA = {
   description: SITE.description,
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web, iOS, Android',
-  offers: {
+  offers: PRICING.plans.map((plan) => ({
     '@type': 'Offer',
-    price: String(PRICING.monthly.amount),
+    name: plan.name,
+    price: String(plan.monthly),
     priceCurrency: 'USD',
-    priceSpecification: { '@type': 'UnitPriceSpecification', price: String(PRICING.monthly.amount), priceCurrency: 'USD', unitCode: 'MON' },
-  },
+    priceSpecification: { '@type': 'UnitPriceSpecification', price: String(plan.monthly), priceCurrency: 'USD', unitCode: 'MON' },
+  })),
 }
 
 export const viewport: Viewport = {

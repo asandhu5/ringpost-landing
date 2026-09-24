@@ -9,6 +9,7 @@ import { MetricsSection } from "@/components/landing/metrics-section";
 import { TrustSection } from "@/components/landing/trust-section";
 import { VerticalsSection } from "@/components/landing/verticals-section";
 import { FaqSection } from "@/components/landing/faq-section";
+import { PlansSnapshot } from "@/components/landing/plans-snapshot";
 import { CtaSection } from "@/components/landing/cta-section";
 import { FooterSection } from "@/components/landing/footer-section";
 import {
@@ -44,6 +45,9 @@ export default function Home() {
 
       {/* 5 — how it fits into the day */}
       <HowItWorksSection />
+
+      {/* 5b — what it costs, before the deeper sections, so nobody has to hunt */}
+      <PlansSnapshot />
 
       {/* 6 — where customers actually reach you */}
       <ChannelsSection />

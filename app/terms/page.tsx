@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
-import { CONTACT_EMAIL, SITE, SUPPORT_EMAIL } from "@/lib/site";
+import { COMPANY, CONTACT_EMAIL, SITE, SUPPORT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -9,17 +9,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * ⚠️ TWO THINGS TO CONFIRM BEFORE THIS IS RELIED ON COMMERCIALLY:
- *
- * 1. OPERATOR NAME (§ "What RingPost Is"). Written as a sole trader
- *    ("Muhammad Ahmed, trading as RingPost") because no company exists
- *    yet. The moment a real entity is registered, this must become the
- *    entity's legal name — an incorrect operator name undermines the
- *    whole document.
- *
- * 2. GOVERNING LAW (§ Governing Law). Set to Pakistan, which is the
- *    honest default while the operator is based there and unincorporated.
- *    Revisit on incorporation elsewhere.
+ * Operator: RingPost (SMC-Private) Limited (lib/site.ts COMPANY). The name is reserved
+ * with the SECP; add the registration number here once incorporation completes.
+ * Governing law: Pakistan, where the company is formed and operated.
  *
  * These terms are intended to describe the Service clearly and accurately.
  * They are not a substitute for legal advice.
@@ -28,7 +20,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of Service"
-      updated="12 September 2026"
+      updated="23 September 2026"
       intro={`These terms govern your use of ${SITE.name}. They're written to be readable rather than impressive. If anything here is unclear, ask us before you agree to it.`}
     >
       <h2>1. What RingPost is</h2>
@@ -40,7 +32,7 @@ export default function TermsPage() {
         content and review management.
       </p>
       <p>
-        The Service is operated by <strong>Muhammad Ahmed, trading as RingPost</strong>{" "}
+        The Service is operated by <strong>{COMPANY.legalName}</strong>{" "}
         (&ldquo;RingPost&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;). By signing
         up for or using the Service you agree to these terms. If you don&rsquo;t
         agree, don&rsquo;t use the Service.
@@ -62,9 +54,11 @@ export default function TermsPage() {
       <h2>3. Fees and payment</h2>
       <ul>
         <li>
-          RingPost is offered as a one-time setup fee plus a recurring
-          subscription fee, agreed with you individually before your account is
-          activated.
+          RingPost is offered as a one-time setup fee plus a monthly plan (Front
+          Desk, Growth or Command Center), at the prices shown on our{" "}
+          <a href="/pricing">pricing page</a> when you sign up. Each plan includes
+          stated monthly allowances; top-up packs are only charged when you choose
+          to buy one.
         </li>
         <li>
           Payments are processed securely by our designated payment provider. The
@@ -72,8 +66,10 @@ export default function TermsPage() {
           apply to payment processing.
         </li>
         <li>
-          Subscription fees are billed in advance on a recurring basis and
-          continue until cancelled.
+          Your 7-day free trial starts when the setup fee is paid. Unless you
+          cancel during the trial, your chosen plan is billed automatically at the
+          end of it, in advance, each month until cancelled. After 60 paid days,
+          half of the setup fee is credited against a following invoice.
         </li>
         <li>
           Keep your payment details current. A failed payment may suspend the
@@ -244,8 +240,8 @@ export default function TermsPage() {
       <h2>15. Governing law</h2>
       <p>
         These terms are governed by the laws of the Islamic Republic of
-        Pakistan, where the Service is operated from, without regard to
-        conflict-of-law rules.
+        Pakistan, where {COMPANY.legalName} is formed and operates the Service
+        from, without regard to conflict-of-law rules.
       </p>
 
       <h2>16. Contact</h2>

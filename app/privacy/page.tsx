@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
-import { SITE, SUPPORT_EMAIL } from "@/lib/site";
+import { COMPANY, SITE, SUPPORT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -19,9 +19,15 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      updated="4 September 2026"
+      updated="23 September 2026"
       intro="This explains what RingPost collects, what we do with it, and who else touches it. There are two different sets of people here: businesses who sign up, and their customers who never did. This policy treats them separately, because the second group is the one that matters most. We've named every third party involved rather than hiding behind “trusted partners”."
     >
+      <p>
+        <strong>Who we are.</strong> RingPost is operated by <strong>{COMPANY.legalName}</strong> ({COMPANY.city}),
+        referred to here as &ldquo;RingPost&rdquo;, &ldquo;we&rdquo; or &ldquo;us&rdquo;. You can reach us about
+        anything in this policy at <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+      </p>
+
       <h2>1. Two kinds of people, two different relationships</h2>
       <p>
         Almost everything below turns on this distinction, so it comes first.
@@ -168,8 +174,18 @@ export default function PrivacyPage() {
           connect it.
         </li>
         <li>
-          <strong>OpenAI</strong> and <strong>fal.ai</strong>: generating
-          marketing images and video.
+          <strong>OpenAI</strong>: the voice model on some phone calls, a
+          backup for conversation replies, generating marketing images, checking
+          images and requests for safety, and indexing your knowledge so the AI
+          can search it.
+        </li>
+        <li>
+          <strong>Runway</strong>: turning a generated image into a short
+          marketing video.
+        </li>
+        <li>
+          <strong>SerpAPI</strong>: reading a business&rsquo;s public Google
+          reviews so replies can be drafted.
         </li>
         <li>
           <strong>Blotato</strong> and <strong>Upload-Post</strong>: publishing
@@ -236,9 +252,11 @@ export default function PrivacyPage() {
       <h2>6. Google user data</h2>
       <p>
         RingPost requests the Google Calendar scope{" "}
-        <strong>https://www.googleapis.com/auth/calendar.events</strong>. Full calendar access is required
-        rather than read-only access because RingPost both checks availability and writes
-        appointments booked through the Service into the connected calendar.
+        <strong>https://www.googleapis.com/auth/calendar.events</strong>. This scope lets RingPost view,
+        create, edit and delete events on the calendars you connect. It does not give access to your
+        calendar settings, sharing or other Google data. RingPost needs to write events (not only read
+        them) because it adds the appointments your customers book, and moves or removes them when
+        they are rescheduled or cancelled.
       </p>
       <p>
         We read existing calendar events only to compute busy times and determine whether a proposed
@@ -249,7 +267,8 @@ export default function PrivacyPage() {
       </p>
       <p>
         Google access and refresh tokens are encrypted at rest and retained only while the calendar
-        remains connected. Disconnecting Google Calendar removes the stored tokens. Availability and
+        remains connected. Disconnecting Google Calendar in the dashboard deletes the stored tokens and
+        asks Google to revoke RingPost&rsquo;s access; deleting your account does the same. Availability and
         appointment information is retained with the business&rsquo;s booking records under the
         retention periods in this policy. Google user data is shared only with Google as needed to
         operate the calendar connection and with infrastructure providers that process it for
