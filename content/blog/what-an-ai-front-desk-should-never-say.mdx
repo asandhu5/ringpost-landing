@@ -1,0 +1,43 @@
+---
+title: "What an AI front desk should never be allowed to say"
+description: "An AI that answers your customers is speaking in your name. Four things it must never say, and why rules in code matter more than instructions to the AI."
+date: 2026-09-30
+---
+
+When an AI answers your phone and your messages, it speaks in your name. Most of the time that's a relief: questions answered, bookings made, nothing waiting until morning. But it only works if you can trust what it says. One wrong price, one booking that doesn't exist, and a customer's first impression of your business is that it told them something untrue.
+
+So the most important question about an AI front desk isn't what it can do. It's what it will refuse to say.
+
+## 1. A price you don't charge
+
+Customers ask what things cost, constantly. An AI that has read a lot of the internet has a rough idea of what a haircut or a boiler service usually costs somewhere. That's exactly the problem. "Usually" isn't your price.
+
+The rule has to be absolute: **no price in a reply unless it's in the business's own information.** Not a guess, not an average, not the number the customer suggested. If a customer asks "is it $40?", the AI can't simply agree because it sounds right.
+
+For some trades there's a further rule: a plumber or a garage shouldn't give a fixed price for a job nobody has seen. The right answer is the call-out or inspection fee and an offer to book a visit.
+
+## 2. A booking that doesn't exist
+
+"You're booked for Saturday at 2." It's one of the most reassuring things a customer can hear, and one of the most damaging if it isn't true. The same goes for "I've moved your appointment" and "I've cancelled that".
+
+An AI must only say something has been booked, moved or cancelled if that exact action actually succeeded, in the same moment. Writing the confirmation isn't the same as making the booking.
+
+## 3. A phone number, email or link it made up
+
+Language models are good at producing things that look right: a phone number with the right number of digits, an email address in the business's style, a plausible web link. If it isn't in the business's own information, it shouldn't be in a reply. An invented number sends your customer to a stranger.
+
+## 4. An answer it isn't sure of
+
+This one is about tone as much as facts. When an AI doesn't know, it should say so, clearly, and get a person involved: tell the customer the team will reply, pass the conversation to the owner, and flag it. "I'll check with the team" is a good answer. A confident guess is a bad one.
+
+## Rules in code, not requests to the AI
+
+You can tell an AI "never invent a price". Most of the time it will comply. But "most of the time" isn't good enough when it's your name on the reply.
+
+That's why in RingPost these rules are enforced by code that checks every reply before it's sent. Every price and time must appear in the business's own information or in what a lookup just returned. A claimed booking, reschedule or cancellation must be backed by that exact action succeeding in the same turn. Every phone number, email and link must come from the business's own information, a lookup, or the customer's own message. On a live call, each sentence is checked before it's spoken.
+
+When a reply fails a check, it's sent back to be rewritten once. If it still can't produce a verified answer, the customer hears: "I want to get this exactly right, so I've passed your message to the team and someone will reply here shortly." The owner is alerted, and the conversation is waiting in their inbox.
+
+Each type of business adds its own lines on top: a clinic's AI never suggests what a symptom might mean; a law firm's never offers an opinion on a case; a locksmith's hands "locked out" and "break-in" straight to a person.
+
+An AI front desk is only as good as what it won't say. Read more about [the guardrails](/product#guardrails), or see the rules for [your industry](/industries).

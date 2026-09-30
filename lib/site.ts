@@ -1,35 +1,60 @@
 /**
  * ─────────────────────────────────────────────────────────────
  *  RINGPOST — SITE CONFIG
- *  Change the values here and every "Book a call" button,
- *  footer link and contact reference on the site updates.
+ *  The company's public identity lives here, once. The entity name, the published
+ *  mailboxes and the canonical host are read by every page, the footer, the legal
+ *  pages and the structured data, so they cannot drift apart.
  * ─────────────────────────────────────────────────────────────
  */
 
 /**
- * TODO: replace with a real scheduling link (Cal.com / Calendly / etc.).
- * Until one exists this stays a mailto: so the CTA still does something
- * real rather than dead-ending — but a one-click scheduler converts far
- * better than asking someone to compose an email.
- */
-export const BOOKING_URL =
-  "mailto:support@ringpost.tech?subject=Book%20a%20call%20with%20RingPost";
-
-/**
- * The operating company. The name is reserved with the SECP (Pakistan) and appears on
- * every legal page and the footer. No registration number is shown until the company
- * is incorporated, and no street address is published.
+ * The operating company. The name must read exactly the same on /about, /contact, the
+ * footer, the legal pages and the Organization structured data: a reviewer (Meta
+ * Business Verification, Google OAuth) who finds it written two ways has a reason to
+ * reject.
+ *
+ * OWNER TO CONFIRM before this is published: the exact registered form of the name.
+ *
+ * NO STREET ADDRESS, EVER. The registered address is a residential apartment. It must
+ * not appear anywhere on this site, in metadata or in structured data. The entity name
+ * and working email addresses satisfy every verification requirement that applies.
  */
 export const COMPANY = {
-  legalName: "RingPost (SMC-Private) Limited",
+  legalName: "RINGPOST (SMC-PRIVATE) LIMITED",
+  /**
+   * PLACEHOLDER — the owner supplies this when incorporation completes. While it is
+   * null nothing is shown. Never invent one or infer one from anywhere.
+   */
+  registrationNumber: null as string | null,
   city: "Islamabad, Pakistan",
   governingLaw: "Pakistan",
 } as const;
 
-/** General enquiries. Deliverable via the verified ringpost.tech domain. */
-export const CONTACT_EMAIL = "hello@ringpost.tech";
+/**
+ * Every mailbox the site could publish. Only `confirmed: true` ones appear on /contact,
+ * in the footer and in structured data: a published address that bounces fails a
+ * verification review and loses real enquiries.
+ *
+ * admin@ is live on Titan. hello@ and support@ are NOT yet confirmed to receive mail —
+ * create them (or aliases of admin@) in Titan, send a test to each, then flip the flag.
+ */
+export const MAILBOXES = [
+  { key: "general", label: "General", address: "hello@ringpost.tech", confirmed: false },
+  { key: "support", label: "Support", address: "support@ringpost.tech", confirmed: false },
+  { key: "admin", label: "Administration", address: "admin@ringpost.tech", confirmed: true },
+] as const;
 
-/** Legal/account/privacy questions — the address named in the legal pages. */
+export const PUBLISHED_MAILBOXES = MAILBOXES.filter((m) => m.confirmed);
+
+/** The best address to show where one address is needed: support if it is live, else admin. */
+export const PRIMARY_EMAIL = (MAILBOXES.find((m) => m.key === "support" && m.confirmed) ?? MAILBOXES.find((m) => m.key === "admin")!).address;
+
+/**
+ * Named in the seven legal pages, which are published exactly as reviewed and must not
+ * be reworded. They still name these two mailboxes, so both MUST be confirmed to receive
+ * mail before this site is deployed (see MAILBOXES above).
+ */
+export const CONTACT_EMAIL = "hello@ringpost.tech";
 export const SUPPORT_EMAIL = "support@ringpost.tech";
 
 /**
@@ -41,101 +66,20 @@ export const DASHBOARD_URL = (process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://
 export const LOGIN_URL = `${DASHBOARD_URL}/login`;
 export const SIGNUP_URL = `${DASHBOARD_URL}/signup`;
 
+/** The platform API, which hosts the website assistant (chat and voice). */
+export const API_URL = (process.env.NEXT_PUBLIC_RINGPOST_API_URL || process.env.NEXT_PUBLIC_API_URL || "https://api.ringpost.tech").replace(/\/$/, "");
+
 export const SITE = {
   name: "RingPost",
-  tagline: "AI front-desk software for local service businesses",
+  tagline: "The AI front desk for local businesses",
   description:
-    "RingPost answers your calls, texts, WhatsApp, Instagram, Messenger, email and website chat 24/7, books real appointments, replies to reviews, and makes and posts your social content. Built for local service businesses.",
-  url: "https://ringpost.tech",
+    "RingPost is an AI front desk for local businesses. It answers calls, texts, WhatsApp, Instagram, Messenger and email around the clock, books appointments into your calendar, then posts to your socials, replies to comments and asks happy customers for reviews.",
+  /**
+   * The host the site actually serves. The apex (ringpost.tech) 308-redirects to www,
+   * so canonicals, og:url and the sitemap all use www (checked 2026-09-30).
+   */
+  url: "https://www.ringpost.tech",
   year: new Date().getFullYear(),
-} as const;
-
-export const NAV_LINKS = [
-  { name: "Features", href: "#features" },
-  { name: "How it works", href: "#how-it-works" },
-  { name: "Channels", href: "#channels" },
-  { name: "Business tools", href: "#marketing" },
-  { name: "Plans", href: "#plans" },
-  { name: "FAQ", href: "#faq" },
-  { name: "Pricing", href: "/pricing" },
-] as const;
-
-/**
- * The locked pricing (2026-09-23). Mirrors packages/core/src/billing/plans.ts in the
- * product repo — change both together. Never say "unlimited": every plan shows its
- * real numbers.
- */
-export type PlanId = "front_desk" | "growth" | "command_center";
-
-export interface Plan {
-  id: PlanId;
-  name: string;
-  monthly: number;
-  tagline: string;
-  minutes: number;
-  messages: number;
-  images: string;
-  videos: string;
-  highlight?: boolean;
-}
-
-export const PRICING = {
-  currency: "$",
-  setup: { amount: 499, label: "One-time setup", caption: "Paid once, the same on every plan. Your 7-day free trial starts the moment it is paid." },
-  trial: { days: 7, minutesPerDay: 20, maxMinutes: 140, messages: 200 },
-  setupCredit: { amount: 249.5, afterDays: 60 },
-  plans: [
-    {
-      id: "front_desk",
-      name: "Front Desk",
-      monthly: 499,
-      tagline: "Every call and message answered, and a steady stream of posts.",
-      minutes: 400,
-      messages: 1500,
-      images: "2 AI images a day",
-      videos: "1 AI video a week",
-    },
-    {
-      id: "growth",
-      name: "Growth",
-      monthly: 999,
-      tagline: "Front Desk, plus your own uploads, auto-posting with captions and Talk to AI.",
-      minutes: 650,
-      messages: 3000,
-      images: "4 AI images a day",
-      videos: "1 AI video a day",
-      highlight: true,
-    },
-    {
-      id: "command_center",
-      name: "Command Center",
-      monthly: 1399,
-      tagline: "The whole front of house: campaigns, reviews, insights and win-backs.",
-      minutes: 1000,
-      messages: 5000,
-      images: "4 AI images a day + 10 extra a week on request",
-      videos: "1 AI video a day + 3 extra a week on request",
-    },
-  ] as Plan[],
-  /** Which plan a feature starts on — used for the badges on the homepage. */
-  featurePlan: {
-    uploads: "Growth",
-    autoPosting: "Growth",
-    advisor: "Growth",
-    commentReplies: "Command Center",
-    campaigns: "Command Center",
-    insights: "Command Center",
-    postInsights: "Command Center",
-    reviews: "Command Center",
-    winback: "Command Center",
-  },
-  topUps: [
-    { label: "100 extra calling minutes", price: 15 },
-    { label: "1,000 extra messages", price: 10 },
-    { label: "20 extra images", price: 12 },
-    { label: "5 extra videos", price: 18 },
-  ],
-  comparison: { receptionistMonthly: 2800, averageBookingValue: 150 },
 } as const;
 
 export const LEGAL_LINKS = [
@@ -147,3 +91,20 @@ export const LEGAL_LINKS = [
   { name: "Data deletion", href: "/data-deletion" },
   { name: "Refunds", href: "/refund-policy" },
 ] as const;
+
+/**
+ * ⚠ LEGAL PAGES ONLY. The refund policy renders these figures inside wording that was
+ * reviewed and must be published unchanged (brief §9.0). They describe the one-time setup
+ * fee and day-60 credit that the product REMOVED on 2026-09-29, so the refund policy and
+ * terms now describe a fee that is no longer charged. That wording needs the owner's
+ * (and their adviser's) update — see docs/FULL-RUN-REPORT.md in the platform repo.
+ *
+ * Nothing else on the site may read this. Current prices come from data/plans.json,
+ * generated from the product's plans.ts (lib/plans.ts).
+ */
+export const PRICING = {
+  currency: "$",
+  setup: { amount: 499 },
+  trial: { days: 7 },
+  setupCredit: { amount: 249.5, afterDays: 60 },
+} as const;

@@ -1,0 +1,44 @@
+---
+title: "What happens to a booking when someone cancels at 11pm"
+description: "A late-night cancellation is a small moment that says a lot about a front desk. Here's what should happen to the booking, the calendar and the customer, and what must never happen."
+date: 2026-09-30
+---
+
+It's 11pm. A customer who's booked for tomorrow morning realises they can't make it. They don't want to ring (it's late) so they send a message: "sorry, need to cancel tomorrow".
+
+It's a small moment. But it tells you almost everything about how a front desk works.
+
+## What should happen
+
+When a customer cancels, four things need to be true by the morning:
+
+1. **The booking is actually cancelled.** Not "noted". Cancelled, in the system your business runs on.
+2. **The slot is free again,** so the next person who asks for that time can have it.
+3. **The calendar agrees.** If you keep a Google Calendar, the appointment shouldn't still be sitting there when you look at your day.
+4. **There's a record.** You should be able to see that the booking existed and was cancelled, and when, rather than it vanishing as if it never happened.
+
+And the customer should get a reply that tells them the truth: that it's done.
+
+## What must never happen
+
+The worst outcome isn't a slow reply. It's a wrong one.
+
+Imagine the customer is told "no problem, I've cancelled that for you", and the booking is still standing. The customer doesn't turn up; you've kept the slot free for nobody, and quite possibly charged or chased a no-show who did everything right. Or the reverse: the customer says "can I move it to Thursday?", is told it's done, and turns up on Thursday to find nothing booked.
+
+Both come from the same mistake: saying something has happened without checking that it did.
+
+## Why this is harder for AI than it sounds
+
+A person at a front desk cancels the booking and then says so. An AI system can, if it isn't built carefully, just say so. Language models are very good at writing a plausible confirmation. They have no idea, by themselves, whether the cancellation went through.
+
+That's why the order matters: do the thing, check the result, and only then tell the customer.
+
+## How RingPost handles the 11pm cancellation
+
+The AI finds the customer's booking and cancels it in the system. Only if that specific action succeeds can it tell the customer the booking is cancelled. A reply that claims a cancellation, a booking or a reschedule that didn't happen is stopped before it's sent, and a successful booking doesn't license a claim that something was cancelled.
+
+When the cancellation goes through, the slot opens up again. If Google Calendar is connected, the appointment disappears from it. In the RingPost dashboard the booking stays on the record as cancelled, so you can see what happened.
+
+If it can't make the cancellation (say it isn't clear which booking the customer means), it won't claim it did. If it can't give a verified answer, the customer is told the team will confirm, and the conversation is passed to you.
+
+More on how [booking](/product/booking) works, and on [the rules the AI can't break](/product#guardrails).

@@ -1,0 +1,126 @@
+{
+  "source": "packages/core/src/billing/plans.ts",
+  "setupFee": null,
+  "trial": {
+    "days": 7,
+    "minutesPerDay": 20,
+    "maxMinutes": 140,
+    "messages": 200,
+    "endingNoticeDays": 2
+  },
+  "usageWarningRatio": 0.8,
+  "plans": [
+    {
+      "id": "front_desk",
+      "name": "Front Desk",
+      "monthlyUsd": 499,
+      "tagline": "Every call and message answered, and a steady stream of posts.",
+      "minutesPerMonth": 400,
+      "messagesPerMonth": 1500,
+      "imagesPerDay": 2,
+      "videos": {
+        "count": 1,
+        "per": "week"
+      },
+      "promptExtrasPerWeek": {
+        "images": 0,
+        "videos": 0
+      },
+      "features": []
+    },
+    {
+      "id": "growth",
+      "name": "Growth",
+      "monthlyUsd": 999,
+      "tagline": "Everything in Front Desk, plus your own uploads, auto-posting, comment replies and Talk to AI.",
+      "minutesPerMonth": 650,
+      "messagesPerMonth": 3000,
+      "imagesPerDay": 4,
+      "videos": {
+        "count": 1,
+        "per": "day"
+      },
+      "promptExtrasPerWeek": {
+        "images": 0,
+        "videos": 0
+      },
+      "features": [
+        "uploads",
+        "auto_posting",
+        "advisor",
+        "comment_replies"
+      ]
+    },
+    {
+      "id": "command_center",
+      "name": "Command Center",
+      "monthlyUsd": 1399,
+      "tagline": "The whole front of house: campaigns, reviews, insights, win-backs and more.",
+      "minutesPerMonth": 1000,
+      "messagesPerMonth": 5000,
+      "imagesPerDay": 4,
+      "videos": {
+        "count": 1,
+        "per": "day"
+      },
+      "promptExtrasPerWeek": {
+        "images": 10,
+        "videos": 3
+      },
+      "features": [
+        "uploads",
+        "auto_posting",
+        "advisor",
+        "comment_replies",
+        "campaigns",
+        "insights",
+        "post_insights",
+        "reviews",
+        "winback",
+        "prompt_generation"
+      ]
+    }
+  ],
+  "topUps": [
+    {
+      "metric": "minutes",
+      "amount": 100,
+      "priceUsd": 15,
+      "label": "100 extra calling minutes",
+      "validity": "cycle"
+    },
+    {
+      "metric": "messages",
+      "amount": 1000,
+      "priceUsd": 10,
+      "label": "1,000 extra messages",
+      "validity": "cycle"
+    },
+    {
+      "metric": "images",
+      "amount": 20,
+      "priceUsd": 12,
+      "label": "20 extra images",
+      "validity": "90_days"
+    },
+    {
+      "metric": "videos",
+      "amount": 5,
+      "priceUsd": 18,
+      "label": "5 extra videos",
+      "validity": "90_days"
+    }
+  ],
+  "featureLabels": {
+    "uploads": "Uploading your own photos and videos",
+    "auto_posting": "Auto-posting to social media",
+    "advisor": "Talk to AI",
+    "comment_replies": "Replying to comments",
+    "campaigns": "Marketing campaigns",
+    "insights": "Business insights",
+    "post_insights": "Social media post insights",
+    "reviews": "Google reviews",
+    "winback": "Win-back messages",
+    "prompt_generation": "Extra images and videos on request"
+  }
+}

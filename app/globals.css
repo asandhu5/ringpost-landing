@@ -3,70 +3,57 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── RINGPOST TOKENS ──────────────────────────────────────────────
+   Dark, warm, high contrast. Violet is the brand (it matches the
+   dashboard's #8b7bfb / #6d5efc, so signing up doesn't feel like
+   arriving at a different company); coral is reserved for the
+   primary call to action. The site is dark-only by design, so the
+   light and dark schemes resolve to the same tokens.
+   ─────────────────────────────────────────────────────────────── */
 :root {
-  /* ── RINGPOST PALETTE ───────────────────────────────────────────
-     Lifted off pure black into a deep plum, and pulled toward the
-     magenta/violet hue that runs through the site's imagery, so the
-     UI and the photography read as one thing instead of colour
-     photos floating on a neutral grey page. ~10% lighter than the
-     original template throughout.
-     ─────────────────────────────────────────────────────────────── */
-  --background: oklch(0.145 0.022 306);
-  --foreground: oklch(0.960 0.008 320);
+  color-scheme: dark;
 
-  --card: oklch(0.185 0.026 306);
-  --card-foreground: oklch(0.960 0.008 320);
-  --popover: oklch(0.185 0.026 306);
-  --popover-foreground: oklch(0.960 0.008 320);
+  --rp-base: #0a0a0f;
+  --rp-surface: #14141c;
+  --rp-surface-2: #1b1b26;
+  --rp-border: rgba(255, 255, 255, 0.08);
+  --rp-border-strong: rgba(255, 255, 255, 0.14);
+  --rp-primary: #7c6bff;
+  --rp-glow: #a594ff;
+  --rp-cta: #ff7a59;
+  --rp-cta-hover: #ff8e71;
+  --rp-success: #34d399;
+  --rp-cyan: #22d3ee;
+  --rp-text: #f5f5f7;
+  --rp-muted: #a1a1b5;
+  --rp-faint: #6b6b80;
 
-  --primary: oklch(0.960 0.008 320);
-  --primary-foreground: oklch(0.145 0.022 306);
-
-  --secondary: oklch(0.215 0.028 306);
-  --secondary-foreground: oklch(0.960 0.008 320);
-  --muted: oklch(0.215 0.028 306);
-  --muted-foreground: oklch(0.690 0.028 312);
-  --accent: oklch(0.245 0.032 306);
-  --accent-foreground: oklch(0.960 0.008 320);
-
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.960 0.008 320);
-
-  --border: oklch(0.300 0.032 306);
-  --input: oklch(0.245 0.030 306);
-  --ring: oklch(0.780 0.120 336);
-
-  /* Named brand values, used directly in components */
-  --brand-pink: #eca8d6;
-  --brand-violet: #a78bfa;
-  --brand-cyan: #67e8f9;
-
-  /* Elevation steps for section backgrounds */
-  --surface-1: oklch(0.145 0.022 306);
-  --surface-2: oklch(0.175 0.026 306);
-  --surface-3: oklch(0.205 0.030 306);
-  --surface-light: oklch(0.930 0.018 312);
-
-  --chart-1: oklch(0.78 0.12 336);
-  --chart-2: oklch(0.72 0.11 300);
-  --chart-3: oklch(0.62 0.08 306);
-  --chart-4: oklch(0.45 0.05 306);
-  --chart-5: oklch(0.28 0.03 306);
-  --radius: 0.25rem;
-
-  --sidebar: oklch(0.145 0.022 306);
-  --sidebar-foreground: oklch(0.960 0.008 320);
-  --sidebar-primary: oklch(0.960 0.008 320);
-  --sidebar-primary-foreground: oklch(0.145 0.022 306);
-  --sidebar-accent: oklch(0.215 0.028 306);
-  --sidebar-accent-foreground: oklch(0.960 0.008 320);
-  --sidebar-border: oklch(0.300 0.032 306);
-  --sidebar-ring: oklch(0.780 0.120 336);
+  /* shadcn/ui names, mapped onto the tokens above */
+  --background: var(--rp-base);
+  --foreground: var(--rp-text);
+  --card: var(--rp-surface);
+  --card-foreground: var(--rp-text);
+  --popover: var(--rp-surface);
+  --popover-foreground: var(--rp-text);
+  --primary: var(--rp-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--rp-surface-2);
+  --secondary-foreground: var(--rp-text);
+  --muted: var(--rp-surface-2);
+  --muted-foreground: var(--rp-muted);
+  --accent: var(--rp-surface-2);
+  --accent-foreground: var(--rp-text);
+  --destructive: #f87171;
+  --destructive-foreground: #ffffff;
+  --border: var(--rp-border);
+  --input: var(--rp-border-strong);
+  --ring: var(--rp-glow);
+  --radius: 0.75rem;
 }
 
 @theme inline {
   --font-sans: var(--font-instrument), 'Instrument Sans', system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, monospace;
   --font-display: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -83,259 +70,160 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-surface-1: var(--surface-1);
-  --color-surface-2: var(--surface-2);
-  --color-surface-3: var(--surface-3);
-  --color-surface-light: var(--surface-light);
-  --color-brand-pink: var(--brand-pink);
-  --color-brand-violet: var(--brand-violet);
-  --color-brand-cyan: var(--brand-cyan);
+
+  --color-base: var(--rp-base);
+  --color-surface: var(--rp-surface);
+  --color-surface-2: var(--rp-surface-2);
+  --color-line: var(--rp-border);
+  --color-line-strong: var(--rp-border-strong);
+  --color-violet: var(--rp-primary);
+  --color-glow: var(--rp-glow);
+  --color-cta: var(--rp-cta);
+  --color-success: var(--rp-success);
+  --color-cyan: var(--rp-cyan);
+  --color-ink: var(--rp-text);
+  --color-muted-ink: var(--rp-muted);
+  --color-faint: var(--rp-faint);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
+    @apply border-border;
   }
   html {
+    /* clip, not hidden: decorative glows can't widen the page on a phone, and nothing
+       becomes a scroll container, so the fixed header keeps working. */
+    overflow-x: clip;
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--rp-base);
+    color: var(--rp-text);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(124, 107, 255, 0.45);
+    color: #fff;
+  }
+  :where(a, button, [role="button"], input, textarea, select, summary):focus-visible {
+    outline: 2px solid var(--rp-glow);
+    outline-offset: 3px;
+    border-radius: 6px;
   }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: var(--font-display);
+  /* The signature fine grid from the old hero, reused as page texture. */
+  .rp-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 72px 72px;
   }
-  
-  .text-stroke {
-    -webkit-text-stroke: 1.5px currentColor;
-    -webkit-text-fill-color: transparent;
+  .rp-dots {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
-  
-  .marquee {
-    animation: marquee 30s linear infinite;
+  .rp-fade-mask {
+    mask-image: radial-gradient(ellipse at 50% 30%, black, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black, transparent 72%);
   }
-  
-  .marquee-reverse {
-    animation: marquee-reverse 25s linear infinite;
+  .rp-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)), var(--rp-surface);
+    border: 1px solid var(--rp-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
-
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  .rp-card-hover {
+    transition: border-color 0.25s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
   }
-  
-  @keyframes marquee-reverse {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+  .rp-card-hover:hover {
+    border-color: rgba(165, 148, 255, 0.35);
+    transform: translateY(-2px);
   }
-  
-  .line-reveal {
-    clip-path: inset(0 100% 0 0);
-    animation: line-reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  .rp-glow-violet {
+    box-shadow: 0 0 0 1px rgba(124, 107, 255, 0.35), 0 20px 80px -20px rgba(124, 107, 255, 0.45);
   }
-  
-  @keyframes line-reveal {
-    to { clip-path: inset(0 0 0 0); }
-  }
-  
-  .hover-lift {
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-4px);
-  }
-  
-  .letter-spin {
-    display: inline-block;
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  
-  .letter-spin:hover {
-    transform: rotateY(360deg);
-  }
-  
-  .animate-char-in {
-    animation: char-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    opacity: 0;
-    transform: translateY(60%);
-  }
-  
-  @keyframes char-in {
-    0% {
-      opacity: 0;
-      transform: translateY(60%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .noise-overlay {
-    position: relative;
-  }
-  
-  .noise-overlay::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 1;
-  }
-  
-  .how-it-works-bg {
-    background-color: var(--surface-2);
-  }
-
-  .word-gradient {
-    background: linear-gradient(
-      45deg,
-      #eca8d6 0%,
-      #a78bfa 25%,
-      #67e8f9 50%,
-      #fbbf24 75%,
-      #eca8d6 100%
-    );
-    background-size: 300% 300%;
-    background-clip: text;
+  .rp-text-gradient {
+    background: linear-gradient(100deg, #ffffff 10%, var(--rp-glow) 55%, var(--rp-cta) 110%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradient-shift 1.5s ease infinite;
+  }
+  .rp-hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(165, 148, 255, 0.35), transparent);
+  }
+  .rp-no-scrollbar {
+    scrollbar-width: none;
+  }
+  .rp-no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 
-  @keyframes gradient-shift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* ============================================================
-     RINGPOST MOTION SYSTEM
-     Keyframes consumed by components/landing/motion/*
-     ============================================================ */
-
-  /* Seamless marquee: children are duplicated once, so -50% loops
-     with no visible seam. */
+  /* ── MOTION ───────────────────────────────────────────────────── */
   @keyframes ringpost-marquee {
     from { transform: translate3d(0, 0, 0); }
-    to   { transform: translate3d(-100%, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
   }
-
-  @keyframes ringpost-marquee-reverse {
-    from { transform: translate3d(-100%, 0, 0); }
-    to   { transform: translate3d(0, 0, 0); }
+  .animate-marquee {
+    animation: ringpost-marquee 40s linear infinite;
   }
-
-  /* Soft breathing dot — channel status indicators, live badges. */
-  @keyframes ringpost-pulse {
-    0%, 100% { opacity: 0.35; transform: scale(1); }
-    50%      { opacity: 1;    transform: scale(1.35); }
-  }
-
-  .animate-ringpost-pulse {
-    animation: ringpost-pulse 2.4s ease-in-out infinite;
-  }
-
-  /* Expanding ring behind a live indicator. */
   @keyframes ringpost-ping {
     0%   { transform: scale(1);   opacity: 0.55; }
     80%  { transform: scale(2.6); opacity: 0; }
     100% { transform: scale(2.6); opacity: 0; }
   }
-
   .animate-ringpost-ping {
     animation: ringpost-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
-
-  /* Message bubbles arriving in the live demo. */
   @keyframes ringpost-bubble-in {
-    from { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.96); filter: blur(6px); }
-    to   { opacity: 1; transform: translate3d(0, 0, 0)    scale(1);    filter: blur(0); }
+    from { opacity: 0; transform: translate3d(0, 12px, 0) scale(0.97); filter: blur(4px); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
   }
-
   .animate-bubble-in {
-    animation: ringpost-bubble-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: ringpost-bubble-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-
-  /* Typing indicator dots. */
   @keyframes ringpost-typing {
-    0%, 60%, 100% { transform: translateY(0);     opacity: 0.35; }
-    30%           { transform: translateY(-4px);  opacity: 1; }
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.35; }
+    30%           { transform: translateY(-4px); opacity: 1; }
   }
-
   .animate-typing-dot {
     animation: ringpost-typing 1.15s ease-in-out infinite;
   }
-
-  /* Sweeping highlight used on the publish chips. */
-  @keyframes ringpost-sheen {
-    from { transform: translateX(-120%); }
-    to   { transform: translateX(220%); }
+  @keyframes ringpost-rise {
+    from { opacity: 0; transform: translate3d(0, 18px, 0); }
+    to   { opacity: 1; transform: none; }
   }
-
-  .animate-sheen {
-    animation: ringpost-sheen 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  .animate-rise {
+    animation: ringpost-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-
-  /* SVG stroke draw-on. */
-  @keyframes ringpost-draw {
-    to { stroke-dashoffset: 0; }
-  }
-
-  /* Slow ambient rotation for the channel globe. */
   @keyframes ringpost-drift {
-    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-    50%      { transform: translate3d(0, -12px, 0) rotate(1.5deg); }
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50%      { transform: translate3d(0, -10px, 0); }
   }
-
   .animate-drift {
-    animation: ringpost-drift 14s ease-in-out infinite;
+    animation: ringpost-drift 12s ease-in-out infinite;
   }
-
-  /* Scroll cue in the hero. */
-  @keyframes ringpost-scroll-cue {
-    0%   { transform: translateY(0);    opacity: 0; }
-    35%  { opacity: 1; }
-    100% { transform: translateY(14px); opacity: 0; }
+  @keyframes ringpost-panel-in {
+    from { opacity: 0; transform: translate3d(0, -6px, 0); }
+    to   { opacity: 1; transform: none; }
   }
-
-  .animate-scroll-cue {
-    animation: ringpost-scroll-cue 2s ease-in-out infinite;
+  .animate-panel-in {
+    animation: ringpost-panel-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 }
 
-/* ==============================================================
-   ACCESSIBILITY FLOOR
-   Anyone who has asked their OS to reduce motion gets a static
-   page: no marquees, no drifting, no auto-advancing carousels.
-   ============================================================== */
+/* Anyone who has asked their OS to reduce motion gets a still page. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -347,67 +235,50 @@
   }
 }
 
-/* Visible keyboard focus everywhere, on both light and dark panels. */
-@layer base {
-  :where(a, button, [role="button"], input, textarea, select):focus-visible {
-    outline: 2px solid #eca8d6;
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
-}
-
 /* ==============================================================
    LEGAL PROSE
-   Long-form document styling for /terms, /privacy and
-   /refund-policy. Scoped to .legal-prose so it can never leak
-   into the marketing sections, which set their own type.
+   Long-form document styling for the seven legal pages. Scoped to
+   .legal-prose so it never leaks into marketing sections.
    ============================================================== */
 .legal-prose {
-  color: var(--muted-foreground);
+  overflow-wrap: break-word;
+  color: var(--rp-muted);
   font-size: 1rem;
   line-height: 1.75;
 }
-
 .legal-prose h2 {
   margin-top: 3rem;
   margin-bottom: 1rem;
-  font-family: var(--font-display);
+  font-family: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
   font-size: 1.75rem;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  color: var(--foreground);
+  color: var(--rp-text);
 }
-
 .legal-prose h2:first-child {
   margin-top: 0;
 }
-
 .legal-prose h3 {
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--foreground);
+  color: var(--rp-text);
 }
-
 .legal-prose p {
   margin-bottom: 1.25rem;
 }
-
-.legal-prose ul {
+.legal-prose ul,
+.legal-prose ol {
   margin-bottom: 1.25rem;
   padding-left: 1.25rem;
   list-style: none;
 }
-
 .legal-prose li {
   position: relative;
   margin-bottom: 0.6rem;
   padding-left: 1rem;
 }
-
-/* Brand-pink bullet rather than a default disc, so the documents
-   still feel like part of the same site. */
 .legal-prose li::before {
   content: "";
   position: absolute;
@@ -416,292 +287,99 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--brand-pink);
-  opacity: 0.6;
+  background: var(--rp-glow);
+  opacity: 0.7;
 }
-
 .legal-prose strong {
-  color: var(--foreground);
+  color: var(--rp-text);
   font-weight: 600;
 }
-
 .legal-prose a {
-  color: var(--brand-pink);
+  color: var(--rp-glow);
   text-decoration: underline;
   text-underline-offset: 3px;
-  transition: opacity 0.2s;
+  overflow-wrap: anywhere;
 }
-
 .legal-prose a:hover {
-  opacity: 0.75;
+  opacity: 0.8;
 }
-
 .legal-prose hr {
   margin: 3rem 0;
   border: 0;
-  border-top: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+  border-top: 1px solid var(--rp-border-strong);
 }
-
-.rp-glass {
-  --rp-tint: rgba(30, 20, 44, 0.62);
-  isolation: isolate;
-  background:
-    radial-gradient(120% 60% at 20% 0%, rgba(255, 255, 255, 0.16), transparent 60%),
-    linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 55%),
-    var(--rp-tint);
-  -webkit-backdrop-filter: blur(26px) saturate(175%);
-  backdrop-filter: blur(26px) saturate(175%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.38),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
-    inset 0 0 24px rgba(255, 255, 255, 0.04),
-    0 24px 70px -18px rgba(6, 2, 16, 0.75),
-    0 2px 10px rgba(6, 2, 16, 0.35);
-}
-
-.rp-glass::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.08) 38%, rgba(236, 168, 214, 0.28) 72%, rgba(103, 232, 249, 0.3));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-  pointer-events: none;
-}
-
-.rp-glass::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 22%);
-  pointer-events: none;
-}
-
-.rp-lite {
-  --rp-tint: rgba(30, 20, 44, 0.9);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-
-.rp-launcher {
-  position: fixed;
-  transition:
-    transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 260ms ease;
-  animation: rp-breathe 4.5s ease-in-out infinite;
-}
-
-.rp-launcher:hover {
-  transform: translateY(-2px) scale(1.02);
-}
-
-.rp-launcher-open {
-  animation: none;
-}
-
-@keyframes rp-breathe {
-  0%,
-  100% {
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.38),
-      0 18px 50px -16px rgba(6, 2, 16, 0.75),
-      0 0 0 0 rgba(236, 168, 214, 0);
-  }
-  50% {
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.38),
-      0 18px 50px -16px rgba(6, 2, 16, 0.75),
-      0 0 26px 2px rgba(236, 168, 214, 0.22);
-  }
-}
-
-.rp-panel {
-  clip-path: circle(0% at calc(100% - 60px) calc(100% + 40px));
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(12px) scale(0.98);
-  transform-origin: bottom right;
-  transition:
-    clip-path 460ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 240ms ease,
-    transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.rp-panel-open {
-  clip-path: circle(150% at calc(100% - 60px) calc(100% + 40px));
-  opacity: 1;
-  pointer-events: auto;
-  transform: none;
-}
-
-.rp-glow {
-  border-radius: inherit;
-  z-index: 0;
-}
-
-.rp-blob {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(46px);
-  opacity: 0.5;
-  animation: rp-drift 16s ease-in-out infinite alternate;
-}
-
-.rp-blob-a {
-  width: 260px;
-  height: 260px;
-  left: -80px;
-  top: -60px;
-  background: rgba(236, 168, 214, 0.55);
-}
-
-.rp-blob-b {
-  width: 240px;
-  height: 240px;
-  right: -90px;
-  top: 34%;
-  background: rgba(167, 139, 250, 0.5);
-  animation-duration: 19s;
-}
-
-.rp-blob-c {
-  width: 220px;
-  height: 220px;
-  left: 20%;
-  bottom: -110px;
-  background: rgba(103, 232, 249, 0.34);
-  animation-duration: 22s;
-}
-
-@keyframes rp-drift {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(24px, 18px, 0) scale(1.12);
-  }
-}
-
-.rp-bubble {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
-}
-
-.rp-card {
-  background: rgba(20, 13, 32, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
-}
-
-.rp-input {
-  background: rgba(15, 10, 26, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
-}
-
-.rp-input:focus-within {
-  border-color: rgba(236, 168, 214, 0.55);
-  box-shadow:
-    inset 0 1px 2px rgba(0, 0, 0, 0.25),
-    0 0 0 3px rgba(236, 168, 214, 0.14);
-}
-
-.rp-field {
+.legal-prose table {
   width: 100%;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(15, 10, 26, 0.55);
-  padding: 8px 12px;
-  font-size: 13px;
-  color: var(--foreground);
-  outline: none;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+  font-size: 0.925rem;
+  display: block;
+  overflow-x: auto;
+}
+.legal-prose th,
+.legal-prose td {
+  border: 1px solid var(--rp-border-strong);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.legal-prose th {
+  color: var(--rp-text);
 }
 
-.rp-field::placeholder {
-  color: color-mix(in oklab, var(--foreground) 45%, transparent);
+/* Blog posts reuse the prose rhythm with a larger measure. */
+.post-prose {
+  color: #cfcfdc;
+  font-size: 1.075rem;
+  line-height: 1.8;
 }
-
-.rp-field:focus {
-  border-color: rgba(236, 168, 214, 0.55);
+.post-prose h2 {
+  margin: 2.75rem 0 1rem;
+  font-family: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
+  font-size: 2rem;
+  line-height: 1.15;
+  color: var(--rp-text);
 }
-
-.rp-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 9999px;
-  background: color-mix(in oklab, var(--foreground) 70%, transparent);
-  animation: rp-typing 1.1s ease-in-out infinite;
+.post-prose h3 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--rp-text);
 }
-
-@keyframes rp-typing {
-  0%,
-  60%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.45;
-  }
-  30% {
-    transform: translateY(-3px);
-    opacity: 1;
-  }
+.post-prose p {
+  margin-bottom: 1.35rem;
 }
-
-.rp-nudge {
-  position: fixed;
-  animation: rp-nudge-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+.post-prose ul,
+.post-prose ol {
+  margin: 0 0 1.35rem 1.25rem;
 }
-
-@keyframes rp-nudge-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.post-prose ul {
+  list-style: disc;
 }
-
-@media (max-width: 639px) {
-  .rp-panel {
-    --rp-tint: rgba(22, 14, 34, 0.97);
-    border-radius: 0;
-  }
-  .rp-panel-open ~ .rp-launcher,
-  .rp-launcher-open {
-    opacity: 0;
-    pointer-events: none;
-  }
+.post-prose ol {
+  list-style: decimal;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .rp-launcher,
-  .rp-blob,
-  .rp-dot,
-  .rp-nudge {
-    animation: none;
-  }
-  .rp-panel {
-    transition: opacity 120ms linear;
-    clip-path: none;
-    transform: none;
-  }
+.post-prose li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
 }
-
-@media (prefers-reduced-transparency: reduce) {
-  .rp-glass {
-    --rp-tint: rgba(30, 20, 44, 0.97);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-  .rp-blob {
-    display: none;
-  }
+.post-prose li::marker {
+  color: var(--rp-glow);
+}
+.post-prose a {
+  color: var(--rp-glow);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.post-prose strong {
+  color: var(--rp-text);
+}
+.post-prose blockquote {
+  margin: 1.75rem 0;
+  border-left: 2px solid var(--rp-primary);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  color: var(--rp-text);
+  font-family: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
+  font-size: 1.4rem;
+  line-height: 1.35;
 }

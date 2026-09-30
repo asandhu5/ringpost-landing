@@ -1,0 +1,2786 @@
+{
+  "source": "packages/db/src/business-types.ts + vertical-templates.ts",
+  "sellingModeLabels": {
+    "appointments": "Appointments",
+    "tables_orders": "Tables and orders",
+    "jobs_on_site": "Jobs at the customer's place",
+    "products": "Products",
+    "stays_rentals": "Stays and rentals",
+    "consultations": "Consultations",
+    "memberships": "Memberships and courses"
+  },
+  "baseEscalationKeywords": [
+    "speak to a person",
+    "manager",
+    "human",
+    "complaint",
+    "lawsuit",
+    "refund"
+  ],
+  "groups": [
+    "Beauty and wellness",
+    "Health",
+    "Fitness",
+    "Food and drink",
+    "Home services",
+    "Auto",
+    "Professional services",
+    "Education and care",
+    "Shops",
+    "Stays and venues"
+  ],
+  "types": [
+    {
+      "id": "hair_salon",
+      "label": "Hair salon",
+      "group": "Beauty and wellness",
+      "verticalId": "salon",
+      "modes": [
+        "appointments",
+        "products"
+      ],
+      "aliases": [
+        "hairdresser",
+        "stylist",
+        "colour"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows",
+        "Returns and refunds",
+        "Delivery and collection",
+        "Orders and stock"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Do you have this in stock?",
+        "Do you deliver?",
+        "Can I return something?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want",
+        "What they're looking for",
+        "Delivery or collection"
+      ],
+      "template": {
+        "id": "salon",
+        "escalationKeywords": [
+          "allergic reaction",
+          "burn",
+          "chemical"
+        ],
+        "bannedClaims": [
+          "cures",
+          "guaranteed results",
+          "clinically proven",
+          "fda approved",
+          "permanent results",
+          "miracle"
+        ],
+        "behaviourRules": [
+          "Never promise a specific colour result without a consultation first.",
+          "Never advise on a scalp condition or hair loss — offer a consultation instead."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "how long does colour take",
+            "reply": "Depends what we're doing — a root touch-up is about 90 minutes, a full balayage can be three to four hours. What are you thinking of?"
+          },
+          {
+            "customer": "can I bring my daughter with me",
+            "reply": "Of course, she's very welcome. If she'd like anything done we'd just need to book her in separately."
+          }
+        ],
+        "knowledgeTitles": [
+          "Do you do consultations?",
+          "Do you take walk-ins?",
+          "What if I don't like the result?",
+          "Where do I park?",
+          "Customer is running late",
+          "Customer asks for a stylist who is fully booked"
+        ]
+      }
+    },
+    {
+      "id": "barbershop",
+      "label": "Barbershop",
+      "group": "Beauty and wellness",
+      "verticalId": "barbershop",
+      "modes": [
+        "appointments"
+      ],
+      "aliases": [
+        "barber"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want"
+      ],
+      "template": {
+        "id": "barbershop",
+        "escalationKeywords": [
+          "allergic reaction",
+          "cut myself",
+          "nicked",
+          "bleeding",
+          "injury"
+        ],
+        "bannedClaims": [
+          "cures",
+          "guaranteed results",
+          "clinically proven",
+          "fda approved",
+          "permanent results",
+          "miracle"
+        ],
+        "behaviourRules": [
+          "Never promise a specific look from a photo without the barber seeing the customer's hair first."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "how long is the wait right now",
+            "reply": "Depends on the chair — if you tell me roughly when you'd come by I can check what we've got."
+          },
+          {
+            "customer": "do you cut kids hair",
+            "reply": "We do. Same booking, just let us know their age when you come in so we can put them with the right barber."
+          }
+        ],
+        "knowledgeTitles": [
+          "Do you do beard trims and shaves?",
+          "Can I just walk in?",
+          "What if I'm not happy with the cut?",
+          "Do you take card, and where can I park?",
+          "Shop is busy and someone asks how long the wait is",
+          "Customer brings a photo and asks if it's achievable"
+        ]
+      }
+    },
+    {
+      "id": "nail_salon",
+      "label": "Nail salon",
+      "group": "Beauty and wellness",
+      "verticalId": "salon",
+      "modes": [
+        "appointments"
+      ],
+      "aliases": [
+        "manicure",
+        "pedicure",
+        "nails"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want"
+      ],
+      "template": {
+        "id": "salon",
+        "escalationKeywords": [
+          "allergic reaction",
+          "burn",
+          "chemical"
+        ],
+        "bannedClaims": [
+          "cures",
+          "guaranteed results",
+          "clinically proven",
+          "fda approved",
+          "permanent results",
+          "miracle"
+        ],
+        "behaviourRules": [
+          "Never promise a specific colour result without a consultation first.",
+          "Never advise on a scalp condition or hair loss — offer a consultation instead."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "how long does colour take",
+            "reply": "Depends what we're doing — a root touch-up is about 90 minutes, a full balayage can be three to four hours. What are you thinking of?"
+          },
+          {
+            "customer": "can I bring my daughter with me",
+            "reply": "Of course, she's very welcome. If she'd like anything done we'd just need to book her in separately."
+          }
+        ],
+        "knowledgeTitles": [
+          "Do you do consultations?",
+          "Do you take walk-ins?",
+          "What if I don't like the result?",
+          "Where do I park?",
+          "Customer is running late",
+          "Customer asks for a stylist who is fully booked"
+        ]
+      }
+    },
+    {
+      "id": "beauty_salon",
+      "label": "Beauty salon (lashes, brows, waxing)",
+      "group": "Beauty and wellness",
+      "verticalId": "salon",
+      "modes": [
+        "appointments"
+      ],
+      "aliases": [
+        "lashes",
+        "brows",
+        "waxing",
+        "makeup",
+        "threading"
+      ],
+      "catalogLabel": "Treatments",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want"
+      ],
+      "template": {
+        "id": "salon",
+        "escalationKeywords": [
+          "allergic reaction",
+          "burn",
+          "chemical"
+        ],
+        "bannedClaims": [
+          "cures",
+          "guaranteed results",
+          "clinically proven",
+          "fda approved",
+          "permanent results",
+          "miracle"
+        ],
+        "behaviourRules": [
+          "Never promise a specific colour result without a consultation first.",
+          "Never advise on a scalp condition or hair loss — offer a consultation instead."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "how long does colour take",
+            "reply": "Depends what we're doing — a root touch-up is about 90 minutes, a full balayage can be three to four hours. What are you thinking of?"
+          },
+          {
+            "customer": "can I bring my daughter with me",
+            "reply": "Of course, she's very welcome. If she'd like anything done we'd just need to book her in separately."
+          }
+        ],
+        "knowledgeTitles": [
+          "Do you do consultations?",
+          "Do you take walk-ins?",
+          "What if I don't like the result?",
+          "Where do I park?",
+          "Customer is running late",
+          "Customer asks for a stylist who is fully booked"
+        ]
+      }
+    },
+    {
+      "id": "med_spa",
+      "label": "Med spa or aesthetics clinic",
+      "group": "Beauty and wellness",
+      "verticalId": "general",
+      "modes": [
+        "appointments",
+        "consultations"
+      ],
+      "aliases": [
+        "botox",
+        "fillers",
+        "laser",
+        "aesthetics",
+        "skin clinic"
+      ],
+      "catalogLabel": "Treatments",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows",
+        "Consultation fees",
+        "Confidentiality"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "pain",
+        "bleeding",
+        "emergency",
+        "allergic reaction",
+        "insurance"
+      ],
+      "behaviourRules": [
+        "Never give medical or clinical advice, and never suggest what a symptom might mean. Offer an appointment instead.",
+        "Direct anything that sounds like a medical emergency to emergency services immediately."
+      ],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want",
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": null
+    },
+    {
+      "id": "spa_massage",
+      "label": "Spa or massage",
+      "group": "Beauty and wellness",
+      "verticalId": "salon",
+      "modes": [
+        "appointments",
+        "memberships"
+      ],
+      "aliases": [
+        "massage",
+        "day spa",
+        "wellness"
+      ],
+      "catalogLabel": "Treatments",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows",
+        "Cancelling a membership",
+        "Freezing a membership",
+        "Free trial"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Is there a free trial?",
+        "How do I cancel?",
+        "What's the timetable?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want",
+        "Their experience level",
+        "What they want to achieve"
+      ],
+      "template": {
+        "id": "salon",
+        "escalationKeywords": [
+          "allergic reaction",
+          "burn",
+          "chemical"
+        ],
+        "bannedClaims": [
+          "cures",
+          "guaranteed results",
+          "clinically proven",
+          "fda approved",
+          "permanent results",
+          "miracle"
+        ],
+        "behaviourRules": [
+          "Never promise a specific colour result without a consultation first.",
+          "Never advise on a scalp condition or hair loss — offer a consultation instead."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "how long does colour take",
+            "reply": "Depends what we're doing — a root touch-up is about 90 minutes, a full balayage can be three to four hours. What are you thinking of?"
+          },
+          {
+            "customer": "can I bring my daughter with me",
+            "reply": "Of course, she's very welcome. If she'd like anything done we'd just need to book her in separately."
+          }
+        ],
+        "knowledgeTitles": [
+          "Do you do consultations?",
+          "Do you take walk-ins?",
+          "What if I don't like the result?",
+          "Where do I park?",
+          "Customer is running late",
+          "Customer asks for a stylist who is fully booked"
+        ]
+      }
+    },
+    {
+      "id": "tattoo",
+      "label": "Tattoo or piercing studio",
+      "group": "Beauty and wellness",
+      "verticalId": "general",
+      "modes": [
+        "appointments",
+        "consultations"
+      ],
+      "aliases": [
+        "piercing",
+        "tattoo artist"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Age requirements",
+        "Deposits",
+        "Aftercare",
+        "Cancellation",
+        "Late arrivals",
+        "No-shows",
+        "Consultation fees",
+        "Confidentiality"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want",
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": null
+    },
+    {
+      "id": "dental",
+      "label": "Dental clinic",
+      "group": "Health",
+      "verticalId": "dental",
+      "modes": [
+        "appointments"
+      ],
+      "aliases": [
+        "dentist",
+        "orthodontist",
+        "teeth"
+      ],
+      "catalogLabel": "Treatments",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want"
+      ],
+      "template": {
+        "id": "dental",
+        "escalationKeywords": [
+          "severe pain",
+          "unbearable pain",
+          "bleeding",
+          "swelling",
+          "emergency",
+          "infection",
+          "broken tooth",
+          "allergic reaction"
+        ],
+        "bannedClaims": [
+          "pain-free guarantee",
+          "cures",
+          "guaranteed results",
+          "no risk",
+          "clinically proven",
+          "fda approved",
+          "permanent results",
+          "miracle",
+          "diagnose",
+          "eliminates infection"
+        ],
+        "behaviourRules": [
+          "Never give clinical or diagnostic advice, and never suggest what a symptom might be — book them in with a dentist instead.",
+          "Never estimate the cost of treatment before a dentist has examined them.",
+          "Direct anything that sounds like a medical emergency to emergency services immediately."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "my tooth has been hurting since yesterday",
+            "reply": "That's worth getting looked at rather than waiting. We keep emergency slots free each day — would you like me to find you the next one?"
+          },
+          {
+            "customer": "do you take my insurance",
+            "reply": "We can check that for you. Which provider are you with? If it's easier, bring your details to the appointment and reception will sort it out on the day."
+          }
+        ],
+        "knowledgeTitles": [
+          "Are you taking new patients?",
+          "How soon can I be seen?",
+          "What happens if I miss an appointment?",
+          "What should I bring to my first visit?",
+          "Patient describes symptoms and asks what it might be",
+          "Patient is anxious about treatment"
+        ]
+      }
+    },
+    {
+      "id": "medical_clinic",
+      "label": "Medical clinic or doctor",
+      "group": "Health",
+      "verticalId": "general",
+      "modes": [
+        "appointments"
+      ],
+      "aliases": [
+        "gp",
+        "doctor",
+        "clinic",
+        "urgent care"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "pain",
+        "bleeding",
+        "emergency",
+        "allergic reaction",
+        "insurance"
+      ],
+      "behaviourRules": [
+        "Never give medical or clinical advice, and never suggest what a symptom might mean. Offer an appointment instead.",
+        "Direct anything that sounds like a medical emergency to emergency services immediately."
+      ],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want"
+      ],
+      "template": null
+    },
+    {
+      "id": "physiotherapy",
+      "label": "Physiotherapy or chiropractor",
+      "group": "Health",
+      "verticalId": "general",
+      "modes": [
+        "appointments"
+      ],
+      "aliases": [
+        "physio",
+        "chiropractor",
+        "osteopath",
+        "sports injury"
+      ],
+      "catalogLabel": "Treatments",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "pain",
+        "bleeding",
+        "emergency",
+        "allergic reaction",
+        "insurance"
+      ],
+      "behaviourRules": [
+        "Never give medical or clinical advice, and never suggest what a symptom might mean. Offer an appointment instead.",
+        "Direct anything that sounds like a medical emergency to emergency services immediately."
+      ],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want"
+      ],
+      "template": null
+    },
+    {
+      "id": "optometrist",
+      "label": "Optician or eye clinic",
+      "group": "Health",
+      "verticalId": "general",
+      "modes": [
+        "appointments",
+        "products"
+      ],
+      "aliases": [
+        "optician",
+        "optometrist",
+        "glasses",
+        "eye test"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Frames and lenses",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows",
+        "Returns and refunds",
+        "Delivery and collection",
+        "Orders and stock"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Do you have this in stock?",
+        "Do you deliver?",
+        "Can I return something?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "pain",
+        "bleeding",
+        "emergency",
+        "allergic reaction",
+        "insurance"
+      ],
+      "behaviourRules": [
+        "Never give medical or clinical advice, and never suggest what a symptom might mean. Offer an appointment instead.",
+        "Direct anything that sounds like a medical emergency to emergency services immediately."
+      ],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want",
+        "What they're looking for",
+        "Delivery or collection"
+      ],
+      "template": null
+    },
+    {
+      "id": "veterinary",
+      "label": "Veterinary clinic",
+      "group": "Health",
+      "verticalId": "general",
+      "modes": [
+        "appointments",
+        "products"
+      ],
+      "aliases": [
+        "vet",
+        "animal hospital"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows",
+        "Returns and refunds",
+        "Delivery and collection",
+        "Orders and stock"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Do you have this in stock?",
+        "Do you deliver?",
+        "Can I return something?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "emergency",
+        "poisoned",
+        "hit by a car",
+        "not breathing",
+        "bleeding"
+      ],
+      "behaviourRules": [
+        "Never give veterinary advice or guess what's wrong with an animal. Offer an appointment, and send emergencies straight to the phone."
+      ],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want",
+        "What they're looking for",
+        "Delivery or collection"
+      ],
+      "template": null
+    },
+    {
+      "id": "therapy",
+      "label": "Therapist or counsellor",
+      "group": "Health",
+      "verticalId": "general",
+      "modes": [
+        "appointments",
+        "consultations"
+      ],
+      "aliases": [
+        "psychologist",
+        "counselling",
+        "mental health"
+      ],
+      "catalogLabel": "Sessions",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows",
+        "Consultation fees",
+        "Confidentiality"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "suicide",
+        "self harm",
+        "crisis",
+        "emergency"
+      ],
+      "behaviourRules": [
+        "Never give therapeutic advice. If someone may be in crisis, give them the emergency or crisis line straight away.",
+        "Keep everything a person shares confidential."
+      ],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want",
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": null
+    },
+    {
+      "id": "gym",
+      "label": "Gym or fitness centre",
+      "group": "Fitness",
+      "verticalId": "gym",
+      "modes": [
+        "memberships",
+        "appointments"
+      ],
+      "aliases": [
+        "fitness",
+        "crossfit",
+        "health club"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancelling a membership",
+        "Freezing a membership",
+        "Free trial",
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "Is there a free trial?",
+        "How do I cancel?",
+        "What's the timetable?",
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their experience level",
+        "What they want to achieve",
+        "Their name",
+        "Which service they want"
+      ],
+      "template": {
+        "id": "gym",
+        "escalationKeywords": [
+          "injury",
+          "injured",
+          "medical emergency",
+          "membership cancellation",
+          "billing dispute"
+        ],
+        "bannedClaims": [
+          "guaranteed weight loss",
+          "cures",
+          "clinically proven",
+          "fda approved",
+          "miracle",
+          "no effort required"
+        ],
+        "behaviourRules": [
+          "Never give injury, rehabilitation or nutrition advice — refer them to a coach or their doctor.",
+          "Never promise a weight-loss or body-composition result."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "im completely unfit, will i be able to keep up",
+            "reply": "Honestly, most people who ask that end up fine — every session scales up or down and the coach will show you the easier version of anything. Your first class is free, so you can try it without committing."
+          },
+          {
+            "customer": "can i freeze my membership",
+            "reply": "Usually yes — tell me roughly how long you need and I'll get someone to sort it out with you."
+          }
+        ],
+        "knowledgeTitles": [
+          "What's included in a membership?",
+          "How busy is it?",
+          "What if I can't make a class I booked?",
+          "What do I need to bring?",
+          "Member mentions an injury or pain",
+          "Member wants to cancel their membership"
+        ]
+      }
+    },
+    {
+      "id": "yoga_pilates",
+      "label": "Yoga or Pilates studio",
+      "group": "Fitness",
+      "verticalId": "gym",
+      "modes": [
+        "memberships",
+        "appointments"
+      ],
+      "aliases": [
+        "yoga",
+        "pilates",
+        "barre"
+      ],
+      "catalogLabel": "Classes and memberships",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancelling a membership",
+        "Freezing a membership",
+        "Free trial",
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "Is there a free trial?",
+        "How do I cancel?",
+        "What's the timetable?",
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their experience level",
+        "What they want to achieve",
+        "Their name",
+        "Which service they want"
+      ],
+      "template": {
+        "id": "gym",
+        "escalationKeywords": [
+          "injury",
+          "injured",
+          "medical emergency",
+          "membership cancellation",
+          "billing dispute"
+        ],
+        "bannedClaims": [
+          "guaranteed weight loss",
+          "cures",
+          "clinically proven",
+          "fda approved",
+          "miracle",
+          "no effort required"
+        ],
+        "behaviourRules": [
+          "Never give injury, rehabilitation or nutrition advice — refer them to a coach or their doctor.",
+          "Never promise a weight-loss or body-composition result."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "im completely unfit, will i be able to keep up",
+            "reply": "Honestly, most people who ask that end up fine — every session scales up or down and the coach will show you the easier version of anything. Your first class is free, so you can try it without committing."
+          },
+          {
+            "customer": "can i freeze my membership",
+            "reply": "Usually yes — tell me roughly how long you need and I'll get someone to sort it out with you."
+          }
+        ],
+        "knowledgeTitles": [
+          "What's included in a membership?",
+          "How busy is it?",
+          "What if I can't make a class I booked?",
+          "What do I need to bring?",
+          "Member mentions an injury or pain",
+          "Member wants to cancel their membership"
+        ]
+      }
+    },
+    {
+      "id": "martial_arts",
+      "label": "Martial arts or dance school",
+      "group": "Fitness",
+      "verticalId": "gym",
+      "modes": [
+        "memberships",
+        "appointments"
+      ],
+      "aliases": [
+        "karate",
+        "boxing",
+        "dance",
+        "bjj",
+        "taekwondo"
+      ],
+      "catalogLabel": "Classes and memberships",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancelling a membership",
+        "Freezing a membership",
+        "Free trial",
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "Is there a free trial?",
+        "How do I cancel?",
+        "What's the timetable?",
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their experience level",
+        "What they want to achieve",
+        "Their name",
+        "Which service they want"
+      ],
+      "template": {
+        "id": "gym",
+        "escalationKeywords": [
+          "injury",
+          "injured",
+          "medical emergency",
+          "membership cancellation",
+          "billing dispute"
+        ],
+        "bannedClaims": [
+          "guaranteed weight loss",
+          "cures",
+          "clinically proven",
+          "fda approved",
+          "miracle",
+          "no effort required"
+        ],
+        "behaviourRules": [
+          "Never give injury, rehabilitation or nutrition advice — refer them to a coach or their doctor.",
+          "Never promise a weight-loss or body-composition result."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "im completely unfit, will i be able to keep up",
+            "reply": "Honestly, most people who ask that end up fine — every session scales up or down and the coach will show you the easier version of anything. Your first class is free, so you can try it without committing."
+          },
+          {
+            "customer": "can i freeze my membership",
+            "reply": "Usually yes — tell me roughly how long you need and I'll get someone to sort it out with you."
+          }
+        ],
+        "knowledgeTitles": [
+          "What's included in a membership?",
+          "How busy is it?",
+          "What if I can't make a class I booked?",
+          "What do I need to bring?",
+          "Member mentions an injury or pain",
+          "Member wants to cancel their membership"
+        ]
+      }
+    },
+    {
+      "id": "personal_trainer",
+      "label": "Personal trainer or coach",
+      "group": "Fitness",
+      "verticalId": "gym",
+      "modes": [
+        "appointments"
+      ],
+      "aliases": [
+        "pt",
+        "coach",
+        "trainer"
+      ],
+      "catalogLabel": "Sessions and packages",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want"
+      ],
+      "template": {
+        "id": "gym",
+        "escalationKeywords": [
+          "injury",
+          "injured",
+          "medical emergency",
+          "membership cancellation",
+          "billing dispute"
+        ],
+        "bannedClaims": [
+          "guaranteed weight loss",
+          "cures",
+          "clinically proven",
+          "fda approved",
+          "miracle",
+          "no effort required"
+        ],
+        "behaviourRules": [
+          "Never give injury, rehabilitation or nutrition advice — refer them to a coach or their doctor.",
+          "Never promise a weight-loss or body-composition result."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "im completely unfit, will i be able to keep up",
+            "reply": "Honestly, most people who ask that end up fine — every session scales up or down and the coach will show you the easier version of anything. Your first class is free, so you can try it without committing."
+          },
+          {
+            "customer": "can i freeze my membership",
+            "reply": "Usually yes — tell me roughly how long you need and I'll get someone to sort it out with you."
+          }
+        ],
+        "knowledgeTitles": [
+          "What's included in a membership?",
+          "How busy is it?",
+          "What if I can't make a class I booked?",
+          "What do I need to bring?",
+          "Member mentions an injury or pain",
+          "Member wants to cancel their membership"
+        ]
+      }
+    },
+    {
+      "id": "restaurant",
+      "label": "Restaurant",
+      "group": "Food and drink",
+      "verticalId": "restaurant",
+      "modes": [
+        "tables_orders"
+      ],
+      "aliases": [
+        "dining",
+        "bistro",
+        "diner"
+      ],
+      "catalogLabel": "Reservations",
+      "itemsLabel": "Menu",
+      "suggestedPolicies": [
+        "Holding tables",
+        "Large groups",
+        "Allergies",
+        "Delivery and takeaway"
+      ],
+      "suggestedQuestions": [
+        "Do you have vegetarian options?",
+        "Can I book a table for a big group?",
+        "Do you deliver?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Party size",
+        "Any allergies"
+      ],
+      "template": {
+        "id": "restaurant",
+        "escalationKeywords": [
+          "allergy",
+          "allergic reaction",
+          "food safety",
+          "event hall",
+          "private dining inquiry",
+          "catering request",
+          "hotel room",
+          "book a room",
+          "residency"
+        ],
+        "bannedClaims": [
+          "award-winning",
+          "best in the city",
+          "michelin star",
+          "guaranteed fresh",
+          "clinically proven",
+          "miracle",
+          "cures"
+        ],
+        "behaviourRules": [
+          "Never guarantee that a dish is free of an allergen — always say the kitchen must be asked directly.",
+          "Never confirm a group booking above the size the owner has set without a human."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "do you have anything for vegetarians",
+            "reply": "We do, several things. Would you like me to point out the main ones, or are you asking about a specific dish?"
+          },
+          {
+            "customer": "were going to be about 20 mins late",
+            "reply": "Thanks for letting us know — that's no problem, we'll hold the table for you."
+          }
+        ],
+        "knowledgeTitles": [
+          "Do you cater for dietary requirements?",
+          "How far ahead should I book?",
+          "How long will you hold my table?",
+          "Is there parking, and are you accessible?",
+          "Customer asks for a table larger than the auto-confirm limit",
+          "Customer mentions a serious allergy"
+        ]
+      }
+    },
+    {
+      "id": "cafe_bakery",
+      "label": "Café or bakery",
+      "group": "Food and drink",
+      "verticalId": "restaurant",
+      "modes": [
+        "tables_orders",
+        "products"
+      ],
+      "aliases": [
+        "coffee shop",
+        "bakery",
+        "patisserie",
+        "tea"
+      ],
+      "catalogLabel": "Reservations",
+      "itemsLabel": "Menu",
+      "suggestedPolicies": [
+        "Holding tables",
+        "Large groups",
+        "Allergies",
+        "Delivery and takeaway",
+        "Returns and refunds",
+        "Delivery and collection",
+        "Orders and stock"
+      ],
+      "suggestedQuestions": [
+        "Do you have vegetarian options?",
+        "Can I book a table for a big group?",
+        "Do you deliver?",
+        "Do you have this in stock?",
+        "Can I return something?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Party size",
+        "Any allergies",
+        "What they're looking for",
+        "Delivery or collection"
+      ],
+      "template": {
+        "id": "restaurant",
+        "escalationKeywords": [
+          "allergy",
+          "allergic reaction",
+          "food safety",
+          "event hall",
+          "private dining inquiry",
+          "catering request",
+          "hotel room",
+          "book a room",
+          "residency"
+        ],
+        "bannedClaims": [
+          "award-winning",
+          "best in the city",
+          "michelin star",
+          "guaranteed fresh",
+          "clinically proven",
+          "miracle",
+          "cures"
+        ],
+        "behaviourRules": [
+          "Never guarantee that a dish is free of an allergen — always say the kitchen must be asked directly.",
+          "Never confirm a group booking above the size the owner has set without a human."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "do you have anything for vegetarians",
+            "reply": "We do, several things. Would you like me to point out the main ones, or are you asking about a specific dish?"
+          },
+          {
+            "customer": "were going to be about 20 mins late",
+            "reply": "Thanks for letting us know — that's no problem, we'll hold the table for you."
+          }
+        ],
+        "knowledgeTitles": [
+          "Do you cater for dietary requirements?",
+          "How far ahead should I book?",
+          "How long will you hold my table?",
+          "Is there parking, and are you accessible?",
+          "Customer asks for a table larger than the auto-confirm limit",
+          "Customer mentions a serious allergy"
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "label": "Takeaway or food delivery",
+      "group": "Food and drink",
+      "verticalId": "restaurant",
+      "modes": [
+        "tables_orders"
+      ],
+      "aliases": [
+        "fast food",
+        "pizza",
+        "delivery",
+        "food truck"
+      ],
+      "catalogLabel": "Bookings",
+      "itemsLabel": "Menu",
+      "suggestedPolicies": [
+        "Holding tables",
+        "Large groups",
+        "Allergies",
+        "Delivery and takeaway"
+      ],
+      "suggestedQuestions": [
+        "Do you have vegetarian options?",
+        "Can I book a table for a big group?",
+        "Do you deliver?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Party size",
+        "Any allergies"
+      ],
+      "template": {
+        "id": "restaurant",
+        "escalationKeywords": [
+          "allergy",
+          "allergic reaction",
+          "food safety",
+          "event hall",
+          "private dining inquiry",
+          "catering request",
+          "hotel room",
+          "book a room",
+          "residency"
+        ],
+        "bannedClaims": [
+          "award-winning",
+          "best in the city",
+          "michelin star",
+          "guaranteed fresh",
+          "clinically proven",
+          "miracle",
+          "cures"
+        ],
+        "behaviourRules": [
+          "Never guarantee that a dish is free of an allergen — always say the kitchen must be asked directly.",
+          "Never confirm a group booking above the size the owner has set without a human."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "do you have anything for vegetarians",
+            "reply": "We do, several things. Would you like me to point out the main ones, or are you asking about a specific dish?"
+          },
+          {
+            "customer": "were going to be about 20 mins late",
+            "reply": "Thanks for letting us know — that's no problem, we'll hold the table for you."
+          }
+        ],
+        "knowledgeTitles": [
+          "Do you cater for dietary requirements?",
+          "How far ahead should I book?",
+          "How long will you hold my table?",
+          "Is there parking, and are you accessible?",
+          "Customer asks for a table larger than the auto-confirm limit",
+          "Customer mentions a serious allergy"
+        ]
+      }
+    },
+    {
+      "id": "catering",
+      "label": "Catering or cakes to order",
+      "group": "Food and drink",
+      "verticalId": "general",
+      "modes": [
+        "consultations",
+        "products"
+      ],
+      "aliases": [
+        "caterer",
+        "custom cakes",
+        "events food"
+      ],
+      "catalogLabel": "Tastings and consultations",
+      "itemsLabel": "Packages and menus",
+      "suggestedPolicies": [
+        "Consultation fees",
+        "Confidentiality",
+        "Cancellation",
+        "Returns and refunds",
+        "Delivery and collection",
+        "Orders and stock"
+      ],
+      "suggestedQuestions": [
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Do you have this in stock?",
+        "Do you deliver?",
+        "Can I return something?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "allergy",
+        "food safety"
+      ],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "What it's about",
+        "The best time to call them",
+        "What they're looking for",
+        "Delivery or collection"
+      ],
+      "template": null
+    },
+    {
+      "id": "hvac",
+      "label": "Heating and air conditioning (HVAC)",
+      "group": "Home services",
+      "verticalId": "general",
+      "modes": [
+        "jobs_on_site"
+      ],
+      "aliases": [
+        "heating",
+        "air conditioning",
+        "boiler",
+        "furnace",
+        "ac repair"
+      ],
+      "catalogLabel": "Jobs and prices",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Call-out fee",
+        "Quotes",
+        "Warranty on work",
+        "Payment terms"
+      ],
+      "suggestedQuestions": [
+        "Which areas do you cover?",
+        "Do you do emergency call-outs?",
+        "How much is a call-out?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "gas leak",
+        "flooding",
+        "fire",
+        "burning smell",
+        "carbon monoxide",
+        "no heat"
+      ],
+      "behaviourRules": [
+        "Never quote a fixed price for a job nobody has seen. Give the call-out fee or a range and offer a visit.",
+        "If someone describes danger, like a gas smell, sparks or flooding, tell them to get safe and call emergency services first."
+      ],
+      "intakeSuggestions": [
+        "The address",
+        "What the problem is",
+        "How urgent it is"
+      ],
+      "template": null
+    },
+    {
+      "id": "plumber",
+      "label": "Plumber",
+      "group": "Home services",
+      "verticalId": "general",
+      "modes": [
+        "jobs_on_site"
+      ],
+      "aliases": [
+        "plumbing",
+        "drains",
+        "leak"
+      ],
+      "catalogLabel": "Jobs and prices",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Call-out fee",
+        "Quotes",
+        "Warranty on work",
+        "Payment terms"
+      ],
+      "suggestedQuestions": [
+        "Which areas do you cover?",
+        "Do you do emergency call-outs?",
+        "How much is a call-out?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "gas leak",
+        "flooding",
+        "fire",
+        "burning smell",
+        "carbon monoxide",
+        "no heat"
+      ],
+      "behaviourRules": [
+        "Never quote a fixed price for a job nobody has seen. Give the call-out fee or a range and offer a visit.",
+        "If someone describes danger, like a gas smell, sparks or flooding, tell them to get safe and call emergency services first."
+      ],
+      "intakeSuggestions": [
+        "The address",
+        "What the problem is",
+        "How urgent it is"
+      ],
+      "template": null
+    },
+    {
+      "id": "electrician",
+      "label": "Electrician",
+      "group": "Home services",
+      "verticalId": "general",
+      "modes": [
+        "jobs_on_site"
+      ],
+      "aliases": [
+        "electrical",
+        "wiring"
+      ],
+      "catalogLabel": "Jobs and prices",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Call-out fee",
+        "Quotes",
+        "Warranty on work",
+        "Payment terms"
+      ],
+      "suggestedQuestions": [
+        "Which areas do you cover?",
+        "Do you do emergency call-outs?",
+        "How much is a call-out?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "gas leak",
+        "flooding",
+        "fire",
+        "burning smell",
+        "carbon monoxide",
+        "no heat"
+      ],
+      "behaviourRules": [
+        "Never quote a fixed price for a job nobody has seen. Give the call-out fee or a range and offer a visit.",
+        "If someone describes danger, like a gas smell, sparks or flooding, tell them to get safe and call emergency services first."
+      ],
+      "intakeSuggestions": [
+        "The address",
+        "What the problem is",
+        "How urgent it is"
+      ],
+      "template": null
+    },
+    {
+      "id": "cleaning",
+      "label": "Cleaning service",
+      "group": "Home services",
+      "verticalId": "cleaning",
+      "modes": [
+        "jobs_on_site"
+      ],
+      "aliases": [
+        "cleaner",
+        "maid",
+        "janitorial"
+      ],
+      "catalogLabel": "Jobs and prices",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Call-out fee",
+        "Quotes",
+        "Warranty on work",
+        "Payment terms"
+      ],
+      "suggestedQuestions": [
+        "Which areas do you cover?",
+        "Do you do emergency call-outs?",
+        "How much is a call-out?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "The address",
+        "What the problem is",
+        "How urgent it is"
+      ],
+      "template": {
+        "id": "cleaning",
+        "escalationKeywords": [
+          "damage",
+          "broken item",
+          "theft",
+          "missing item",
+          "key not working",
+          "billing dispute",
+          "chemical",
+          "allergic reaction"
+        ],
+        "bannedClaims": [
+          "guaranteed spotless",
+          "eliminates all germs",
+          "kills 100% of germs",
+          "hospital-grade disinfection",
+          "cures allergies"
+        ],
+        "behaviourRules": [
+          "Never quote a fixed price for a property the team hasn't seen or been described in detail.",
+          "Never promise to remove a specific stain or mark."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "how much for a 3 bed house",
+            "reply": "It depends a bit on condition and whether you want the oven and windows doing. Roughly how often were you thinking, and is it a regular clean or a one-off?"
+          },
+          {
+            "customer": "do i need to be home",
+            "reply": "Not if you can arrange a key or a code with us beforehand — plenty of our regulars do exactly that."
+          }
+        ],
+        "knowledgeTitles": [
+          "What's included in a standard clean?",
+          "How often do people book?",
+          "What if I'm not happy with the clean?",
+          "Do you bring your own products?",
+          "Customer asks for a price over the phone",
+          "Customer reports damage or a missing item"
+        ]
+      }
+    },
+    {
+      "id": "pest_control",
+      "label": "Pest control",
+      "group": "Home services",
+      "verticalId": "general",
+      "modes": [
+        "jobs_on_site"
+      ],
+      "aliases": [
+        "exterminator",
+        "termites",
+        "rodents"
+      ],
+      "catalogLabel": "Jobs and prices",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Call-out fee",
+        "Quotes",
+        "Warranty on work",
+        "Payment terms"
+      ],
+      "suggestedQuestions": [
+        "Which areas do you cover?",
+        "Do you do emergency call-outs?",
+        "How much is a call-out?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "wasp nest",
+        "allergic reaction"
+      ],
+      "behaviourRules": [
+        "Never quote a fixed price for a job nobody has seen. Give the call-out fee or a range and offer a visit."
+      ],
+      "intakeSuggestions": [
+        "The address",
+        "What the problem is",
+        "How urgent it is"
+      ],
+      "template": null
+    },
+    {
+      "id": "landscaping",
+      "label": "Landscaping or gardening",
+      "group": "Home services",
+      "verticalId": "general",
+      "modes": [
+        "jobs_on_site"
+      ],
+      "aliases": [
+        "gardener",
+        "lawn care",
+        "tree surgeon"
+      ],
+      "catalogLabel": "Jobs and prices",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Call-out fee",
+        "Quotes",
+        "Warranty on work",
+        "Payment terms"
+      ],
+      "suggestedQuestions": [
+        "Which areas do you cover?",
+        "Do you do emergency call-outs?",
+        "How much is a call-out?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [
+        "Never quote a fixed price for a job nobody has seen. Give the call-out fee or a range and offer a visit."
+      ],
+      "intakeSuggestions": [
+        "The address",
+        "What the problem is",
+        "How urgent it is"
+      ],
+      "template": null
+    },
+    {
+      "id": "builder",
+      "label": "Builder, roofer or renovation",
+      "group": "Home services",
+      "verticalId": "general",
+      "modes": [
+        "jobs_on_site",
+        "consultations"
+      ],
+      "aliases": [
+        "roofing",
+        "contractor",
+        "renovation",
+        "remodeling",
+        "painter"
+      ],
+      "catalogLabel": "Jobs and prices",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Call-out fee",
+        "Quotes",
+        "Warranty on work",
+        "Payment terms",
+        "Consultation fees",
+        "Confidentiality",
+        "Cancellation"
+      ],
+      "suggestedQuestions": [
+        "Which areas do you cover?",
+        "Do you do emergency call-outs?",
+        "How much is a call-out?",
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "structural damage",
+        "roof leak"
+      ],
+      "behaviourRules": [
+        "Never quote a fixed price for a job nobody has seen. Give the call-out fee or a range and offer a visit."
+      ],
+      "intakeSuggestions": [
+        "The address",
+        "What the problem is",
+        "How urgent it is",
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": null
+    },
+    {
+      "id": "locksmith",
+      "label": "Locksmith",
+      "group": "Home services",
+      "verticalId": "general",
+      "modes": [
+        "jobs_on_site"
+      ],
+      "aliases": [
+        "locked out",
+        "keys"
+      ],
+      "catalogLabel": "Jobs and prices",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Call-out fee",
+        "Quotes",
+        "Warranty on work",
+        "Payment terms"
+      ],
+      "suggestedQuestions": [
+        "Which areas do you cover?",
+        "Do you do emergency call-outs?",
+        "How much is a call-out?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "locked out",
+        "break-in"
+      ],
+      "behaviourRules": [
+        "Never quote a fixed price for a job nobody has seen. Give the call-out fee or a range and offer a visit."
+      ],
+      "intakeSuggestions": [
+        "The address",
+        "What the problem is",
+        "How urgent it is"
+      ],
+      "template": null
+    },
+    {
+      "id": "movers",
+      "label": "Movers or removals",
+      "group": "Home services",
+      "verticalId": "general",
+      "modes": [
+        "jobs_on_site"
+      ],
+      "aliases": [
+        "moving company",
+        "removals",
+        "man and van"
+      ],
+      "catalogLabel": "Jobs and prices",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Call-out fee",
+        "Quotes",
+        "Warranty on work",
+        "Payment terms"
+      ],
+      "suggestedQuestions": [
+        "Which areas do you cover?",
+        "Do you do emergency call-outs?",
+        "How much is a call-out?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "damage",
+        "missing item"
+      ],
+      "behaviourRules": [
+        "Never quote a fixed price for a job nobody has seen. Give the call-out fee or a range and offer a visit."
+      ],
+      "intakeSuggestions": [
+        "The address",
+        "What the problem is",
+        "How urgent it is"
+      ],
+      "template": null
+    },
+    {
+      "id": "handyman",
+      "label": "Handyman or appliance repair",
+      "group": "Home services",
+      "verticalId": "general",
+      "modes": [
+        "jobs_on_site"
+      ],
+      "aliases": [
+        "appliance repair",
+        "odd jobs",
+        "repairs"
+      ],
+      "catalogLabel": "Jobs and prices",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Call-out fee",
+        "Quotes",
+        "Warranty on work",
+        "Payment terms"
+      ],
+      "suggestedQuestions": [
+        "Which areas do you cover?",
+        "Do you do emergency call-outs?",
+        "How much is a call-out?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "gas leak",
+        "flooding",
+        "fire",
+        "burning smell",
+        "carbon monoxide",
+        "no heat"
+      ],
+      "behaviourRules": [
+        "Never quote a fixed price for a job nobody has seen. Give the call-out fee or a range and offer a visit.",
+        "If someone describes danger, like a gas smell, sparks or flooding, tell them to get safe and call emergency services first."
+      ],
+      "intakeSuggestions": [
+        "The address",
+        "What the problem is",
+        "How urgent it is"
+      ],
+      "template": null
+    },
+    {
+      "id": "auto_repair",
+      "label": "Auto repair or mechanic",
+      "group": "Auto",
+      "verticalId": "general",
+      "modes": [
+        "appointments"
+      ],
+      "aliases": [
+        "mechanic",
+        "garage",
+        "car service",
+        "tyres",
+        "mot"
+      ],
+      "catalogLabel": "Services and repairs",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "accident",
+        "breakdown",
+        "warranty dispute"
+      ],
+      "behaviourRules": [
+        "Never diagnose a fault or quote a repair price without the car being inspected."
+      ],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want"
+      ],
+      "template": null
+    },
+    {
+      "id": "auto_detailing",
+      "label": "Car detailing or car wash",
+      "group": "Auto",
+      "verticalId": "auto_detailing",
+      "modes": [
+        "appointments"
+      ],
+      "aliases": [
+        "car wash",
+        "valeting",
+        "ceramic coating"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want"
+      ],
+      "template": {
+        "id": "auto_detailing",
+        "escalationKeywords": [
+          "damage to vehicle",
+          "paint damage",
+          "scratch",
+          "dent",
+          "insurance claim",
+          "warranty dispute"
+        ],
+        "bannedClaims": [
+          "guaranteed lifetime protection",
+          "permanent ceramic coating",
+          "removes all scratches",
+          "like-new guarantee",
+          "guaranteed no swirl marks"
+        ],
+        "behaviourRules": [
+          "Never promise that a specific scratch, dent or stain can be removed without seeing the vehicle.",
+          "Never quote a fixed price for a vehicle size or condition the customer hasn't confirmed."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "can you get dog hair out",
+            "reply": "Usually, yes — it's one of the more common jobs. It does add time depending on how bad it is, so we'd want to see it before pinning down a price."
+          },
+          {
+            "customer": "how long does a full detail take",
+            "reply": "Most of a day for a full interior and exterior. If you need it back sooner, tell me when and I'll see what fits."
+          }
+        ],
+        "knowledgeTitles": [
+          "What's the difference between a wash and a detail?",
+          "Do I need to book?",
+          "How does pricing work?",
+          "Can I wait, or do I leave the car?",
+          "Customer asks if damage can be removed"
+        ]
+      }
+    },
+    {
+      "id": "law_firm",
+      "label": "Law firm",
+      "group": "Professional services",
+      "verticalId": "law_firm",
+      "modes": [
+        "consultations"
+      ],
+      "aliases": [
+        "lawyer",
+        "solicitor",
+        "attorney"
+      ],
+      "catalogLabel": "Consultations and fees",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Consultation fees",
+        "Confidentiality",
+        "Cancellation"
+      ],
+      "suggestedQuestions": [
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": {
+        "id": "law_firm",
+        "escalationKeywords": [
+          "arrest",
+          "court date",
+          "subpoena",
+          "custody",
+          "criminal charge",
+          "eviction notice",
+          "restraining order",
+          "emergency"
+        ],
+        "bannedClaims": [
+          "guaranteed win",
+          "guaranteed outcome",
+          "certain success",
+          "we always win",
+          "guaranteed settlement",
+          "guaranteed acquittal",
+          "no risk of losing"
+        ],
+        "behaviourRules": [
+          "Never give legal advice, an opinion on a case, or a view on what the outcome might be.",
+          "Never estimate what a matter will cost beyond the published consultation fee.",
+          "Never comment on a deadline or limitation period — say it needs a solicitor."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "do i have a case",
+            "reply": "That's exactly what the first consultation is for — it isn't something I can answer, but a solicitor will tell you straight. Would you like me to find you a time?"
+          },
+          {
+            "customer": "how much will this cost me",
+            "reply": "The first consultation is a fixed fee, so you know before you come in. Anything beyond that the solicitor will set out in writing before any work starts."
+          }
+        ],
+        "knowledgeTitles": [
+          "What happens at a first consultation?",
+          "How quickly can I speak to someone?",
+          "How are fees handled?",
+          "What should I bring?",
+          "Caller describes their situation and asks for advice",
+          "Caller mentions a deadline or time limit"
+        ]
+      }
+    },
+    {
+      "id": "accounting",
+      "label": "Accountant or tax preparer",
+      "group": "Professional services",
+      "verticalId": "general",
+      "modes": [
+        "consultations"
+      ],
+      "aliases": [
+        "bookkeeper",
+        "tax",
+        "cpa"
+      ],
+      "catalogLabel": "Consultations and fees",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Consultation fees",
+        "Confidentiality",
+        "Cancellation"
+      ],
+      "suggestedQuestions": [
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "tax deadline",
+        "audit",
+        "penalty"
+      ],
+      "behaviourRules": [
+        "Never give legal, tax or financial advice, or an opinion on anyone's case. Offer a consultation instead."
+      ],
+      "intakeSuggestions": [
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": null
+    },
+    {
+      "id": "real_estate",
+      "label": "Real estate agency",
+      "group": "Professional services",
+      "verticalId": "real_estate",
+      "modes": [
+        "consultations"
+      ],
+      "aliases": [
+        "estate agent",
+        "realtor",
+        "property",
+        "letting agent"
+      ],
+      "catalogLabel": "Viewings and consultations",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Consultation fees",
+        "Confidentiality",
+        "Cancellation"
+      ],
+      "suggestedQuestions": [
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": {
+        "id": "real_estate",
+        "escalationKeywords": [
+          "financing question",
+          "mortgage",
+          "contract dispute",
+          "inspection issue",
+          "earnest money",
+          "closing date",
+          "legal question",
+          "offer negotiation"
+        ],
+        "bannedClaims": [
+          "guaranteed sale",
+          "guaranteed approval",
+          "no risk investment",
+          "will definitely appreciate",
+          "best price guaranteed",
+          "guaranteed offer"
+        ],
+        "behaviourRules": [
+          "Never give a valuation, an opinion on what a property will sell for, or advice on what to offer.",
+          "Never comment on whether a mortgage will be approved, or on anyone's finances."
+        ],
+        "conversationExamples": [
+          {
+            "customer": "whats the lowest theyd accept",
+            "reply": "That's really a conversation for the agent rather than me — I can get them to call you today if you'd like."
+          },
+          {
+            "customer": "can i see it this weekend",
+            "reply": "Very likely — do you know roughly what time suits, and I'll check what's free?"
+          }
+        ],
+        "knowledgeTitles": [
+          "Do you charge for a valuation?",
+          "When can I view?",
+          "Do I have to register to view?",
+          "What should I bring to a viewing?",
+          "Caller asks what a property is worth or what to offer"
+        ]
+      }
+    },
+    {
+      "id": "insurance_finance",
+      "label": "Insurance or financial adviser",
+      "group": "Professional services",
+      "verticalId": "general",
+      "modes": [
+        "consultations"
+      ],
+      "aliases": [
+        "insurance broker",
+        "mortgage",
+        "financial planner"
+      ],
+      "catalogLabel": "Consultations and fees",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Consultation fees",
+        "Confidentiality",
+        "Cancellation"
+      ],
+      "suggestedQuestions": [
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "claim",
+        "complaint"
+      ],
+      "behaviourRules": [
+        "Never give legal, tax or financial advice, or an opinion on anyone's case. Offer a consultation instead."
+      ],
+      "intakeSuggestions": [
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": null
+    },
+    {
+      "id": "photography",
+      "label": "Photographer or studio",
+      "group": "Professional services",
+      "verticalId": "general",
+      "modes": [
+        "appointments",
+        "consultations"
+      ],
+      "aliases": [
+        "photo studio",
+        "videographer",
+        "wedding photographer"
+      ],
+      "catalogLabel": "Sessions and packages",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows",
+        "Consultation fees",
+        "Confidentiality"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want",
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": null
+    },
+    {
+      "id": "tutoring",
+      "label": "Tutoring or lessons",
+      "group": "Education and care",
+      "verticalId": "general",
+      "modes": [
+        "appointments",
+        "memberships"
+      ],
+      "aliases": [
+        "tutor",
+        "music lessons",
+        "language school",
+        "academy"
+      ],
+      "catalogLabel": "Lessons and courses",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows",
+        "Cancelling a membership",
+        "Freezing a membership",
+        "Free trial"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Is there a free trial?",
+        "How do I cancel?",
+        "What's the timetable?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want",
+        "Their experience level",
+        "What they want to achieve"
+      ],
+      "template": null
+    },
+    {
+      "id": "driving_school",
+      "label": "Driving school",
+      "group": "Education and care",
+      "verticalId": "general",
+      "modes": [
+        "appointments"
+      ],
+      "aliases": [
+        "driving lessons",
+        "driving instructor"
+      ],
+      "catalogLabel": "Lessons and packages",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want"
+      ],
+      "template": null
+    },
+    {
+      "id": "childcare",
+      "label": "Daycare or childcare",
+      "group": "Education and care",
+      "verticalId": "general",
+      "modes": [
+        "memberships",
+        "consultations"
+      ],
+      "aliases": [
+        "nursery",
+        "preschool",
+        "after school"
+      ],
+      "catalogLabel": "Places and visits",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancelling a membership",
+        "Freezing a membership",
+        "Free trial",
+        "Consultation fees",
+        "Confidentiality",
+        "Cancellation"
+      ],
+      "suggestedQuestions": [
+        "Is there a free trial?",
+        "How do I cancel?",
+        "What's the timetable?",
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "injury",
+        "safeguarding",
+        "emergency"
+      ],
+      "behaviourRules": [
+        "Never discuss another child or family. Pass any safeguarding concern to a person straight away."
+      ],
+      "intakeSuggestions": [
+        "Their experience level",
+        "What they want to achieve",
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": null
+    },
+    {
+      "id": "pet_grooming",
+      "label": "Pet grooming or boarding",
+      "group": "Education and care",
+      "verticalId": "general",
+      "modes": [
+        "appointments",
+        "stays_rentals"
+      ],
+      "aliases": [
+        "dog groomer",
+        "kennels",
+        "pet sitting",
+        "dog walker"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows",
+        "Check-in and check-out",
+        "Damage"
+      ],
+      "suggestedQuestions": [
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "What time is check-in?",
+        "What's included in the price?",
+        "Is there parking?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "injured",
+        "sick"
+      ],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "Their name",
+        "Which service they want",
+        "The dates",
+        "How many people"
+      ],
+      "template": null
+    },
+    {
+      "id": "retail_shop",
+      "label": "Shop or boutique",
+      "group": "Shops",
+      "verticalId": "general",
+      "modes": [
+        "products"
+      ],
+      "aliases": [
+        "store",
+        "clothing",
+        "boutique",
+        "electronics",
+        "furniture"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Returns and refunds",
+        "Delivery and collection",
+        "Orders and stock"
+      ],
+      "suggestedQuestions": [
+        "Do you have this in stock?",
+        "Do you deliver?",
+        "Can I return something?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "What they're looking for",
+        "Delivery or collection"
+      ],
+      "template": null
+    },
+    {
+      "id": "florist",
+      "label": "Florist or gift shop",
+      "group": "Shops",
+      "verticalId": "general",
+      "modes": [
+        "products"
+      ],
+      "aliases": [
+        "flowers",
+        "gifts",
+        "bouquets"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Returns and refunds",
+        "Delivery and collection",
+        "Orders and stock"
+      ],
+      "suggestedQuestions": [
+        "Do you have this in stock?",
+        "Do you deliver?",
+        "Can I return something?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "What they're looking for",
+        "Delivery or collection"
+      ],
+      "template": null
+    },
+    {
+      "id": "pharmacy",
+      "label": "Pharmacy",
+      "group": "Shops",
+      "verticalId": "general",
+      "modes": [
+        "products",
+        "appointments"
+      ],
+      "aliases": [
+        "chemist",
+        "drugstore"
+      ],
+      "catalogLabel": "Services",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Returns and refunds",
+        "Delivery and collection",
+        "Orders and stock",
+        "Cancellation",
+        "Late arrivals",
+        "Deposits",
+        "No-shows"
+      ],
+      "suggestedQuestions": [
+        "Do you have this in stock?",
+        "Do you deliver?",
+        "Can I return something?",
+        "How far ahead should I book?",
+        "Do you take walk-ins?",
+        "How long does it take?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "pain",
+        "bleeding",
+        "emergency",
+        "allergic reaction",
+        "insurance"
+      ],
+      "behaviourRules": [
+        "Never give advice about medicines, doses or side effects. Ask them to speak to the pharmacist."
+      ],
+      "intakeSuggestions": [
+        "What they're looking for",
+        "Delivery or collection",
+        "Their name",
+        "Which service they want"
+      ],
+      "template": null
+    },
+    {
+      "id": "hotel",
+      "label": "Hotel or guest house",
+      "group": "Stays and venues",
+      "verticalId": "general",
+      "modes": [
+        "stays_rentals"
+      ],
+      "aliases": [
+        "b&b",
+        "motel",
+        "hostel",
+        "guest house",
+        "resort"
+      ],
+      "catalogLabel": "Rooms and rates",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Check-in and check-out",
+        "Deposits",
+        "Cancellation",
+        "Damage"
+      ],
+      "suggestedQuestions": [
+        "What time is check-in?",
+        "What's included in the price?",
+        "Is there parking?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "The dates",
+        "How many people"
+      ],
+      "template": null
+    },
+    {
+      "id": "event_venue",
+      "label": "Event venue or hall",
+      "group": "Stays and venues",
+      "verticalId": "general",
+      "modes": [
+        "stays_rentals",
+        "consultations"
+      ],
+      "aliases": [
+        "wedding venue",
+        "banquet hall",
+        "conference"
+      ],
+      "catalogLabel": "Spaces and packages",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Check-in and check-out",
+        "Deposits",
+        "Cancellation",
+        "Damage",
+        "Consultation fees",
+        "Confidentiality"
+      ],
+      "suggestedQuestions": [
+        "What time is check-in?",
+        "What's included in the price?",
+        "Is there parking?",
+        "Is the first consultation free?",
+        "What should I bring?",
+        "How soon can I speak to someone?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "The dates",
+        "How many people",
+        "What it's about",
+        "The best time to call them"
+      ],
+      "template": null
+    },
+    {
+      "id": "rentals",
+      "label": "Car or equipment rental",
+      "group": "Stays and venues",
+      "verticalId": "general",
+      "modes": [
+        "stays_rentals"
+      ],
+      "aliases": [
+        "car hire",
+        "tool hire",
+        "equipment hire",
+        "boat rental"
+      ],
+      "catalogLabel": "Rentals and rates",
+      "itemsLabel": "Products",
+      "suggestedPolicies": [
+        "Check-in and check-out",
+        "Deposits",
+        "Cancellation",
+        "Damage"
+      ],
+      "suggestedQuestions": [
+        "What time is check-in?",
+        "What's included in the price?",
+        "Is there parking?",
+        "Where are you, and is there parking?",
+        "What payment methods do you take?"
+      ],
+      "handoffTopics": [
+        "accident",
+        "damage"
+      ],
+      "behaviourRules": [],
+      "intakeSuggestions": [
+        "The dates",
+        "How many people"
+      ],
+      "template": null
+    }
+  ]
+}
