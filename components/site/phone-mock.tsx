@@ -89,7 +89,7 @@ export function PhoneMock({ className }: { className?: string }) {
                   <p className="text-[10.5px] text-muted-ink">Text message</p>
                 </div>
               </div>
-              <span className={`font-mono text-[10px] uppercase tracking-[0.14em] ${booked ? "text-success" : "text-faint"}`}>{booked ? "Booked" : "Live"}</span>
+              <span className={`text-[11px] font-medium ${booked ? "text-success" : "text-faint"}`}>{booked ? "Booked" : "Live"}</span>
             </div>
             {/* transcript */}
             <div ref={scroller} className="rp-no-scrollbar flex h-[430px] flex-col gap-2.5 overflow-y-auto px-4 py-4" aria-live="off">
@@ -106,7 +106,6 @@ export function PhoneMock({ className }: { className?: string }) {
                 </div>
               )}
             </div>
-            <div className="border-t border-white/10 px-5 py-3 text-center font-mono text-[9.5px] uppercase tracking-[0.14em] text-faint">Illustration · not a recorded customer</div>
           </div>
         </div>
       </div>
@@ -117,7 +116,7 @@ export function PhoneMock({ className }: { className?: string }) {
 function Bubble({ beat }: { beat: Beat }) {
   if (beat.kind === "system") {
     return (
-      <p className="animate-bubble-in flex items-center justify-center gap-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-glow/85">
+      <p className="animate-bubble-in flex items-center justify-center gap-2 py-0.5 text-[11px] font-medium text-glow/85">
         <span className="h-1 w-1 rounded-full bg-glow" />
         {beat.text}
       </p>
@@ -126,7 +125,7 @@ function Bubble({ beat }: { beat: Beat }) {
   if (beat.kind === "event") {
     return (
       <div className="animate-bubble-in rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5">
-        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-ink">{beat.text}</p>
+        <p className="text-[11px] font-medium text-muted-ink">{beat.text}</p>
         {beat.meta && <p className="mt-0.5 text-[12.5px] text-ink/85">{beat.meta}</p>}
       </div>
     );

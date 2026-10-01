@@ -106,6 +106,28 @@ export function SiteNav() {
 
   return (
     <header ref={headerRef} className="fixed inset-x-0 top-0 z-50">
+      <div className={cx("hidden overflow-hidden bg-[#07070b] transition-[max-height,opacity] duration-300 lg:block", scrolled || open ? "max-h-0 opacity-0" : "max-h-10 border-b border-line opacity-100")}>
+        <div className="mx-auto flex h-9 max-w-[1240px] items-center justify-between px-10 text-[12.5px]">
+          <Link href="/call" className="flex items-center gap-2 text-muted-ink hover:text-ink">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ringpost-ping absolute inline-flex h-full w-full rounded-full bg-success" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
+            </span>
+            Call Zara, our AI assistant, from your browser
+          </Link>
+          <nav aria-label="Utility" className="flex items-center gap-5 text-faint">
+            <Link href="/faq" className="hover:text-ink">
+              Help &amp; FAQ
+            </Link>
+            <Link href="/contact" className="hover:text-ink">
+              Contact
+            </Link>
+            <Link href="/about" className="hover:text-ink">
+              About
+            </Link>
+          </nav>
+        </div>
+      </div>
       <div className={cx("transition-all duration-300", scrolled || open || mobile ? "border-b border-line bg-base/85 backdrop-blur-xl" : "border-b border-transparent")}>
         <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 px-4 sm:px-6 lg:h-[72px] lg:px-10">
           <Link href="/" aria-label="RingPost home" className="shrink-0">
@@ -116,7 +138,7 @@ export function SiteNav() {
             {trigger("product", "Product")}
             {trigger("industries", "Industries")}
             {plain("/channels", "Channels")}
-            {plain("/demo", "Demo")}
+            {plain("/call", "Talk to Zara")}
             {plain("/pricing", "Pricing")}
             {trigger("resources", "Resources")}
             {trigger("company", "Company")}
@@ -179,7 +201,7 @@ export function SiteNav() {
               <MobileLink href="/product" name="AI Front Desk overview" />
               {PRODUCT_NAV.map((p) => (
                 <div key={p.pillar} className="pt-2">
-                  <p className="px-1 pb-1 font-mono text-[10.5px] uppercase tracking-[0.18em] text-faint">{p.name}</p>
+                  <p className="px-1 pb-1 text-[12px] font-medium text-faint">{p.name}</p>
                   {p.links.map((l) => (
                     <MobileLink key={l.href} {...l} />
                   ))}
@@ -190,7 +212,7 @@ export function SiteNav() {
               <MobileLink href="/industries" name="All industries" />
               {INDUSTRY_NAV.map((g) => (
                 <div key={g.group} className="pt-2">
-                  <p className="px-1 pb-1 font-mono text-[10.5px] uppercase tracking-[0.18em] text-faint">{g.group}</p>
+                  <p className="px-1 pb-1 text-[12px] font-medium text-faint">{g.group}</p>
                   {g.links.map((l) => (
                     <MobileLink key={l.href} {...l} />
                   ))}
@@ -199,7 +221,7 @@ export function SiteNav() {
               <MobileLink {...SOMETHING_ELSE_LINK} />
             </MobileGroup>
             <MobileLink href="/channels" name="Channels" top />
-            <MobileLink href="/demo" name="Demo" top />
+            <MobileLink href="/call" name="Talk to Zara" top />
             <MobileLink href="/pricing" name="Pricing" top />
             <MobileGroup title="Resources">
               {RESOURCES_NAV.map((l) => (
@@ -210,7 +232,7 @@ export function SiteNav() {
               {COMPANY_NAV.map((l) => (
                 <MobileLink key={l.href} {...l} />
               ))}
-              <p className="px-1 pb-1 pt-3 font-mono text-[10.5px] uppercase tracking-[0.18em] text-faint">Legal</p>
+              <p className="px-1 pb-1 pt-3 text-[12px] font-medium text-faint">Legal</p>
               {LEGAL_NAV.map((l) => (
                 <MobileLink key={l.href} {...l} />
               ))}
@@ -228,7 +250,7 @@ function ProductPanel() {
       <Link href="/product" className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-line-strong bg-surface p-6">
         <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-violet/30 blur-3xl" />
         <div className="relative">
-          <p className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-glow">Overview</p>
+          <p className="text-[12px] font-medium text-glow">Overview</p>
           <p className="mt-3 font-display text-3xl leading-tight text-ink">The AI Front Desk</p>
           <p className="mt-2 text-[14px] leading-relaxed text-muted-ink">What an AI front desk is, what this one does, and the rules it never breaks.</p>
         </div>
@@ -239,7 +261,7 @@ function ProductPanel() {
       <div className="grid grid-cols-3 gap-8">
         {PRODUCT_NAV.map((p) => (
           <div key={p.pillar}>
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-faint">{p.name}</p>
+            <p className="text-[12px] font-medium text-faint">{p.name}</p>
             <p className="mb-3 mt-1 text-[13px] text-muted-ink">{p.line}</p>
             <ul className="flex flex-col gap-1">
               {p.links.map((l) => (
@@ -264,7 +286,7 @@ function IndustriesPanel() {
       <div className="grid grid-cols-5 gap-x-8 gap-y-6">
         {INDUSTRY_NAV.map((g) => (
           <div key={g.group}>
-            <p className="mb-2 font-mono text-[10.5px] uppercase tracking-[0.18em] text-faint">{g.group}</p>
+            <p className="mb-2 text-[12px] font-medium text-faint">{g.group}</p>
             <ul className="flex flex-col">
               {g.links.map((l) => (
                 <li key={l.href}>
@@ -325,7 +347,7 @@ function CompanyPanel() {
         ))}
       </ul>
       <div>
-        <p className="mb-2 font-mono text-[10.5px] uppercase tracking-[0.18em] text-faint">Legal</p>
+        <p className="mb-2 text-[12px] font-medium text-faint">Legal</p>
         <ul className="grid grid-cols-1 gap-0.5">
           {LEGAL_NAV.map((l) => (
             <li key={l.href}>

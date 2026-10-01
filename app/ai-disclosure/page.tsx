@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
-import { SITE, SUPPORT_EMAIL } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Call Recording and AI Disclosure",
@@ -24,7 +24,7 @@ export default function AiDisclosurePage() {
   return (
     <LegalPage
       title="Call Recording and AI Disclosure"
-      updated="4 September 2026"
+      updated="30 September 2026"
       intro={`${SITE.name} answers calls with an AI, and those calls may be recorded and transcribed. We think both facts should be said plainly rather than buried. This page explains what happens, what your business must do, and what a caller can ask for.`}
     >
       <h2>1. We say it is an AI</h2>
@@ -143,7 +143,7 @@ export default function AiDisclosurePage() {
 
       <h2>8. Questions</h2>
       <p>
-        Email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>. If you are a caller rather
+        Use our <a href="/contact">contact page</a>. If you are a caller rather
         than a {SITE.name} customer, contact the business you called. They hold the recording and we
         process it on their instructions.
       </p>

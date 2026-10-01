@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
-import { SITE, SUPPORT_EMAIL } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Data Deletion Instructions",
@@ -12,14 +12,14 @@ export default function DataDeletionPage() {
   return (
     <LegalPage
       title="Data Deletion Instructions"
-      updated="7 September 2026"
+      updated="30 September 2026"
       intro={`Businesses using ${SITE.name} and customers who have interacted with those businesses can request deletion of personal data. The route differs because the business controls its customers’ data and ${SITE.name} processes that data on the business’s behalf.`}
     >
       <h2>1. If your business uses RingPost</h2>
       <p>
-        An owner or authorised account administrator can request deletion by emailing{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> from the email address associated
-        with the account. Use the subject &ldquo;Account data deletion&rdquo; and include your name,
+        An owner or authorised account administrator can request deletion through our{" "}
+        <a href="/contact">contact page</a>, using the email address associated
+        with the account. Write &ldquo;Account data deletion&rdquo; and include your name,
         business name, account email address and a clear statement that you want the account and its
         data deleted.
       </p>
@@ -35,8 +35,8 @@ export default function DataDeletionPage() {
         for deciding and instructing us how to handle the request.
       </p>
       <p>
-        If you cannot reach the business, email{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> with the subject &ldquo;Customer data
+        If you cannot reach the business, contact us through our{" "}
+        <a href="/contact">contact page</a> and write &ldquo;Customer data
         deletion&rdquo;. Include your name, the business name, the phone number, email address or
         social handle you used, the channel and approximate date of the interaction, and the country
         where you are located. Do not send identity documents unless we specifically ask for them.
@@ -44,7 +44,17 @@ export default function DataDeletionPage() {
         its controller obligations.
       </p>
 
-      <h2>3. What deletion covers</h2>
+      <h2>3. Removing RingPost from Threads, Facebook or Instagram</h2>
+      <p>
+        You can also remove RingPost from your account on the platform itself: on Threads, under
+        Settings &rarr; Account &rarr; Website permissions; on Facebook or Instagram, under Settings
+        &rarr; Business integrations. Meta then tells us, and we delete the access token and the
+        profile details we stored for that account, and the replies and comments we read from it.
+        A request made this way is confirmed with a code; quote it on our{" "}
+        <a href="/contact">contact page</a> if you have a question about it.
+      </p>
+
+      <h2>4. What deletion covers</h2>
       <p>A verified business-account deletion removes:</p>
       <ul>
         <li>the business account and its member access;</li>
@@ -60,7 +70,7 @@ export default function DataDeletionPage() {
         does not affect records belonging to another customer or business.
       </p>
 
-      <h2>4. Timing</h2>
+      <h2>5. Timing</h2>
       <p>
         We acknowledge a deletion request within 72 hours. After verification and any required
         instruction from the business controller, we complete deletion from live systems within 30
@@ -68,7 +78,7 @@ export default function DataDeletionPage() {
         except for disaster recovery.
       </p>
 
-      <h2>5. Information we may retain</h2>
+      <h2>6. Information we may retain</h2>
       <p>
         We may retain invoices, payment records and a minimal record of the request where accounting,
         tax, fraud-prevention, dispute-resolution or other legal obligations require it. Retained
@@ -76,10 +86,10 @@ export default function DataDeletionPage() {
         is not used to operate or market the Service.
       </p>
 
-      <h2>6. Questions</h2>
+      <h2>7. Questions</h2>
       <p>
-        If you are unsure which route applies, email{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> and explain whether you operate a
+        If you are unsure which route applies, use our{" "}
+        <a href="/contact">contact page</a> and explain whether you operate a
         RingPost account or contacted a business that uses RingPost.
       </p>
     </LegalPage>

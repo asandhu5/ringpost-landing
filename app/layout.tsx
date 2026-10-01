@@ -4,6 +4,7 @@ import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/goo
 import { Analytics } from "@vercel/analytics/next";
 import { SiteNav } from "@/components/site/nav";
 import { SiteFooter } from "@/components/site/footer";
+import { ChatWidget } from "@/components/site/chat-widget";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteNav />
         <main id="main">{children}</main>
         <SiteFooter />
+        <ChatWidget />
         <Analytics />
       </body>
     </html>

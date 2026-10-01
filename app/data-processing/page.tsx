@@ -1,28 +1,12 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
-import { SITE, SUPPORT_EMAIL } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Data Processing Addendum",
   description: `How ${SITE.name} processes personal data on behalf of its customers.`,
   robots: { index: true, follow: true },
 };
-
-const SUBPROCESSORS = [
-  ["Anthropic", "Conversation understanding and reply drafting", "United States"],
-  ["OpenAI", "Voice calls, backup conversation replies, image generation, safety checks and knowledge search indexing", "United States"],
-  ["Runway", "Short video generation", "United States"],
-  ["SerpAPI", "Reading public Google reviews", "United States"],
-  ["Deepgram", "Speech-to-text for calls and voice notes", "United States"],
-  ["Cartesia", "Text-to-speech for calls", "United States"],
-  ["Twilio", "Phone numbers, calls, SMS and call recording", "United States"],
-  ["Meta Platforms", "WhatsApp, Instagram and Facebook messaging", "United States / Ireland"],
-  ["Blotato", "Instagram and Facebook posting, DMs and comments", "United States"],
-  ["Upload-Post", "Posting and analytics on other social platforms", "United States"],
-  ["Google", "Calendar synchronisation and sign-in with Google", "United States"],
-  ["Resend", "Transactional email delivery", "United States"],
-  ["Paddle", "Payment processing and invoicing", "United Kingdom"],
-];
 
 /**
  * L8. We process our clients' CUSTOMERS' personal data on their instructions —
@@ -37,7 +21,7 @@ export default function DataProcessingPage() {
   return (
     <LegalPage
       title="Data Processing Addendum"
-      updated="4 September 2026"
+      updated="30 September 2026"
       intro={`When you use ${SITE.name}, your customers' personal data passes through our systems. You decide what happens to it; we carry out your instructions. This addendum sets out that relationship and forms part of the Terms of Service.`}
     >
       <h2>1. Roles</h2>
@@ -83,27 +67,12 @@ export default function DataProcessingPage() {
 
       <h2>4. Sub-processors</h2>
       <p>
-        We use the providers below to deliver the Service. Each is bound by terms no less protective
-        than this addendum, and each receives only the data needed for its function.
+        We use specialist providers to deliver the Service: for AI replies, images and video, phone
+        calls and SMS, messaging, email, calendar sync, reviews, social publishing, payments and
+        hosting. Each is bound by terms no less protective than this addendum, and each receives
+        only the data needed for its function. The current list is available on request through
+        our <a href="/contact">contact page</a>.
       </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Provider</th>
-            <th>What it does</th>
-            <th>Location</th>
-          </tr>
-        </thead>
-        <tbody>
-          {SUBPROCESSORS.map(([name, purpose, location]) => (
-            <tr key={name}>
-              <td>{name}</td>
-              <td>{purpose}</td>
-              <td>{location}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
       <p>
         We will give you at least 30 days&rsquo; notice before adding or replacing a sub-processor. If
         you object on reasonable data-protection grounds and we cannot offer an alternative, you may
@@ -112,7 +81,7 @@ export default function DataProcessingPage() {
 
       <h2>5. International transfers</h2>
       <p>
-        Most of the providers above are in the United States. Where personal data originating in the
+        Some of these providers are outside your country, many in the United States. Where personal data originating in the
         UK, EEA or another jurisdiction with transfer restrictions is sent to them, that transfer
         relies on the Standard Contractual Clauses or an equivalent approved mechanism in the
         provider&rsquo;s own terms.
@@ -150,8 +119,7 @@ export default function DataProcessingPage() {
         If one of your customers asks you for a copy of their data, asks you to correct it, or asks
         you to delete it, we will help you do so within a reasonable time and at no charge. Your
         dashboard already lets you find a customer and see everything held about them; where a
-        request needs more than that, email{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+        request needs more than that, use our <a href="/contact">contact page</a>.
       </p>
 
       <h2>9. Personal data breaches</h2>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogCard } from "@/components/site/blog-card";
 import { Markdown } from "@/components/site/markdown";
-import { Breadcrumbs, Container, CtaBand, JsonLd, Section } from "@/components/site/ui";
+import { Breadcrumbs, Container, JsonLd, Section } from "@/components/site/ui";
 import { allPosts, formatDate, postBySlug } from "@/lib/blog";
 import { COMPANY, SITE } from "@/lib/site";
 
@@ -38,8 +38,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               { name: post.title, href: `/resources/blog/${post.slug}` },
             ]}
           />
-          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-glow">
-            <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.readingMinutes} min read
+          <p className="text-[14px] text-glow">
+            <time dateTime={post.date}>{formatDate(post.date)}</time>, {post.readingMinutes} min read
           </p>
           <h1 className="mt-4 font-display text-[clamp(2.5rem,5.6vw,4.2rem)] leading-[1.02] tracking-[-0.015em] text-ink">{post.title}</h1>
           <p className="mt-5 text-xl leading-relaxed text-muted-ink">{post.description}</p>
@@ -75,7 +75,6 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </Container>
         </Section>
       )}
-      <CtaBand />
     </>
   );
 }

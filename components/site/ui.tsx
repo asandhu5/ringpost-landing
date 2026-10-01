@@ -47,13 +47,9 @@ export function Section({
   );
 }
 
+/** A short context line above a heading, in plain sentence case. Used sparingly. */
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <p className={cx("mb-5 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-glow", className)}>
-      <span aria-hidden className="h-px w-8 bg-glow/50" />
-      {children}
-    </p>
-  );
+  return <p className={cx("mb-4 inline-flex items-center gap-2 text-[15px] font-medium text-glow", className)}>{children}</p>;
 }
 
 export function H2({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -81,7 +77,7 @@ export function ButtonLink({
   children,
   variant = "cta",
   className,
-  arrow = true,
+  arrow,
 }: {
   href: string;
   children: React.ReactNode;
@@ -89,6 +85,7 @@ export function ButtonLink({
   className?: string;
   arrow?: boolean;
 }) {
+  arrow = arrow ?? false;
   const external = /^https?:|^mailto:/.test(href);
   const styles: Record<ButtonVariant, string> = {
     cta: "bg-cta text-[#1a0d08] hover:bg-[var(--rp-cta-hover)] shadow-[0_10px_40px_-12px_rgba(255,122,89,0.7)]",
@@ -125,7 +122,7 @@ export function ButtonLink({
   );
 }
 
-export function TrialButtons({ secondary = { href: "/demo", label: "See it work" }, className }: { secondary?: { href: string; label: string } | null; className?: string }) {
+export function TrialButtons({ secondary = { href: "/call", label: "Talk to Zara" }, className }: { secondary?: { href: string; label: string } | null; className?: string }) {
   return (
     <div className={cx("flex flex-wrap items-center gap-3", className)}>
       <ButtonLink href={SIGNUP_URL}>Start free trial</ButtonLink>
@@ -247,7 +244,7 @@ export function FeatureGrid({
       {items.map((item) => (
         <Card key={item.title} href={item.href} className="flex flex-col">
           {item.icon && <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-line-strong bg-violet/10 text-glow">{item.icon}</div>}
-          {item.tag && <span className="mb-3 font-mono text-[10.5px] uppercase tracking-[0.18em] text-faint">{item.tag}</span>}
+          {item.tag && <span className="mb-3 text-[12px] font-medium text-faint">{item.tag}</span>}
           <h3 className="text-[1.08rem] font-semibold text-ink">{item.title}</h3>
           <p className="mt-2 text-[15px] leading-relaxed text-muted-ink">{item.body}</p>
           {item.href && (
@@ -266,7 +263,7 @@ export function StepFlow({ steps }: { steps: { step: string; title: string; body
     <ol className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
       {steps.map((s) => (
         <li key={s.step} className="relative bg-base p-7">
-          <span className="font-mono text-xs text-glow">{s.step}</span>
+          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-glow/40 bg-violet/10 text-[13px] font-semibold text-glow">{s.step}</span>
           <h3 className="mt-6 text-lg font-semibold text-ink">{s.title}</h3>
           <p className="mt-2 text-[15px] leading-relaxed text-muted-ink">{s.body}</p>
         </li>
@@ -354,9 +351,9 @@ export function CtaBand({ title = "Let it answer the next call.", lede, secondar
           <div className="relative flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] leading-[1] tracking-[-0.015em] text-ink">{title}</h2>
-              <p className="mt-4 text-lg text-muted-ink">{lede ?? "Seven days free on any plan. No setup fee, no contract, cancel any time."}</p>
+              {lede && <p className="mt-4 text-lg text-muted-ink">{lede}</p>}
             </div>
-            <TrialButtons secondary={secondary === undefined ? { href: "/demo", label: "See it work" } : secondary} />
+            <TrialButtons secondary={secondary === undefined ? { href: "/call", label: "Talk to Zara" } : secondary} />
           </div>
         </div>
       </Container>
@@ -364,15 +361,44 @@ export function CtaBand({ title = "Let it answer the next call.", lede, secondar
   );
 }
 
+/* ── On this page (sticky in-page navigation) ───────────────────── */
+
+export function OnThisPage({ name, links }: { name: string; links: { href: string; label: string }[] }) {
+  return (
+    <div className="sticky top-16 z-30 border-y border-line bg-base/85 backdrop-blur-xl lg:top-[72px]">
+      <Container className="flex h-14 items-center gap-6">
+        <span className="hidden shrink-0 text-[14px] font-semibold text-ink sm:block">{name}</span>
+        <nav aria-label="On this page" className="rp-no-scrollbar flex flex-1 items-center gap-1 overflow-x-auto">
+          {links.map((l) => (
+            <a key={l.href} href={l.href} className="whitespace-nowrap rounded-full px-3 py-1.5 text-[13.5px] text-muted-ink transition-colors hover:bg-white/[0.05] hover:text-ink">
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <a href={SIGNUP_URL} className="hidden shrink-0 rounded-full bg-cta px-4 py-1.5 text-[13.5px] font-medium text-[#1a0d08] hover:bg-[var(--rp-cta-hover)] md:block">
+          Start free trial
+        </a>
+      </Container>
+    </div>
+  );
+}
+
+/* ── Next steps (the lighter ending for inner pages) ───────────── */
+
+
+
 /* ── Screenshot frame ───────────────────────────────────────────── */
 
 /**
  * A real dashboard screenshot in a quiet browser frame. Renders nothing when the file
  * isn't in /public, so a page never shows a broken image or a stand-in.
  */
+export function screenshotExists(src: string): boolean {
+  return fs.existsSync(path.join(process.cwd(), "public", src));
+}
+
 export function ScreenshotFrame({ src, alt, caption, className }: { src: string; alt: string; caption?: string; className?: string }) {
-  const exists = fs.existsSync(path.join(process.cwd(), "public", src));
-  if (!exists) return null;
+  if (!screenshotExists(src)) return null;
   return (
     <figure className={cx("relative", className)}>
       <div aria-hidden className="pointer-events-none absolute -inset-6 rounded-[32px] bg-violet/15 blur-3xl" />
@@ -393,7 +419,7 @@ export function ScreenshotFrame({ src, alt, caption, className }: { src: string;
 
 /* ── Conversation ───────────────────────────────────────────────── */
 
-export function Conversation({ turns, label = "Illustration of how a conversation goes. Not a recorded customer." }: { turns: Turn[]; label?: string }) {
+export function Conversation({ turns, label }: { turns: Turn[]; label?: string }) {
   return (
     <figure className="rp-card overflow-hidden rounded-2xl">
       <div className="flex items-center gap-2.5 border-b border-line px-5 py-3.5">
@@ -401,12 +427,12 @@ export function Conversation({ turns, label = "Illustration of how a conversatio
           <span className="animate-ringpost-ping absolute inline-flex h-full w-full rounded-full bg-success" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
         </span>
-        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-ink">Front desk</span>
+        <span className="text-[12px] font-medium text-muted-ink">Front desk</span>
       </div>
       <div className="flex flex-col gap-3 p-5">
         {turns.map((t, i) =>
           t.from === "note" ? (
-            <p key={i} className="flex items-center gap-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.12em] text-glow/80">
+            <p key={i} className="flex items-center gap-2 py-0.5 text-[12px] font-medium text-glow/80">
               <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-glow" />
               {t.text}
             </p>
@@ -418,7 +444,7 @@ export function Conversation({ turns, label = "Illustration of how a conversatio
                   t.from === "ai" ? "rounded-br-md bg-violet text-white" : "rounded-bl-md border border-line-strong bg-white/[0.05] text-ink",
                 )}
               >
-                <span className={cx("mb-0.5 block font-mono text-[9.5px] uppercase tracking-[0.16em]", t.from === "ai" ? "text-white/60" : "text-faint")}>
+                <span className={cx("mb-0.5 block text-[11px] font-medium", t.from === "ai" ? "text-white/60" : "text-faint")}>
                   {t.from === "ai" ? "RingPost" : "Customer"}
                 </span>
                 {t.text}
@@ -427,7 +453,7 @@ export function Conversation({ turns, label = "Illustration of how a conversatio
           ),
         )}
       </div>
-      <figcaption className="border-t border-line px-5 py-3 font-mono text-[10px] uppercase tracking-[0.14em] text-faint">{label}</figcaption>
+      {label && <figcaption className="border-t border-line px-5 py-3 text-[12px] text-faint">{label}</figcaption>}
     </figure>
   );
 }

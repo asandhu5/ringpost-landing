@@ -3,6 +3,14 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Pages retired after launch keep working links: /demo became the /call page with
+  // Zara, and case studies were removed until there are customers to feature.
+  async redirects() {
+    return [
+      { source: "/demo", destination: "/call", permanent: true },
+      { source: "/resources/case-studies", destination: "/resources", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

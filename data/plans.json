@@ -22,6 +22,7 @@
         "count": 1,
         "per": "week"
       },
+      "bookableStaff": 3,
       "promptExtrasPerWeek": {
         "images": 0,
         "videos": 0
@@ -32,7 +33,7 @@
       "id": "growth",
       "name": "Growth",
       "monthlyUsd": 999,
-      "tagline": "Everything in Front Desk, plus your own uploads, auto-posting, comment replies and Talk to AI.",
+      "tagline": "Everything in Front Desk, plus your own uploads, auto-posting and Talk to AI.",
       "minutesPerMonth": 650,
       "messagesPerMonth": 3000,
       "imagesPerDay": 4,
@@ -40,6 +41,7 @@
         "count": 1,
         "per": "day"
       },
+      "bookableStaff": 5,
       "promptExtrasPerWeek": {
         "images": 0,
         "videos": 0
@@ -47,15 +49,14 @@
       "features": [
         "uploads",
         "auto_posting",
-        "advisor",
-        "comment_replies"
+        "advisor"
       ]
     },
     {
       "id": "command_center",
       "name": "Command Center",
       "monthlyUsd": 1399,
-      "tagline": "The whole front of house: campaigns, reviews, insights, win-backs and more.",
+      "tagline": "The whole front of house: comment replies, campaigns, reviews, insights and win-backs.",
       "minutesPerMonth": 1000,
       "messagesPerMonth": 5000,
       "imagesPerDay": 4,
@@ -63,6 +64,7 @@
         "count": 1,
         "per": "day"
       },
+      "bookableStaff": 7,
       "promptExtrasPerWeek": {
         "images": 10,
         "videos": 3

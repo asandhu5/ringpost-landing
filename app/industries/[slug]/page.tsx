@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AlertTriangle, ArrowRight, Ban, CalendarCheck, Check, MessageSquareText } from "lucide-react";
-import { Container, Conversation, CtaBand, Eyebrow, PageHero, Section, TrialButtons } from "@/components/site/ui";
+import { AlertTriangle, Ban, CalendarCheck, Check, MessageSquareText } from "lucide-react";
+import { Container, Conversation, Eyebrow, PageHero, Section, TrialButtons } from "@/components/site/ui";
 import {
   DEEP,
   MODE_LABELS,
@@ -188,13 +188,13 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
               </>
             ) : null}
             <p className="mt-4 text-[14.5px] leading-relaxed text-muted-ink">
-              As for every business, it also hands over a request for a person or a manager, a complaint, a refund, and any words you add yourself.
+              It also hands over requests for a person, complaints, refunds, and any words you add.
             </p>
           </div>
           <div className="rp-card rounded-3xl p-7">
             <CalendarCheck aria-hidden className="h-5 w-5 text-success" />
             <h2 className="mt-4 text-xl font-semibold text-ink">How booking works</h2>
-            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-faint">{t.modes.map((m) => MODE_LABELS[m]).join(" · ")}</p>
+            <p className="mt-3 text-[13px] text-faint">{t.modes.map((m) => MODE_LABELS[m]).join(", ")}</p>
             <p className="mt-3 text-[14.5px] leading-relaxed text-muted-ink">{bookingFor(t)}</p>
           </div>
         </Container>
@@ -221,7 +221,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       {related.length > 0 && (
         <Section className="!pt-4">
           <Container>
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-faint">More in {t.group}</p>
+            <h2 className="mb-5 text-[15px] font-medium text-muted-ink">More in {t.group}</h2>
             <div className="flex flex-wrap gap-2">
               {related.map((r) => (
                 <Link key={r.id} href={`/industries/${slugFor(r)}`} className="inline-flex min-h-10 items-center rounded-full border border-line-strong px-4 text-[13.5px] text-muted-ink hover:border-glow/50 hover:text-ink">
@@ -229,14 +229,13 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                 </Link>
               ))}
               <Link href="/industries" className="inline-flex min-h-10 items-center gap-1.5 rounded-full px-4 text-[13.5px] text-glow hover:text-white">
-                All industries <ArrowRight aria-hidden className="h-3.5 w-3.5" />
+                All industries
               </Link>
             </div>
           </Container>
         </Section>
       )}
 
-      <CtaBand />
     </>
   );
 }
@@ -247,7 +246,7 @@ function SomethingElse() {
       <PageHero
         eyebrow="Something else"
         title="An AI receptionist for any local business."
-        lede="Not every business fits a list. If yours isn't one of the trades we've set up, choose “Something else”, describe your business in your own words, and answer three questions."
+        lede="Not in the list? Choose “Something else”, describe your business, and answer three questions."
         crumbs={[
           { name: "Industries", href: "/industries" },
           { name: "Something else", href: `/industries/${SOMETHING_ELSE.slug}` },
@@ -260,21 +259,19 @@ function SomethingElse() {
           <div>
             <Eyebrow>Three questions</Eyebrow>
             <h2 className="font-display text-4xl leading-tight text-ink">Your answers decide how it books.</h2>
-            <ol className="mt-7 flex flex-col divide-y divide-line border-y border-line">
-              {SOMETHING_ELSE.questions.map((q, i) => (
-                <li key={q} className="flex gap-4 py-4 text-[15.5px] text-ink">
-                  <span className="font-mono text-xs text-glow">0{i + 1}</span>
+            <ul className="mt-7 flex flex-col divide-y divide-line border-y border-line">
+              {SOMETHING_ELSE.questions.map((q) => (
+                <li key={q} className="py-4 text-[15.5px] text-ink">
                   {q}
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
           <div className="flex flex-col gap-5 text-[15.5px] leading-relaxed text-muted-ink">
             <p>
               <strong className="text-ink">Customers book a time with you</strong>, and it books appointments from your real availability. <strong className="text-ink">You go to the customer</strong>, and it collects the address and the problem before booking a visit. <strong className="text-ink">You sell products</strong>, and it answers about what you stock, delivery and collection.
             </p>
-            <p>Everything else works the same as for any trade: answers from your own information, the same guardrails, and a hand-off to you when a customer asks for a person or something needs you.</p>
-            <p>You can add your own rules and hand-off words at any time.</p>
+            <p>Everything else works as for any trade: your own information, the same guardrails, and a hand-off to you when needed.</p>
           </div>
         </Container>
       </Section>
@@ -293,7 +290,6 @@ function SomethingElse() {
           </div>
         </Container>
       </Section>
-      <CtaBand />
     </>
   );
 }

@@ -5,7 +5,7 @@ import { DEEP, MODE_LABELS, SOMETHING_ELSE, TYPES, bookingFor, escalationsFor, p
 import { AUTOMATIONS, GUARDRAILS, HOW_IT_WORKS } from "@/lib/content/platform";
 import { PILLARS, PRODUCTS } from "@/lib/content/products";
 import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, TRIAL, USAGE_WARNING_PERCENT, plansWithLabel } from "@/lib/plans";
-import { COMPANY, LEGAL_LINKS, PUBLISHED_MAILBOXES, SITE } from "@/lib/site";
+import { COMPANY, LEGAL_LINKS, PRIMARY_EMAIL, SITE } from "@/lib/site";
 
 /**
  * The website assistant's grounding (brief §9.11), generated at build time from the same
@@ -75,7 +75,7 @@ export function GET() {
       path: "/channels",
       title: "Channels",
       text: [
-        ...CHANNELS.map((c) => `${c.name} (${c.availableToBusinesses ? "available to businesses on every plan" : "not available for a business's own website today"}). Arrives: ${c.arrives} The AI: ${c.aiDoes} The owner sees: ${c.ownerSees} Setup: ${c.setup}`),
+        ...CHANNELS.map((c) => `${c.name} (available to businesses on every plan). Arrives: ${c.arrives} The AI: ${c.aiDoes} The owner sees: ${c.ownerSees} Setup: ${c.setup}`),
         `Social publishing (Growth and Command Center): ${SOCIAL_PLATFORMS.join(", ")}.`,
       ].join("\n"),
     },
@@ -86,7 +86,7 @@ export function GET() {
         "There is no setup fee of any kind.",
         ...PLANS.map(
           (p) =>
-            `${p.name}: $${p.monthlyUsd}/month. ${p.tagline} ${p.minutesPerMonth} calling minutes and ${p.messagesPerMonth} messages a month, ${p.imagesPerDay} AI images a day${p.promptExtrasPerWeek.images ? ` plus ${p.promptExtrasPerWeek.images} more a week on request` : ""}. Includes: ${p.features.filter((f) => SHOW_AI_VIDEO || f !== "prompt_generation").map((f) => FEATURE_LABELS[f]).join(", ") || "answering every channel, booking, reminders, review requests and daily images"}.`,
+            `${p.name}: $${p.monthlyUsd}/month. ${p.tagline} ${p.minutesPerMonth} calling minutes and ${p.messagesPerMonth} messages a month, up to ${p.bookableStaff} bookable staff, call forwarding from the business's own number, ${p.imagesPerDay} AI images a day${p.promptExtrasPerWeek.images ? ` plus ${p.promptExtrasPerWeek.images} more a week on request` : ""}${SHOW_AI_VIDEO ? `, ${p.videos.count} AI video a ${p.videos.per}${p.promptExtrasPerWeek.videos ? ` plus ${p.promptExtrasPerWeek.videos} more a week on request` : ""}` : ""}. Includes: ${p.features.filter((f) => SHOW_AI_VIDEO || f !== "prompt_generation").map((f) => FEATURE_LABELS[f]).join(", ") || "answering every channel, booking, reminders, review requests and daily images"}.`,
         ),
         `Free trial: ${TRIAL.days} days on every plan, card required, nothing charged at the start. ${TRIAL.minutesPerDay} calling minutes a day (unused carry over, up to ${TRIAL.maxMinutes}) and ${TRIAL.messages} messages for the week. The plan bills on day ${TRIAL.days + 1} unless cancelled. A business that already had a trial starts billed straight away.`,
         `Going over a monthly allowance never stops the service. A warning comes at ${USAGE_WARNING_PERCENT}%. Top-ups are only added when the owner clicks: ${TOP_UPS.filter((t) => SHOW_AI_VIDEO || t.metric !== "videos").map((t) => `${t.label} $${t.priceUsd}`).join(", ")}.`,
@@ -97,17 +97,16 @@ export function GET() {
     {
       path: "/about",
       title: "About",
-      text: `RingPost is a product of ${COMPANY.legalName}. It does not publish a postal address. Today RingPost does not: give businesses a website chat for their own website; connect WhatsApp or email without help from the team; provide phone numbers outside the US and Canada.`,
+      text: `RingPost is a product of ${COMPANY.legalName}. It does not publish a postal address. Today RingPost does not: offer a chat for a business's own website (don't suggest one); connect WhatsApp without help from the team; provide phone numbers outside the US and Canada; post to Snapchat or Google Business Profile.`,
     },
     {
       path: "/contact",
       title: "Contact",
-      text: `To reach a person, use the form on /contact (it goes to the RingPost team) or email ${PUBLISHED_MAILBOXES.map((m) => `${m.address} (${m.label.toLowerCase()})`).join(", ")}.`,
+      text: `To reach a person, use the form on /contact (it goes to the RingPost team) or email ${PRIMARY_EMAIL}. The email address is shown only on /contact.`,
     },
     ...industryPages(),
     { path: "/resources/blog", title: "Blog", text: allPosts().map((p) => `${p.title}: ${p.description} (/resources/blog/${p.slug})`).join("\n") },
-    { path: "/resources/case-studies", title: "Case studies", text: "There are no case studies yet. They will be published once real customers agree to be named." },
-    { path: "/demo", title: "Demo", text: "Chat with RingPost's assistant or have a one-minute voice call in the browser." },
+    { path: "/call", title: "Talk to Zara", text: "A one-minute voice call with Zara, RingPost's own AI assistant, in the browser, no phone number needed. The server ends the call after 60 seconds. The Zara chat is in the corner of every page." },
   ];
 
   return Response.json({
@@ -117,6 +116,6 @@ export function GET() {
     generatedAt: new Date().toISOString(),
     pages,
     legalPages: LEGAL_LINKS.map((l) => ({ path: l.href, title: l.name })),
-    links: [...new Set([...pages.map((p) => p.path), ...LEGAL_LINKS.map((l) => l.href), "/industries", "/resources", "/about", "/contact", "/demo", "/pricing"])].sort(),
+    links: [...new Set([...pages.map((p) => p.path), ...LEGAL_LINKS.map((l) => l.href), "/industries", "/resources", "/about", "/contact", "/call", "/pricing"])].sort(),
   });
 }

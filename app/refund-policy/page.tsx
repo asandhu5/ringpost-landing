@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
-import { PRICING, SITE, SUPPORT_EMAIL } from "@/lib/site";
+import { SITE } from "@/lib/site";
+import { TRIAL } from "@/lib/plans";
 
-const money = (n: number) => `${PRICING.currency}${n.toLocaleString("en-US", { minimumFractionDigits: n % 1 ? 2 : 0 })}`;
+const TRIAL_DAYS = TRIAL.days;
 
 export const metadata: Metadata = {
   title: "Refund Policy",
@@ -11,52 +12,42 @@ export const metadata: Metadata = {
 };
 
 /**
- * Matches the pricing locked on 2026-09-23 (lib/site.ts PRICING): full setup refund
- * during the 7-day trial, the day-60 credit after, setup non-refundable once the trial
- * has ended. The product implements exactly this (cancel during trial → cancel + refund).
+ * Matches the product's billing since 2026-09-29 (packages/core/src/billing/plans.ts): no
+ * setup fee; the trial starts when a card is saved, cancelling during it charges nothing,
+ * and the plan bills on day 8.
  */
 export default function RefundPolicyPage() {
   return (
     <LegalPage
       title="Refund Policy"
-      updated="23 September 2026"
-      intro="Short, and meant to be clear. If something here doesn't seem fair in your situation, email us. We'd rather sort it out than hide behind a policy page."
+      updated="30 September 2026"
+      intro="Short, and meant to be clear. If something here doesn't seem fair in your situation, tell us. We'd rather sort it out than hide behind a policy page."
     >
       <h2>How you are billed</h2>
       <p>
-        There is a <strong>one-time setup fee</strong> of {money(PRICING.setup.amount)} and then{" "}
-        <strong>one monthly plan</strong> (Front Desk, Growth or Command Center), all shown on the{" "}
-        <a href="/pricing">pricing page</a>. There is no contract and no minimum term. Top-up packs
-        are only charged when you choose to buy one.
+        There is <strong>one monthly plan</strong> (Front Desk, Growth or Command Center), shown on
+        the <a href="/pricing">pricing page</a>. There is no setup fee, no contract and no minimum
+        term. Top-up packs are only charged when you choose to buy one.
       </p>
 
-      <h2>The {PRICING.trial.days}-day free trial</h2>
+      <h2>The {TRIAL_DAYS}-day free trial</h2>
       <ul>
         <li>
-          Your free trial starts the moment the setup fee is paid, and your AI starts answering
-          straight away.
+          Your free trial starts when you choose a plan and save a card. Nothing is charged, and
+          your AI starts answering straight away.
         </li>
         <li>
-          <strong>Cancel at any time during the trial and the setup fee is refunded in full</strong>,
-          automatically, with no questions. Your plan never starts.
+          <strong>Cancel at any time during the trial and you are never charged.</strong> Your plan
+          never starts.
         </li>
         <li>
-          If you don&rsquo;t cancel, your chosen plan is billed on day 8, on the card you used for
-          setup. We remind you a day or two before.
+          If you don&rsquo;t cancel, your chosen plan is billed on day {TRIAL_DAYS + 1}, on the card
+          you saved. We remind you a day or two before.
         </li>
       </ul>
 
       <h2>After the trial</h2>
       <ul>
-        <li>
-          The setup fee is <strong>not refundable</strong> once the trial has ended: the setup work it
-          pays for has been done and delivered.
-        </li>
-        <li>
-          <strong>Day-60 credit:</strong> once you have been on a paid plan for{" "}
-          {PRICING.setupCredit.afterDays} days, half of the setup fee ({money(PRICING.setupCredit.amount)}) is
-          credited against your next invoice, whichever plan you are on by then.
-        </li>
         <li>
           You can cancel your plan at any time. Cancellation takes effect at the{" "}
           <strong>end of the month you&rsquo;ve already paid for</strong>: you keep access until then
@@ -71,9 +62,8 @@ export default function RefundPolicyPage() {
 
       <h2>If it does not suit your business</h2>
       <p>
-        Use the trial: cancel within the {PRICING.trial.days} days and the setup fee comes back in full.
-        After that, cancel the monthly plan whenever you like. There is nothing to negotiate and no
-        retention call.
+        Use the trial: cancel within the {TRIAL_DAYS} days and you pay nothing. After that, cancel the
+        monthly plan whenever you like. There is nothing to negotiate and no retention call.
       </p>
 
       <h2>What happens to your data if you leave</h2>
@@ -109,10 +99,9 @@ export default function RefundPolicyPage() {
 
       <h2>How to cancel or ask for a refund</h2>
       <p>
-        During the trial, cancel from <strong>Usage</strong> in your dashboard and the refund is
-        automatic. Otherwise, cancel from <strong>Plan &amp; billing</strong>, or email{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> with your business name and what
-        you&rsquo;d like to do. We aim to reply within
+        During the trial, cancel from <strong>Usage</strong> in your dashboard and nothing is ever
+        charged. Otherwise, cancel from <strong>Plan &amp; billing</strong>, or reach us through our{" "}
+        <a href="/contact">contact page</a> with your business name and what you&rsquo;d like to do. We aim to reply within
         two business days.
       </p>
 

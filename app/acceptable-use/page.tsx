@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
-import { SITE, SUPPORT_EMAIL } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Acceptable Use Policy",
@@ -19,7 +19,7 @@ export default function AcceptableUsePage() {
   return (
     <LegalPage
       title="Acceptable Use Policy"
-      updated="4 September 2026"
+      updated="30 September 2026"
       intro={`This policy sets out what ${SITE.name} may and may not be used for. It applies to everything you do through the Service, and to everything you ask it to generate on your behalf. It forms part of the Terms of Service.`}
     >
       <h2>1. Who this applies to</h2>
@@ -70,8 +70,8 @@ export default function AcceptableUsePage() {
       <p>
         The test we apply is intent and framing, not anatomy. A waxing clinic showing a treated leg
         under clinical lighting is ordinary trade marketing. The same subject framed erotically is
-        not. If you believe a request of yours was refused wrongly, tell us at{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>. We would rather correct a false
+        not. If you believe a request of yours was refused wrongly, tell us through our{" "}
+        <a href="/contact">contact page</a>. We would rather correct a false
         refusal than leave a real business unable to advertise.
       </p>
 
@@ -123,8 +123,8 @@ export default function AcceptableUsePage() {
 
       <h2>6. Reporting a problem</h2>
       <p>
-        If you believe content produced or published through {SITE.name} breaches this policy, email{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> with enough detail to identify it. We
+        If you believe content produced or published through {SITE.name} breaches this policy, tell us through our{" "}
+        <a href="/contact">contact page</a> with enough detail to identify it. We
         will investigate and respond.
       </p>
     </LegalPage>

@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/hooks/use-motion";
-import { PhoneMock } from "@/components/site/phone-mock";
+import { ZaraCall } from "@/components/site/zara";
+import { OpenChatButton } from "@/components/site/chat-widget";
 
 /* The verb cycles so the headline reads as a desk that is always doing
    something (kept from the previous site, per the brief). */
@@ -115,24 +116,24 @@ export function RotatingVerb() {
 
 export function HomeHero({ children }: { children: React.ReactNode }) {
   return (
-    <section className="relative overflow-hidden pb-20 pt-28 sm:pt-32 lg:pb-28 lg:pt-40">
+    <section className="relative overflow-hidden pb-20 pt-32 sm:pt-36 lg:pb-28 lg:pt-44">
       <div aria-hidden className="rp-grid rp-fade-mask pointer-events-none absolute inset-0" />
       <div aria-hidden className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[620px] rounded-full bg-violet/25 blur-[140px]" />
-      <div aria-hidden className="pointer-events-none absolute -right-20 bottom-0 h-[380px] w-[420px] rounded-full bg-cta/10 blur-[140px]" />
-      <div className="relative mx-auto grid max-w-[1240px] items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-10">
-        <div className="animate-rise">
-          <p className="mb-7 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-glow">
-            <span aria-hidden className="h-px w-8 bg-glow/50" />
-            The AI front desk for local businesses
-          </p>
-          <h1 className="font-display text-[clamp(2.9rem,7.4vw,6.4rem)] leading-[0.94] tracking-[-0.025em] text-ink">
+      <div aria-hidden className="pointer-events-none absolute -right-20 bottom-0 h-[380px] w-[420px] rounded-full bg-cyan/10 blur-[140px]" />
+      <div className="relative mx-auto grid max-w-[1240px] items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
+        <div>
+          <p className="rp-enter rp-enter-1 mb-6 text-[15px] font-medium text-glow">The AI front desk for local businesses</p>
+          <h1 className="rp-enter rp-enter-2 font-display text-[clamp(2.9rem,7.4vw,6.4rem)] leading-[0.94] tracking-[-0.025em] text-ink">
             Your front desk,
             <br />
             always <RotatingVerb />
           </h1>
-          {children}
+          <div className="rp-enter rp-enter-3">{children}</div>
         </div>
-        <PhoneMock className="animate-rise [animation-delay:200ms]" />
+        <div className="rp-enter rp-enter-4 flex flex-col items-center">
+          <ZaraCall size="lg" />
+          <OpenChatButton className="mt-4 text-[14px] text-muted-ink underline decoration-line-strong underline-offset-4 hover:text-ink">Or chat with Zara</OpenChatButton>
+        </div>
       </div>
     </section>
   );

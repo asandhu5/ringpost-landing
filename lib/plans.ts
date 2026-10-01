@@ -19,6 +19,8 @@ export interface Plan {
   messagesPerMonth: number;
   imagesPerDay: number;
   videos: { count: number; per: string };
+  /** Active bookable staff the plan allows. */
+  bookableStaff: number;
   promptExtrasPerWeek: { images: number; videos: number };
   features: Feature[];
 }
@@ -30,12 +32,10 @@ export const FEATURE_LABELS = data.featureLabels as Record<Feature, string>;
 export const USAGE_WARNING_PERCENT = Math.round(data.usageWarningRatio * 100);
 
 /**
- * AI video generation is in the plan catalog but switched off in production: the
- * product launched without a video provider (it hides video everywhere until one is
- * configured). The site does not advertise a feature a customer cannot use today.
- * Flip this when video is switched on in the product.
+ * AI video (Runway) is switched on with the website launch: set RUNWAY_API_KEY on the
+ * api and worker before deploying the site. Set false to hide video everywhere here.
  */
-export const SHOW_AI_VIDEO = false;
+export const SHOW_AI_VIDEO = true;
 
 export function plan(id: PlanId): Plan {
   return PLANS.find((p) => p.id === id)!;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
-import { COMPANY, CONTACT_EMAIL, SITE, SUPPORT_EMAIL } from "@/lib/site";
+import { COMPANY, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -20,7 +20,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of Service"
-      updated="23 September 2026"
+      updated="30 September 2026"
       intro={`These terms govern your use of ${SITE.name}. They're written to be readable rather than impressive. If anything here is unclear, ask us before you agree to it.`}
     >
       <h2>1. What RingPost is</h2>
@@ -54,8 +54,8 @@ export default function TermsPage() {
       <h2>3. Fees and payment</h2>
       <ul>
         <li>
-          RingPost is offered as a one-time setup fee plus a monthly plan (Front
-          Desk, Growth or Command Center), at the prices shown on our{" "}
+          RingPost is offered as a monthly plan (Front Desk, Growth or Command
+          Center), with no setup fee, at the prices shown on our{" "}
           <a href="/pricing">pricing page</a> when you sign up. Each plan includes
           stated monthly allowances; top-up packs are only charged when you choose
           to buy one.
@@ -66,10 +66,10 @@ export default function TermsPage() {
           apply to payment processing.
         </li>
         <li>
-          Your 7-day free trial starts when the setup fee is paid. Unless you
-          cancel during the trial, your chosen plan is billed automatically at the
-          end of it, in advance, each month until cancelled. After 60 paid days,
-          half of the setup fee is credited against a following invoice.
+          Your 7-day free trial starts when you choose a plan and save a card, and
+          nothing is charged during it. Unless you cancel during the trial, your
+          chosen plan is billed automatically at the end of it, in advance, each
+          month until cancelled.
         </li>
         <li>
           Keep your payment details current. A failed payment may suspend the
@@ -246,9 +246,8 @@ export default function TermsPage() {
 
       <h2>16. Contact</h2>
       <p>
-        Questions about these terms:{" "}
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>. General
-        enquiries: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+        Questions about these terms: use our{" "}
+        <a href="/contact">contact page</a>.
       </p>
     </LegalPage>
   );

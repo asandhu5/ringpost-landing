@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BlogCard } from "@/components/site/blog-card";
-import { Container, CtaBand, PageHero, Section } from "@/components/site/ui";
+import { Container, PageHero, Section } from "@/components/site/ui";
 import { allPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -22,7 +22,6 @@ export default function BlogIndex() {
           </div>
         </Container>
       </Section>
-      <CtaBand />
     </>
   );
 }
