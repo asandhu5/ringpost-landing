@@ -17,7 +17,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      updated="30 September 2026"
+      updated="4 October 2026"
       intro="This explains what RingPost collects, what we do with it, and who else touches it. There are two different sets of people here: businesses who sign up, and their customers who never did. This policy treats them separately, because the second group is the one that matters most."
     >
       <p>
@@ -252,13 +252,52 @@ export default function PrivacyPage() {
         under the terms of this policy.
       </p>
 
-      <h2>14. Changes</h2>
+      <h2>14. Government and law enforcement requests</h2>
+      <p>
+        We may be asked by a public authority to hand over personal data. This
+        is how we handle that, and it applies to every request, wherever it
+        comes from.
+      </p>
+      <ul>
+        <li>
+          <strong>We check that the request is lawful.</strong> Every request is
+          reviewed before anything is disclosed: that it comes from an authority
+          with jurisdiction over us, that it is served through the proper legal
+          process, and that it is valid on its face. We do not disclose data on
+          an informal or voluntary request.
+        </li>
+        <li>
+          <strong>We challenge requests we believe are unlawful.</strong> Where
+          a request appears to be overbroad, improperly served, or without a
+          legal basis, we will push back on it and, where necessary, contest it
+          through the appropriate legal channel rather than comply.
+        </li>
+        <li>
+          <strong>We disclose the minimum.</strong> Where we must comply, we
+          give only the specific data the request actually compels, for the
+          people it names and the period it covers. We do not provide bulk
+          exports, direct access to our systems, or anything beyond the narrow
+          scope of the order.
+        </li>
+        <li>
+          <strong>We write it down.</strong> We keep a record of each request,
+          what we disclosed, the legal reasoning, and who was involved in the
+          decision.
+        </li>
+        <li>
+          <strong>We tell the people affected.</strong> Where a business&rsquo;s
+          data is involved, we notify that business, unless a court order or the
+          law forbids us from doing so.
+        </li>
+      </ul>
+
+      <h2>15. Changes</h2>
       <p>
         We may update this policy. Material changes will be communicated by
         email before they take effect.
       </p>
 
-      <h2>15. Contact</h2>
+      <h2>16. Contact</h2>
       <p>
         Questions about this policy or your data: use our{" "}
         <a href="/contact">contact page</a>.
