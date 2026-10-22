@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SiteNav } from "@/components/site/nav";
 import { SiteFooter } from "@/components/site/footer";
 import { ChatWidget } from "@/components/site/chat-widget";
+import { PointerGlow, ScrollProgress } from "@/components/site/motion";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   // "./" resolves to each page's own path, so every page is canonical to itself on the
   // www host. (It used to be "/" here, which made every page claim to be the homepage.)
-  alternates: { canonical: "./" },
+  alternates: { canonical: "./", types: { "application/rss+xml": [{ url: "/feed.xml", title: `${SITE.name} blog` }] } },
   title: {
     default: `${SITE.name}: the AI front desk for local businesses`,
     template: `%s · ${SITE.name}`,
@@ -46,6 +47,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-base">
           Skip to content
         </a>
+        <ScrollProgress />
+        <PointerGlow />
         <SiteNav />
         <main id="main">{children}</main>
         <SiteFooter />

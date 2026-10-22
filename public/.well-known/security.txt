@@ -1,0 +1,6 @@
+# How to report a security problem with RingPost (RFC 9116).
+# The contact form reaches the RingPost team; please say it is a security report.
+Contact: https://www.ringpost.tech/contact
+Expires: 2027-10-23T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.ringpost.tech/.well-known/security.txt
