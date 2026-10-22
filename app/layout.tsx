@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SiteNav } from "@/components/site/nav";
 import { SiteFooter } from "@/components/site/footer";
 import { ChatWidget } from "@/components/site/chat-widget";
@@ -53,7 +54,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main id="main">{children}</main>
         <SiteFooter />
         <ChatWidget />
+        {/* Vercel's free (Hobby) analytics: visitors and pages, and real-visitor page speed.
+            Both load from this site's own /_vercel path, which the CSP already allows. */}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
