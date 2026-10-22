@@ -11,10 +11,11 @@ import { ZaraCall, ZaraOrb } from "@/components/site/zara";
  * Chat and Call. It lives in the root layout, so a conversation survives moving between
  * pages (and, through sessionStorage, reloads) until the tab is closed.
  *
- * When someone first arrives, Zara opens by herself once per visit (on a phone, a small
- * greeting bubble instead of a full-screen panel), with a soft chime where the browser
- * allows sound before the visitor has interacted. A click anywhere outside collapses her.
- * Any page can open her with <OpenChatButton> or openAssistant().
+ * When someone first arrives, Zara never opens by herself. Once per visit she plays a
+ * soft chime and her launcher pulses, so she is noticed without covering the page.
+ * Browsers only allow sound after the visitor has interacted, so if the chime is refused
+ * it plays on their first tap or key press instead. A click anywhere outside collapses
+ * her. Any page can open her with <OpenChatButton> or openAssistant().
  */
 
 const OPEN_EVENT = "rp:open-assistant";
@@ -24,13 +25,13 @@ export function openAssistant(question?: string, mode: "chat" | "call" = "chat")
   window.dispatchEvent(new CustomEvent(OPEN_EVENT, { detail: { question, mode } }));
 }
 
-/** Two soft notes. Browsers only allow sound after an interaction; if they refuse, silence. */
-function chime() {
+/** Two soft notes. Returns false when the browser refuses sound (no interaction yet). */
+function chime(): boolean {
   try {
     const ac = new AudioContext();
     if (ac.state === "suspended") {
       void ac.close();
-      return;
+      return false;
     }
     const now = ac.currentTime;
     for (const [i, f] of [659.25, 987.77].entries()) {
@@ -46,8 +47,9 @@ function chime() {
       o.stop(now + i * 0.12 + 0.65);
     }
     setTimeout(() => void ac.close(), 1200);
+    return true;
   } catch {
-    /* no sound */
+    return false;
   }
 }
 
@@ -55,7 +57,7 @@ export function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [mode, setMode] = useState<"chat" | "call">("chat");
-  const [bubble, setBubble] = useState(false);
+  const [nudge, setNudge] = useState(false);
   const [ask, setAsk] = useState<{ text: string; nonce: number } | null>(null);
   const launcher = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
@@ -64,7 +66,7 @@ export function ChatWidget() {
     setMounted(true);
     setMode(m);
     setOpen(true);
-    setBubble(false);
+    setNudge(false);
   }, []);
 
   const close = useCallback(() => setOpen(false), []);
@@ -80,7 +82,7 @@ export function ChatWidget() {
     return () => window.removeEventListener(OPEN_EVENT, onOpen);
   }, [show]);
 
-  // Say hello once per visit.
+  // Say hello once per visit: a chime and a pulsing launcher, never an opened panel.
   useEffect(() => {
     let greeted = false;
     try {
@@ -90,29 +92,43 @@ export function ChatWidget() {
       /* ignore */
     }
     if (greeted) return;
-    const t = setTimeout(() => {
-      if (window.matchMedia("(max-width: 639px)").matches) setBubble(true);
-      else show("chat");
+    let waiting = false;
+    const onFirstInteraction = () => {
       chime();
+      stopWaiting();
+    };
+    const stopWaiting = () => {
+      if (!waiting) return;
+      waiting = false;
+      window.removeEventListener("pointerdown", onFirstInteraction);
+      window.removeEventListener("keydown", onFirstInteraction);
+    };
+    const t = setTimeout(() => {
+      setNudge(true);
+      if (chime()) return;
+      waiting = true;
+      window.addEventListener("pointerdown", onFirstInteraction, { once: true });
+      window.addEventListener("keydown", onFirstInteraction, { once: true });
     }, 2200);
-    return () => clearTimeout(t);
-  }, [show]);
+    const stopNudge = setTimeout(() => setNudge(false), 2200 + 12_000);
+    return () => {
+      clearTimeout(t);
+      clearTimeout(stopNudge);
+      stopWaiting();
+    };
+  }, []);
 
   // Escape, or a click anywhere outside Zara, collapses her.
   useEffect(() => {
-    if (!open && !bubble) return;
+    if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpen(false);
-        setBubble(false);
-      }
+      if (e.key === "Escape") setOpen(false);
     };
     const onDown = (e: PointerEvent) => {
       const target = e.target as Node;
       if (panel.current?.contains(target) || launcher.current?.contains(target)) return;
       if ((target as HTMLElement).closest?.("[data-zara-open]")) return;
       setOpen(false);
-      setBubble(false);
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("pointerdown", onDown);
@@ -120,7 +136,7 @@ export function ChatWidget() {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("pointerdown", onDown);
     };
-  }, [open, bubble]);
+  }, [open]);
 
   // On a phone the panel covers the screen, so following a link closes it.
   const onLinkClick = useCallback(() => {
@@ -184,20 +200,6 @@ export function ChatWidget() {
         </div>
       )}
 
-      {bubble && !open && (
-        <div className="animate-rise fixed bottom-24 right-5 z-[71] w-[min(300px,calc(100vw-2.5rem))] rounded-2xl border border-line-strong bg-surface p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.9)]">
-          <p className="text-[14px] leading-relaxed text-ink">Hi, I&apos;m Zara. Ask me anything about RingPost, or give me a call.</p>
-          <div className="mt-3 flex gap-2">
-            <button type="button" onClick={() => show("chat")} className="flex-1 rounded-full bg-violet px-3 py-2 text-[13px] font-medium text-white">
-              Chat
-            </button>
-            <button type="button" onClick={() => show("call")} className="flex-1 rounded-full border border-line-strong px-3 py-2 text-[13px] font-medium text-ink">
-              Call
-            </button>
-          </div>
-        </div>
-      )}
-
       <button
         ref={launcher}
         type="button"
@@ -208,6 +210,9 @@ export function ChatWidget() {
           open ? "max-sm:hidden" : ""
         }`}
       >
+        {nudge && !open && (
+          <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-glow/70 motion-safe:animate-ping" />
+        )}
         {open ? <X aria-hidden className="h-5 w-5 text-white sm:ml-3" /> : <ZaraOrb size={40} />}
         <span className="text-[14.5px] font-medium text-white max-sm:sr-only">{open ? "Close" : "Talk to Zara"}</span>
       </button>

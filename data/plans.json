@@ -13,7 +13,7 @@
     {
       "id": "front_desk",
       "name": "Front Desk",
-      "monthlyUsd": 499,
+      "monthlyUsd": 399,
       "tagline": "Every call and message answered, and a steady stream of posts.",
       "minutesPerMonth": 400,
       "messagesPerMonth": 1500,
@@ -32,7 +32,7 @@
     {
       "id": "growth",
       "name": "Growth",
-      "monthlyUsd": 999,
+      "monthlyUsd": 799,
       "tagline": "Everything in Front Desk, plus your own uploads, auto-posting and Talk to AI.",
       "minutesPerMonth": 650,
       "messagesPerMonth": 3000,
@@ -55,7 +55,7 @@
     {
       "id": "command_center",
       "name": "Command Center",
-      "monthlyUsd": 1399,
+      "monthlyUsd": 1099,
       "tagline": "The whole front of house: comment replies, campaigns, reviews, insights and win-backs.",
       "minutesPerMonth": 1000,
       "messagesPerMonth": 5000,

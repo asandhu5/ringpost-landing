@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
 import { SITE } from "@/lib/site";
-import { TRIAL } from "@/lib/plans";
-
-const TRIAL_DAYS = TRIAL.days;
 
 export const metadata: Metadata = {
   title: "Refund Policy",
@@ -12,15 +9,14 @@ export const metadata: Metadata = {
 };
 
 /**
- * Matches the product's billing since 2026-09-29 (packages/core/src/billing/plans.ts): no
- * setup fee; the trial starts when a card is saved, cancelling during it charges nothing,
- * and the plan bills on day 8.
+ * Matches the product's billing (packages/core/src/billing/plans.ts): no setup fee since
+ * 2026-09-29, and no free trial since 2026-10-22; the plan is billed when it is chosen.
  */
 export default function RefundPolicyPage() {
   return (
     <LegalPage
       title="Refund Policy"
-      updated="30 September 2026"
+      updated="22 October 2026"
       intro="Short, and meant to be clear. If something here doesn't seem fair in your situation, tell us. We'd rather sort it out than hide behind a policy page."
     >
       <h2>How you are billed</h2>
@@ -30,24 +26,12 @@ export default function RefundPolicyPage() {
         term. Top-up packs are only charged when you choose to buy one.
       </p>
 
-      <h2>The {TRIAL_DAYS}-day free trial</h2>
+      <h2>Cancelling</h2>
       <ul>
         <li>
-          Your free trial starts when you choose a plan and save a card. Nothing is charged, and
-          your AI starts answering straight away.
+          Your plan is billed when you choose it, then monthly, in advance. There is no free
+          trial, but you can create an account and see the dashboard before you pay.
         </li>
-        <li>
-          <strong>Cancel at any time during the trial and you are never charged.</strong> Your plan
-          never starts.
-        </li>
-        <li>
-          If you don&rsquo;t cancel, your chosen plan is billed on day {TRIAL_DAYS + 1}, on the card
-          you saved. We remind you a day or two before.
-        </li>
-      </ul>
-
-      <h2>After the trial</h2>
-      <ul>
         <li>
           You can cancel your plan at any time. Cancellation takes effect at the{" "}
           <strong>end of the month you&rsquo;ve already paid for</strong>: you keep access until then
@@ -62,8 +46,9 @@ export default function RefundPolicyPage() {
 
       <h2>If it does not suit your business</h2>
       <p>
-        Use the trial: cancel within the {TRIAL_DAYS} days and you pay nothing. After that, cancel the
-        monthly plan whenever you like. There is nothing to negotiate and no retention call.
+        See the dashboard before you pay, and ask Zara or the team anything. Once you&rsquo;re
+        on a plan, cancel the monthly plan whenever you like. There is nothing to negotiate and no
+        retention call.
       </p>
 
       <h2>What happens to your data if you leave</h2>
@@ -99,8 +84,7 @@ export default function RefundPolicyPage() {
 
       <h2>How to cancel or ask for a refund</h2>
       <p>
-        During the trial, cancel from <strong>Usage</strong> in your dashboard and nothing is ever
-        charged. Otherwise, cancel from <strong>Plan &amp; billing</strong>, or reach us through our{" "}
+        Cancel from <strong>Plan &amp; billing</strong> in your dashboard, or reach us through our{" "}
         <a href="/contact">contact page</a> with your business name and what you&rsquo;d like to do. We aim to reply within
         two business days.
       </p>

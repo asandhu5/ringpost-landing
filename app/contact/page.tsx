@@ -6,6 +6,7 @@ import { SUGGESTIONS } from "@/lib/content/assistant";
 import { ContactForm } from "@/components/site/contact-form";
 import { Container, PageHero, Section } from "@/components/site/ui";
 import { COMPANY, PRIMARY_EMAIL, SITE } from "@/lib/site";
+import { InViewGroup } from "@/components/site/motion";
 
 export const metadata: Metadata = {
   title: "Contact RingPost",
@@ -23,10 +24,11 @@ export default function ContactPage() {
     <>
       <PageHero eyebrow="Contact" title="Talk to us." lede="Zara answers instantly. For a person, use the form." />
       <Section className="!pt-0">
-        <Container className="grid items-start gap-6 lg:grid-cols-2">
+        <Container>
+          <InViewGroup className="grid items-start gap-6 lg:grid-cols-2">
           <div className="flex flex-col gap-4">
-            <div className="rp-card rounded-3xl p-7 sm:p-8">
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-violet/15 text-glow">
+            <div className="rp-card rp-card-hover rounded-3xl p-7 sm:p-8">
+              <span className="rp-icon-ring flex h-11 w-11 items-center justify-center rounded-2xl bg-violet/15 text-glow">
                 <MessageCircle aria-hidden className="h-5 w-5" />
               </span>
               <p className="mt-5 font-display text-3xl text-ink">Ask Zara</p>
@@ -50,6 +52,7 @@ export default function ContactPage() {
             </Link>
           </div>
           <ContactForm />
+          </InViewGroup>
         </Container>
       </Section>
       <Section tone="surface">

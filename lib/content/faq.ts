@@ -1,4 +1,4 @@
-import { PLANS, TOP_UPS, TRIAL, USAGE_WARNING_PERCENT, num, usd } from "@/lib/plans";
+import { PLANS, TOP_UPS, USAGE_WARNING_PERCENT, usd } from "@/lib/plans";
 
 /**
  * The one FAQ source. /faq shows every group except "Pricing and billing", which appears
@@ -20,12 +20,12 @@ export const FAQ: FaqItem[] = [
   {
     group: "Pricing and billing",
     q: "What does it cost?",
-    a: `Three monthly plans: ${planLine}. No setup fee, no contract, and a ${TRIAL.days}-day free trial on each.`,
+    a: `Three monthly plans: ${planLine}. No setup fee and no contract. Billed monthly from the day you choose a plan.`,
   },
   {
     group: "Pricing and billing",
-    q: "How does the free trial work?",
-    a: `Pick a plan and add a card; nothing is charged today. You get ${TRIAL.minutesPerDay} calling minutes a day and ${num(TRIAL.messages)} messages for the week. Cancel before day ${TRIAL.days + 1} and you pay nothing.`,
+    q: "Is there a free trial?",
+    a: "No. You can create an account and see the dashboard before you pay. When you choose a plan, your number, connections and AI switch on straight away.",
   },
   {
     group: "Pricing and billing",
@@ -40,7 +40,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "Pricing and billing",
     q: "Can I cancel?",
-    a: "Yes, any time, with no fee. Cancel during the trial and you're never charged.",
+    a: "Yes, any time, with no fee. Your plan runs to the end of the month you've paid for and isn't billed again.",
     link: { href: "/refund-policy", label: "Refund policy" },
   },
   {
@@ -69,7 +69,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "How it works",
     q: "Does it work with Instagram and WhatsApp?",
-    a: "Yes. Connect Instagram and Messenger with your Facebook login. WhatsApp needs a WhatsApp Business account, and we help you connect it.",
+    a: "Yes. Connect Instagram with your Instagram login and Messenger with your Facebook Page. WhatsApp needs a WhatsApp Business account, and we help you connect it.",
     link: { href: "/channels", label: "All channels" },
   },
   {

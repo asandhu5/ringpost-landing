@@ -20,7 +20,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of Service"
-      updated="30 September 2026"
+      updated="22 October 2026"
       intro={`These terms govern your use of ${SITE.name}. They're written to be readable rather than impressive. If anything here is unclear, ask us before you agree to it.`}
     >
       <h2>1. What RingPost is</h2>
@@ -66,10 +66,10 @@ export default function TermsPage() {
           apply to payment processing.
         </li>
         <li>
-          Your 7-day free trial starts when you choose a plan and save a card, and
-          nothing is charged during it. Unless you cancel during the trial, your
-          chosen plan is billed automatically at the end of it, in advance, each
-          month until cancelled.
+          There is no free trial. Your chosen plan is billed when you choose it
+          and then automatically, in advance, each month until cancelled. You may
+          create an account and view the dashboard without paying; using
+          the Service requires a paid plan.
         </li>
         <li>
           Keep your payment details current. A failed payment may suspend the

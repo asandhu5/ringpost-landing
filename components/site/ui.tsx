@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, ChevronRight } from "lucide-react";
 import { SIGNUP_URL, SITE } from "@/lib/site";
 import type { Turn } from "@/lib/content/industries";
+import { InViewGroup } from "@/components/site/motion";
+import { Reveal } from "@/components/site/reveal";
 
 /* ──────────────────────────────────────────────────────────────────
  *  The component kit. Pages are assembled from these, so spacing,
@@ -36,7 +38,7 @@ export function Section({
       id={id}
       className={cx(
         "relative",
-        bleed ? "" : "py-20 sm:py-24 lg:py-28",
+        bleed ? "" : "py-16 sm:py-20 lg:py-24",
         tone === "surface" && "bg-surface/60 border-y border-line",
         className,
       )}
@@ -53,7 +55,7 @@ export function Eyebrow({ children, className }: { children: React.ReactNode; cl
 }
 
 export function H2({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <h2 className={cx("font-display text-[clamp(2.1rem,4.6vw,3.6rem)] leading-[1.02] tracking-[-0.015em] text-ink", className)}>{children}</h2>;
+  return <h2 className={cx("font-display text-[clamp(1.9rem,3.5vw,3rem)] leading-[1.04] tracking-[-0.015em] text-ink", className)}>{children}</h2>;
 }
 
 export function Lede({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -62,11 +64,11 @@ export function Lede({ children, className }: { children: React.ReactNode; class
 
 export function SectionHeader({ eyebrow, title, lede, align = "left", className }: { eyebrow?: string; title: React.ReactNode; lede?: React.ReactNode; align?: "left" | "center"; className?: string }) {
   return (
-    <div className={cx("mb-12 lg:mb-16", align === "center" && "mx-auto flex max-w-3xl flex-col items-center text-center", className)}>
+    <Reveal className={cx("mb-10 lg:mb-12", align === "center" && "mx-auto flex max-w-3xl flex-col items-center text-center", className)}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
       <H2>{title}</H2>
       {lede && <Lede className={cx("mt-5", align === "center" && "mx-auto")}>{lede}</Lede>}
-    </div>
+    </Reveal>
   );
 }
 
@@ -122,10 +124,13 @@ export function ButtonLink({
   );
 }
 
+/** The page's call to action: "Get started", with "Talk to Zara" beside it. */
 export function TrialButtons({ secondary = { href: "/call", label: "Talk to Zara" }, className }: { secondary?: { href: string; label: string } | null; className?: string }) {
   return (
     <div className={cx("flex flex-wrap items-center gap-3", className)}>
-      <ButtonLink href={SIGNUP_URL}>Start free trial</ButtonLink>
+      <ButtonLink href={SIGNUP_URL} className="rp-cta-shine">
+        Get started
+      </ButtonLink>
       {secondary && (
         <ButtonLink href={secondary.href} variant="ghost">
           {secondary.label}
@@ -198,15 +203,19 @@ export function PageHero({
   aside?: React.ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden pb-16 pt-32 sm:pt-36 lg:pb-24 lg:pt-44">
+    <section className="relative overflow-hidden pb-14 pt-28 sm:pt-32 lg:pb-20 lg:pt-36">
+      <div aria-hidden className="rp-aurora rp-aurora--soft">
+        <span />
+        <span />
+        <span />
+      </div>
       <div aria-hidden className="rp-grid rp-fade-mask pointer-events-none absolute inset-0" />
-      <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-violet/20 blur-[120px]" />
       <Container className="relative">
         {crumbs && <Breadcrumbs items={crumbs} />}
-        <div className={cx(aside ? "grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]" : "")}>
+        <div className={cx("rp-hero-enter", aside ? "grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]" : "")}>
           <div className="max-w-3xl">
             {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-            <h1 className="font-display text-[clamp(2.6rem,6.2vw,5.2rem)] leading-[0.98] tracking-[-0.02em] text-ink">{title}</h1>
+            <h1 className="font-display text-[clamp(2.4rem,4.6vw,4.2rem)] leading-[1] tracking-[-0.02em] text-ink">{title}</h1>
             {lede && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-ink">{lede}</p>}
             {children && <div className="mt-9">{children}</div>}
           </div>
@@ -240,7 +249,7 @@ export function FeatureGrid({
 }) {
   const cols = { 2: "md:grid-cols-2", 3: "md:grid-cols-2 lg:grid-cols-3", 4: "md:grid-cols-2 lg:grid-cols-4" }[columns];
   return (
-    <div className={cx("grid gap-4", cols)}>
+    <InViewGroup className={cx("grid gap-4", cols)}>
       {items.map((item) => (
         <Card key={item.title} href={item.href} className="flex flex-col">
           {item.icon && <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-line-strong bg-violet/10 text-glow">{item.icon}</div>}
@@ -254,28 +263,28 @@ export function FeatureGrid({
           )}
         </Card>
       ))}
-    </div>
+    </InViewGroup>
   );
 }
 
 export function StepFlow({ steps }: { steps: { step: string; title: string; body: string }[] }) {
   return (
-    <ol className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
+    <InViewGroup as="ol" className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
       {steps.map((s) => (
         <li key={s.step} className="relative bg-base p-7">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-glow/40 bg-violet/10 text-[13px] font-semibold text-glow">{s.step}</span>
+          <span className="rp-icon-ring flex h-8 w-8 items-center justify-center rounded-full border border-glow/40 bg-violet/10 text-[13px] font-semibold text-glow">{s.step}</span>
           <h3 className="mt-6 text-lg font-semibold text-ink">{s.title}</h3>
           <p className="mt-2 text-[15px] leading-relaxed text-muted-ink">{s.body}</p>
         </li>
       ))}
-    </ol>
+    </InViewGroup>
   );
 }
 
 /** Facts, never results: every value must be countable in the code. */
 export function StatRow({ stats }: { stats: { value: string; label: string }[] }) {
   return (
-    <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
+    <InViewGroup as="dl" className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
       {stats.map((s) => (
         <div key={s.label} className="bg-base px-5 py-6">
           <dt className="sr-only">{s.label}</dt>
@@ -285,7 +294,7 @@ export function StatRow({ stats }: { stats: { value: string; label: string }[] }
           </dd>
         </div>
       ))}
-    </dl>
+    </InViewGroup>
   );
 }
 
@@ -304,9 +313,9 @@ export function Pill({ children, tone = "violet" }: { children: React.ReactNode;
 export function FaqList({ items, structuredData = false }: { items: { q: string; a: string; link?: { href: string; label: string } }[]; structuredData?: boolean }) {
   return (
     <>
-      <div className="divide-y divide-line overflow-hidden rounded-2xl border border-line">
+      <InViewGroup className="divide-y divide-line overflow-hidden rounded-2xl border border-line">
         {items.map((item) => (
-          <details key={item.q} className="group bg-base open:bg-surface/50">
+          <details key={item.q} className="rp-faq group bg-base open:bg-surface/50">
             <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-6 px-5 py-4 text-left text-[1.02rem] font-medium text-ink sm:px-7 [&::-webkit-details-marker]:hidden">
               {item.q}
               <span aria-hidden className="relative h-4 w-4 shrink-0 text-glow">
@@ -324,7 +333,7 @@ export function FaqList({ items, structuredData = false }: { items: { q: string;
             </div>
           </details>
         ))}
-      </div>
+      </InViewGroup>
       {structuredData && (
         <JsonLd
           data={{
@@ -335,29 +344,6 @@ export function FaqList({ items, structuredData = false }: { items: { q: string;
         />
       )}
     </>
-  );
-}
-
-/* ── CTA band ───────────────────────────────────────────────────── */
-
-export function CtaBand({ title = "Let it answer the next call.", lede, secondary }: { title?: string; lede?: string; secondary?: { href: string; label: string } | null }) {
-  return (
-    <Section className="pb-24 pt-8 sm:pb-28">
-      <Container>
-        <div className="relative overflow-hidden rounded-[28px] border border-line-strong bg-surface px-6 py-14 sm:px-12 sm:py-16">
-          <div aria-hidden className="rp-grid pointer-events-none absolute inset-0 opacity-50" />
-          <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-violet/30 blur-[90px]" />
-          <div aria-hidden className="pointer-events-none absolute -bottom-32 left-10 h-72 w-72 rounded-full bg-cta/20 blur-[100px]" />
-          <div className="relative flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] leading-[1] tracking-[-0.015em] text-ink">{title}</h2>
-              {lede && <p className="mt-4 text-lg text-muted-ink">{lede}</p>}
-            </div>
-            <TrialButtons secondary={secondary === undefined ? { href: "/call", label: "Talk to Zara" } : secondary} />
-          </div>
-        </div>
-      </Container>
-    </Section>
   );
 }
 
@@ -375,9 +361,6 @@ export function OnThisPage({ name, links }: { name: string; links: { href: strin
             </a>
           ))}
         </nav>
-        <a href={SIGNUP_URL} className="hidden shrink-0 rounded-full bg-cta px-4 py-1.5 text-[13.5px] font-medium text-[#1a0d08] hover:bg-[var(--rp-cta-hover)] md:block">
-          Start free trial
-        </a>
       </Container>
     </div>
   );
@@ -400,9 +383,10 @@ export function screenshotExists(src: string): boolean {
 export function ScreenshotFrame({ src, alt, caption, className }: { src: string; alt: string; caption?: string; className?: string }) {
   if (!screenshotExists(src)) return null;
   return (
-    <figure className={cx("relative", className)}>
+    <Reveal className={cx("relative", className)}>
+      <figure className="relative">
       <div aria-hidden className="pointer-events-none absolute -inset-6 rounded-[32px] bg-violet/15 blur-3xl" />
-      <div className="relative overflow-hidden rounded-2xl border border-line-strong bg-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)]">
+      <div className="rp-tilt relative overflow-hidden rounded-2xl border border-line-strong bg-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)]">
         <div className="flex items-center gap-1.5 border-b border-line bg-base/70 px-4 py-3">
           <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
           <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
@@ -413,7 +397,8 @@ export function ScreenshotFrame({ src, alt, caption, className }: { src: string;
         <img src={src} alt={alt} loading="lazy" className="block h-auto w-full" />
       </div>
       {caption && <figcaption className="mt-3 text-center text-[12.5px] text-faint">{caption}</figcaption>}
-    </figure>
+      </figure>
+    </Reveal>
   );
 }
 
@@ -429,7 +414,7 @@ export function Conversation({ turns, label }: { turns: Turn[]; label?: string }
         </span>
         <span className="text-[12px] font-medium text-muted-ink">Front desk</span>
       </div>
-      <div className="flex flex-col gap-3 p-5">
+      <InViewGroup className="flex flex-col gap-3 p-5">
         {turns.map((t, i) =>
           t.from === "note" ? (
             <p key={i} className="flex items-center gap-2 py-0.5 text-[12px] font-medium text-glow/80">
@@ -452,7 +437,7 @@ export function Conversation({ turns, label }: { turns: Turn[]; label?: string }
             </div>
           ),
         )}
-      </div>
+      </InViewGroup>
       {label && <figcaption className="border-t border-line px-5 py-3 text-[12px] text-faint">{label}</figcaption>}
     </figure>
   );

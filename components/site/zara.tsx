@@ -47,7 +47,7 @@ export function ZaraOrb({ phase = "idle", levelRef, size = 220, className }: { p
  */
 export function ZaraCall({ size = "md", className, hint = true }: { size?: "sm" | "md" | "lg"; className?: string; hint?: boolean }) {
   const { phase, remaining, message, supported, levelRef, start, end } = useZaraCall();
-  const orb = size === "lg" ? 240 : size === "md" ? 180 : 120;
+  const orb = size === "lg" ? 216 : size === "md" ? 180 : 120;
   const live = phase === "live";
   return (
     <div className={cx("flex flex-col items-center text-center", className)}>

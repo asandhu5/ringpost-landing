@@ -3,10 +3,11 @@ import Link from "next/link";
 import { Check, ShieldCheck } from "lucide-react";
 import { PRODUCT_ICONS } from "@/components/site/icons";
 import { Reveal } from "@/components/site/reveal";
-import { Container, CtaBand, H2, Lede, OnThisPage, PageHero, ScreenshotFrame, Section, StepFlow, TrialButtons, screenshotExists } from "@/components/site/ui";
+import { Container, H2, Lede, OnThisPage, PageHero, ScreenshotFrame, Section, StepFlow, TrialButtons, screenshotExists } from "@/components/site/ui";
 import { ProductVisual } from "@/components/site/visuals";
 import { AUTOMATIONS, GUARDRAILS, HOW_IT_WORKS } from "@/lib/content/platform";
 import { PILLARS, PRODUCTS, productsIn, type Pillar } from "@/lib/content/products";
+import { InViewGroup } from "@/components/site/motion";
 
 const TITLE = "AI Front Desk for local businesses";
 const DESCRIPTION = "An AI front desk answers every call and message, books appointments and hands over when a person is needed. RingPost's also posts to your socials, asks for reviews and brings customers back.";
@@ -30,7 +31,7 @@ export default function ProductHub() {
       <PageHero
         eyebrow="The AI Front Desk"
         title="It answers, it books, and it wins you more."
-        lede="An AI front desk handles the calls, messages and bookings a receptionist would, day and night, from your own information. RingPost's then helps bring customers in."
+        lede="An AI front desk handles the calls, messages and bookings a receptionist would, day and night, from your own information. Then it helps bring more customers in."
       >
         <TrialButtons />
       </PageHero>
@@ -90,7 +91,7 @@ export default function ProductHub() {
         <Container>
           <H2 className="mb-3">What runs by itself.</H2>
           <Lede className="mb-10">In your time zone, while you're busy with customers.</Lede>
-          <div className="grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+          <InViewGroup className="grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
             {AUTOMATIONS.map((a) => (
               <div key={a.title} className="border-t border-line pt-4">
                 <p className="text-[13.5px] text-glow">{a.when}</p>
@@ -98,14 +99,16 @@ export default function ProductHub() {
                 <p className="mt-1 text-[14.5px] text-muted-ink">{a.body}</p>
               </div>
             ))}
-          </div>
+          </InViewGroup>
         </Container>
       </Section>
 
       <Section id="guardrails" tone="surface" className="scroll-mt-28">
         <Container className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <ShieldCheck aria-hidden className="mb-5 h-7 w-7 text-glow" />
+            <span className="rp-icon-ring mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-violet/15">
+              <ShieldCheck aria-hidden className="h-6 w-6 text-glow" />
+            </span>
             <H2>{GUARDRAILS.headline}</H2>
             <Lede className="mt-4">{GUARDRAILS.lede}</Lede>
             <blockquote className="mt-8 border-l-2 border-violet/60 pl-5">
@@ -114,14 +117,14 @@ export default function ProductHub() {
             </blockquote>
           </div>
           <div>
-            <ul className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            <InViewGroup as="ul" className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
               {GUARDRAILS.rules.map((r) => (
                 <li key={r.title}>
                   <p className="text-[16px] font-medium text-ink">{r.title}</p>
                   <p className="mt-1 text-[14.5px] leading-relaxed text-muted-ink">{r.body}</p>
                 </li>
               ))}
-            </ul>
+            </InViewGroup>
             <ul className="mt-8 flex flex-col gap-2 border-t border-line pt-6">
               {GUARDRAILS.extras.map((e) => (
                 <li key={e} className="flex gap-2.5 text-[15px] text-muted-ink">
@@ -134,7 +137,6 @@ export default function ProductHub() {
         </Container>
       </Section>
 
-      <CtaBand />
     </>
   );
 }

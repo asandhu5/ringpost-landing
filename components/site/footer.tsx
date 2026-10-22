@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wordmark } from "@/components/site/logo";
 import { CHANNELS } from "@/lib/content/channels";
 import { COMPANY_NAV, LEGAL_NAV, PRODUCT_NAV, RESOURCES_NAV } from "@/lib/nav";
-import { COMPANY, LOGIN_URL, SIGNUP_URL, SITE } from "@/lib/site";
+import { COMPANY, LOGIN_URL, SITE } from "@/lib/site";
 
 /**
  * The site footer: product, channels, resources, company and legal, plus one line on
@@ -18,14 +18,12 @@ export function SiteFooter() {
           <div>
             <Wordmark />
             <p className="mt-4 max-w-xs text-[14px] leading-relaxed text-muted-ink">The AI front desk for local businesses. It answers every customer, then helps you win more.</p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <a href={SIGNUP_URL} className="rounded-full bg-cta px-4 py-2 text-[13.5px] font-medium text-[#1a0d08] hover:bg-[var(--rp-cta-hover)]">
-                Start free trial
-              </a>
-              <a href={LOGIN_URL} className="rounded-full border border-line-strong px-4 py-2 text-[13.5px] text-ink hover:border-glow/50">
+            <p className="mt-6 text-[13.5px] text-muted-ink">
+              Already a customer?{" "}
+              <a href={LOGIN_URL} className="text-ink underline decoration-line-strong underline-offset-4 hover:decoration-glow">
                 Sign in
               </a>
-            </div>
+            </p>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">

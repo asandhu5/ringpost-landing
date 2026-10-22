@@ -8,6 +8,7 @@ import { Container, FaqList, OnThisPage, PageHero, ScreenshotFrame, Section, Tri
 import { ProductVisual } from "@/components/site/visuals";
 import { GUARDRAILS } from "@/lib/content/platform";
 import { PILLARS, PRODUCTS, productBySlug, productsIn } from "@/lib/content/products";
+import { InViewGroup } from "@/components/site/motion";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -83,14 +84,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <h2 className="font-display text-4xl leading-tight text-ink">{GUARDRAILS.headline}</h2>
               <p className="mt-4 text-[16px] leading-relaxed text-muted-ink">{GUARDRAILS.lede}</p>
             </div>
-            <ul className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            <InViewGroup as="ul" className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
               {GUARDRAILS.rules.map((r) => (
                 <li key={r.title}>
                   <p className="text-[16px] font-medium text-ink">{r.title}</p>
                   <p className="mt-1 text-[14.5px] leading-relaxed text-muted-ink">{r.body}</p>
                 </li>
               ))}
-            </ul>
+            </InViewGroup>
           </Container>
         </Section>
       )}
@@ -107,12 +108,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <Section className="border-t border-line">
         <Container>
           <h2 className="mb-6 text-[15px] font-medium text-muted-ink">Keep exploring</h2>
-          <ul className="grid gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
+          <InViewGroup as="ul" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {related.map((p) => {
               const I = PRODUCT_ICONS[p.slug];
               return (
                 <li key={p.slug}>
-                  <Link href={`/product/${p.slug}`} className="group block">
+                  <Link href={`/product/${p.slug}`} className="rp-card rp-card-hover group block h-full rounded-2xl p-5">
                     <span className="flex items-center gap-2 text-[15.5px] font-medium text-ink group-hover:text-glow">
                       <I aria-hidden className="h-4 w-4 text-glow" />
                       {p.name}
@@ -122,7 +123,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </li>
               );
             })}
-          </ul>
+          </InViewGroup>
         </Container>
       </Section>
 

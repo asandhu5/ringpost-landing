@@ -26,7 +26,6 @@ export interface Plan {
 }
 
 export const PLANS = data.plans as Plan[];
-export const TRIAL = data.trial;
 export const TOP_UPS = data.topUps;
 export const FEATURE_LABELS = data.featureLabels as Record<Feature, string>;
 export const USAGE_WARNING_PERCENT = Math.round(data.usageWarningRatio * 100);

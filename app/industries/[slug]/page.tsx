@@ -21,6 +21,7 @@ import {
   type BusinessType,
 } from "@/lib/content/industries";
 import { GUARDRAILS } from "@/lib/content/platform";
+import { InViewGroup } from "@/components/site/motion";
 
 export function generateStaticParams() {
   return [...TYPES.map((t) => ({ slug: slugFor(t) })), { slug: SOMETHING_ELSE.slug }];
@@ -103,13 +104,13 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
               <MessageSquareText aria-hidden className="h-3.5 w-3.5" /> What customers ask
             </Eyebrow>
             <h2 className="font-display text-4xl leading-tight text-ink">The questions {plural} get all day.</h2>
-            <ul className="mt-7 flex flex-col divide-y divide-line border-y border-line">
+            <InViewGroup as="ul" className="mt-7 flex flex-col divide-y divide-line border-y border-line">
               {questions.map((q) => (
                 <li key={q} className="py-3.5 text-[15.5px] text-ink">
                   &ldquo;{q}&rdquo;
                 </li>
               ))}
-            </ul>
+            </InViewGroup>
           </div>
           <div>
             <Eyebrow>How it answers</Eyebrow>
@@ -153,8 +154,9 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       </Section>
 
       <Section>
-        <Container className="grid gap-4 lg:grid-cols-3">
-          <div className="rp-card rounded-3xl p-7">
+        <Container>
+          <InViewGroup className="grid gap-4 lg:grid-cols-3">
+          <div className="rp-card rp-card-hover rounded-3xl p-7">
             <Ban aria-hidden className="h-5 w-5 text-cta" />
             <h2 className="mt-4 text-xl font-semibold text-ink">What it won&apos;t do</h2>
             <ul className="mt-4 flex flex-col gap-3 text-[14.5px] leading-relaxed text-muted-ink">
@@ -172,7 +174,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
               ))}
             </ul>
           </div>
-          <div className="rp-card rounded-3xl p-7">
+          <div className="rp-card rp-card-hover rounded-3xl p-7">
             <AlertTriangle aria-hidden className="h-5 w-5 text-glow" />
             <h2 className="mt-4 text-xl font-semibold text-ink">What it hands straight to you</h2>
             {escalations.length > 0 ? (
@@ -191,12 +193,13 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
               It also hands over requests for a person, complaints, refunds, and any words you add.
             </p>
           </div>
-          <div className="rp-card rounded-3xl p-7">
+          <div className="rp-card rp-card-hover rounded-3xl p-7">
             <CalendarCheck aria-hidden className="h-5 w-5 text-success" />
             <h2 className="mt-4 text-xl font-semibold text-ink">How booking works</h2>
             <p className="mt-3 text-[13px] text-faint">{t.modes.map((m) => MODE_LABELS[m]).join(", ")}</p>
             <p className="mt-3 text-[14.5px] leading-relaxed text-muted-ink">{bookingFor(t)}</p>
           </div>
+          </InViewGroup>
         </Container>
       </Section>
 

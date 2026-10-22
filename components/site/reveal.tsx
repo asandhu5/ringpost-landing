@@ -17,7 +17,7 @@ export function Reveal({ children, className, delay = 0 }: { children: React.Rea
           io.disconnect();
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0 },
     );
     io.observe(el);
     return () => io.disconnect();

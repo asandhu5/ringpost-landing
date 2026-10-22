@@ -14,11 +14,19 @@ const GROUPS: FaqItem["group"][] = ["Getting started", "How it works", "Your dat
 export default function FaqPage() {
   return (
     <>
-      <PageHero eyebrow="FAQ" title="Questions, answered." lede="Not here? Ask Zara in the corner, or use the contact page." />
+      <PageHero eyebrow="FAQ" title="Questions, answered." lede="Not here? Ask Zara in the corner, or use the contact page.">
+        <nav aria-label="Topics" className="flex flex-wrap gap-2">
+          {GROUPS.map((g) => (
+            <a key={g} href={`#${g.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} className="inline-flex min-h-10 items-center rounded-full border border-line-strong bg-white/[0.02] px-4 text-[13.5px] text-muted-ink transition-colors hover:border-glow/50 hover:text-ink">
+              {g}
+            </a>
+          ))}
+        </nav>
+      </PageHero>
       <Section className="!pt-0">
         <Container narrow className="flex flex-col gap-14">
           {GROUPS.map((g) => (
-            <div key={g}>
+            <div key={g} id={g.toLowerCase().replace(/[^a-z0-9]+/g, "-")} className="scroll-mt-28">
               <h2 className="mb-5 font-display text-3xl text-ink">{g}</h2>
               <FaqList items={SITE_FAQ.filter((f) => f.group === g)} />
             </div>

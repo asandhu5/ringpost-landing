@@ -158,6 +158,7 @@ export const PRODUCTS: Product[] = [
     },
     sections: [
       { heading: "One line in, a proper brief out", body: "Your idea becomes a photographer's brief for your kind of business before anything is made." },
+      { heading: "Show it your real shop", body: "Add up to three reference photos, or a short video, of your place, product or team. The AI makes a new picture that looks like them, not a stock photo. Each reference passes the same safety check as an upload." },
       { heading: "Prices added by code", body: "The AI makes the picture. Your logo, price, phone number and offer are printed on afterwards, then read back to check." },
       { heading: "Checked before and after", body: "Every idea is safety-checked first, with your trade as context. Anything that can't be checked is held for you." },
       { heading: "Every morning, or when you ask", body: "Fresh images and videos arrive daily, up to your allowance, and land in your media library first.", points: ["Short videos made from your images", "Sized for every platform", "Your logo, colours and tone"] },

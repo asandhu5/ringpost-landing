@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Wordmark } from "@/components/site/logo";
 import { COMPANY_NAV, INDUSTRY_NAV, LEGAL_NAV, PRODUCT_NAV, RESOURCES_NAV, SOMETHING_ELSE_LINK, type NavLink } from "@/lib/nav";
-import { LOGIN_URL, SIGNUP_URL } from "@/lib/site";
+import { SIGNUP_URL } from "@/lib/site";
 
 type PanelId = "product" | "industries" | "resources" | "company";
 
@@ -106,28 +106,6 @@ export function SiteNav() {
 
   return (
     <header ref={headerRef} className="fixed inset-x-0 top-0 z-50">
-      <div className={cx("hidden overflow-hidden bg-[#07070b] transition-[max-height,opacity] duration-300 lg:block", scrolled || open ? "max-h-0 opacity-0" : "max-h-10 border-b border-line opacity-100")}>
-        <div className="mx-auto flex h-9 max-w-[1240px] items-center justify-between px-10 text-[12.5px]">
-          <Link href="/call" className="flex items-center gap-2 text-muted-ink hover:text-ink">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ringpost-ping absolute inline-flex h-full w-full rounded-full bg-success" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
-            </span>
-            Call Zara, our AI assistant, from your browser
-          </Link>
-          <nav aria-label="Utility" className="flex items-center gap-5 text-faint">
-            <Link href="/faq" className="hover:text-ink">
-              Help &amp; FAQ
-            </Link>
-            <Link href="/contact" className="hover:text-ink">
-              Contact
-            </Link>
-            <Link href="/about" className="hover:text-ink">
-              About
-            </Link>
-          </nav>
-        </div>
-      </div>
       <div className={cx("transition-all duration-300", scrolled || open || mobile ? "border-b border-line bg-base/85 backdrop-blur-xl" : "border-b border-transparent")}>
         <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 px-4 sm:px-6 lg:h-[72px] lg:px-10">
           <Link href="/" aria-label="RingPost home" className="shrink-0">
@@ -145,11 +123,8 @@ export function SiteNav() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
-            <a href={LOGIN_URL} className="flex h-10 items-center whitespace-nowrap px-3 text-[14px] text-muted-ink hover:text-ink">
-              Sign in
-            </a>
             <a href={SIGNUP_URL} className="flex h-10 items-center whitespace-nowrap rounded-full bg-cta px-4 text-[14px] font-medium text-[#1a0d08] transition-colors hover:bg-[var(--rp-cta-hover)]">
-              Start free trial
+              Get started
             </a>
           </div>
 
@@ -190,10 +165,7 @@ export function SiteNav() {
         <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto border-t border-line bg-base px-4 pb-10 pt-4 lg:hidden">
           <div className="flex flex-col gap-3">
             <a href={SIGNUP_URL} className="flex min-h-12 items-center justify-center rounded-full bg-cta text-[15px] font-medium text-[#1a0d08]">
-              Start free trial
-            </a>
-            <a href={LOGIN_URL} className="flex min-h-12 items-center justify-center rounded-full border border-line-strong text-[15px] text-ink">
-              Sign in
+              Get started
             </a>
           </div>
           <div className="mt-6 divide-y divide-line border-y border-line">

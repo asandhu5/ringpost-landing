@@ -3,6 +3,7 @@ import Link from "next/link";
 import { groupAnchor } from "@/components/site/footer";
 import { Container, PageHero, Section } from "@/components/site/ui";
 import { DEEP, GROUPS, MODE_LABELS, SOMETHING_ELSE, TYPES, escalationsFor, pluralFor, shortLabel, slugFor, typesInGroup } from "@/lib/content/industries";
+import { InViewGroup } from "@/components/site/motion";
 
 const DESCRIPTION = `An AI receptionist set up for your kind of business: ${TYPES.length} trades, from hair salons and dental clinics to plumbers, restaurants and law firms, each with its own rules and hand-offs.`;
 
@@ -19,12 +20,20 @@ export default function IndustriesHub() {
         eyebrow="Industries"
         title="An AI receptionist that knows your trade."
         lede={`Pick your trade and RingPost uses its rules: what never to say, what to hand to you, and how bookings work. ${TYPES.length} trades, plus "something else".`}
-      />
+      >
+        <nav aria-label="Groups of trades" className="flex flex-wrap gap-2">
+          {GROUPS.map((group) => (
+            <a key={group} href={`#${groupAnchor(group)}`} className="inline-flex min-h-10 items-center rounded-full border border-line-strong bg-white/[0.02] px-4 text-[13.5px] text-muted-ink transition-colors hover:border-glow/50 hover:text-ink">
+              {group}
+            </a>
+          ))}
+        </nav>
+      </PageHero>
       {GROUPS.map((group, gi) => (
         <Section key={group} id={groupAnchor(group)} tone={gi % 2 === 0 ? "surface" : "base"} className="scroll-mt-20 !py-16">
           <Container>
             <h2 className="mb-8 font-display text-[clamp(2rem,3.6vw,2.8rem)] text-ink">{group}</h2>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <InViewGroup className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {typesInGroup(group).map((t) => {
                 const esc = escalationsFor(t);
                 return (
@@ -44,7 +53,7 @@ export default function IndustriesHub() {
                   </Link>
                 );
               })}
-            </div>
+            </InViewGroup>
           </Container>
         </Section>
       ))}

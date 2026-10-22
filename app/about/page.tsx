@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container, PageHero, Section } from "@/components/site/ui";
 import { TYPES } from "@/lib/content/industries";
 import { COMPANY, SITE } from "@/lib/site";
+import { InViewGroup } from "@/components/site/motion";
 
 export const metadata: Metadata = {
   title: "About RingPost",
@@ -22,7 +23,8 @@ export default function AboutPage() {
       <PageHero eyebrow="About" title="The front desk small businesses never had time to staff." />
 
       <Section className="!pt-0">
-        <Container narrow className="flex flex-col gap-14 text-[1.075rem] leading-relaxed text-muted-ink">
+        <Container narrow>
+          <InViewGroup className="flex flex-col gap-14 text-[1.075rem] leading-relaxed text-muted-ink">
           <Block title="What RingPost is">
             <p>An AI front desk for local businesses. It answers calls, texts, WhatsApp, Instagram, Messenger and email, books appointments, and hands you the conversations that need a person.</p>
             <p>Then it helps bring customers in: social posts, comment replies, review requests, campaigns and win-back messages.</p>
@@ -55,6 +57,7 @@ export default function AboutPage() {
               </Link>
             </p>
           </Block>
+          </InViewGroup>
         </Container>
       </Section>
     </>

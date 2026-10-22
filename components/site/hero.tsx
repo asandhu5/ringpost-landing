@@ -116,14 +116,17 @@ export function RotatingVerb() {
 
 export function HomeHero({ children }: { children: React.ReactNode }) {
   return (
-    <section className="relative overflow-hidden pb-20 pt-32 sm:pt-36 lg:pb-28 lg:pt-44">
+    <section className="relative overflow-hidden pb-16 pt-28 sm:pt-32 lg:pb-20 lg:pt-36">
+      <div aria-hidden className="rp-aurora">
+        <span />
+        <span />
+        <span />
+      </div>
       <div aria-hidden className="rp-grid rp-fade-mask pointer-events-none absolute inset-0" />
-      <div aria-hidden className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[620px] rounded-full bg-violet/25 blur-[140px]" />
-      <div aria-hidden className="pointer-events-none absolute -right-20 bottom-0 h-[380px] w-[420px] rounded-full bg-cyan/10 blur-[140px]" />
       <div className="relative mx-auto grid max-w-[1240px] items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
         <div>
-          <p className="rp-enter rp-enter-1 mb-6 text-[15px] font-medium text-glow">The AI front desk for local businesses</p>
-          <h1 className="rp-enter rp-enter-2 font-display text-[clamp(2.9rem,7.4vw,6.4rem)] leading-[0.94] tracking-[-0.025em] text-ink">
+          <p className="rp-enter rp-enter-1 mb-5 text-[15px] font-medium text-glow">The AI front desk for local businesses</p>
+          <h1 className="rp-enter rp-enter-2 font-display text-[clamp(2.7rem,5.6vw,5rem)] leading-[0.96] tracking-[-0.025em] text-ink">
             Your front desk,
             <br />
             always <RotatingVerb />

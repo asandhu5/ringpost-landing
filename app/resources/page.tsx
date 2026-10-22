@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BlogCard } from "@/components/site/blog-card";
 import { Container, PageHero, Section } from "@/components/site/ui";
 import { allPosts } from "@/lib/blog";
+import { InViewGroup } from "@/components/site/motion";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -23,11 +24,11 @@ export default function ResourcesPage() {
               All posts
             </Link>
           </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <InViewGroup className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {posts.slice(0, 3).map((p) => (
               <BlogCard key={p.slug} post={p} />
             ))}
-          </div>
+          </InViewGroup>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <Link href="/faq" className="rp-card rp-card-hover rounded-3xl p-7">
               <p className="font-display text-2xl text-ink">FAQ</p>

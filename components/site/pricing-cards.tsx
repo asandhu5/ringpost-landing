@@ -1,7 +1,8 @@
 import { Check } from "lucide-react";
 import { ButtonLink, cx } from "@/components/site/ui";
-import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TRIAL, num, usd, type Plan } from "@/lib/plans";
+import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, num, usd, type Plan } from "@/lib/plans";
 import { SIGNUP_URL } from "@/lib/site";
+import { InViewGroup } from "@/components/site/motion";
 
 /** Growth is shown as the middle, recommended plan: it's where your own uploads,
  * auto-posting, comment replies and Talk to AI start. (A layout choice, not a claim.) */
@@ -25,7 +26,7 @@ function newFeatures(plan: Plan, prev: Plan | null): string[] {
 
 export function PricingCards() {
   return (
-    <div className="grid gap-4 lg:grid-cols-3">
+    <InViewGroup className="grid gap-4 lg:grid-cols-3">
       {PLANS.map((plan, i) => {
         const prev = i > 0 ? PLANS[i - 1] : null;
         const highlight = plan.id === HIGHLIGHT;
@@ -35,7 +36,8 @@ export function PricingCards() {
             key={plan.id}
             className={cx(
               "relative flex flex-col rounded-3xl border p-7 sm:p-8",
-              highlight ? "rp-glow-violet border-violet/50 bg-[linear-gradient(180deg,rgba(124,107,255,0.14),rgba(124,107,255,0.03))]" : "rp-card",
+              "rp-card-hover",
+              highlight ? "rp-gradient-border rp-glow-violet" : "rp-card",
             )}
           >
             <div className="flex items-center justify-between gap-3">
@@ -47,9 +49,9 @@ export function PricingCards() {
               <span className="font-display text-6xl leading-none text-ink">{usd(plan.monthlyUsd)}</span>
               <span className="text-[14px] text-muted-ink">a month</span>
             </p>
-            <p className="mt-2 text-[13px] text-muted-ink">{TRIAL.days}-day free trial, no setup fee</p>
+            <p className="mt-2 text-[13px] text-muted-ink">No setup fee, cancel any time</p>
             <ButtonLink href={SIGNUP_URL} variant={highlight ? "cta" : "ghost"} className="mt-6 w-full">
-              Start free trial
+              Get started
             </ButtonLink>
             <ul className="mt-7 flex flex-col gap-2.5 border-t border-line pt-6">
               {planLines(plan).map((line) => (
@@ -75,6 +77,6 @@ export function PricingCards() {
           </div>
         );
       })}
-    </div>
+    </InViewGroup>
   );
 }
