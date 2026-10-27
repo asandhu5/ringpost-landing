@@ -123,8 +123,8 @@ export function SiteNav() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
-            <a href={SIGNUP_URL} className="flex h-10 items-center whitespace-nowrap rounded-full bg-cta px-4 text-[14px] font-medium text-[#1a0d08] transition-colors hover:bg-[var(--rp-cta-hover)]">
-              Get started
+            <a href={SIGNUP_URL} className="flex h-10 items-center whitespace-nowrap rounded-full bg-cta px-4 text-[14px] font-semibold text-[var(--rp-cta-ink)] transition-colors hover:bg-[var(--rp-cta-hover)]">
+              Start free trial
             </a>
           </div>
 
@@ -164,8 +164,8 @@ export function SiteNav() {
       {mobile && (
         <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto border-t border-line bg-base px-4 pb-10 pt-4 lg:hidden">
           <div className="flex flex-col gap-3">
-            <a href={SIGNUP_URL} className="flex min-h-12 items-center justify-center rounded-full bg-cta text-[15px] font-medium text-[#1a0d08]">
-              Get started
+            <a href={SIGNUP_URL} className="flex min-h-12 items-center justify-center rounded-full bg-cta text-[15px] font-semibold text-[var(--rp-cta-ink)]">
+              Start free trial
             </a>
           </div>
           <div className="mt-6 divide-y divide-line border-y border-line">

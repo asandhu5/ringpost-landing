@@ -11,7 +11,7 @@ const WORDS = ["answering", "booking", "organizing", "replying", "following up"]
 
 /**
  * BlurWord — letters resolve out of a colour blur, one after another, then settle to
- * white. Ported from the old hero; the gradient moved from pink to the violet/cyan/coral
+ * white. Ported from the old hero; the gradient moved from pink to the violet/cyan/blue
  * of the new palette.
  */
 function BlurWord({ word, trigger }: { word: string; trigger: number }) {
@@ -66,7 +66,7 @@ function BlurWord({ word, trigger }: { word: string; trigger: number }) {
     [165, 148, 255],
     [124, 107, 255],
     [34, 211, 238],
-    [255, 122, 89],
+    [59, 130, 246],
   ];
   return (
     <>

@@ -81,11 +81,11 @@ export function ContactForm() {
       {/* Left empty by people; bots fill it in. */}
       <input name="website" tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
       {error && (
-        <p role="alert" className="rounded-xl border border-cta/30 bg-cta/10 px-4 py-3 text-[14px] text-ink">
+        <p role="alert" className="rounded-xl border border-rose-400/30 bg-rose-400/10 px-4 py-3 text-[14px] text-ink">
           {error}
         </p>
       )}
-      <button type="submit" disabled={state === "sending"} className="min-h-12 rounded-full bg-cta text-[15px] font-medium text-[#1a0d08] transition-opacity hover:bg-[var(--rp-cta-hover)] disabled:opacity-60">
+      <button type="submit" disabled={state === "sending"} className="min-h-12 rounded-full bg-cta text-[15px] font-semibold text-[var(--rp-cta-ink)] transition-opacity hover:bg-[var(--rp-cta-hover)] disabled:opacity-60">
         {state === "sending" ? "Sending…" : "Send to the team"}
       </button>
       <p className="text-[12px] leading-relaxed text-faint">

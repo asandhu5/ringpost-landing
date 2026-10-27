@@ -51,7 +51,7 @@ export function PricingCards() {
             </p>
             <p className="mt-2 text-[13px] text-muted-ink">No setup fee, cancel any time</p>
             <ButtonLink href={SIGNUP_URL} variant={highlight ? "cta" : "ghost"} className="mt-6 w-full">
-              Get started
+              Start free trial
             </ButtonLink>
             <ul className="mt-7 flex flex-col gap-2.5 border-t border-line pt-6">
               {planLines(plan).map((line) => (

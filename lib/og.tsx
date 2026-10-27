@@ -14,7 +14,7 @@ export function ogImage(title: string, eyebrow = "RingPost") {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "radial-gradient(90% 90% at 0% 0%, rgba(124,107,255,0.45), rgba(10,10,15,0) 60%), radial-gradient(60% 60% at 100% 100%, rgba(255,122,89,0.22), rgba(10,10,15,0) 60%), #0a0a0f",
+          background: "radial-gradient(90% 90% at 0% 0%, rgba(124,107,255,0.45), rgba(10,10,15,0) 60%), radial-gradient(60% 60% at 100% 100%, rgba(34,211,238,0.2), rgba(10,10,15,0) 60%), #0a0a0f",
           color: "#f5f5f7",
           fontFamily: "sans-serif",
         }}

@@ -6,7 +6,7 @@
 /* ── RINGPOST TOKENS ──────────────────────────────────────────────
    Dark, warm, high contrast. Violet is the brand (it matches the
    dashboard's #8b7bfb / #6d5efc, so signing up doesn't feel like
-   arriving at a different company); coral is reserved for the
+   arriving at a different company); the logo's cyan is reserved for the
    primary call to action. The site is dark-only by design, so the
    light and dark schemes resolve to the same tokens.
    ─────────────────────────────────────────────────────────────── */
@@ -20,8 +20,11 @@
   --rp-border-strong: rgba(255, 255, 255, 0.14);
   --rp-primary: #7c6bff;
   --rp-glow: #a594ff;
-  --rp-cta: #ff7a59;
-  --rp-cta-hover: #ff8e71;
+  /* The one call to action colour: the cyan of the logo's dot, with ink text (11:1 contrast). Coral until 2026-10-27. */
+  --rp-cta: #22d3ee;
+  --rp-cta-hover: #67e8f9;
+  --rp-cta-ink: #081c27;
+  --rp-blue: #3b82f6;
   --rp-success: #34d399;
   --rp-cyan: #22d3ee;
   --rp-text: #f5f5f7;
@@ -154,7 +157,7 @@
     box-shadow: 0 0 0 1px rgba(124, 107, 255, 0.35), 0 20px 80px -20px rgba(124, 107, 255, 0.45);
   }
   .rp-text-gradient {
-    background: linear-gradient(100deg, #ffffff 10%, var(--rp-glow) 55%, var(--rp-cta) 110%);
+    background: linear-gradient(100deg, #ffffff 10%, var(--rp-glow) 55%, var(--rp-cyan) 110%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -417,7 +420,7 @@
 .zara-orb__swirl {
   position: absolute;
   inset: -30%;
-  background: conic-gradient(from 0deg, transparent 0 20%, rgba(34, 211, 238, 0.55) 30%, transparent 45%, rgba(255, 122, 89, 0.45) 62%, transparent 78%);
+  background: conic-gradient(from 0deg, transparent 0 20%, rgba(34, 211, 238, 0.55) 30%, transparent 45%, rgba(59, 130, 246, 0.45) 62%, transparent 78%);
   filter: blur(22px);
   mix-blend-mode: screen;
   animation: zara-spin 12s linear infinite;
@@ -525,7 +528,7 @@
 }
 .rp-aurora span:nth-child(1) { left: 5%;  top: 5%;  width: 46vw; height: 46vw; max-width: 720px; max-height: 720px; background: rgba(124, 107, 255, 0.55); }
 .rp-aurora span:nth-child(2) { right: 0;  top: 18%; width: 34vw; height: 34vw; max-width: 520px; max-height: 520px; background: rgba(34, 211, 238, 0.28); animation-duration: 28s; animation-delay: -6s; }
-.rp-aurora span:nth-child(3) { left: 35%; top: 45%; width: 30vw; height: 30vw; max-width: 460px; max-height: 460px; background: rgba(255, 122, 89, 0.22); animation-duration: 34s; animation-delay: -12s; }
+.rp-aurora span:nth-child(3) { left: 35%; top: 45%; width: 30vw; height: 30vw; max-width: 460px; max-height: 460px; background: rgba(59, 130, 246, 0.2); animation-duration: 34s; animation-delay: -12s; }
 @keyframes rp-aurora-drift {
   0%   { transform: translate3d(0, 0, 0) scale(1); }
   50%  { transform: translate3d(6%, -4%, 0) scale(1.12); }
@@ -561,7 +564,7 @@
   border-color: transparent;
   background:
     linear-gradient(var(--rp-surface), var(--rp-surface)) padding-box,
-    conic-gradient(from var(--rp-angle, 0deg), rgba(124, 107, 255, 0.9), rgba(34, 211, 238, 0.6), rgba(255, 122, 89, 0.7), rgba(124, 107, 255, 0.9)) border-box;
+    conic-gradient(from var(--rp-angle, 0deg), rgba(124, 107, 255, 0.9), rgba(34, 211, 238, 0.6), rgba(59, 130, 246, 0.7), rgba(124, 107, 255, 0.9)) border-box;
   animation: rp-turn 8s linear infinite;
 }
 @property --rp-angle {
@@ -612,7 +615,7 @@
 
 /* Read progress along the top of the window. */
 .rp-progress {
-  background: linear-gradient(90deg, var(--rp-primary), var(--rp-cyan), var(--rp-cta));
+  background: linear-gradient(90deg, var(--rp-primary), var(--rp-blue), var(--rp-cyan));
   transition: transform 0.08s linear;
 }
 
@@ -712,7 +715,7 @@ details.rp-faq summary:hover { background: rgba(255, 255, 255, 0.025); }
   border: 1px solid transparent;
   background:
     linear-gradient(var(--rp-surface), var(--rp-surface)) padding-box,
-    conic-gradient(from var(--rp-angle, 0deg), rgba(124, 107, 255, 0.85), rgba(34, 211, 238, 0.35), rgba(255, 122, 89, 0.6), rgba(124, 107, 255, 0.85)) border-box;
+    conic-gradient(from var(--rp-angle, 0deg), rgba(124, 107, 255, 0.85), rgba(34, 211, 238, 0.35), rgba(59, 130, 246, 0.6), rgba(124, 107, 255, 0.85)) border-box;
   animation: rp-turn 10s linear infinite;
 }
 

@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { Check, Minus } from "lucide-react";
 import { PricingCards } from "@/components/site/pricing-cards";
-import { Container, FaqList, JsonLd, PageHero, Section, SectionHeader, cx } from "@/components/site/ui";
+import { ButtonLink, Container, FaqList, JsonLd, PageHero, Section, SectionHeader, cx } from "@/components/site/ui";
 import { PRICING_FAQ } from "@/lib/content/faq";
-import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, USAGE_WARNING_PERCENT, num, usd, type Feature } from "@/lib/plans";
+import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, TRIAL, USAGE_WARNING_PERCENT, num, usd, type Feature } from "@/lib/plans";
 import { InViewGroup } from "@/components/site/motion";
-import { SITE } from "@/lib/site";
+import { SIGNUP_URL, SITE } from "@/lib/site";
 
-const DESCRIPTION = `RingPost pricing: ${PLANS.map((p) => `${p.name} ${usd(p.monthlyUsd)}/month`).join(", ")}. No setup fee, no contract, cancel any time.`;
+const DESCRIPTION = `RingPost pricing: a ${TRIAL.days}-day free trial with no card, then ${PLANS.map((p) => `${p.name} ${usd(p.monthlyUsd)}/month`).join(", ")}. No setup fee, no contract, cancel any time.`;
 
 export const metadata: Metadata = {
-  title: "Pricing: three plans, no setup fee",
+  title: "Pricing: free 7-day trial, then three plans",
   description: DESCRIPTION,
   openGraph: { title: "RingPost pricing", description: DESCRIPTION, url: "/pricing" },
 };
@@ -51,10 +51,23 @@ export default function PricingPage() {
   return (
     <>
       <JsonLd data={SOFTWARE} />
-      <PageHero eyebrow="Pricing" title="Three plans. No setup fee." lede="Billed monthly. No contract, cancel any time." />
+      <PageHero eyebrow="Pricing" title="Try it free for 7 days." lede="No card needed. Then choose one of three plans, billed monthly. No setup fee, no contract, cancel any time." />
 
       <Section className="!pt-0">
         <Container>
+          <div className="rp-gradient-border mb-8 flex flex-col gap-5 rounded-3xl p-7 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="font-display text-3xl text-ink">Free trial · {TRIAL.days} days</h2>
+              <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-muted-ink">
+                Your own phone number answered by your AI, {num(TRIAL.minutes)} minutes of calls, {num(TRIAL.messages)} replies across WhatsApp, Instagram, Messenger and email, and {TRIAL.postsPerPlatform} posts of
+                your own photos and videos on each account you connect, with the captions written for you. Nothing is charged when it ends.
+              </p>
+              <p className="mt-2 text-[13px] text-faint">Images and videos made for you, Talk to AI, reviews, campaigns and insights come with the plans below. You can see all of them during the trial.</p>
+            </div>
+            <ButtonLink href={SIGNUP_URL} variant="cta" className="rp-cta-shine shrink-0">
+              Start free trial
+            </ButtonLink>
+          </div>
           <PricingCards />
           <p className="mt-6 text-center text-[13px] text-faint">US dollars, billed monthly. Taxes may apply.</p>
         </Container>
@@ -99,7 +112,7 @@ export default function PricingPage() {
         <Container>
           <InViewGroup className="grid gap-6 lg:grid-cols-2">
           <InfoCard title="Billing">
-            <p>Billed monthly from the day you choose a plan. Upgrades are prorated.</p>
+            <p>The free trial needs no card. When you choose a plan, it&apos;s billed that day and then monthly. Upgrades are prorated.</p>
             <p>No contract, no cancellation fee. Cancel any time from your dashboard.</p>
           </InfoCard>
           <InfoCard title="If you go over">

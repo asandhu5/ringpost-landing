@@ -26,6 +26,9 @@ export interface Plan {
 }
 
 export const PLANS = data.plans as Plan[];
+
+/** The 7-day free trial (no card): the product's own TRIAL in plans.ts. */
+export const TRIAL = data.trial as { days: number; minutes: number; messages: number; postsPerPlatform: number; numberKeptDays: number };
 export const TOP_UPS = data.topUps;
 export const FEATURE_LABELS = data.featureLabels as Record<Feature, string>;
 export const USAGE_WARNING_PERCENT = Math.round(data.usageWarningRatio * 100);

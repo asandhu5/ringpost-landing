@@ -57,8 +57,8 @@ export default function HomePage() {
       <HomeHero>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-ink">It answers your calls and messages day and night, books appointments, then helps you win more customers.</p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <a href={SIGNUP_URL} className="rp-cta-shine inline-flex h-12 items-center rounded-full bg-cta px-6 text-[15px] font-medium text-[#1a0d08] shadow-[0_18px_50px_-15px_rgba(255,122,89,0.8)] transition-colors hover:bg-[var(--rp-cta-hover)]">
-            Get started free
+          <a href={SIGNUP_URL} className="rp-cta-shine inline-flex h-12 items-center rounded-full bg-cta px-6 text-[15px] font-semibold text-[var(--rp-cta-ink)] shadow-[0_18px_50px_-15px_rgba(34,211,238,0.75)] transition-colors hover:bg-[var(--rp-cta-hover)]">
+            Start your free trial
           </a>
           <ButtonLink href="/product" variant="ghost">
             See how it works

@@ -90,7 +90,7 @@ export function ButtonLink({
   arrow = arrow ?? false;
   const external = /^https?:|^mailto:/.test(href);
   const styles: Record<ButtonVariant, string> = {
-    cta: "bg-cta text-[#1a0d08] hover:bg-[var(--rp-cta-hover)] shadow-[0_10px_40px_-12px_rgba(255,122,89,0.7)]",
+    cta: "bg-cta font-semibold text-[var(--rp-cta-ink)] hover:bg-[var(--rp-cta-hover)] shadow-[0_10px_40px_-12px_rgba(34,211,238,0.7)]",
     primary: "bg-violet text-white hover:bg-glow hover:text-[#120f2a]",
     ghost: "border border-line-strong bg-white/[0.02] text-ink hover:border-glow/50 hover:bg-white/[0.05]",
     link: "px-0 text-glow hover:text-white",
@@ -124,12 +124,12 @@ export function ButtonLink({
   );
 }
 
-/** The page's call to action: "Get started", with "Talk to Zara" beside it. */
+/** The page's call to action: "Start free trial", with "Talk to Zara" beside it. */
 export function TrialButtons({ secondary = { href: "/call", label: "Talk to Zara" }, className }: { secondary?: { href: string; label: string } | null; className?: string }) {
   return (
     <div className={cx("flex flex-wrap items-center gap-3", className)}>
       <ButtonLink href={SIGNUP_URL} className="rp-cta-shine">
-        Get started
+        Start free trial
       </ButtonLink>
       {secondary && (
         <ButtonLink href={secondary.href} variant="ghost">
@@ -303,7 +303,7 @@ export function Pill({ children, tone = "violet" }: { children: React.ReactNode;
     violet: "border-violet/30 bg-violet/10 text-glow",
     green: "border-success/30 bg-success/10 text-success",
     muted: "border-line-strong bg-white/[0.03] text-muted-ink",
-    coral: "border-cta/30 bg-cta/10 text-cta",
+    coral: "border-amber-400/30 bg-amber-400/10 text-amber-300",
   };
   return <span className={cx("inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[12px] font-medium", tones[tone])}>{children}</span>;
 }

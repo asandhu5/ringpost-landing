@@ -34,7 +34,7 @@ function Chip({ children, tone = "muted" }: { children: React.ReactNode; tone?: 
     muted: "border-line-strong bg-white/[0.04] text-muted-ink",
     violet: "border-violet/30 bg-violet/15 text-glow",
     green: "border-success/30 bg-success/10 text-success",
-    coral: "border-cta/30 bg-cta/10 text-cta",
+    coral: "border-amber-400/30 bg-amber-400/10 text-amber-300",
   }[tone];
   return <span className={cx("inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-[10.5px] font-medium", t)}>{children}</span>;
 }
@@ -46,7 +46,7 @@ function Row({ children, active }: { children: React.ReactNode; active?: boolean
 function Bubble({ from, children }: { from: "them" | "ai" | "owner"; children: React.ReactNode }) {
   return (
     <div className={cx("flex", from === "them" ? "justify-start" : "justify-end")}>
-      <p className={cx("max-w-[82%] rounded-2xl px-3 py-2 text-[12px] leading-snug", from === "them" ? "rounded-bl-md bg-white/[0.07] text-ink" : from === "ai" ? "rounded-br-md bg-violet text-white" : "rounded-br-md bg-cta text-[#1a0d08]")}>{children}</p>
+      <p className={cx("max-w-[82%] rounded-2xl px-3 py-2 text-[12px] leading-snug", from === "them" ? "rounded-bl-md bg-white/[0.07] text-ink" : from === "ai" ? "rounded-br-md bg-violet text-white" : "rounded-br-md bg-cta text-[var(--rp-cta-ink)]")}>{children}</p>
     </div>
   );
 }
@@ -196,7 +196,7 @@ function KnowledgeVisual() {
           </div>
         ))}
       </div>
-      <div className="mt-3 rounded-xl border border-cta/30 bg-cta/10 px-3 py-2.5 text-[11.5px] leading-snug text-ink">
+      <div className="mt-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-3 py-2.5 text-[11.5px] leading-snug text-ink">
         We couldn&apos;t find your parking or deposit details. Add them so your AI can answer, instead of checking with you.
       </div>
     </AppFrame>
@@ -369,7 +369,7 @@ function WinbackVisual() {
         <p className="mt-1 text-[11.5px] text-ink">It&apos;s been a while! We&apos;d love to see you again. Reply to book a time that suits you.</p>
       </div>
       <div className="mt-3 flex items-center justify-end gap-2">
-        <span className="flex items-center gap-1.5 rounded-lg bg-cta px-3 py-1.5 text-[11.5px] font-medium text-[#1a0d08]">
+        <span className="flex items-center gap-1.5 rounded-lg bg-cta px-3 py-1.5 text-[11.5px] font-medium text-[var(--rp-cta-ink)]">
           <RotateCcw className="h-3.5 w-3.5" /> Send to selected
         </span>
       </div>

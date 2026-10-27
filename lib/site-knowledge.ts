@@ -4,7 +4,7 @@ import { FAQ } from "@/lib/content/faq";
 import { DEEP, MODE_LABELS, SOMETHING_ELSE, TYPES, bookingFor, escalationsFor, pluralFor, rulesFor, slugFor } from "@/lib/content/industries";
 import { AUTOMATIONS, GUARDRAILS, HOW_IT_WORKS } from "@/lib/content/platform";
 import { PILLARS, PRODUCTS } from "@/lib/content/products";
-import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, USAGE_WARNING_PERCENT, plansWithLabel } from "@/lib/plans";
+import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, TRIAL, USAGE_WARNING_PERCENT, plansWithLabel } from "@/lib/plans";
 import { COMPANY, PRIMARY_EMAIL, SITE } from "@/lib/site";
 
 /**
@@ -84,7 +84,7 @@ export function knowledgePages(): KnowledgePage[] {
           (p) =>
             `${p.name}: $${p.monthlyUsd}/month. ${p.tagline} ${p.minutesPerMonth} calling minutes and ${p.messagesPerMonth} messages a month, up to ${p.bookableStaff} bookable staff, call forwarding from the business's own number, ${p.imagesPerDay} AI images a day${p.promptExtrasPerWeek.images ? ` plus ${p.promptExtrasPerWeek.images} more a week on request` : ""}${SHOW_AI_VIDEO ? `, ${p.videos.count} AI video a ${p.videos.per}${p.promptExtrasPerWeek.videos ? ` plus ${p.promptExtrasPerWeek.videos} more a week on request` : ""}` : ""}. Includes: ${p.features.filter((f) => SHOW_AI_VIDEO || f !== "prompt_generation").map((f) => FEATURE_LABELS[f]).join(", ") || "answering every channel, booking, reminders, review requests and daily images"}.`,
         ),
-        "There is no free trial. Anyone can create an account and see the whole dashboard before paying; choosing a plan (billed that day, then monthly) switches the number, connections, AI receptionist and daily content on.",
+        `Free trial: ${TRIAL.days} days, no card, once per business. It includes a phone number answered by the AI, ${TRIAL.minutes} calling minutes, ${TRIAL.messages} replies across all channels, and ${TRIAL.postsPerPlatform} posts per connected social account using the owner's own photos and videos (captions written by AI). It does NOT include AI-generated images or videos, daily content, Talk to AI, comment replies, campaigns, reviews, insights or win-backs; the owner can see those pages during the trial. Nothing is charged when it ends. When the minutes run out calls ring the owner's own phone; when the messages run out new ones wait for the owner. The number is kept ${TRIAL.numberKeptDays} days after an unpaid trial ends. Choosing a plan (billed that day, then monthly) starts it straight away.`,
         `Going over a monthly allowance never stops the service. A warning comes at ${USAGE_WARNING_PERCENT}%. Top-ups are only added when the owner clicks: ${TOP_UPS.filter((t) => SHOW_AI_VIDEO || t.metric !== "videos").map((t) => `${t.label} $${t.priceUsd}`).join(", ")}.`,
         SHOW_AI_VIDEO ? "" : "AI video generation is not offered on the website at the moment; do not describe video allowances.",
       ].join("\n"),

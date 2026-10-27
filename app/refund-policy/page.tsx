@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 /**
  * Matches the product's billing (packages/core/src/billing/plans.ts): no setup fee since
- * 2026-09-29, and no free trial since 2026-10-22; the plan is billed when it is chosen.
+ * 2026-09-29; the free trial (since 2026-10-27) needs no card; a plan is billed when it is chosen.
  */
 export default function RefundPolicyPage() {
   return (
@@ -29,8 +29,8 @@ export default function RefundPolicyPage() {
       <h2>Cancelling</h2>
       <ul>
         <li>
-          Your plan is billed when you choose it, then monthly, in advance. There is no free
-          trial, but you can create an account and see the dashboard before you pay.
+          You can start with a 7-day free trial that needs no card, so nothing is charged or
+          refunded for it. Your plan is billed when you choose it, then monthly, in advance.
         </li>
         <li>
           You can cancel your plan at any time. Cancellation takes effect at the{" "}

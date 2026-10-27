@@ -66,10 +66,13 @@ export default function TermsPage() {
           apply to payment processing.
         </li>
         <li>
-          There is no free trial. Your chosen plan is billed when you choose it
-          and then automatically, in advance, each month until cancelled. You may
-          create an account and view the dashboard without paying; using
-          the Service requires a paid plan.
+          A free trial of 7 days is offered once per business, without a payment
+          card, with the limits shown on the pricing page; nothing is charged when
+          it ends. A plan is billed when you choose it and then automatically, in
+          advance, each month until cancelled. After the trial, using the Service
+          requires a paid plan. We may refuse or end a trial that appears to be a
+          repeat or abusive sign-up, and a trial&rsquo;s phone number is released
+          a few days after the trial ends unless a plan is chosen.
         </li>
         <li>
           Keep your payment details current. A failed payment may suspend the

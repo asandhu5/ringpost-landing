@@ -60,7 +60,7 @@ export function ZaraCall({ size = "md", className, hint = true }: { size?: "sm" 
       >
         <ZaraOrb phase={phase} levelRef={levelRef} size={orb} />
         <span className="absolute inset-0 flex items-center justify-center">
-          <span className={cx("flex h-12 w-12 items-center justify-center rounded-full backdrop-blur-sm transition-transform group-hover:scale-110", live ? "bg-cta text-[#1a0d08]" : "bg-white/15 text-white")}>
+          <span className={cx("flex h-12 w-12 items-center justify-center rounded-full backdrop-blur-sm transition-transform group-hover:scale-110", live ? "bg-cta text-[var(--rp-cta-ink)]" : "bg-white/15 text-white")}>
             {live ? <PhoneOff className="h-5 w-5" /> : supported ? <Mic className="h-5 w-5" /> : <MicOff className="h-5 w-5" />}
           </span>
         </span>

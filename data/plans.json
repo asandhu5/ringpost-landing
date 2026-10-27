@@ -3,10 +3,16 @@
   "setupFee": null,
   "trial": {
     "days": 7,
-    "minutesPerDay": 20,
-    "maxMinutes": 140,
-    "messages": 200,
-    "endingNoticeDays": 2
+    "minutes": 20,
+    "messages": 50,
+    "postsPerPlatform": 3,
+    "endingNoticeDays": 2,
+    "numberKeptDays": 3,
+    "maxStartsPerIpPerDay": 3,
+    "features": [
+      "uploads",
+      "auto_posting"
+    ]
   },
   "usageWarningRatio": 0.8,
   "plans": [
