@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Wordmark } from "@/components/site/logo";
 import { COMPANY_NAV, INDUSTRY_NAV, LEGAL_NAV, PRODUCT_NAV, RESOURCES_NAV, SOMETHING_ELSE_LINK, type NavLink } from "@/lib/nav";
-import { SIGNUP_URL } from "@/lib/site";
+import { START_URL } from "@/lib/site";
 
 type PanelId = "product" | "industries" | "resources" | "company";
 
@@ -124,7 +124,7 @@ export function SiteNav() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
-            <a href={SIGNUP_URL} className="flex h-10 items-center whitespace-nowrap rounded-full bg-cta px-4 text-[14px] font-semibold text-[var(--rp-cta-ink)] transition-colors hover:bg-[var(--rp-cta-hover)]">
+            <a href={START_URL} className="flex h-10 items-center whitespace-nowrap rounded-full bg-cta px-4 text-[14px] font-semibold text-[var(--rp-cta-ink)] transition-colors hover:bg-[var(--rp-cta-hover)]">
               Get started
             </a>
           </div>
@@ -165,7 +165,7 @@ export function SiteNav() {
       {mobile && (
         <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto border-t border-line bg-base px-4 pb-10 pt-4 lg:hidden">
           <div className="flex flex-col gap-3">
-            <a href={SIGNUP_URL} className="flex min-h-12 items-center justify-center rounded-full bg-cta text-[15px] font-semibold text-[var(--rp-cta-ink)]">
+            <a href={START_URL} className="flex min-h-12 items-center justify-center rounded-full bg-cta text-[15px] font-semibold text-[var(--rp-cta-ink)]">
               Get started
             </a>
           </div>

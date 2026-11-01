@@ -43,7 +43,11 @@ export const PRIMARY_EMAIL = "admin@ringpost.tech";
  */
 export const DASHBOARD_URL = (process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://app.ringpost.tech").replace(/\/$/, "");
 export const LOGIN_URL = `${DASHBOARD_URL}/login`;
-export const SIGNUP_URL = `${DASHBOARD_URL}/signup`;
+/**
+ * Every "Get started" and plan button lands on the sign-in page, which has "Create one"
+ * for a new account right under the form (the chosen plan rides along as ?plan=).
+ */
+export const START_URL = LOGIN_URL;
 
 /** The platform API, which hosts the website assistant (chat and voice). */
 export const API_URL = (process.env.NEXT_PUBLIC_RINGPOST_API_URL || process.env.NEXT_PUBLIC_API_URL || "https://api.ringpost.tech").replace(/\/$/, "");

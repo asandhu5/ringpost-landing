@@ -7,7 +7,7 @@ import { Marquee } from "@/components/site/motion";
 import { Reveal } from "@/components/site/reveal";
 import { ButtonLink, Container, Eyebrow, H2, JsonLd, Lede, Section } from "@/components/site/ui";
 import { DEEP, TYPES, shortLabel, slugFor } from "@/lib/content/industries";
-import { COMPANY, SIGNUP_URL, SITE } from "@/lib/site";
+import { COMPANY, START_URL, SITE } from "@/lib/site";
 import { PLANS, usd } from "@/lib/plans";
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function HomePage() {
   const from = usd(PLANS[0].monthlyUsd);
 
   const cta = (
-    <a href={SIGNUP_URL} className="rp-cta-shine inline-flex h-12 items-center rounded-full bg-cta px-7 text-[15.5px] font-semibold text-[var(--rp-cta-ink)] shadow-[0_18px_50px_-15px_rgba(34,211,238,0.85)] transition-colors hover:bg-[var(--rp-cta-hover)]">
+    <a href={START_URL} className="rp-cta-shine inline-flex h-12 items-center rounded-full bg-cta px-7 text-[15.5px] font-semibold text-[var(--rp-cta-ink)] shadow-[0_18px_50px_-15px_rgba(34,211,238,0.85)] transition-colors hover:bg-[var(--rp-cta-hover)]">
       Get started
     </a>
   );

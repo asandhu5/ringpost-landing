@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, ChevronRight } from "lucide-react";
-import { SIGNUP_URL, SITE } from "@/lib/site";
+import { START_URL, SITE } from "@/lib/site";
 import type { Turn } from "@/lib/content/industries";
 import { InViewGroup } from "@/components/site/motion";
 import { Reveal } from "@/components/site/reveal";
@@ -129,7 +129,7 @@ export function ButtonLink({
 export function StartButtons({ secondary = { href: "/pricing", label: "See plans and pricing" }, className }: { secondary?: { href: string; label: string } | null; className?: string }) {
   return (
     <div className={cx("flex flex-wrap items-center gap-3", className)}>
-      <ButtonLink href={SIGNUP_URL} className="rp-cta-shine">
+      <ButtonLink href={START_URL} className="rp-cta-shine">
         Get started
       </ButtonLink>
       {secondary && (

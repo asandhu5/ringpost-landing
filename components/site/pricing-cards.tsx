@@ -1,7 +1,7 @@
 import { Building2, Check } from "lucide-react";
 import { ButtonLink, cx } from "@/components/site/ui";
 import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, num, usd, type Plan, type PlanId } from "@/lib/plans";
-import { SIGNUP_URL } from "@/lib/site";
+import { START_URL } from "@/lib/site";
 import { InViewGroup } from "@/components/site/motion";
 
 /** Growth is shown as the recommended plan: it's where content and posting start.
@@ -63,7 +63,7 @@ export function PricingCards() {
                 <span className="text-[14px] text-muted-ink">a month</span>
               </p>
               <p className="mt-1.5 text-[13px] text-muted-ink">No setup fee, cancel any time</p>
-              <ButtonLink href={`${SIGNUP_URL}?plan=${plan.id}`} variant={highlight ? "cta" : "ghost"} className="mt-6 w-full">
+              <ButtonLink href={`${START_URL}?plan=${plan.id}`} variant={highlight ? "cta" : "ghost"} className="mt-6 w-full">
                 Choose {plan.name}
               </ButtonLink>
               <ul className="mt-6 flex flex-col gap-2.5 border-t border-line pt-5">
