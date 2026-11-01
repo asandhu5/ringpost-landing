@@ -23,6 +23,8 @@ const contentSecurityPolicy = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // A self-contained server for the container image (Dockerfile).
+  output: "standalone",
   images: {
     unoptimized: true,
   },
