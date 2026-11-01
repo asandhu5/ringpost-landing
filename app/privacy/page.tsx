@@ -17,7 +17,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      updated="4 October 2026"
+      updated="2 November 2026"
       intro="This explains what RingPost collects, what we do with it, and who else touches it. There are two different sets of people here: businesses who sign up, and their customers who never did. This policy treats them separately, because the second group is the one that matters most."
     >
       <p>
@@ -177,7 +177,32 @@ export default function PrivacyPage() {
         including the Limited Use requirements.
       </p>
 
-      <h2>7. Security</h2>
+      <h2>7. TikTok</h2>
+      <p>
+        When a business connects its TikTok account, we receive its TikTok open ID, display name,
+        username, profile picture and profile details, and the list of its videos with their public
+        numbers (views, likes, comments and shares). We use these only to show which account is
+        connected, to post the videos and photos the business owner has approved, and to show how
+        those posts performed on the business&rsquo;s Insights page.
+      </p>
+      <p>
+        We post to TikTok only when the business owner has approved that post and chosen its
+        TikTok settings themselves: who can see it, whether people can comment, Duet or Stitch it,
+        and whether it promotes a brand. We never choose these for them, and we never post
+        without that approval. Access tokens are stored encrypted.
+      </p>
+      <p>
+        We don&rsquo;t sell TikTok data, use it for advertising, use it to train AI models, or share it
+        with anyone other than the providers needed to run RingPost. Some businesses connect
+        TikTok through a publishing partner that handles the sign-in and posting for us, under its
+        own data protection obligations. A business can disconnect TikTok at any time from
+        Connections, which deletes the stored tokens, and can remove RingPost in TikTok&rsquo;s own
+        settings. You can request deletion of any data we hold through our{" "}
+        <a href="/data-deletion">Data Deletion Instructions</a>. Our use of information received from
+        TikTok follows TikTok&rsquo;s Developer Terms of Service.
+      </p>
+
+      <h2>8. Security</h2>
       <p>
         We take reasonable technical and organisational measures to protect your
         data: sensitive values such as stored access tokens are encrypted at
@@ -191,7 +216,7 @@ export default function PrivacyPage() {
         affected customers where it matters.
       </p>
 
-      <h2>8. How long we keep it</h2>
+      <h2>9. How long we keep it</h2>
       <p>
         We keep your business&rsquo;s data while your account is active, and for
         a reasonable period afterwards in case you want to reactivate or export
@@ -199,7 +224,7 @@ export default function PrivacyPage() {
         required to keep it longer for legal or accounting reasons.
       </p>
 
-      <h2 id="website-chat">9. The chat on this website</h2>
+      <h2 id="website-chat">10. The chat on this website</h2>
       <p>
         The chat assistant on ringpost.tech is an AI. When you use it, we keep what
         you type and what it replies, plus any name, email address, phone number or
@@ -214,7 +239,7 @@ export default function PrivacyPage() {
         deleted sooner, use our <a href="/contact">contact page</a>.
       </p>
 
-      <h2>10. Your rights</h2>
+      <h2>11. Your rights</h2>
       <p>
         Depending on where you are, you may have the right to access, correct,
         export or delete your personal data. Follow our{" "}
@@ -230,7 +255,7 @@ export default function PrivacyPage() {
         behalf.
       </p>
 
-      <h2>11. Cookies</h2>
+      <h2>12. Cookies</h2>
       <p>
         This site and the dashboard use cookies for essential functions such as
         keeping you signed in, and for basic analytics. You can control cookies
@@ -238,21 +263,21 @@ export default function PrivacyPage() {
         Service.
       </p>
 
-      <h2>12. Children</h2>
+      <h2>13. Children</h2>
       <p>
         The Service is for business owners and isn&rsquo;t directed at children.
         We don&rsquo;t knowingly collect personal information from anyone under
         16.
       </p>
 
-      <h2>13. International processing</h2>
+      <h2>14. International processing</h2>
       <p>
         Your data may be processed and stored outside your own country by the
         providers described above. Using the Service means consenting to that,
         under the terms of this policy.
       </p>
 
-      <h2>14. Government and law enforcement requests</h2>
+      <h2>15. Government and law enforcement requests</h2>
       <p>
         We may be asked by a public authority to hand over personal data. This
         is how we handle that, and it applies to every request, wherever it
@@ -291,13 +316,13 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
-      <h2>15. Changes</h2>
+      <h2>16. Changes</h2>
       <p>
         We may update this policy. Material changes will be communicated by
         email before they take effect.
       </p>
 
-      <h2>16. Contact</h2>
+      <h2>17. Contact</h2>
       <p>
         Questions about this policy or your data: use our{" "}
         <a href="/contact">contact page</a>.
