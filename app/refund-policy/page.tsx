@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 /**
  * Matches the product's billing (packages/core/src/billing/plans.ts): no setup fee since
- * 2026-09-29; the free trial (since 2026-10-27) needs no card; a plan is billed when it is chosen.
+ * 2026-09-29; there is no free trial (since 2026-10-30); a plan is billed when it is chosen.
  */
 export default function RefundPolicyPage() {
   return (
@@ -21,7 +21,7 @@ export default function RefundPolicyPage() {
     >
       <h2>How you are billed</h2>
       <p>
-        There is <strong>one monthly plan</strong> (Front Desk, Growth or Command Center), shown on
+        There is <strong>one monthly plan</strong> (Starter, Essential, Growth or Pro), shown on
         the <a href="/pricing">pricing page</a>. There is no setup fee, no contract and no minimum
         term. Top-up packs are only charged when you choose to buy one.
       </p>
@@ -29,8 +29,8 @@ export default function RefundPolicyPage() {
       <h2>Cancelling</h2>
       <ul>
         <li>
-          You can start with a 7-day free trial that needs no card, so nothing is charged or
-          refunded for it. Your plan is billed when you choose it, then monthly, in advance.
+          Your plan is billed when you choose it, then monthly, in advance. There is no setup
+          fee and no contract.
         </li>
         <li>
           You can cancel your plan at any time. Cancellation takes effect at the{" "}
@@ -46,7 +46,7 @@ export default function RefundPolicyPage() {
 
       <h2>If it does not suit your business</h2>
       <p>
-        See the dashboard before you pay, and ask Zara or the team anything. Once you&rsquo;re
+        See the dashboard before you pay, and ask our assistant or the team anything. Once you&rsquo;re
         on a plan, cancel the monthly plan whenever you like. There is nothing to negotiate and no
         retention call.
       </p>

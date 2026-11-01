@@ -38,7 +38,7 @@ export function Section({
       id={id}
       className={cx(
         "relative",
-        bleed ? "" : "py-16 sm:py-20 lg:py-24",
+        bleed ? "" : "py-14 sm:py-16 lg:py-20",
         tone === "surface" && "bg-surface/60 border-y border-line",
         className,
       )}
@@ -64,7 +64,7 @@ export function Lede({ children, className }: { children: React.ReactNode; class
 
 export function SectionHeader({ eyebrow, title, lede, align = "left", className }: { eyebrow?: string; title: React.ReactNode; lede?: React.ReactNode; align?: "left" | "center"; className?: string }) {
   return (
-    <Reveal className={cx("mb-10 lg:mb-12", align === "center" && "mx-auto flex max-w-3xl flex-col items-center text-center", className)}>
+    <Reveal className={cx("mb-8 lg:mb-10", align === "center" && "mx-auto flex max-w-3xl flex-col items-center text-center", className)}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
       <H2>{title}</H2>
       {lede && <Lede className={cx("mt-5", align === "center" && "mx-auto")}>{lede}</Lede>}
@@ -91,9 +91,9 @@ export function ButtonLink({
   const external = /^https?:|^mailto:/.test(href);
   const styles: Record<ButtonVariant, string> = {
     cta: "bg-cta font-semibold text-[var(--rp-cta-ink)] hover:bg-[var(--rp-cta-hover)] shadow-[0_10px_40px_-12px_rgba(34,211,238,0.7)]",
-    primary: "bg-violet text-white hover:bg-glow hover:text-[#120f2a]",
-    ghost: "border border-line-strong bg-white/[0.02] text-ink hover:border-glow/50 hover:bg-white/[0.05]",
-    link: "px-0 text-glow hover:text-white",
+    primary: "bg-violet text-white hover:bg-[#4338ca]",
+    ghost: "border border-line-strong bg-white text-ink hover:border-[#9aa6b5] hover:bg-surface-2",
+    link: "px-0 text-glow hover:text-ink",
   };
   const cls = cx(
     "group inline-flex min-h-11 items-center justify-center gap-2 rounded-full text-[15px] font-medium transition-all duration-200",
@@ -124,12 +124,13 @@ export function ButtonLink({
   );
 }
 
-/** The page's call to action: "Start free trial", with "Talk to Zara" beside it. */
-export function TrialButtons({ secondary = { href: "/call", label: "Talk to Zara" }, className }: { secondary?: { href: string; label: string } | null; className?: string }) {
+/** The page's call to action: "Get started", with plans beside it. (No free trial since
+ * 2026-10-30.) */
+export function StartButtons({ secondary = { href: "/pricing", label: "See plans and pricing" }, className }: { secondary?: { href: string; label: string } | null; className?: string }) {
   return (
     <div className={cx("flex flex-wrap items-center gap-3", className)}>
       <ButtonLink href={SIGNUP_URL} className="rp-cta-shine">
-        Start free trial
+        Get started
       </ButtonLink>
       {secondary && (
         <ButtonLink href={secondary.href} variant="ghost">
@@ -203,7 +204,7 @@ export function PageHero({
   aside?: React.ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden pb-14 pt-28 sm:pt-32 lg:pb-20 lg:pt-36">
+    <section className="relative overflow-hidden pb-10 pt-24 sm:pt-28 lg:pb-14 lg:pt-32">
       <div aria-hidden className="rp-aurora rp-aurora--soft">
         <span />
         <span />
@@ -302,7 +303,7 @@ export function Pill({ children, tone = "violet" }: { children: React.ReactNode;
   const tones = {
     violet: "border-violet/30 bg-violet/10 text-glow",
     green: "border-success/30 bg-success/10 text-success",
-    muted: "border-line-strong bg-white/[0.03] text-muted-ink",
+    muted: "border-line-strong bg-white text-muted-ink",
     coral: "border-amber-400/30 bg-amber-400/10 text-amber-300",
   };
   return <span className={cx("inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[12px] font-medium", tones[tone])}>{children}</span>;
@@ -326,7 +327,7 @@ export function FaqList({ items, structuredData = false }: { items: { q: string;
             <div className="px-5 pb-6 text-[15.5px] leading-relaxed text-muted-ink sm:px-7">
               <p>{item.a}</p>
               {item.link && (
-                <Link href={item.link.href} className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-glow hover:text-white">
+                <Link href={item.link.href} className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-glow hover:text-ink">
                   {item.link.label} <ArrowRight aria-hidden className="h-3.5 w-3.5" />
                 </Link>
               )}
@@ -356,7 +357,7 @@ export function OnThisPage({ name, links }: { name: string; links: { href: strin
         <span className="hidden shrink-0 text-[14px] font-semibold text-ink sm:block">{name}</span>
         <nav aria-label="On this page" className="rp-no-scrollbar flex flex-1 items-center gap-1 overflow-x-auto">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="whitespace-nowrap rounded-full px-3 py-1.5 text-[13.5px] text-muted-ink transition-colors hover:bg-white/[0.05] hover:text-ink">
+            <a key={l.href} href={l.href} className="whitespace-nowrap rounded-full px-3 py-1.5 text-[13.5px] text-muted-ink transition-colors hover:bg-surface-2 hover:text-ink">
               {l.label}
             </a>
           ))}
@@ -388,10 +389,10 @@ export function ScreenshotFrame({ src, alt, caption, className }: { src: string;
       <div aria-hidden className="pointer-events-none absolute -inset-6 rounded-[32px] bg-violet/15 blur-3xl" />
       <div className="rp-tilt relative overflow-hidden rounded-2xl border border-line-strong bg-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)]">
         <div className="flex items-center gap-1.5 border-b border-line bg-base/70 px-4 py-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
-          <span className="ml-3 truncate rounded-md bg-white/[0.04] px-3 py-1 font-mono text-[11px] text-faint">app.ringpost.tech</span>
+          <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+          <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+          <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+          <span className="ml-3 truncate rounded-md bg-surface-2 px-3 py-1 font-mono text-[11px] text-faint">app.ringpost.tech</span>
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt={alt} loading="lazy" className="block h-auto w-full" />
@@ -426,7 +427,7 @@ export function Conversation({ turns, label }: { turns: Turn[]; label?: string }
               <p
                 className={cx(
                   "max-w-[86%] rounded-2xl px-4 py-2.5 text-[14.5px] leading-relaxed",
-                  t.from === "ai" ? "rounded-br-md bg-violet text-white" : "rounded-bl-md border border-line-strong bg-white/[0.05] text-ink",
+                  t.from === "ai" ? "rounded-br-md bg-violet text-white" : "rounded-bl-md border border-line-strong bg-surface-2 text-ink",
                 )}
               >
                 <span className={cx("mb-0.5 block text-[11px] font-medium", t.from === "ai" ? "text-white/60" : "text-faint")}>

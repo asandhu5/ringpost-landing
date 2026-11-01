@@ -63,7 +63,7 @@ function RichText({ text, onNavigate }: { text: string; onNavigate?: () => void 
   while ((m = re.exec(text))) {
     if (m.index > last) parts.push(text.slice(last, m.index));
     parts.push(
-      <Link key={m.index} href={m[2]} onClick={onNavigate} className="font-medium text-glow underline decoration-glow/40 underline-offset-2 hover:text-white">
+      <Link key={m.index} href={m[2]} onClick={onNavigate} className="font-medium text-glow underline decoration-glow/40 underline-offset-2 hover:text-ink">
         {m[1]}
       </Link>,
     );
@@ -171,7 +171,7 @@ export function ZaraChat({
         {messages.length === 0 && (
           <div className="flex flex-wrap gap-2 pl-1">
             {SUGGESTIONS.map((s) => (
-              <button key={s} type="button" onClick={() => send(s)} className="min-h-10 rounded-full border border-line-strong bg-white/[0.03] px-3.5 text-left text-[13px] text-ink transition-colors hover:border-glow/50 hover:bg-violet/10">
+              <button key={s} type="button" onClick={() => send(s)} className="min-h-10 rounded-full border border-line-strong bg-white px-3.5 text-left text-[13px] text-ink transition-colors hover:border-glow/50 hover:bg-violet/10">
                 {s}
               </button>
             ))}
@@ -191,7 +191,7 @@ export function ZaraChat({
           </Bubble>
         ))}
         {closed && (
-          <p className="rounded-xl border border-line bg-white/[0.03] px-4 py-3 text-[13.5px] text-muted-ink">
+          <p className="rounded-xl border border-line bg-white px-4 py-3 text-[13.5px] text-muted-ink">
             {closed}{" "}
             <Link href="/contact" onClick={onLinkClick} className="text-glow underline underline-offset-2">
               Contact us
@@ -232,7 +232,7 @@ function Bubble({ role, children }: { role: "user" | "assistant"; children: Reac
     <div className={`flex ${role === "user" ? "justify-end" : "justify-start"}`}>
       <div
         className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-[14.5px] leading-relaxed ${
-          role === "user" ? "rounded-br-md bg-violet text-white" : "rounded-bl-md border border-line-strong bg-white/[0.04] text-ink"
+          role === "user" ? "rounded-br-md bg-violet text-white" : "rounded-bl-md border border-line-strong bg-surface-2 text-ink"
         }`}
       >
         {children}

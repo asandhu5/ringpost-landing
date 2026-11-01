@@ -22,7 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...PRODUCTS.map((p) => entry(`/product/${p.slug}`, 0.8)),
     entry("/channels", 0.8),
     entry("/pricing", 0.9, "weekly"),
-    entry("/call", 0.7),
     entry("/faq", 0.7),
     entry("/industries", 0.8),
     ...TYPES.filter((t) => !isSparse(t)).map((t) => entry(`/industries/${slugFor(t)}`, 0.6)),

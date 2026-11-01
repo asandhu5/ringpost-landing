@@ -203,7 +203,7 @@ export const PRODUCTS: Product[] = [
     name: "Social posting",
     summary: "Schedule or post now to eight platforms, with replies to comments.",
     title: "Schedule and publish social media posts, with AI replies to comments",
-    description: "Publish to Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads and Pinterest. Schedule or post now, reply to comments and run campaigns for occasions.",
+    description: "Publish to Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest and Bluesky. Schedule or post now, reply to comments and run campaigns for occasions.",
     hero: {
       headline: "Your feed, kept busy. You stay in charge.",
       lede: "Approve a post, then schedule it for a good hour or post it now, to eight platforms at once.",

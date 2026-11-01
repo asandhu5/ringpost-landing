@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Check, ShieldCheck } from "lucide-react";
 import { PRODUCT_ICONS } from "@/components/site/icons";
 import { Reveal } from "@/components/site/reveal";
-import { Container, H2, Lede, OnThisPage, PageHero, ScreenshotFrame, Section, StepFlow, TrialButtons, screenshotExists } from "@/components/site/ui";
+import { Container, H2, Lede, OnThisPage, PageHero, ScreenshotFrame, Section, StepFlow, StartButtons, screenshotExists } from "@/components/site/ui";
 import { ProductVisual } from "@/components/site/visuals";
 import { AUTOMATIONS, GUARDRAILS, HOW_IT_WORKS } from "@/lib/content/platform";
 import { PILLARS, PRODUCTS, productsIn, type Pillar } from "@/lib/content/products";
@@ -29,11 +29,11 @@ export default function ProductHub() {
   return (
     <>
       <PageHero
-        eyebrow="The AI Front Desk"
+        eyebrow="Your AI business partner"
         title="It answers, it books, and it wins you more."
         lede="An AI front desk handles the calls, messages and bookings a receptionist would, day and night, from your own information. Then it helps bring more customers in."
       >
-        <TrialButtons />
+        <StartButtons />
       </PageHero>
 
       <OnThisPage

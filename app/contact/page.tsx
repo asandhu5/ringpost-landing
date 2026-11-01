@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { MessageCircle, PhoneCall } from "lucide-react";
-import Link from "next/link";
+import { MessageCircle } from "lucide-react";
 import { OpenChatButton } from "@/components/site/chat-widget";
 import { SUGGESTIONS } from "@/lib/content/assistant";
 import { ContactForm } from "@/components/site/contact-form";
@@ -10,7 +9,7 @@ import { InViewGroup } from "@/components/site/motion";
 
 export const metadata: Metadata = {
   title: "Contact RingPost",
-  description: `Ask Zara, ${SITE.name}'s AI assistant, or reach a person at ${COMPANY.legalName}.`,
+  description: `Ask ${SITE.name}'s assistant, or reach a person at ${COMPANY.legalName}.`,
   openGraph: { title: "Contact RingPost", url: "/contact" },
 };
 
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageHero eyebrow="Contact" title="Talk to us." lede="Zara answers instantly. For a person, use the form." />
+      <PageHero eyebrow="Contact" title="Talk to us." lede="Our assistant answers instantly. For a person, use the form." />
       <Section className="!pt-0">
         <Container>
           <InViewGroup className="grid items-start gap-6 lg:grid-cols-2">
@@ -31,25 +30,16 @@ export default function ContactPage() {
               <span className="rp-icon-ring flex h-11 w-11 items-center justify-center rounded-2xl bg-violet/15 text-glow">
                 <MessageCircle aria-hidden className="h-5 w-5" />
               </span>
-              <p className="mt-5 font-display text-3xl text-ink">Ask Zara</p>
+              <p className="mt-5 font-display text-3xl text-ink">Ask a question</p>
               <p className="mt-2 text-[15px] leading-relaxed text-muted-ink">Instant answers about RingPost. Pick a question:</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {SUGGESTIONS.map((q) => (
-                  <OpenChatButton key={q} question={q} className="min-h-10 rounded-full border border-line-strong bg-white/[0.03] px-3.5 text-left text-[13.5px] text-ink hover:border-glow/50 hover:bg-violet/10">
+                  <OpenChatButton key={q} question={q} className="min-h-10 rounded-full border border-line-strong bg-white px-3.5 text-left text-[13.5px] text-ink hover:border-glow/50 hover:bg-violet/10">
                     {q}
                   </OpenChatButton>
                 ))}
               </div>
             </div>
-            <Link href="/call" className="rp-card rp-card-hover flex items-center gap-4 rounded-3xl p-7">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-success/15 text-success">
-                <PhoneCall aria-hidden className="h-5 w-5" />
-              </span>
-              <span>
-                <span className="block text-[16px] font-medium text-ink">Or call Zara</span>
-                <span className="mt-0.5 block text-[14px] text-muted-ink">One minute, in your browser.</span>
-              </span>
-            </Link>
           </div>
           <ContactForm />
           </InViewGroup>

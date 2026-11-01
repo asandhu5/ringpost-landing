@@ -24,7 +24,7 @@ export const SOMETHING_ELSE_LINK: NavLink = { name: "Something else", href: `/in
 
 export const RESOURCES_NAV: NavLink[] = [
   { name: "Blog", href: "/resources/blog", summary: "On missed calls, messaging and what an AI front desk should never say." },
-  { name: "FAQ", href: "/faq", summary: "Pricing, the trial, channels, your data." },
+  { name: "FAQ", href: "/faq", summary: "Pricing, channels, your data." },
 ];
 
 export const COMPANY_NAV: NavLink[] = [

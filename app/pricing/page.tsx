@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import { Check, Minus } from "lucide-react";
 import { PricingCards } from "@/components/site/pricing-cards";
-import { ButtonLink, Container, FaqList, JsonLd, PageHero, Section, SectionHeader, cx } from "@/components/site/ui";
+import { PlanFinder } from "@/components/site/plan-finder";
+import { Container, FaqList, JsonLd, PageHero, Section, SectionHeader } from "@/components/site/ui";
 import { PRICING_FAQ } from "@/lib/content/faq";
-import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, TRIAL, USAGE_WARNING_PERCENT, num, usd, type Feature } from "@/lib/plans";
+import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, USAGE_WARNING_PERCENT, num, usd, type Feature } from "@/lib/plans";
 import { InViewGroup } from "@/components/site/motion";
-import { SIGNUP_URL, SITE } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
-const DESCRIPTION = `RingPost pricing: a ${TRIAL.days}-day free trial with no card, then ${PLANS.map((p) => `${p.name} ${usd(p.monthlyUsd)}/month`).join(", ")}. No setup fee, no contract, cancel any time.`;
+const DESCRIPTION = `RingPost pricing: ${PLANS.map((p) => `${p.name} ${usd(p.monthlyUsd)}/month`).join(", ")}. No setup fee, no contract, cancel any time.`;
 
 export const metadata: Metadata = {
-  title: "Pricing: free 7-day trial, then three plans",
+  title: `Pricing: plans from ${usd(PLANS[0].monthlyUsd)} a month`,
   description: DESCRIPTION,
   openGraph: { title: "RingPost pricing", description: DESCRIPTION, url: "/pricing" },
 };
@@ -46,38 +47,35 @@ const SOFTWARE = {
 export default function PricingPage() {
   // "Extra images and videos on request" isn't listed on the website (owner decision 2026-10-01).
   const features = (Object.keys(FEATURE_LABELS) as Feature[]).filter((f) => f !== "prompt_generation");
-  const topUps = TOP_UPS.filter((t) => SHOW_AI_VIDEO || t.metric !== "videos");
+  const topUps = TOP_UPS;
 
   return (
     <>
       <JsonLd data={SOFTWARE} />
-      <PageHero eyebrow="Pricing" title="Try it free for 7 days." lede="No card needed. Then choose one of three plans, billed monthly. No setup fee, no contract, cancel any time." />
+      <PageHero
+        eyebrow="Pricing"
+        title={`Start at ${usd(PLANS[0].monthlyUsd)} a month.`}
+        lede="Monthly, no setup fee, no contract. Cancel any time."
+      />
 
       <Section className="!pt-0">
         <Container>
-          <div className="rp-gradient-border mb-8 flex flex-col gap-5 rounded-3xl p-7 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h2 className="font-display text-3xl text-ink">Free trial · {TRIAL.days} days</h2>
-              <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-muted-ink">
-                Your own phone number answered by your AI, {num(TRIAL.minutes)} minutes of calls, {num(TRIAL.messages)} replies across WhatsApp, Instagram, Messenger and email, and {TRIAL.postsPerPlatform} posts of
-                your own photos and videos on each account you connect, with the captions written for you. Nothing is charged when it ends.
-              </p>
-              <p className="mt-2 text-[13px] text-faint">Images and videos made for you, Talk to AI, reviews, campaigns and insights come with the plans below. You can see all of them during the trial.</p>
-            </div>
-            <ButtonLink href={SIGNUP_URL} variant="cta" className="rp-cta-shine shrink-0">
-              Start free trial
-            </ButtonLink>
-          </div>
           <PricingCards />
-          <p className="mt-6 text-center text-[13px] text-faint">US dollars, billed monthly. Taxes may apply.</p>
+          <p className="mt-5 text-center text-[13px] text-faint">US dollars. Taxes may apply. On an older plan? You keep it at your price.</p>
         </Container>
       </Section>
 
-      <Section>
+      <Section className="!pt-0">
+        <Container>
+          <PlanFinder />
+        </Container>
+      </Section>
+
+      <Section className="!pt-0">
         <Container>
           <SectionHeader eyebrow="Compare" title="What's in each plan." />
           <div className="overflow-x-auto rounded-2xl border border-line">
-            <table className="w-full min-w-[640px] border-collapse text-left text-[14px]">
+            <table className="w-full min-w-[760px] border-collapse bg-white text-left text-[14px]">
               <caption className="sr-only">Plan comparison</caption>
               <thead>
                 <tr className="border-b border-line bg-surface">
@@ -97,8 +95,12 @@ export default function PricingPage() {
                 <Row label="Messages a month" values={PLANS.map((p) => num(p.messagesPerMonth))} />
                 <Row label="Bookable staff" values={PLANS.map((p) => `Up to ${p.bookableStaff}`)} />
                 <Row label="Call forwarding" values={PLANS.map(() => true)} />
-                <Row label="AI images a day" values={PLANS.map((p) => String(p.imagesPerDay))} />
-                {SHOW_AI_VIDEO && <Row label="AI videos" values={PLANS.map((p) => `${p.videos.count} a ${p.videos.per}`)} />}
+                <Row label="Answers calls and messages on every channel" values={PLANS.map(() => true)} />
+                <Row label="Bookings, reminders and review requests" values={PLANS.map(() => true)} />
+                <Row
+                  label={SHOW_AI_VIDEO ? "Media credits a month (AI images and videos)" : "Media credits a month (AI images)"}
+                  values={PLANS.map((p) => (p.mediaCreditsPerMonth ? num(p.mediaCreditsPerMonth) : false))}
+                />
                 {features.map((f) => (
                   <Row key={f} label={FEATURE_LABELS[f]} values={PLANS.map((p) => p.features.includes(f))} />
                 ))}
@@ -108,38 +110,28 @@ export default function PricingPage() {
         </Container>
       </Section>
 
-      <Section tone="surface">
+      <Section className="!pt-0">
         <Container>
-          <InViewGroup className="grid gap-6 lg:grid-cols-2">
-          <InfoCard title="Billing">
-            <p>The free trial needs no card. When you choose a plan, it&apos;s billed that day and then monthly. Upgrades are prorated.</p>
-            <p>No contract, no cancellation fee. Cancel any time from your dashboard.</p>
-          </InfoCard>
-          <InfoCard title="If you go over">
-            <p>
-              <strong>Service never stops.</strong> You get a heads-up at {USAGE_WARNING_PERCENT}% of an allowance. Upgrade or buy a top-up, only when you choose.
-            </p>
-          </InfoCard>
+          <SectionHeader eyebrow="Good to know" title="Simple billing, no surprises." />
+          <InViewGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <SmallCard title="Billing">Billed the day you choose a plan, then monthly. Upgrades are prorated. Cancel from your dashboard.</SmallCard>
+            <SmallCard title="If you go over">Service never stops. You get a heads-up at {USAGE_WARNING_PERCENT}% and top up only if you want to.</SmallCard>
+            <SmallCard title="Media credits">
+              Growth and Pro include credits for AI {SHOW_AI_VIDEO ? "images and videos" : "images"}. You see the price before you make anything, and failed ones are refunded.
+            </SmallCard>
+            <SmallCard title="Top-ups">
+              {topUps.map((t) => (
+                <span key={t.metric} className="flex justify-between gap-3 py-0.5">
+                  <span>{t.label}</span>
+                  <span className="font-semibold text-ink">{usd(t.priceUsd)}</span>
+                </span>
+              ))}
+            </SmallCard>
           </InViewGroup>
         </Container>
       </Section>
 
       <Section>
-        <Container>
-          <SectionHeader eyebrow="Top-ups" title="Need more in a busy month?" lede="One click from your dashboard. Never bought for you." />
-          <InViewGroup className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {topUps.map((t) => (
-              <div key={t.metric} className="rp-card rp-card-hover rounded-2xl p-6">
-                <p className="font-display text-4xl text-ink">{usd(t.priceUsd)}</p>
-                <p className="mt-2 text-[15px] font-medium text-ink">{t.label}</p>
-                <p className="mt-1 text-[13.5px] text-muted-ink">{t.validity === "cycle" ? "For this billing month." : "Good for 90 days."}</p>
-              </div>
-            ))}
-          </InViewGroup>
-        </Container>
-      </Section>
-
-      <Section tone="surface">
         <Container narrow>
           <SectionHeader eyebrow="Questions" title="Pricing and billing" />
           <FaqList items={PRICING_FAQ} structuredData />
@@ -165,10 +157,10 @@ function Row({ label, values }: { label: string; values: (string | boolean | nul
   );
 }
 
-function InfoCard({ title, children }: { title: string; children: React.ReactNode }) {
+function SmallCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className={cx("rp-card rounded-3xl p-7 text-[15px] leading-relaxed text-muted-ink", "[&_li]:relative [&_li]:pl-4 [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-[0.65em] [&_li]:before:h-1.5 [&_li]:before:w-1.5 [&_li]:before:rounded-full [&_li]:before:bg-glow [&_p+p]:mt-3 [&_strong]:text-ink [&_ul]:mt-3 [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2")}>
-      <h3 className="mb-3 font-display text-2xl text-ink">{title}</h3>
+    <div className="rp-card rounded-2xl p-6 text-[14px] leading-relaxed text-muted-ink">
+      <h3 className="mb-2 text-[16px] font-semibold text-ink">{title}</h3>
       {children}
     </div>
   );

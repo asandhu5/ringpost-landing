@@ -51,7 +51,7 @@ function inline(text: string): React.ReactNode {
     if (m.index > last) out.push(<Fragment key={k++}>{text.slice(last, m.index)}</Fragment>);
     if (m[1]) out.push(<strong key={k++}>{m[1]}</strong>);
     else if (m[2]) out.push(<em key={k++}>{m[2]}</em>);
-    else if (m[5]) out.push(<code key={k++} className="rounded bg-white/[0.07] px-1.5 py-0.5 font-mono text-[0.9em] text-ink">{m[5]}</code>);
+    else if (m[5]) out.push(<code key={k++} className="rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[0.9em] text-ink">{m[5]}</code>);
     else if (m[3]) {
       const href = m[4];
       out.push(

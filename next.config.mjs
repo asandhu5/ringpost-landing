@@ -26,11 +26,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Pages retired after launch keep working links: /demo became the /call page with
-  // Zara, and case studies were removed until there are customers to feature.
+  // Pages retired after launch keep working links: /demo and /call (the Zara page,
+  // removed 2026-10-30; the chat stays in the corner), and case studies until there are
+  // customers to feature.
   async redirects() {
     return [
-      { source: "/demo", destination: "/call", permanent: true },
+      { source: "/demo", destination: "/contact", permanent: true },
+      { source: "/call", destination: "/contact", permanent: true },
       { source: "/resources/case-studies", destination: "/resources", permanent: true },
     ];
   },
@@ -43,8 +45,7 @@ const nextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "DENY" },
           { key: "Content-Security-Policy", value: contentSecurityPolicy },
-          // microphone=(self): Zara's browser call asks for the mic on this origin only.
-          { key: "Permissions-Policy", value: "camera=(), microphone=(self), geolocation=()" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
           ...(process.env.NODE_ENV === "production" ? [{ key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" }] : []),
         ],
       },

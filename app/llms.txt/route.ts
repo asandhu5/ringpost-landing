@@ -46,7 +46,6 @@ export function GET() {
     link("/channels", "Channels", `how ${channelNames} work with RingPost`),
     link("/pricing", "Pricing", "plans, what each includes, allowances and top-ups"),
     link("/faq", "FAQ", "common questions about setup, numbers, channels and the AI"),
-    link("/call", "Talk to Zara", "a one-minute voice call with RingPost's own AI assistant, in the browser"),
     "",
     "## Industries",
     link("/industries", "All industries", `RingPost is set up for ${TYPES.length} kinds of local business`),

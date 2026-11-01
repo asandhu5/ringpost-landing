@@ -106,7 +106,9 @@ export function SiteNav() {
 
   return (
     <header ref={headerRef} className="fixed inset-x-0 top-0 z-50">
-      <div className={cx("transition-all duration-300", scrolled || open || mobile ? "border-b border-line bg-base/85 backdrop-blur-xl" : "border-b border-transparent")}>
+      {/* An open menu dims the page so it reads as its own layer. */}
+      {open && <div aria-hidden className="animate-panel-in fixed inset-0 top-[72px] -z-10 hidden bg-[#0b1b2b]/25 backdrop-blur-[2px] lg:block" />}
+      <div className={cx("transition-all duration-300", open ? "border-b border-line bg-white" : scrolled || mobile ? "border-b border-line bg-base/85 backdrop-blur-xl" : "border-b border-transparent")}>
         <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 px-4 sm:px-6 lg:h-[72px] lg:px-10">
           <Link href="/" aria-label="RingPost home" className="shrink-0">
             <Wordmark />
@@ -116,7 +118,6 @@ export function SiteNav() {
             {trigger("product", "Product")}
             {trigger("industries", "Industries")}
             {plain("/channels", "Channels")}
-            {plain("/call", "Talk to Zara")}
             {plain("/pricing", "Pricing")}
             {trigger("resources", "Resources")}
             {trigger("company", "Company")}
@@ -124,7 +125,7 @@ export function SiteNav() {
 
           <div className="hidden items-center gap-2 lg:flex">
             <a href={SIGNUP_URL} className="flex h-10 items-center whitespace-nowrap rounded-full bg-cta px-4 text-[14px] font-semibold text-[var(--rp-cta-ink)] transition-colors hover:bg-[var(--rp-cta-hover)]">
-              Start free trial
+              Get started
             </a>
           </div>
 
@@ -148,9 +149,9 @@ export function SiteNav() {
             aria-labelledby={`nav-trigger-${open}`}
             onMouseEnter={() => hoverOpen(open)}
             onMouseLeave={hoverClose}
-            className="animate-panel-in hidden border-t border-line lg:block"
+            className="animate-panel-in hidden border-t border-line bg-white shadow-[0_30px_60px_-24px_rgba(11,27,43,0.35)] lg:block"
           >
-            <div className="mx-auto max-w-[1240px] px-10 py-8">
+            <div className="mx-auto max-w-[1240px] px-10 py-7">
               {open === "product" && <ProductPanel />}
               {open === "industries" && <IndustriesPanel />}
               {open === "resources" && <SimplePanel links={RESOURCES_NAV} title="Resources" />}
@@ -165,12 +166,12 @@ export function SiteNav() {
         <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto border-t border-line bg-base px-4 pb-10 pt-4 lg:hidden">
           <div className="flex flex-col gap-3">
             <a href={SIGNUP_URL} className="flex min-h-12 items-center justify-center rounded-full bg-cta text-[15px] font-semibold text-[var(--rp-cta-ink)]">
-              Start free trial
+              Get started
             </a>
           </div>
           <div className="mt-6 divide-y divide-line border-y border-line">
             <MobileGroup title="Product">
-              <MobileLink href="/product" name="AI Front Desk overview" />
+              <MobileLink href="/product" name="Overview: everything it does" />
               {PRODUCT_NAV.map((p) => (
                 <div key={p.pillar} className="pt-2">
                   <p className="px-1 pb-1 text-[12px] font-medium text-faint">{p.name}</p>
@@ -193,7 +194,6 @@ export function SiteNav() {
               <MobileLink {...SOMETHING_ELSE_LINK} />
             </MobileGroup>
             <MobileLink href="/channels" name="Channels" top />
-            <MobileLink href="/call" name="Talk to Zara" top />
             <MobileLink href="/pricing" name="Pricing" top />
             <MobileGroup title="Resources">
               {RESOURCES_NAV.map((l) => (
@@ -218,16 +218,13 @@ export function SiteNav() {
 
 function ProductPanel() {
   return (
-    <div className="grid grid-cols-[0.8fr_2.2fr] gap-10">
-      <Link href="/product" className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-line-strong bg-surface p-6">
-        <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-violet/30 blur-3xl" />
-        <div className="relative">
-          <p className="text-[12px] font-medium text-glow">Overview</p>
-          <p className="mt-3 font-display text-3xl leading-tight text-ink">The AI Front Desk</p>
-          <p className="mt-2 text-[14px] leading-relaxed text-muted-ink">What an AI front desk is, what this one does, and the rules it never breaks.</p>
-        </div>
-        <span className="relative mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-glow">
-          Read the overview <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+    <div className="grid grid-cols-[0.55fr_2.45fr] gap-8">
+      <Link href="/product" className="rp-brand-ring group flex h-fit flex-col rounded-2xl p-5 transition-shadow hover:shadow-[0_12px_30px_-16px_rgba(91,78,230,0.5)]">
+        <p className="text-[12px] font-semibold text-[#5b4ee6]">Overview</p>
+        <p className="mt-2 text-lg font-bold leading-tight tracking-tight text-ink">Your AI business partner</p>
+        <p className="mt-1.5 text-[13px] leading-relaxed text-muted-ink">Everything it does to win and keep your customers.</p>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-[#5b4ee6]">
+          See it all <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </span>
       </Link>
       <div className="grid grid-cols-3 gap-8">
@@ -238,7 +235,7 @@ function ProductPanel() {
             <ul className="flex flex-col gap-1">
               {p.links.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="block rounded-xl px-3 py-2.5 transition-colors hover:bg-white/[0.04]">
+                  <Link href={l.href} className="block rounded-xl px-3 py-2.5 transition-colors hover:bg-surface-2">
                     <span className="block text-[14.5px] font-medium text-ink">{l.name}</span>
                     <span className="mt-0.5 block text-[12.5px] leading-snug text-muted-ink">{l.summary}</span>
                   </Link>
@@ -274,11 +271,11 @@ function IndustriesPanel() {
       <div className="mt-7 flex items-center justify-between border-t border-line pt-5 text-[13.5px]">
         <span className="text-muted-ink">
           Not listed?{" "}
-          <Link href={SOMETHING_ELSE_LINK.href} className="text-glow hover:text-white">
+          <Link href={SOMETHING_ELSE_LINK.href} className="text-glow hover:text-ink">
             It works for other businesses too
           </Link>
         </span>
-        <Link href="/industries" className="inline-flex items-center gap-1.5 font-medium text-glow hover:text-white">
+        <Link href="/industries" className="inline-flex items-center gap-1.5 font-medium text-glow hover:text-ink">
           All industries <ArrowRight aria-hidden className="h-4 w-4" />
         </Link>
       </div>
@@ -289,11 +286,11 @@ function IndustriesPanel() {
 function SimplePanel({ links, title }: { links: NavLink[]; title: string }) {
   return (
     <div className="grid grid-cols-[0.6fr_2fr] gap-10">
-      <p className="font-display text-3xl text-ink">{title}</p>
+      <p className="text-2xl font-bold tracking-tight text-ink">{title}</p>
       <ul className="grid grid-cols-3 gap-3">
         {links.map((l) => (
           <li key={l.href}>
-            <Link href={l.href} className="block h-full rounded-2xl border border-line bg-surface/60 p-5 transition-colors hover:border-glow/40">
+            <Link href={l.href} className="block h-full rounded-2xl border border-line bg-white p-5 transition-colors hover:border-[#a594ff]">
               <span className="block text-[15px] font-medium text-ink">{l.name}</span>
               <span className="mt-1 block text-[13px] leading-snug text-muted-ink">{l.summary}</span>
             </Link>
@@ -307,11 +304,11 @@ function SimplePanel({ links, title }: { links: NavLink[]; title: string }) {
 function CompanyPanel() {
   return (
     <div className="grid grid-cols-[0.6fr_1.3fr_0.7fr] gap-10">
-      <p className="font-display text-3xl text-ink">Company</p>
+      <p className="text-2xl font-bold tracking-tight text-ink">Company</p>
       <ul className="grid grid-cols-2 gap-3">
         {COMPANY_NAV.map((l) => (
           <li key={l.href}>
-            <Link href={l.href} className="block h-full rounded-2xl border border-line bg-surface/60 p-5 transition-colors hover:border-glow/40">
+            <Link href={l.href} className="block h-full rounded-2xl border border-line bg-white p-5 transition-colors hover:border-[#a594ff]">
               <span className="block text-[15px] font-medium text-ink">{l.name}</span>
               <span className="mt-1 block text-[13px] leading-snug text-muted-ink">{l.summary}</span>
             </Link>

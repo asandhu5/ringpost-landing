@@ -1,7 +1,8 @@
 import React from "react";
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { VisitTracker } from "@/components/site/visit-tracker";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SiteNav } from "@/components/site/nav";
 import { SiteFooter } from "@/components/site/footer";
@@ -10,8 +11,8 @@ import { PointerGlow, ScrollProgress } from "@/components/site/motion";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
-const instrumentSans = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument", display: "swap" });
-const instrumentSerif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-instrument-serif", display: "swap" });
+// One typeface, like the dashboard: Inter for text and (heavy, tight) for headings.
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", display: "swap" });
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   // www host. (It used to be "/" here, which made every page claim to be the homepage.)
   alternates: { canonical: "./", types: { "application/rss+xml": [{ url: "/feed.xml", title: `${SITE.name} blog` }] } },
   title: {
-    default: `${SITE.name}: the AI front desk for local businesses`,
+    default: `${SITE.name}: your AI business partner. Answers, books, grows.`,
     template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0f",
+  themeColor: "#f7f8fa",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -44,7 +45,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="bg-base">
-      <body className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-base">
           Skip to content
         </a>
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {/* Vercel's free (Hobby) analytics: visitors and pages, and real-visitor page speed.
             Both load from this site's own /_vercel path, which the CSP already allows. */}
         <Analytics />
+        <VisitTracker />
         <SpeedInsights />
       </body>
     </html>

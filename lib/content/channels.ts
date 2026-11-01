@@ -95,4 +95,4 @@ export const CHANNELS: Channel[] = [
 ];
 
 /** The social platforms RingPost publishes to (packages/core/src/adapters/publishing). */
-export const SOCIAL_PLATFORMS = ["Instagram", "Facebook", "TikTok", "YouTube", "X", "LinkedIn", "Threads", "Pinterest"];
+export const SOCIAL_PLATFORMS = ["Instagram", "Facebook", "TikTok", "YouTube", "X", "LinkedIn", "Threads", "Pinterest", "Bluesky"];

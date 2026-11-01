@@ -7,7 +7,7 @@ import data from "@/data/plans.json";
  * this site. The website assistant is grounded on the same numbers.
  */
 
-export type PlanId = "front_desk" | "growth" | "command_center";
+export type PlanId = "starter" | "essential" | "grow" | "pro";
 export type Feature = keyof typeof data.featureLabels;
 
 export interface Plan {
@@ -17,6 +17,8 @@ export interface Plan {
   tagline: string;
   minutesPerMonth: number;
   messagesPerMonth: number;
+  /** Media credits a month for AI images and videos (the product's billing/media-credits.ts). */
+  mediaCreditsPerMonth: number;
   imagesPerDay: number;
   videos: { count: number; per: string };
   /** Active bookable staff the plan allows. */
@@ -27,8 +29,9 @@ export interface Plan {
 
 export const PLANS = data.plans as Plan[];
 
-/** The 7-day free trial (no card): the product's own TRIAL in plans.ts. */
-export const TRIAL = data.trial as { days: number; minutes: number; messages: number; postsPerPlatform: number; numberKeptDays: number };
+/** The product's TRIAL from plans.ts. Not offered since 2026-10-30 (`offered: false`);
+ * kept so the data file and the product stay in step. */
+export const TRIAL = data.trial as { offered: boolean; days: number; minutes: number; messages: number; postsPerPlatform: number; numberKeptDays: number };
 export const TOP_UPS = data.topUps;
 export const FEATURE_LABELS = data.featureLabels as Record<Feature, string>;
 export const USAGE_WARNING_PERCENT = Math.round(data.usageWarningRatio * 100);
@@ -53,7 +56,7 @@ export function lowestPlanWith(feature: Feature | null): Plan | null {
   return PLANS.find((p) => p.features.includes(feature)) ?? null;
 }
 
-/** "On every plan" / "Growth and Command Center" / "Command Center". */
+/** "Every plan" / "Growth and Pro" / "Pro plan". */
 export function plansWithLabel(feature: Feature | null): string {
   const lowest = lowestPlanWith(feature);
   if (!lowest) return "Every plan";

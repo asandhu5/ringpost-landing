@@ -23,7 +23,7 @@ export default function IndustriesHub() {
       >
         <nav aria-label="Groups of trades" className="flex flex-wrap gap-2">
           {GROUPS.map((group) => (
-            <a key={group} href={`#${groupAnchor(group)}`} className="inline-flex min-h-10 items-center rounded-full border border-line-strong bg-white/[0.02] px-4 text-[13.5px] text-muted-ink transition-colors hover:border-glow/50 hover:text-ink">
+            <a key={group} href={`#${groupAnchor(group)}`} className="inline-flex min-h-10 items-center rounded-full border border-line-strong bg-white px-4 text-[13.5px] text-muted-ink transition-colors hover:border-glow/50 hover:text-ink">
               {group}
             </a>
           ))}
@@ -49,7 +49,7 @@ export default function IndustriesHub() {
                         {esc.length > 3 ? "…" : ""}
                       </p>
                     )}
-                    <span className="mt-auto pt-4 text-[13.5px] font-medium text-glow group-hover:text-white">For {pluralFor(t)}</span>
+                    <span className="mt-auto pt-4 text-[13.5px] font-medium text-glow group-hover:text-ink">For {pluralFor(t)}</span>
                   </Link>
                 );
               })}

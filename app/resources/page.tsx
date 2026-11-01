@@ -20,7 +20,7 @@ export default function ResourcesPage() {
         <Container>
           <div className="mb-6 flex items-center justify-between">
             <h2 className="font-display text-3xl text-ink">From the blog</h2>
-            <Link href="/resources/blog" className="text-[14px] font-medium text-glow hover:text-white">
+            <Link href="/resources/blog" className="text-[14px] font-medium text-glow hover:text-ink">
               All posts
             </Link>
           </div>

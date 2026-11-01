@@ -12,12 +12,12 @@ import { COMPANY, LOGIN_URL, SITE } from "@/lib/site";
  */
 export function SiteFooter() {
   return (
-    <footer className="relative border-t border-line bg-[#07070b]">
+    <footer className="relative border-t border-line bg-white">
       <div className="mx-auto max-w-[1240px] px-4 pb-10 pt-16 sm:px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-[1fr_2.6fr]">
           <div>
             <Wordmark />
-            <p className="mt-4 max-w-xs text-[14px] leading-relaxed text-muted-ink">The AI front desk for local businesses. It answers every customer, then helps you win more.</p>
+            <p className="mt-4 max-w-xs text-[14px] leading-relaxed text-muted-ink">Your AI business partner. It answers every customer, books them in, and helps you win more.</p>
             <p className="mt-6 text-[13.5px] text-muted-ink">
               Already a customer?{" "}
               <a href={LOGIN_URL} className="text-ink underline decoration-line-strong underline-offset-4 hover:decoration-glow">
@@ -28,7 +28,7 @@ export function SiteFooter() {
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
             <FooterCol title="Product">
-              <FooterLink href="/product">AI Front Desk</FooterLink>
+              <FooterLink href="/product">Overview</FooterLink>
               {PRODUCT_NAV.flatMap((p) => p.links).map((l) => (
                 <FooterLink key={l.href} href={l.href}>
                   {l.name}
@@ -45,7 +45,6 @@ export function SiteFooter() {
             <FooterCol title="Explore">
               <FooterLink href="/industries">Industries</FooterLink>
               <FooterLink href="/pricing">Pricing</FooterLink>
-              <FooterLink href="/call">Talk to Zara</FooterLink>
               {RESOURCES_NAV.map((l) => (
                 <FooterLink key={l.href} href={l.href}>
                   {l.name}

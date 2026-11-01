@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
 import { PRODUCT_ICONS } from "@/components/site/icons";
 import { Reveal } from "@/components/site/reveal";
-import { Container, FaqList, OnThisPage, PageHero, ScreenshotFrame, Section, TrialButtons, screenshotExists } from "@/components/site/ui";
+import { Container, FaqList, OnThisPage, PageHero, ScreenshotFrame, Section, StartButtons, screenshotExists } from "@/components/site/ui";
 import { ProductVisual } from "@/components/site/visuals";
 import { GUARDRAILS } from "@/lib/content/platform";
 import { PILLARS, PRODUCTS, productBySlug, productsIn } from "@/lib/content/products";
@@ -42,7 +42,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         ]}
         aside={visual}
       >
-        <TrialButtons />
+        <StartButtons />
       </PageHero>
 
       <OnThisPage

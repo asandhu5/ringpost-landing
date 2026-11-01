@@ -10,7 +10,7 @@ import { useReducedMotion } from "@/hooks/use-motion";
  */
 
 /** True once the element has scrolled into view (and stays true). */
-export function useInView<T extends Element>(options: IntersectionObserverInit = { rootMargin: "0px 0px -10% 0px", threshold: 0 }) {
+export function useInView<T extends Element>(options: IntersectionObserverInit = { rootMargin: "0px 0px -10% 0px", threshold: 0 }, once = true) {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
@@ -18,6 +18,9 @@ export function useInView<T extends Element>(options: IntersectionObserverInit =
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") return setInView(true);
     const io = new IntersectionObserver(([e]) => {
+      // `once`: reveal and stay. Otherwise it follows the scroll both ways, so an
+      // animation plays again when scrolled back to.
+      if (!once) return setInView(e.isIntersecting);
       if (e.isIntersecting) {
         setInView(true);
         io.disconnect();

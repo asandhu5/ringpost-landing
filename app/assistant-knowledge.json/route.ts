@@ -20,6 +20,6 @@ export function GET() {
     generatedAt: new Date().toISOString(),
     pages,
     legalPages: LEGAL_LINKS.map((l) => ({ path: l.href, title: l.name })),
-    links: [...new Set([...pages.map((p) => p.path), ...LEGAL_LINKS.map((l) => l.href), "/industries", "/resources", "/about", "/contact", "/call", "/pricing"])].sort(),
+    links: [...new Set([...pages.map((p) => p.path), ...LEGAL_LINKS.map((l) => l.href), "/industries", "/resources", "/about", "/contact", "/pricing"])].sort(),
   });
 }

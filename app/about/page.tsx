@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: { title: "About RingPost", url: "/about" },
 };
 
-const link = "text-glow underline underline-offset-2 hover:text-white";
+const link = "text-glow underline underline-offset-2 hover:text-ink";
 
 /**
  * The entity name is read from lib/site.ts so it is byte-identical to /contact, the footer

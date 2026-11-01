@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AlertTriangle, Ban, CalendarCheck, Check, MessageSquareText } from "lucide-react";
-import { Container, Conversation, Eyebrow, PageHero, Section, TrialButtons } from "@/components/site/ui";
+import { Container, Conversation, Eyebrow, PageHero, Section, StartButtons } from "@/components/site/ui";
 import {
   DEEP,
   MODE_LABELS,
@@ -89,7 +89,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         ]}
       >
         {deep?.intro[1] && <p className="-mt-3 mb-8 max-w-2xl text-lg leading-relaxed text-muted-ink">{deep.intro[1]}</p>}
-        <TrialButtons />
+        <StartButtons />
         {aliases && (
           <p className="mt-8 text-[13.5px] text-faint">
             Customers also find {plural} by searching {t.aliases.slice(0, 4).map((a) => `“${a}”`).join(", ")}.
@@ -231,7 +231,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                   {shortLabel(r)}
                 </Link>
               ))}
-              <Link href="/industries" className="inline-flex min-h-10 items-center gap-1.5 rounded-full px-4 text-[13.5px] text-glow hover:text-white">
+              <Link href="/industries" className="inline-flex min-h-10 items-center gap-1.5 rounded-full px-4 text-[13.5px] text-glow hover:text-ink">
                 All industries
               </Link>
             </div>
@@ -255,7 +255,7 @@ function SomethingElse() {
           { name: "Something else", href: `/industries/${SOMETHING_ELSE.slug}` },
         ]}
       >
-        <TrialButtons />
+        <StartButtons />
       </PageHero>
       <Section tone="surface">
         <Container className="grid gap-12 lg:grid-cols-2">

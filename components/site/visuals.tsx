@@ -15,12 +15,12 @@ export function AppFrame({ children, title, className, caption = null }: { child
       <div className="relative overflow-hidden rounded-2xl border border-line-strong bg-[#101018] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.95)]">
         <div className="flex items-center gap-3 border-b border-line bg-base/80 px-4 py-2.5">
           <span className="flex gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
+            <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+            <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+            <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
           </span>
           <span className="truncate text-[12px] font-medium text-muted-ink">{title}</span>
-          <span className="ml-auto hidden rounded-md bg-white/[0.04] px-2 py-0.5 font-mono text-[10px] text-faint sm:block">app.ringpost.tech</span>
+          <span className="ml-auto hidden rounded-md bg-surface-2 px-2 py-0.5 font-mono text-[10px] text-faint sm:block">app.ringpost.tech</span>
         </div>
         <div className="p-4 sm:p-5">{children}</div>
       </div>
@@ -31,7 +31,7 @@ export function AppFrame({ children, title, className, caption = null }: { child
 
 function Chip({ children, tone = "muted" }: { children: React.ReactNode; tone?: "muted" | "violet" | "green" | "coral" }) {
   const t = {
-    muted: "border-line-strong bg-white/[0.04] text-muted-ink",
+    muted: "border-line-strong bg-surface-2 text-muted-ink",
     violet: "border-violet/30 bg-violet/15 text-glow",
     green: "border-success/30 bg-success/10 text-success",
     coral: "border-amber-400/30 bg-amber-400/10 text-amber-300",
@@ -40,13 +40,13 @@ function Chip({ children, tone = "muted" }: { children: React.ReactNode; tone?: 
 }
 
 function Row({ children, active }: { children: React.ReactNode; active?: boolean }) {
-  return <div className={cx("rounded-xl border px-3 py-2.5", active ? "border-violet/40 bg-violet/10" : "border-line bg-white/[0.02]")}>{children}</div>;
+  return <div className={cx("rounded-xl border px-3 py-2.5", active ? "border-violet/40 bg-violet/10" : "border-line bg-white")}>{children}</div>;
 }
 
 function Bubble({ from, children }: { from: "them" | "ai" | "owner"; children: React.ReactNode }) {
   return (
     <div className={cx("flex", from === "them" ? "justify-start" : "justify-end")}>
-      <p className={cx("max-w-[82%] rounded-2xl px-3 py-2 text-[12px] leading-snug", from === "them" ? "rounded-bl-md bg-white/[0.07] text-ink" : from === "ai" ? "rounded-br-md bg-violet text-white" : "rounded-br-md bg-cta text-[var(--rp-cta-ink)]")}>{children}</p>
+      <p className={cx("max-w-[82%] rounded-2xl px-3 py-2 text-[12px] leading-snug", from === "them" ? "rounded-bl-md bg-surface-2 text-ink" : from === "ai" ? "rounded-br-md bg-violet text-white" : "rounded-br-md bg-cta text-[var(--rp-cta-ink)]")}>{children}</p>
     </div>
   );
 }
@@ -139,7 +139,7 @@ function BookingVisual() {
         {days.map((d, di) => (
           <div key={d} className="flex flex-col gap-1.5">
             <p className="text-center text-[11px] font-medium text-faint">{d}</p>
-            <div className="relative h-44 rounded-lg border border-line bg-white/[0.02]">
+            <div className="relative h-44 rounded-lg border border-line bg-white">
               {blocks
                 .filter((b) => b[0] === di)
                 .map((b) => (
@@ -150,7 +150,7 @@ function BookingVisual() {
                       b[4] === "violet" && "bg-violet/30 text-white",
                       b[4] === "green" && "bg-success/20 text-success",
                       b[4] === "own" && "border border-dashed border-line-strong text-faint",
-                      b[4] === "cancel" && "bg-white/[0.04] text-faint line-through",
+                      b[4] === "cancel" && "bg-surface-2 text-faint line-through",
                     )}
                     style={{ top: `${b[1] * 16 + 4}%`, height: `${b[2] * 15}%` }}
                   >
@@ -166,7 +166,7 @@ function BookingVisual() {
           <span className="h-2 w-2 rounded-sm border border-dashed border-line-strong" /> Your own event, blocks the time
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-sm bg-white/10" /> Cancelled, kept on record
+          <span className="h-2 w-2 rounded-sm bg-line-strong" /> Cancelled, kept on record
         </span>
       </div>
     </AppFrame>
@@ -224,7 +224,7 @@ function MediaVisual() {
           ].map(([label, Icon]) => {
             const I = Icon as typeof Check;
             return (
-              <div key={label as string} className="flex items-center gap-2 rounded-lg border border-line bg-white/[0.02] px-2.5 py-2 text-[11.5px] text-ink">
+              <div key={label as string} className="flex items-center gap-2 rounded-lg border border-line bg-white px-2.5 py-2 text-[11.5px] text-ink">
                 <I className="h-3.5 w-3.5 shrink-0 text-success" />
                 {label as string}
               </div>
@@ -242,7 +242,7 @@ function MediaVisual() {
 function UploadsVisual() {
   return (
     <AppFrame title="Media library · uploads">
-      <div className="flex flex-col items-center justify-center gap-1.5 rounded-xl border border-dashed border-line-strong bg-white/[0.02] px-4 py-5 text-center">
+      <div className="flex flex-col items-center justify-center gap-1.5 rounded-xl border border-dashed border-line-strong bg-white px-4 py-5 text-center">
         <Upload className="h-5 w-5 text-glow" />
         <p className="text-[12px] text-ink">Drop photos and videos, or choose from your phone</p>
         <p className="text-[10.5px] text-faint">Photos up to 20 MB · videos up to 100 MB</p>
@@ -259,13 +259,13 @@ function UploadsVisual() {
             <span className="truncate text-ink">before-after.mov</span>
             <span className="text-muted-ink">Uploading · resumes if you close the tab</span>
           </div>
-          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-line-strong">
             <div className="h-full w-2/3 rounded-full bg-violet" />
           </div>
         </Row>
       </div>
       <div className="mt-3 grid gap-2 sm:grid-cols-2">
-        <div className="rounded-xl border border-line bg-white/[0.02] p-2.5">
+        <div className="rounded-xl border border-line bg-white p-2.5">
           <p className="text-[11px] font-medium text-faint">Your note</p>
           <p className="mt-1 text-[11.5px] text-ink">balayage today, took 3 hours</p>
         </div>
@@ -299,14 +299,14 @@ function SocialVisual() {
           </p>
           <p className="mt-1 text-[11px] text-muted-ink">Suggested: Thursday, 5:00 pm your time</p>
         </div>
-        <div className="rounded-xl border border-line bg-white/[0.02] p-3">
+        <div className="rounded-xl border border-line bg-white p-3">
           <p className="flex items-center gap-1.5 text-[12px] font-medium text-ink">
             <Send className="h-3.5 w-3.5 text-glow" /> Post now
           </p>
           <p className="mt-1 text-[11px] text-muted-ink">Goes out within a minute</p>
         </div>
       </div>
-      <div className="mt-3 rounded-xl border border-line bg-white/[0.02] p-3">
+      <div className="mt-3 rounded-xl border border-line bg-white p-3">
         <p className="text-[11px] font-medium text-faint">New comment</p>
         <p className="mt-1 text-[11.5px] text-ink">&ldquo;Do you have space next week?&rdquo;</p>
         <p className="mt-1.5 text-[11.5px] text-glow">Reply drafted · waiting for your approval</p>
@@ -338,7 +338,7 @@ function ReviewsVisual() {
           <span className="rounded-lg border border-line-strong px-2.5 py-1 text-[11px] text-ink">Edit</span>
         </div>
       </div>
-      <div className="mt-2 rounded-xl border border-line bg-white/[0.02] p-3">
+      <div className="mt-2 rounded-xl border border-line bg-white p-3">
         <p className="text-[11px] font-medium text-faint">After every visit</p>
         <p className="mt-1 text-[11.5px] text-ink">Thanks for visiting! If you have a minute, we&apos;d love a public review. Prefer to tell us privately instead? …</p>
       </div>
@@ -396,7 +396,7 @@ function InsightsVisual() {
           </div>
         ))}
       </div>
-      <div className="mt-4 rounded-xl border border-line bg-white/[0.02] p-3">
+      <div className="mt-4 rounded-xl border border-line bg-white p-3">
         <p className="text-[11px] font-medium text-glow">Pattern in your reviews</p>
         <p className="mt-1 text-[11.5px] text-ink">Waiting past appointment times has come up in several recent reviews.</p>
         <p className="mt-1.5 text-[11px] text-glow">See the reviews behind this</p>
@@ -411,13 +411,13 @@ function AdvisorVisual() {
       <div className="flex flex-col gap-2">
         <Bubble from="owner">Why were last month&apos;s reviews worse?</Bubble>
         <div className="flex justify-start">
-          <div className="max-w-[88%] rounded-2xl rounded-bl-md border border-line-strong bg-white/[0.04] px-3 py-2 text-[12px] leading-snug text-ink">
+          <div className="max-w-[88%] rounded-2xl rounded-bl-md border border-line-strong bg-surface-2 px-3 py-2 text-[12px] leading-snug text-ink">
             Most of the lower ratings mention waiting past the booked time, mostly on Saturdays. Your Saturday bookings are also the most tightly packed. Adding a short buffer between Saturday appointments would be the first thing I&apos;d try.
           </div>
         </div>
         <Bubble from="owner">What do people ask that we don&apos;t answer?</Bubble>
         <div className="flex justify-start">
-          <div className="max-w-[88%] rounded-2xl rounded-bl-md border border-line-strong bg-white/[0.04] px-3 py-2 text-[12px] leading-snug text-ink">
+          <div className="max-w-[88%] rounded-2xl rounded-bl-md border border-line-strong bg-surface-2 px-3 py-2 text-[12px] leading-snug text-ink">
             Parking comes up most. It isn&apos;t on your Knowledge page yet.
           </div>
         </div>

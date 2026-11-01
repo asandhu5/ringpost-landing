@@ -4,7 +4,7 @@ import { FAQ } from "@/lib/content/faq";
 import { DEEP, MODE_LABELS, SOMETHING_ELSE, TYPES, bookingFor, escalationsFor, pluralFor, rulesFor, slugFor } from "@/lib/content/industries";
 import { AUTOMATIONS, GUARDRAILS, HOW_IT_WORKS } from "@/lib/content/platform";
 import { PILLARS, PRODUCTS } from "@/lib/content/products";
-import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, TRIAL, USAGE_WARNING_PERCENT, plansWithLabel } from "@/lib/plans";
+import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, USAGE_WARNING_PERCENT, plansWithLabel } from "@/lib/plans";
 import { COMPANY, PRIMARY_EMAIL, SITE } from "@/lib/site";
 
 /**
@@ -72,7 +72,7 @@ export function knowledgePages(): KnowledgePage[] {
       title: "Channels",
       text: [
         ...CHANNELS.map((c) => `${c.name} (available to businesses on every plan). Arrives: ${c.arrives} The AI: ${c.aiDoes} The owner sees: ${c.ownerSees} Setup: ${c.setup}`),
-        `Social publishing (Growth and Command Center): ${SOCIAL_PLATFORMS.join(", ")}.`,
+        `Social publishing (Growth and Pro; Starter and Essential answer calls and messages only): ${SOCIAL_PLATFORMS.join(", ")}.`,
       ].join("\n"),
     },
     {
@@ -82,10 +82,11 @@ export function knowledgePages(): KnowledgePage[] {
         "There is no setup fee of any kind.",
         ...PLANS.map(
           (p) =>
-            `${p.name}: $${p.monthlyUsd}/month. ${p.tagline} ${p.minutesPerMonth} calling minutes and ${p.messagesPerMonth} messages a month, up to ${p.bookableStaff} bookable staff, call forwarding from the business's own number, ${p.imagesPerDay} AI images a day${p.promptExtrasPerWeek.images ? ` plus ${p.promptExtrasPerWeek.images} more a week on request` : ""}${SHOW_AI_VIDEO ? `, ${p.videos.count} AI video a ${p.videos.per}${p.promptExtrasPerWeek.videos ? ` plus ${p.promptExtrasPerWeek.videos} more a week on request` : ""}` : ""}. Includes: ${p.features.filter((f) => SHOW_AI_VIDEO || f !== "prompt_generation").map((f) => FEATURE_LABELS[f]).join(", ") || "answering every channel, booking, reminders, review requests and daily images"}.`,
+            `${p.name}: $${p.monthlyUsd}/month. ${p.tagline} ${p.minutesPerMonth} calling minutes and ${p.messagesPerMonth} messages a month, up to ${p.bookableStaff} bookable staff, call forwarding from the business's own number, ${p.mediaCreditsPerMonth ? `${p.mediaCreditsPerMonth.toLocaleString("en-US")} media credits a month for AI images${SHOW_AI_VIDEO ? " and videos" : ""}` : "no AI images or social posting (calls and messages only)"}. Includes: ${p.features.filter((f) => SHOW_AI_VIDEO || f !== "prompt_generation").map((f) => FEATURE_LABELS[f]).join(", ") || "answering every channel, booking, reminders, review requests and daily images"}.`,
         ),
-        `Free trial: ${TRIAL.days} days, no card, once per business. It includes a phone number answered by the AI, ${TRIAL.minutes} calling minutes, ${TRIAL.messages} replies across all channels, and ${TRIAL.postsPerPlatform} posts per connected social account using the owner's own photos and videos (captions written by AI). It does NOT include AI-generated images or videos, daily content, Talk to AI, comment replies, campaigns, reviews, insights or win-backs; the owner can see those pages during the trial. Nothing is charged when it ends. When the minutes run out calls ring the owner's own phone; when the messages run out new ones wait for the owner. The number is kept ${TRIAL.numberKeptDays} days after an unpaid trial ends. Choosing a plan (billed that day, then monthly) starts it straight away.`,
-        `Going over a monthly allowance never stops the service. A warning comes at ${USAGE_WARNING_PERCENT}%. Top-ups are only added when the owner clicks: ${TOP_UPS.filter((t) => SHOW_AI_VIDEO || t.metric !== "videos").map((t) => `${t.label} $${t.priceUsd}`).join(", ")}.`,
+        "There is no free trial. A business signs up, can look around the whole dashboard, and switches the AI on by choosing a plan, billed that day and then monthly. Plans start with Starter.",
+        "Media credits pay for AI images and videos: the owner picks quick image, best image, quick video or cinematic video and sees the price in credits first. Credits for a generation that fails come back automatically. Monthly credits renew with the plan; top-up credits last 90 days.",
+        `Going over a monthly allowance for calls or messages never stops the service. A warning comes at ${USAGE_WARNING_PERCENT}%. Top-ups are only added when the owner clicks: ${TOP_UPS.map((t) => `${t.label} $${t.priceUsd}`).join(", ")}.`,
         SHOW_AI_VIDEO ? "" : "AI video generation is not offered on the website at the moment; do not describe video allowances.",
       ].join("\n"),
     },
@@ -102,6 +103,5 @@ export function knowledgePages(): KnowledgePage[] {
     },
     ...industryPages(),
     { path: "/resources/blog", title: "Blog", text: allPosts().map((p) => `${p.title}: ${p.description} (/resources/blog/${p.slug})`).join("\n") },
-    { path: "/call", title: "Talk to Zara", text: "A one-minute voice call with Zara, RingPost's own AI assistant, in the browser, no phone number needed. The server ends the call after 60 seconds. The Zara chat is in the corner of every page." },
   ];
 }

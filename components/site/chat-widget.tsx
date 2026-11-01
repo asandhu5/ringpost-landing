@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { MessageCircle, Phone, X } from "lucide-react";
+import { X } from "lucide-react";
 import { ZaraChat } from "@/components/site/assistant-chat";
-import { ZaraCall, ZaraOrb } from "@/components/site/zara";
+import { ZaraOrb } from "@/components/site/zara";
 
 /**
  * Zara on every page: a launcher in the bottom-right corner that opens her panel, with
@@ -21,8 +21,10 @@ import { ZaraCall, ZaraOrb } from "@/components/site/zara";
 const OPEN_EVENT = "rp:open-assistant";
 const GREETED_KEY = "rp-zara-greeted";
 
-export function openAssistant(question?: string, mode: "chat" | "call" = "chat") {
-  window.dispatchEvent(new CustomEvent(OPEN_EVENT, { detail: { question, mode } }));
+/** Opens Zara's chat, optionally with a question already asked. (Chat only since
+ * 2026-10-30: the browser call was removed.) */
+export function openAssistant(question?: string) {
+  window.dispatchEvent(new CustomEvent(OPEN_EVENT, { detail: { question } }));
 }
 
 /** Two soft notes. Returns false when the browser refuses sound (no interaction yet). */
@@ -56,26 +58,24 @@ function chime(): boolean {
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [mode, setMode] = useState<"chat" | "call">("chat");
   const [nudge, setNudge] = useState(false);
   const [ask, setAsk] = useState<{ text: string; nonce: number } | null>(null);
   const launcher = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
 
-  const show = useCallback((m: "chat" | "call" = "chat") => {
+  const show = useCallback(() => {
     setMounted(true);
-    setMode(m);
     setOpen(true);
     setNudge(false);
   }, []);
 
   const close = useCallback(() => setOpen(false), []);
 
-  // Open when a page asks (a "Chat with Zara" or "Call Zara" button).
+  // Open when a page asks (a "Chat with Zara" button).
   useEffect(() => {
     const onOpen = (e: Event) => {
-      const d = (e as CustomEvent<{ question?: string; mode?: "chat" | "call" }>).detail;
-      show(d?.mode ?? "chat");
+      const d = (e as CustomEvent<{ question?: string }>).detail;
+      show();
       if (d?.question) setAsk({ text: d.question, nonce: Date.now() });
     };
     window.addEventListener(OPEN_EVENT, onOpen);
@@ -152,7 +152,7 @@ export function ChatWidget() {
           aria-label="Zara, RingPost's AI assistant"
           aria-hidden={!open}
           inert={!open}
-          className={`fixed z-[70] flex flex-col overflow-hidden border-line-strong bg-surface shadow-[0_30px_100px_-20px_rgba(0,0,0,0.9)] transition-all duration-300 ease-out max-sm:inset-0 max-sm:pb-[env(safe-area-inset-bottom)] sm:bottom-24 sm:right-6 sm:h-[min(640px,calc(100dvh-8rem))] sm:w-[400px] sm:rounded-3xl sm:border ${
+          className={`fixed z-[70] flex flex-col overflow-hidden border-line-strong bg-surface shadow-[0_30px_100px_-20px_rgba(11,27,43,0.45)] transition-all duration-300 ease-out max-sm:inset-0 max-sm:pb-[env(safe-area-inset-bottom)] sm:bottom-24 sm:right-6 sm:h-[min(640px,calc(100dvh-8rem))] sm:w-[400px] sm:rounded-3xl sm:border ${
             open ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
           }`}
         >
@@ -162,38 +162,16 @@ export function ChatWidget() {
               <p className="text-[15px] font-semibold text-ink">Zara</p>
               <p className="text-[12.5px] text-muted-ink">RingPost&apos;s AI assistant</p>
             </div>
-            <div className="flex rounded-full border border-line-strong p-0.5" role="tablist" aria-label="Chat or call">
-              {(["chat", "call"] as const).map((m) => (
-                <button
-                  key={m}
-                  type="button"
-                  role="tab"
-                  aria-selected={mode === m}
-                  onClick={() => setMode(m)}
-                  className={`flex h-8 items-center gap-1.5 rounded-full px-3 text-[12.5px] font-medium transition-colors ${mode === m ? "bg-violet text-white" : "text-muted-ink hover:text-ink"}`}
-                >
-                  {m === "chat" ? <MessageCircle aria-hidden className="h-3.5 w-3.5" /> : <Phone aria-hidden className="h-3.5 w-3.5" />}
-                  {m === "chat" ? "Chat" : "Call"}
-                </button>
-              ))}
-            </div>
             <button type="button" onClick={close} aria-label="Close Zara" className="flex h-9 w-9 items-center justify-center rounded-full text-muted-ink hover:text-ink">
               <X aria-hidden className="h-4.5 w-4.5" />
             </button>
           </div>
 
-          {mode === "chat" ? (
-            <ZaraChat ask={ask} onLinkClick={onLinkClick} className="flex-1" />
-          ) : (
-            <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6 py-8">
-              <ZaraCall size="md" />
-              <p className="max-w-xs text-center text-[13px] leading-relaxed text-faint">Ask her about RingPost, the plans or how it would work for your business.</p>
-            </div>
-          )}
+          <ZaraChat ask={ask} onLinkClick={onLinkClick} className="flex-1" />
 
           <div className="border-t border-line px-4 py-2.5 text-center text-[12.5px] text-muted-ink">
             Rather talk to a person?{" "}
-            <Link href="/contact" onClick={onLinkClick} className="text-glow hover:text-white">
+            <Link href="/contact" onClick={onLinkClick} className="text-glow hover:text-ink">
               Contact the team
             </Link>
           </div>
@@ -204,9 +182,9 @@ export function ChatWidget() {
         ref={launcher}
         type="button"
         aria-expanded={open}
-        aria-label={open ? "Close Zara" : "Talk to Zara"}
-        onClick={() => (open ? close() : show(mode))}
-        className={`fixed bottom-5 right-5 z-[71] flex h-14 items-center justify-center gap-2.5 rounded-full border border-white/10 bg-[#1b1830] shadow-[0_18px_50px_-12px_rgba(124,107,255,0.9)] transition-all duration-200 hover:border-glow/50 max-sm:w-14 sm:bottom-6 sm:right-6 sm:pl-2 sm:pr-5 ${
+        aria-label={open ? "Close the chat" : "Ask a question"}
+        onClick={() => (open ? close() : show())}
+        className={`fixed bottom-5 right-5 z-[71] flex h-14 items-center justify-center gap-2.5 rounded-full border border-line bg-[#0b1b2b] shadow-[0_18px_50px_-12px_rgba(11,27,43,0.55)] transition-all duration-200 hover:border-glow/50 max-sm:w-14 sm:bottom-6 sm:right-6 sm:pl-2 sm:pr-5 ${
           open ? "max-sm:hidden" : ""
         }`}
       >
@@ -214,16 +192,16 @@ export function ChatWidget() {
           <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-glow/70 motion-safe:animate-ping" />
         )}
         {open ? <X aria-hidden className="h-5 w-5 text-white sm:ml-3" /> : <ZaraOrb size={40} />}
-        <span className="text-[14.5px] font-medium text-white max-sm:sr-only">{open ? "Close" : "Talk to Zara"}</span>
+        <span className="text-[14.5px] font-medium text-white max-sm:sr-only">{open ? "Close" : "Ask a question"}</span>
       </button>
     </>
   );
 }
 
 /** Opens Zara from any page, optionally asking a question or starting on Call. */
-export function OpenChatButton({ children, question, mode = "chat", className }: { children: React.ReactNode; question?: string; mode?: "chat" | "call"; className?: string }) {
+export function OpenChatButton({ children, question, className }: { children: React.ReactNode; question?: string; className?: string }) {
   return (
-    <button type="button" data-zara-open onClick={() => openAssistant(question, mode)} className={className}>
+    <button type="button" data-zara-open onClick={() => openAssistant(question)} className={className}>
       {children}
     </button>
   );

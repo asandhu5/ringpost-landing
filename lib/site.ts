@@ -20,7 +20,7 @@
  * and a working email address satisfy every verification requirement that applies.
  */
 export const COMPANY = {
-  legalName: "RINGPOST (SMC-PRIVATE) LIMITED",
+  legalName: "RingPost Limited",
   /**
    * PLACEHOLDER — the owner supplies this when incorporation completes. While it is
    * null nothing is shown. Never invent one or infer one from anywhere.
@@ -50,9 +50,9 @@ export const API_URL = (process.env.NEXT_PUBLIC_RINGPOST_API_URL || process.env.
 
 export const SITE = {
   name: "RingPost",
-  tagline: "The AI front desk for local businesses",
+  tagline: "Your AI business partner: answers, books, grows",
   description:
-    "RingPost is an AI front desk for local businesses. It answers calls, texts, WhatsApp, Instagram, Messenger and email around the clock, books appointments into your calendar, then posts to your socials, replies to comments and asks happy customers for reviews.",
+    "RingPost is the AI business partner for local businesses. It answers calls, texts, WhatsApp, Instagram, Messenger and email around the clock, books appointments into your calendar, makes and posts your content, replies to comments and reviews, and tells you what's working.",
   /**
    * The host the site actually serves. The apex (ringpost.tech) 308-redirects to www,
    * so canonicals, og:url and the sitemap all use www (checked 2026-09-30).

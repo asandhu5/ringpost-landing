@@ -1,4 +1,4 @@
-import { PLANS, TOP_UPS, TRIAL, USAGE_WARNING_PERCENT, usd } from "@/lib/plans";
+import { PLANS, TOP_UPS, USAGE_WARNING_PERCENT, usd } from "@/lib/plans";
 
 /**
  * The one FAQ source. /faq shows every group except "Pricing and billing", which appears
@@ -25,7 +25,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "Pricing and billing",
     q: "Is there a free trial?",
-    a: `Yes: ${TRIAL.days} days, no card needed. You get your own number, ${TRIAL.minutes} minutes of calls, ${TRIAL.messages} replies across your channels and ${TRIAL.postsPerPlatform} posts of your own photos and videos on each account you connect. AI images and videos come with the plans. Nothing is charged when the trial ends; choose a plan whenever you're ready and it starts straight away.`,
+    a: `No. Instead, plans start low: ${PLANS[0].name} is ${usd(PLANS[0].monthlyUsd)} a month, with no setup fee and no contract. You can sign up and look around the whole dashboard first, and cancel any time.`,
   },
   {
     group: "Pricing and billing",
