@@ -174,21 +174,25 @@ export function UspCompare() {
 /* ───────────────────────── Content studio ───────────────────────── */
 
 const IMAGE_MODELS = [
-  { name: "Nano Banana Pro", by: "Google", note: "Sharpest detail, readable text" },
-  { name: "Nano Banana 2", by: "Google", note: "Fast, true to your product" },
+  { name: "Nano Banana 2.1", by: "Google", note: "Google's newest, crisp and true to life" },
+  { name: "Nano Banana Pro", by: "Google", note: "Sharpest detail" },
+  { name: "Seedream 5.0 Pro", by: "ByteDance", note: "Studio-grade colour for hero shots" },
+  { name: "FLUX 3", by: "Black Forest Labs", note: "Photoreal people and places" },
+  { name: "Ideogram 4.5", by: "Ideogram", note: "Posters and menus with words" },
+  { name: "Soul 2.0", by: "Higgsfield", note: "Natural, social-ready photos" },
   { name: "Seedream 5.0", by: "ByteDance", note: "Rich colour for food and interiors" },
-  { name: "Seedream 5.0 Lite", by: "ByteDance", note: "Quick drafts" },
-  { name: "Higgsfield Soul", by: "Higgsfield", note: "Natural, everyday photos" },
+  { name: "Nano Banana 2", by: "Google", note: "Fast, true to your product" },
 ];
 
 const VIDEO_MODELS = [
+  { name: "Seedance 2.5", by: "ByteDance", note: "The newest flagship, with sound" },
+  { name: "Kling 4.0", by: "Kuaishou", note: "Lifelike people and camera work" },
   { name: "Veo 3.1", by: "Google", note: "Film-like, with sound" },
-  { name: "Veo 3.1 Fast", by: "Google", note: "Veo quality, lower cost" },
-  { name: "Kling 3.0", by: "Kuaishou", note: "Realistic people and camera moves" },
+  { name: "Wan 3.0 Prime", by: "Alibaba", note: "Big step up in motion" },
+  { name: "MiniMax H3 Max", by: "MiniMax", note: "Expressive, high-energy clips" },
+  { name: "Veo 3.1 Lite", by: "Google", note: "The Veo look for everyday posts" },
   { name: "Seedance 2.0", by: "ByteDance", note: "Multi-shot clips that follow the brief" },
-  { name: "Seedance 2.0 Fast", by: "ByteDance", note: "Everyday Reels" },
-  { name: "Wan 2.7", by: "Alibaba", note: "Smooth motion" },
-  { name: "Hailuo 2.3", by: "MiniMax", note: "Expressive short clips" },
+  { name: "Kling 3.0", by: "Kuaishou", note: "Smooth, realistic movement" },
 ];
 
 const MAKER_TONE: Record<string, string> = {
@@ -198,6 +202,8 @@ const MAKER_TONE: Record<string, string> = {
   Alibaba: "#d97706",
   MiniMax: "#db2777",
   Higgsfield: "#111827",
+  "Black Forest Labs": "#374151",
+  Ideogram: "#9333ea",
 };
 
 const CONTENT_FEATURES = [
