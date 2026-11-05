@@ -19,7 +19,7 @@ export function GET() {
     if (p.path === "/about") {
       return {
         ...p,
-        text: `RingPost is a product of ${COMPANY.legalName}. Today RingPost does not offer a chat widget for a business's own website, provide phone numbers outside the US and Canada, or post to Snapchat or Google Business Profile.`,
+        text: `RingPost is a product of ${COMPANY.legalName}. Today RingPost does not offer a chat widget for a business's own website, provide phone numbers outside the US and Canada, or post to Snapchat.`,
       };
     }
     return { ...p, text: p.text.split("\n").filter((line) => line && !FOR_ZARA_ONLY.test(line)).join("\n") };

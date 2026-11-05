@@ -3,8 +3,12 @@ import Link from "next/link";
 import { Check, ShieldCheck } from "lucide-react";
 import { PRODUCT_ICONS } from "@/components/site/icons";
 import { Reveal } from "@/components/site/reveal";
-import { Container, H2, Lede, OnThisPage, PageHero, ScreenshotFrame, Section, StepFlow, StartButtons, screenshotExists } from "@/components/site/ui";
+import { ArrowRight } from "lucide-react";
+import { ChannelLogo } from "@/components/site/channel-logos";
+import { Screen } from "@/components/site/product-showcase";
+import { Container, H2, Lede, OnThisPage, PageHero, Section, StepFlow, StartButtons, screenshotExists } from "@/components/site/ui";
 import { ProductVisual } from "@/components/site/visuals";
+import { ANSWER_CHANNELS, POST_PLATFORMS } from "@/lib/content/platforms";
 import { AUTOMATIONS, GUARDRAILS, HOW_IT_WORKS } from "@/lib/content/platform";
 import { PILLARS, PRODUCTS, productsIn, type Pillar } from "@/lib/content/products";
 import { InViewGroup } from "@/components/site/motion";
@@ -18,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: { title: `RingPost: ${TITLE}`, description: DESCRIPTION, url: "/product" },
 };
 
-const PILLAR_SHOT: Record<Pillar, string> = { answer: "inbox", grow: "ai-media", understand: "advisor" };
+const PILLAR_SHOT: Record<Pillar, string> = { answer: "inbox", grow: "social", understand: "advisor" };
 
 /**
  * The "AI Front Desk" page: what one is, what this one does, how it works, what runs by
@@ -31,10 +35,65 @@ export default function ProductHub() {
       <PageHero
         eyebrow="Your AI business partner"
         title="It answers, it books, and it wins you more."
-        lede="An AI front desk handles the calls, messages and bookings a receptionist would, day and night, from your own information. Then it helps bring more customers in."
+        lede="An AI front desk handles the calls, messages and bookings a receptionist would, day and night, from your own information. Then it makes your posts, answers your reviews and comments, and shows you what's working."
+        aside={
+          <div className="relative">
+            <Screen src="/screens/home.webp" alt="The RingPost home screen for a salon: calls answered, bookings made and posts waiting" priority />
+            <div className="absolute -bottom-6 -left-4 hidden items-center gap-1.5 rounded-2xl bg-white p-2.5 shadow-xl sm:flex">
+              {ANSWER_CHANNELS.slice(0, 5).map((c) => (
+                <ChannelLogo key={c.id} id={c.id} size={30} />
+              ))}
+            </div>
+          </div>
+        }
       >
         <StartButtons />
       </PageHero>
+
+      {/* Every feature, each with its real screen */}
+      <Section className="!pt-14">
+        <Container>
+          <H2 className="mb-3">Everything in one platform.</H2>
+          <Lede className="mb-10">Eleven features, one login, one AI that knows your business.</Lede>
+          <InViewGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {PRODUCTS.map((p) => {
+              const Icon = PRODUCT_ICONS[p.slug];
+              const shot = p.screen && screenshotExists(p.screen.src) ? p.screen : null;
+              return (
+                <Link key={p.slug} href={`/product/${p.slug}`} className="rp-card rp-card-hover group flex flex-col overflow-hidden rounded-3xl">
+                  {shot && (
+                    <span className="block h-40 overflow-hidden border-b border-line bg-surface-2">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={shot.src} alt="" loading="lazy" className="w-full origin-top-left scale-[1.02] object-cover object-left-top transition-transform duration-700 group-hover:scale-[1.08]" />
+                    </span>
+                  )}
+                  <span className="flex flex-1 flex-col p-5">
+                    <span className="flex items-center gap-2.5">
+                      <Icon aria-hidden className="h-4.5 w-4.5 text-glow" />
+                      <span className="text-[16.5px] font-semibold text-ink">{p.name}</span>
+                    </span>
+                    <span className="mt-1.5 text-[14px] leading-relaxed text-muted-ink">{p.summary}</span>
+                    <span className="mt-auto inline-flex items-center gap-1 pt-4 text-[13.5px] font-semibold text-glow">
+                      See how it works <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                    </span>
+                  </span>
+                </Link>
+              );
+            })}
+            <Link href="/content-studio" className="rp-brand-ring group flex flex-col justify-between rounded-3xl p-6">
+              <span>
+                <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#5b4ee6]">Content Studio</span>
+                <span className="mt-2 block text-[20px] font-bold tracking-tight text-ink">Today&apos;s best image and video models, posting to your connected platforms.</span>
+              </span>
+              <span className="mt-5 flex flex-wrap gap-1.5">
+                {POST_PLATFORMS.map((pl) => (
+                  <ChannelLogo key={pl.id} id={pl.id} size={26} />
+                ))}
+              </span>
+            </Link>
+          </InViewGroup>
+        </Container>
+      </Section>
 
       <OnThisPage
         name="AI Front Desk"
@@ -73,7 +132,7 @@ export default function ProductHub() {
                 </ul>
               </Reveal>
               <Reveal delay={120} className={i % 2 === 1 ? "lg:order-1" : ""}>
-                {shot && screenshotExists(shot.src) ? <ScreenshotFrame src={shot.src} alt={shot.alt} /> : <ProductVisual slug={PILLAR_SHOT[pillar]} />}
+                {shot && screenshotExists(shot.src) ? <Screen src={shot.src} alt={shot.alt} /> : <ProductVisual slug={PILLAR_SHOT[pillar]} />}
               </Reveal>
             </Container>
           </Section>

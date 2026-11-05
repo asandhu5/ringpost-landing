@@ -36,6 +36,8 @@ const nextConfig = {
       { source: "/demo", destination: "/contact", permanent: true },
       { source: "/call", destination: "/contact", permanent: true },
       { source: "/resources/case-studies", destination: "/resources", permanent: true },
+      // AI content is Content Studio itself (2026-11-04), so its old page goes there.
+      { source: "/product/ai-media", destination: "/content-studio", permanent: true },
     ];
   },
   async headers() {

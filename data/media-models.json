@@ -1,0 +1,401 @@
+{
+  "source": "packages/core/src/billing/media-credits.ts",
+  "creditPack": {
+    "amount": 1000,
+    "priceUsd": 29
+  },
+  "models": [
+    {
+      "id": "image_best",
+      "kind": "image",
+      "label": "GPT Image 2",
+      "vendor": "OpenAI",
+      "blurb": "OpenAI's image model: true-to-life photos that follow the brief closely, with your price and logo laid on.",
+      "tag": "Price and logo laid on",
+      "group": "ringpost",
+      "per": "image",
+      "credits": 8,
+      "costs": [
+        {
+          "durationSec": null,
+          "credits": 8
+        }
+      ]
+    },
+    {
+      "id": "img_soul_2",
+      "kind": "image",
+      "label": "Soul 2",
+      "vendor": "Higgsfield",
+      "blurb": "Natural, social-ready photos that don't look like AI. The cheapest.",
+      "tag": "Cheapest",
+      "group": "named",
+      "per": "image",
+      "credits": 1,
+      "costs": [
+        {
+          "durationSec": null,
+          "credits": 1
+        }
+      ]
+    },
+    {
+      "id": "img_qwen_image_3",
+      "kind": "image",
+      "label": "Qwen Image 3",
+      "vendor": "Alibaba",
+      "blurb": "Sharp, detailed photos with clean, readable text.",
+      "tag": "Best detail",
+      "group": "named",
+      "per": "image",
+      "credits": 8,
+      "costs": [
+        {
+          "durationSec": null,
+          "credits": 8
+        }
+      ]
+    },
+    {
+      "id": "img_recraft_4_1",
+      "kind": "image",
+      "label": "Recraft V4.1",
+      "vendor": "Recraft",
+      "blurb": "Polished, on-brand graphics and product shots in your colours.",
+      "tag": "On-brand",
+      "group": "named",
+      "per": "image",
+      "credits": 4,
+      "costs": [
+        {
+          "durationSec": null,
+          "credits": 4
+        }
+      ]
+    },
+    {
+      "id": "img_ideogram_4",
+      "kind": "image",
+      "label": "Ideogram 4.0",
+      "vendor": "Ideogram",
+      "blurb": "The best for posters, menus and offers with words on them.",
+      "tag": "Text in images",
+      "group": "named",
+      "per": "image",
+      "credits": 3,
+      "costs": [
+        {
+          "durationSec": null,
+          "credits": 3
+        }
+      ]
+    },
+    {
+      "id": "img_recraft_4_1_pro",
+      "kind": "image",
+      "label": "Recraft V4.1 Pro",
+      "vendor": "Recraft",
+      "blurb": "Large 2K designs for posters, menus and print.",
+      "tag": "2K",
+      "group": "named",
+      "per": "image",
+      "credits": 21,
+      "costs": [
+        {
+          "durationSec": null,
+          "credits": 21
+        }
+      ]
+    },
+    {
+      "id": "img_grok_imagine_2",
+      "kind": "image",
+      "label": "Grok Imagine 2.0",
+      "vendor": "xAI",
+      "blurb": "Bold, eye-catching images in a fresh style.",
+      "tag": "New",
+      "group": "named",
+      "per": "image",
+      "credits": 8,
+      "costs": [
+        {
+          "durationSec": null,
+          "credits": 8
+        }
+      ]
+    },
+    {
+      "id": "vid_seedance_2_5",
+      "kind": "video",
+      "label": "Seedance 2.5",
+      "vendor": "ByteDance",
+      "blurb": "The top of the range: cinematic multi-shot video with its own sound.",
+      "tag": "Top of the range",
+      "group": "named",
+      "per": "second",
+      "credits": 46,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 230
+        },
+        {
+          "durationSec": 10,
+          "credits": 460
+        }
+      ]
+    },
+    {
+      "id": "vid_kling_4",
+      "kind": "video",
+      "label": "Kling 4.0",
+      "vendor": "Kuaishou",
+      "blurb": "Kling's newest: lifelike people, hands and camera work.",
+      "tag": "Best value",
+      "group": "named",
+      "per": "second",
+      "credits": 16,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 80
+        },
+        {
+          "durationSec": 10,
+          "credits": 160
+        }
+      ]
+    },
+    {
+      "id": "vid_seedance_2",
+      "kind": "video",
+      "label": "Seedance 2.0",
+      "vendor": "ByteDance",
+      "blurb": "Sharp multi-shot clips with sound that follow the brief closely.",
+      "tag": "With sound",
+      "group": "named",
+      "per": "second",
+      "credits": 32,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 160
+        },
+        {
+          "durationSec": 10,
+          "credits": 320
+        }
+      ]
+    },
+    {
+      "id": "vid_wan_3",
+      "kind": "video",
+      "label": "Wan 3.0 Prime",
+      "vendor": "Alibaba",
+      "blurb": "Rich motion and detail, with sound, at a fair price.",
+      "tag": null,
+      "group": "named",
+      "per": "second",
+      "credits": 15,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 75
+        },
+        {
+          "durationSec": 10,
+          "credits": 150
+        }
+      ]
+    },
+    {
+      "id": "vid_minimax_h3",
+      "kind": "video",
+      "label": "MiniMax H3",
+      "vendor": "MiniMax",
+      "blurb": "Expressive, high-energy clips in 2K for people and products.",
+      "tag": "2K",
+      "group": "named",
+      "per": "second",
+      "credits": 13,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 65
+        },
+        {
+          "durationSec": 10,
+          "credits": 130
+        }
+      ]
+    },
+    {
+      "id": "vid_kling_3_pro",
+      "kind": "video",
+      "label": "Kling 3.0 Pro",
+      "vendor": "Kuaishou",
+      "blurb": "Kling's studio quality: crisper detail and steadier camera work, with sound.",
+      "tag": "Studio quality",
+      "group": "named",
+      "per": "second",
+      "credits": 17,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 85
+        },
+        {
+          "durationSec": 10,
+          "credits": 170
+        }
+      ]
+    },
+    {
+      "id": "vid_kling_3",
+      "kind": "video",
+      "label": "Kling 3.0",
+      "vendor": "Kuaishou",
+      "blurb": "Smooth, realistic people and camera moves, with sound.",
+      "tag": "Popular",
+      "group": "named",
+      "per": "second",
+      "credits": 13,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 65
+        },
+        {
+          "durationSec": 10,
+          "credits": 130
+        }
+      ]
+    },
+    {
+      "id": "vid_happy_horse",
+      "kind": "video",
+      "label": "Happy Horse 1.1",
+      "vendor": "Alibaba",
+      "blurb": "Bright, lively motion that suits food, products and places.",
+      "tag": null,
+      "group": "named",
+      "per": "second",
+      "credits": 15,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 75
+        },
+        {
+          "durationSec": 10,
+          "credits": 150
+        }
+      ]
+    },
+    {
+      "id": "vid_kling_3_turbo",
+      "kind": "video",
+      "label": "Kling 3.0 Turbo",
+      "vendor": "Kuaishou",
+      "blurb": "Kling, made quickly. Good for trying ideas.",
+      "tag": "Fast",
+      "group": "named",
+      "per": "second",
+      "credits": 12,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 60
+        },
+        {
+          "durationSec": 10,
+          "credits": 120
+        }
+      ]
+    },
+    {
+      "id": "vid_pixverse_6",
+      "kind": "video",
+      "label": "PixVerse 6",
+      "vendor": "PixVerse",
+      "blurb": "Punchy, social-ready clips with sound.",
+      "tag": "With sound",
+      "group": "named",
+      "per": "second",
+      "credits": 12,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 60
+        },
+        {
+          "durationSec": 10,
+          "credits": 120
+        }
+      ]
+    },
+    {
+      "id": "vid_ltx_2_5",
+      "kind": "video",
+      "label": "LTX-2.5",
+      "vendor": "Lightricks",
+      "blurb": "Smooth camera moves, with sound. Pick 6 or 10 seconds.",
+      "tag": "Camera moves",
+      "group": "named",
+      "per": "second",
+      "credits": 10,
+      "costs": [
+        {
+          "durationSec": 6,
+          "credits": 60
+        },
+        {
+          "durationSec": 10,
+          "credits": 100
+        }
+      ]
+    },
+    {
+      "id": "vid_wan_3_standard",
+      "kind": "video",
+      "label": "Wan 3.0",
+      "vendor": "Alibaba",
+      "blurb": "Good everyday motion at a low price.",
+      "tag": "Cheap",
+      "group": "named",
+      "per": "second",
+      "credits": 10,
+      "costs": [
+        {
+          "durationSec": 5,
+          "credits": 50
+        },
+        {
+          "durationSec": 10,
+          "credits": 100
+        }
+      ]
+    },
+    {
+      "id": "vid_hailuo",
+      "kind": "video",
+      "label": "Hailuo 2.3",
+      "vendor": "MiniMax",
+      "blurb": "Lively motion for people and products. The cheapest video.",
+      "tag": "Cheapest",
+      "group": "named",
+      "per": "second",
+      "credits": 6,
+      "costs": [
+        {
+          "durationSec": 6,
+          "credits": 36
+        },
+        {
+          "durationSec": 10,
+          "credits": 60
+        }
+      ]
+    }
+  ]
+}

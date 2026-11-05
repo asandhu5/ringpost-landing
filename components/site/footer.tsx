@@ -1,103 +1,12 @@
 import Link from "next/link";
-import { Wordmark } from "@/components/site/logo";
-import { CHANNELS } from "@/lib/content/channels";
-import { COMPANY_NAV, LEGAL_NAV, PRODUCT_NAV, RESOURCES_NAV } from "@/lib/nav";
+import { Wordmark } from "./logo";
+import { ChannelLogo } from "./channel-logos";
 import { COMPANY, LOGIN_URL, SITE } from "@/lib/site";
-
-/**
- * The site footer: product, channels, resources, company and legal, plus one line on
- * what RingPost is. Industries live on /industries and in the nav; contact details only
- * on /contact. The entity name comes from lib/site.ts so it matches /about and /contact.
- * No address, ever.
- */
-export function SiteFooter() {
-  return (
-    <footer className="relative border-t border-line bg-white">
-      <div className="mx-auto max-w-[1240px] px-4 pb-10 pt-16 sm:px-6 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-[1fr_2.6fr]">
-          <div>
-            <Wordmark />
-            <p className="mt-4 max-w-xs text-[14px] leading-relaxed text-muted-ink">Your AI business partner. It answers every customer, books them in, and helps you win more.</p>
-            <p className="mt-6 text-[13.5px] text-muted-ink">
-              Already a customer?{" "}
-              <a href={LOGIN_URL} className="text-ink underline decoration-line-strong underline-offset-4 hover:decoration-glow">
-                Sign in
-              </a>
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
-            <FooterCol title="Product">
-              <FooterLink href="/product">Overview</FooterLink>
-              {PRODUCT_NAV.flatMap((p) => p.links).map((l) => (
-                <FooterLink key={l.href} href={l.href}>
-                  {l.name}
-                </FooterLink>
-              ))}
-            </FooterCol>
-            <FooterCol title="Channels">
-              {CHANNELS.map((c) => (
-                <FooterLink key={c.id} href={`/channels#${c.id}`}>
-                  {c.name}
-                </FooterLink>
-              ))}
-            </FooterCol>
-            <FooterCol title="Explore">
-              <FooterLink href="/industries">Industries</FooterLink>
-              <FooterLink href="/pricing">Pricing</FooterLink>
-              {RESOURCES_NAV.map((l) => (
-                <FooterLink key={l.href} href={l.href}>
-                  {l.name}
-                </FooterLink>
-              ))}
-            </FooterCol>
-            <FooterCol title="Company">
-              {COMPANY_NAV.map((l) => (
-                <FooterLink key={l.href} href={l.href}>
-                  {l.name}
-                </FooterLink>
-              ))}
-            </FooterCol>
-            <FooterCol title="Legal">
-              {LEGAL_NAV.map((l) => (
-                <FooterLink key={l.href} href={l.href}>
-                  {l.name}
-                </FooterLink>
-              ))}
-            </FooterCol>
-          </div>
-        </div>
-
-        <div className="mt-14 flex flex-col gap-3 border-t border-line pt-8 text-[12.5px] text-faint">
-          <p>
-            © {SITE.year} {COMPANY.legalName}. All rights reserved.
-            {COMPANY.registrationNumber ? ` Company registration number ${COMPANY.registrationNumber}.` : ""}
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-export function groupAnchor(group: string): string {
-  return group.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
-
-function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div>
-      <p className="mb-3 text-[13px] font-semibold text-ink">{title}</p>
-      <ul className="flex flex-col gap-2">{children}</ul>
-    </div>
-  );
-}
-
-function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <li>
-      <Link href={href} className="text-[13.5px] text-muted-ink transition-colors hover:text-ink">
-        {children}
-      </Link>
-    </li>
-  );
-}
+import { LEGAL_NAV } from "@/lib/nav";
+import { SOCIAL_PROFILES } from "@/lib/social-profiles";
+const COLUMNS = [
+ { title:"Product",links:[{name:"Calls and messages",href:"/channels"},{name:"Content Studio",href:"/content-studio"},{name:"Posting and scheduling",href:"/posting"},{name:"Reviews and growth",href:"/grow"},{name:"All features",href:"/product"}] },
+ { title:"Explore",links:[{name:"Industries",href:"/industries"},{name:"Plans and pricing",href:"/pricing"},{name:"Guides and ideas",href:"/resources/blog"},{name:"Common questions",href:"/faq"}] },
+ { title:"RingPost",links:[{name:"About us",href:"/about"},{name:"Contact support",href:"/contact"},{name:"Your dashboard",href:LOGIN_URL}] },
+];
+export function SiteFooter(){return <footer className="border-t border-line bg-white"><div className="mx-auto max-w-[1240px] px-5 py-10 sm:px-8"><div className="grid gap-9 lg:grid-cols-[1.2fr_2fr]"><div><Wordmark/><p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-ink">More time for your business.<br/>One place for the conversations and content that keep it moving.</p><div className="mt-5 flex flex-wrap gap-3" aria-label="RingPost social profiles">{SOCIAL_PROFILES.map(p=><a key={p.id} href={p.href} aria-label={`RingPost on ${p.name}`} title={p.name} target="_blank" rel="noopener noreferrer" className="rounded-lg transition-transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500"><ChannelLogo id={p.id} size={27}/></a>)}</div></div><div className="grid grid-cols-2 gap-6 sm:grid-cols-3">{COLUMNS.map(col=><div key={col.title}><p className="text-xs font-semibold uppercase tracking-[.12em] text-ink">{col.title}</p><ul className="mt-4 space-y-3">{col.links.map(l=><li key={l.href}><Link href={l.href} className="text-sm text-muted-ink hover:text-violet-600">{l.name}</Link></li>)}</ul></div>)}</div></div><div className="mt-9 flex flex-col gap-5 border-t border-line pt-6 sm:flex-row sm:items-start sm:justify-between"><p className="shrink-0 text-xs text-faint">© {SITE.year} {COMPANY.legalName}</p><nav aria-label="Legal" className="flex max-w-2xl flex-wrap gap-x-5 gap-y-2">{LEGAL_NAV.map(l=><Link key={l.href} href={l.href} className="text-xs text-faint hover:text-ink">{l.name}</Link>)}</nav></div></div></footer>;}

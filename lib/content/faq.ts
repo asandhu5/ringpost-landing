@@ -20,7 +20,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "Pricing and billing",
     q: "What does it cost?",
-    a: `Three monthly plans: ${planLine}. No setup fee and no contract. Billed monthly from the day you choose a plan.`,
+    a: `Four plans: ${planLine}. Pay monthly, or yearly for 20% off. No setup fee and no contract. Billed from the day you choose a plan.`,
   },
   {
     group: "Pricing and billing",
@@ -40,7 +40,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "Pricing and billing",
     q: "Can I cancel?",
-    a: "Yes, any time, with no fee. Your plan runs to the end of the month you've paid for and isn't billed again.",
+    a: "Yes, any time, with no fee. Your plan runs to the end of the month (or year, if you pay yearly) you've paid for and isn't billed again.",
     link: { href: "/refund-policy", label: "Refund policy" },
   },
   {
@@ -76,7 +76,7 @@ export const FAQ: FaqItem[] = [
     group: "How it works",
     q: "How does email work?",
     a: "Your business gets its own RingPost email address. Customers write to it, or you forward your usual mailbox. Replies go out under your business's name.",
-    link: { href: "/channels#email", label: "Email" },
+    link: { href: "/channels/email", label: "Email" },
   },
   {
     group: "How it works",

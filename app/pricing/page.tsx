@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Check, Minus } from "lucide-react";
 import { PricingCards } from "@/components/site/pricing-cards";
-import { PlanFinder } from "@/components/site/plan-finder";
 import { Container, FaqList, JsonLd, PageHero, Section, SectionHeader } from "@/components/site/ui";
 import { PRICING_FAQ } from "@/lib/content/faq";
-import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, USAGE_WARNING_PERCENT, num, usd, type Feature } from "@/lib/plans";
+import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, USAGE_WARNING_PERCENT, YEARLY_DISCOUNT, num, usd, type Feature } from "@/lib/plans";
 import { InViewGroup } from "@/components/site/motion";
 import { SITE } from "@/lib/site";
 
@@ -55,7 +54,7 @@ export default function PricingPage() {
       <PageHero
         eyebrow="Pricing"
         title={`Start at ${usd(PLANS[0].monthlyUsd)} a month.`}
-        lede="Monthly, no setup fee, no contract. Cancel any time."
+        lede={`Monthly or yearly${YEARLY_DISCOUNT > 0 ? ` (save ${Math.round(YEARLY_DISCOUNT * 100)}%)` : ""}. No setup fee, no contract, cancel any time.`}
       />
 
       <Section className="!pt-0">
@@ -67,15 +66,9 @@ export default function PricingPage() {
 
       <Section className="!pt-0">
         <Container>
-          <PlanFinder />
-        </Container>
-      </Section>
-
-      <Section className="!pt-0">
-        <Container>
           <SectionHeader eyebrow="Compare" title="What's in each plan." />
           <div className="overflow-x-auto rounded-2xl border border-line">
-            <table className="w-full min-w-[760px] border-collapse bg-white text-left text-[14px]">
+            <table className="w-full min-w-[920px] border-collapse bg-white text-left text-[14px]">
               <caption className="sr-only">Plan comparison</caption>
               <thead>
                 <tr className="border-b border-line bg-surface">
@@ -88,21 +81,28 @@ export default function PricingPage() {
                       <span className="block text-[13px] font-normal text-muted-ink">{usd(p.monthlyUsd)} a month</span>
                     </th>
                   ))}
+                  <th scope="col" className="px-5 py-4 text-[15px] font-semibold text-ink">
+                    Business
+                    <span className="block text-[13px] font-normal text-muted-ink">Custom</span>
+                  </th>
                 </tr>
               </thead>
               <tbody className="rp-table-rows divide-y divide-line">
-                <Row label="Calling minutes a month" values={PLANS.map((p) => num(p.minutesPerMonth))} />
-                <Row label="Messages a month" values={PLANS.map((p) => num(p.messagesPerMonth))} />
-                <Row label="Bookable staff" values={PLANS.map((p) => `Up to ${p.bookableStaff}`)} />
-                <Row label="Call forwarding" values={PLANS.map(() => true)} />
-                <Row label="Answers calls and messages on every channel" values={PLANS.map(() => true)} />
-                <Row label="Bookings, reminders and review requests" values={PLANS.map(() => true)} />
+                <Group label="Answering and booking" />
+                <Row label="Calling minutes a month" values={[...PLANS.map((p) => num(p.minutesPerMonth)), "To fit"]} />
+                <Row label="Messages a month" values={[...PLANS.map((p) => num(p.messagesPerMonth)), "To fit"]} />
+                <Row label="Bookable staff" values={[...PLANS.map((p) => `Up to ${p.bookableStaff}`), "To fit"]} />
+                <Row label="Locations" values={[...PLANS.map(() => "1"), "Several"]} />
+                <Row label="Calls, WhatsApp, Instagram, Messenger, texts and email" values={[...PLANS.map(() => true), true]} />
+                <Row label="Keep your number (call forwarding)" values={[...PLANS.map(() => true), true]} />
+                <Row label="Bookings, reminders and review requests" values={[...PLANS.map(() => true), true]} />
+                <Group label="Content and growth" />
                 <Row
                   label={SHOW_AI_VIDEO ? "Media credits a month (AI images and videos)" : "Media credits a month (AI images)"}
-                  values={PLANS.map((p) => (p.mediaCreditsPerMonth ? num(p.mediaCreditsPerMonth) : false))}
+                  values={[...PLANS.map((p) => (p.mediaCreditsPerMonth ? num(p.mediaCreditsPerMonth) : false)), "To fit"]}
                 />
                 {features.map((f) => (
-                  <Row key={f} label={FEATURE_LABELS[f]} values={PLANS.map((p) => p.features.includes(f))} />
+                  <Row key={f} label={FEATURE_LABELS[f]} values={[...PLANS.map((p) => p.features.includes(f)), true]} />
                 ))}
               </tbody>
             </table>
@@ -114,7 +114,7 @@ export default function PricingPage() {
         <Container>
           <SectionHeader eyebrow="Good to know" title="Simple billing, no surprises." />
           <InViewGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <SmallCard title="Billing">Billed the day you choose a plan, then monthly. Upgrades are prorated. Cancel from your dashboard.</SmallCard>
+            <SmallCard title="Billing">Billed the day you choose a plan, then monthly or yearly. Upgrades are prorated. Cancel from your dashboard.</SmallCard>
             <SmallCard title="If you go over">Service never stops. You get a heads-up at {USAGE_WARNING_PERCENT}% and top up only if you want to.</SmallCard>
             <SmallCard title="Media credits">
               Growth and Pro include credits for AI {SHOW_AI_VIDEO ? "images and videos" : "images"}. You see the price before you make anything, and failed ones are refunded.
@@ -139,6 +139,17 @@ export default function PricingPage() {
       </Section>
 
     </>
+  );
+}
+
+
+function Group({ label }: { label: string }) {
+  return (
+    <tr className="bg-surface">
+      <th colSpan={6} scope="colgroup" className="px-5 py-2.5 text-[12.5px] font-semibold uppercase tracking-[0.06em] text-[#5b4ee6]">
+        {label}
+      </th>
+    </tr>
   );
 }
 

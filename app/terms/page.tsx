@@ -54,8 +54,8 @@ export default function TermsPage() {
       <h2>3. Fees and payment</h2>
       <ul>
         <li>
-          RingPost is offered as a monthly plan (Starter, Essential, Growth or
-          Pro), with no setup fee, at the prices shown on our{" "}
+          RingPost is offered as a plan (Starter, Essential, Growth or Pro), paid
+          monthly or yearly in advance (yearly is 20% off twelve months), with no setup fee, at the prices shown on our{" "}
           <a href="/pricing">pricing page</a> when you sign up. Each plan includes
           stated monthly allowances; top-up packs are only charged when you choose
           to buy one.

@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { allPosts } from "@/lib/blog";
 import { SOMETHING_ELSE, TYPES, isSparse, slugFor } from "@/lib/content/industries";
 import { PRODUCTS } from "@/lib/content/products";
+import { CHANNEL_PAGES } from "@/lib/content/channel-pages";
+import { GROUP_INFO } from "@/lib/content/groups";
 import { LEGAL_LINKS, SITE } from "@/lib/site";
 
 /**
@@ -19,11 +21,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     entry("", 1, "weekly"),
     entry("/product", 0.9, "monthly"),
-    ...PRODUCTS.map((p) => entry(`/product/${p.slug}`, 0.8)),
+    ...PRODUCTS.filter((p) => p.slug !== "ai-media").map((p) => entry(`/product/${p.slug}`, 0.8)),
+    entry("/content-studio", 0.9),
+    entry("/grow", 0.9),
+    entry("/posting", 0.9),
+    ...CHANNEL_PAGES.map((p) => entry(`/channels/${p.id}`, 0.8)),
     entry("/channels", 0.8),
     entry("/pricing", 0.9, "weekly"),
     entry("/faq", 0.7),
     entry("/industries", 0.8),
+    ...GROUP_INFO.map((g) => entry(`/industries/${g.slug}`, 0.7)),
     ...TYPES.filter((t) => !isSparse(t)).map((t) => entry(`/industries/${slugFor(t)}`, 0.6)),
     entry(`/industries/${SOMETHING_ELSE.slug}`, 0.5),
     entry("/resources", 0.5),

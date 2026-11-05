@@ -925,6 +925,16 @@ details.rp-faq summary:hover { background: rgba(11, 27, 43, 0.025); }
 /* Page-to-page fades in browsers that support cross-document view transitions. */
 @view-transition { navigation: auto; }
 
+/* The business explorer moves only on an intentional selection; no autoplay. */
+.rp-lab-scene { animation: rp-lab-enter 420ms cubic-bezier(.2,.8,.2,1) both; }
+@keyframes rp-lab-enter { from { opacity: .35; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.rp-flow-rail::before { content: ""; position: absolute; top: 13px; left: 14px; right: 27%; height: 1px; background: linear-gradient(90deg, #8de4ed90, #b9a6ff90); transform-origin: left; animation: rp-flow-enter 800ms 200ms both; }
+@keyframes rp-flow-enter { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .rp-lab-scene, .rp-flow-rail::before { animation: none; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
 /* The FAQ answer eases open where the browser can animate <details>. */
 @supports (interpolate-size: allow-keywords) {
   :root { interpolate-size: allow-keywords; }
@@ -954,3 +964,31 @@ details.rp-faq summary:hover { background: rgba(11, 27, 43, 0.025); }
 @media (prefers-reduced-motion: reduce) {
   .rp-rise { animation: none; }
 }
+
+/* The home showcase's step timer (components/site/product-showcase.tsx): fills in the 4.2 s a screen is shown. */
+@keyframes rp-progress-fill { from { width: 0%; } to { width: 100%; } }
+.rp-progress { animation: rp-progress-fill 4.2s linear both; }
+@media (prefers-reduced-motion: reduce) { .rp-progress { animation: none; width: 100%; } }
+
+/* Explainers (components/site/explainers.tsx). */
+@keyframes rp-pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+.rp-pop { animation: rp-pop 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes rp-tour-bar {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.rp-tour-bar { animation: rp-tour-bar 5.2s linear both; }
+@media (prefers-reduced-motion: reduce) {
+  .rp-pop, .rp-tour-bar { animation: none; }
+}
+
+/* Keep product screens within the visible browser at normal zoom. */
+html { scroll-padding-top: 90px; }
+.rp-business-lab { scroll-margin-top: 90px; }
+@media (min-width:1024px) { .rp-business-lab h2 { font-size:clamp(1.8rem,2.6vw,2.7rem); } .rp-business-lab select { min-height:40px; } }
+@keyframes creative-drift { from { transform:scale(1); } to { transform:scale(1.035); } }
+.creative-slow-motion { animation:creative-drift 8s ease-in-out infinite alternate; }
+@media (prefers-reduced-motion:reduce) { .creative-slow-motion { animation:none; } }

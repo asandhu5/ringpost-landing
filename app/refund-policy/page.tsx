@@ -21,21 +21,23 @@ export default function RefundPolicyPage() {
     >
       <h2>How you are billed</h2>
       <p>
-        There is <strong>one monthly plan</strong> (Starter, Essential, Growth or Pro), shown on
-        the <a href="/pricing">pricing page</a>. There is no setup fee, no contract and no minimum
-        term. Top-up packs are only charged when you choose to buy one.
+        You choose <strong>one plan</strong> (Starter, Essential, Growth or Pro), shown on the{" "}
+        <a href="/pricing">pricing page</a>, paid <strong>monthly or yearly</strong> (yearly is 20%
+        off twelve months). There is no setup fee and no contract beyond the period you paid for.
+        Top-up packs are only charged when you choose to buy one.
       </p>
 
       <h2>Cancelling</h2>
       <ul>
         <li>
-          Your plan is billed when you choose it, then monthly, in advance. There is no setup
-          fee and no contract.
+          Your plan is billed when you choose it, then monthly or yearly, in advance, as you chose.
+          There is no setup fee.
         </li>
         <li>
           You can cancel your plan at any time. Cancellation takes effect at the{" "}
-          <strong>end of the month you&rsquo;ve already paid for</strong>: you keep access until then
-          and aren&rsquo;t billed again.
+          <strong>end of the month (or year, on yearly billing) you&rsquo;ve already paid for</strong>:
+          you keep access until then and aren&rsquo;t billed again. Yearly plans are not refunded
+          for the unused months.
         </li>
         <li>
           We don&rsquo;t refund part-months for time left in a period you&rsquo;ve already paid for.
@@ -47,7 +49,7 @@ export default function RefundPolicyPage() {
       <h2>If it does not suit your business</h2>
       <p>
         See the dashboard before you pay, and ask our assistant or the team anything. Once you&rsquo;re
-        on a plan, cancel the monthly plan whenever you like. There is nothing to negotiate and no
+        on a plan, cancel it whenever you like. There is nothing to negotiate and no
         retention call.
       </p>
 

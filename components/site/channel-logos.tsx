@@ -1,7 +1,11 @@
+import { BRAND_PATHS } from "@/components/site/brand-icons";
+
 /**
  * Each channel's own mark, in its own colours: WhatsApp green, the Instagram gradient,
  * the Messenger gradient. Phone, text and email have no single brand, so they get the
- * colours a phone's own apps use. Drawn inline so nothing loads from another site.
+ * colours a phone's own apps use. Drawn inline so nothing loads from another site. The
+ * networks use their official marks (brand-icons.ts, from Simple Icons); phone, text,
+ * email and LinkedIn are drawn here.
  */
 
 type ChannelId = "phone" | "sms" | "whatsapp" | "instagram" | "messenger" | "email" | "facebook" | "tiktok" | "youtube" | "x" | "linkedin" | "threads" | "pinterest" | "bluesky";
@@ -25,6 +29,8 @@ const BACKGROUND: Record<ChannelId, string> = {
 };
 
 function Glyph({ id }: { id: ChannelId }) {
+  const brand = BRAND_PATHS[id];
+  if (brand) return <path fill="#fff" d={brand} />;
   switch (id) {
     case "phone":
       return <path fill="#fff" d="M7.1 3.6c.5-.4 1.3-.3 1.7.3l1.9 2.6c.4.5.3 1.3-.1 1.7l-1.2 1.2c.9 1.9 2.4 3.4 4.3 4.3l1.2-1.2c.4-.4 1.2-.5 1.7-.1l2.6 1.9c.6.4.7 1.2.3 1.7l-1.1 1.6c-.6.9-1.7 1.3-2.8 1-5.1-1.4-9.1-5.4-10.5-10.5-.3-1.1.1-2.2 1-2.8l1-.7Z" />;

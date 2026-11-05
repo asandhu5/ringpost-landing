@@ -33,6 +33,8 @@ export const PLANS = data.plans as Plan[];
  * kept so the data file and the product stay in step. */
 export const TRIAL = data.trial as { offered: boolean; days: number; minutes: number; messages: number; postsPerPlatform: number; numberKeptDays: number };
 export const TOP_UPS = data.topUps;
+/** Off every plan when paid yearly (the product's plans.ts YEARLY_DISCOUNT). */
+export const YEARLY_DISCOUNT = (data as { yearlyDiscount?: number }).yearlyDiscount ?? 0;
 export const FEATURE_LABELS = data.featureLabels as Record<Feature, string>;
 export const USAGE_WARNING_PERCENT = Math.round(data.usageWarningRatio * 100);
 

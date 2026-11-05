@@ -34,7 +34,7 @@ export const COMPANY = {
  * The one email address the site shows, and only on /contact (owner decision 2026-09-30).
  * admin@ is live on Titan. The legal pages point to /contact instead of naming a mailbox.
  */
-export const PRIMARY_EMAIL = "admin@ringpost.tech";
+export const PRIMARY_EMAIL = "support@ringpost.tech";
 
 /**
  * Where business owners sign up and log in: the dashboard app, a separate deployment

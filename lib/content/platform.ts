@@ -47,8 +47,3 @@ export const HOW_IT_WORKS = [
   { step: "3", title: "Try it yourself", body: "Chat with your AI in the dashboard, or text and call your number." },
   { step: "4", title: "It starts answering", body: "Calls and messages are answered, and bookings land on your calendar." },
 ];
-
-export const PROBLEM = {
-  headline: "A missed call is a customer you'll never meet.",
-  body: "The phone rings while you're busy. Nobody picks up, and the caller tries the next business on the list.",
-};

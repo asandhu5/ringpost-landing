@@ -16,6 +16,7 @@
     ]
   },
   "usageWarningRatio": 0.8,
+  "yearlyDiscount": 0.2,
   "plans": [
     {
       "id": "starter",
@@ -65,7 +66,7 @@
       "minutesPerMonth": 400,
       "messagesPerMonth": 1500,
       "mediaCreditsPerMonth": 1500,
-      "imagesPerDay": 2,
+      "imagesPerDay": 3,
       "videos": {
         "count": 1,
         "per": "week"

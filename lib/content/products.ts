@@ -31,7 +31,7 @@ export interface Product {
   plans: { label: string; feature: Feature | null }[];
   /** A real dashboard screenshot in /public/screens, shown when the file exists. */
   screen?: { src: string; alt: string };
-  faq?: { q: string; a: string }[];
+  faq?: { q: string; a: string; link?: { href: string; label: string } }[];
 }
 
 export const PILLARS: Record<Pillar, { name: string; line: string; lede: string }> = {
@@ -76,7 +76,7 @@ export const PRODUCTS: Product[] = [
       },
     ],
     plans: [{ label: "Answering calls, booking and missed-call text-back", feature: null }],
-    screen: { src: "/screens/calls.webp", alt: "The RingPost calls page with answered calls and their outcomes" },
+    screen: { src: "/screens/inbox-call.webp", alt: "The RingPost calls page with answered calls and their outcomes" },
     faq: [
       { q: "Can I keep my existing number?", a: "Yes. Forward it to RingPost, only the calls you miss or every call. The dashboard shows the exact code to dial and tests it. Or pick a new local number." },
       { q: "Will callers know it's an AI?", a: "Yes. It introduces itself as your virtual assistant and never claims to be a person." },
@@ -99,7 +99,7 @@ export const PRODUCTS: Product[] = [
       { heading: "One record per customer", body: "Every conversation and booking for a customer in one place, whichever channel they used." },
     ],
     plans: [{ label: "The inbox and taking over conversations", feature: null }],
-    screen: { src: "/screens/inbox.webp", alt: "The RingPost inbox with conversations from several channels" },
+    screen: { src: "/screens/inbox-whatsapp.webp", alt: "The RingPost inbox with conversations from several channels" },
   },
   {
     slug: "booking",
@@ -148,8 +148,8 @@ export const PRODUCTS: Product[] = [
   {
     slug: "ai-media",
     pillar: "grow",
-    name: "AI images and video",
-    summary: "On-brand images and short videos, with your real prices and logo.",
+    name: "AI content",
+    summary: "Images and short videos made for your business every day, with your real prices and logo.",
     title: "AI images and videos for your business's social media",
     description: "RingPost makes on-brand images and short videos from your own services. Your logo, prices and phone number are added by code and checked, never drawn by the AI.",
     hero: {
@@ -172,6 +172,7 @@ export const PRODUCTS: Product[] = [
     faq: [
       { q: "Can the AI put the wrong price on an image?", a: "No. Prices come from your own price list and are added by code, then read back to confirm." },
       { q: "Do I have to post everything?", a: "No. Everything goes to your media library first. You choose what to post, and when." },
+      { q: "Which models can I choose, and what do they cost?", a: "Your dashboard shows available models, credit requirements and usage before generation.", link: { href: "https://app.ringpost.tech/media", label: "Open your dashboard" } },
     ],
   },
   {
@@ -195,18 +196,18 @@ export const PRODUCTS: Product[] = [
       { label: "Uploading your own photos and videos", feature: "uploads" },
       { label: "Captions polished for each platform", feature: "uploads" },
     ],
-    screen: { src: "/screens/uploads.webp", alt: "Uploading photos and videos in the RingPost media library" },
+    screen: { src: "/screens/media.webp", alt: "Uploading photos and videos in the RingPost media library" },
   },
   {
     slug: "social",
     pillar: "grow",
     name: "Social posting",
-    summary: "Schedule or post now to eight platforms, with replies to comments.",
+    summary: "Schedule or post now to your connected platforms, with replies to comments.",
     title: "Schedule and publish social media posts, with AI replies to comments",
-    description: "Publish to Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest and Bluesky. Schedule or post now, reply to comments and run campaigns for occasions.",
+    description: "Publish to Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest, and Bluesky. Schedule or post now, reply to comments and run campaigns for occasions.",
     hero: {
       headline: "Your feed, kept busy. You stay in charge.",
-      lede: "Approve a post, then schedule it for a good hour or post it now, to eight platforms at once.",
+      lede: "Approve a post, then schedule it for a good hour or post it now, to your connected platforms at once.",
     },
     sections: [
       { heading: "Schedule or post now", body: "It suggests the next good hour for your trade. Nothing posts without approval unless you turn on autopilot.", points: ["Instagram and Facebook", "TikTok, YouTube, X, LinkedIn, Threads and Pinterest"] },
@@ -220,27 +221,29 @@ export const PRODUCTS: Product[] = [
       { label: "Campaigns for occasions", feature: "campaigns" },
       { label: "How each post performed", feature: "post_insights" },
     ],
-    screen: { src: "/screens/approvals.webp", alt: "RingPost approvals with schedule and post now" },
+    screen: { src: "/screens/preview.webp", alt: "RingPost approvals with schedule and post now" },
   },
   {
     slug: "reviews",
     pillar: "grow",
-    name: "Reviews",
-    summary: "A review request after every visit, and Google reviews answered.",
+    name: "Reviews and comments",
+    summary: "Google reviews and comments on every platform, answered.",
     title: "Get more Google reviews and reply to them with AI",
-    description: "RingPost asks every customer for a review after their visit, with a private feedback option, and drafts replies to your Google reviews.",
+    description: "RingPost asks every customer for a review after their visit, drafts replies to your Google reviews and to comments on your posts, and publishes them once you approve.",
     hero: {
       headline: "Every visit ends with an ask. Every review gets a reply.",
-      lede: "After each visit, customers get your review link and a private way to talk to you. New Google reviews get a reply drafted in your voice.",
+      lede: "After each visit, customers get your review link and a private way to talk to you. New Google reviews and comments on your posts get a reply drafted in your voice, published when you approve.",
     },
     sections: [
       { heading: "The same ask for everyone", body: "Every customer gets the same message. Asking only happy customers breaks Google's rules, so RingPost never does." },
       { heading: "Private feedback, straight to you", body: "Feedback through the private link arrives in your inbox." },
-      { heading: "Google reviews answered", body: "New reviews arrive nightly with a reply drafted. Nothing is posted until you approve it." },
+      { heading: "Google reviews answered", body: "New customer reviews arrive with a reply drafted. Approve it and it's published on Google. Nothing is posted until you say so." },
+      { heading: "Comments on every platform", body: "Comments on your Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads and Bluesky posts come to one place, with a reply drafted to approve." },
     ],
     plans: [
       { label: "Review requests with a private feedback option", feature: null },
-      { label: "Google reviews read, with replies drafted", feature: "reviews" },
+      { label: "Google reviews read, with replies drafted and published", feature: "reviews" },
+      { label: "Replies to comments on your posts", feature: "comment_replies" },
     ],
     screen: { src: "/screens/reviews.webp", alt: "RingPost reviews with the replies sent" },
   },
@@ -261,7 +264,7 @@ export const PRODUCTS: Product[] = [
       { heading: "See who came back", body: "Your dashboard shows how many came back after the message." },
     ],
     plans: [{ label: "Win-back texts", feature: "winback" }],
-    screen: { src: "/screens/winback.webp", alt: "Choosing customers for a win-back text in RingPost" },
+    screen: { src: "/screens/win-back.webp", alt: "Choosing customers for a win-back text in RingPost" },
   },
 
   // ── UNDERSTAND ────────────────────────────────────────────────────────────
@@ -286,7 +289,7 @@ export const PRODUCTS: Product[] = [
       { label: "Business insights", feature: "insights" },
       { label: "Social media post insights", feature: "post_insights" },
     ],
-    screen: { src: "/screens/home.webp", alt: "The RingPost dashboard overview" },
+    screen: { src: "/screens/insights.webp", alt: "RingPost insights from real conversations and posts" },
   },
   {
     slug: "advisor",

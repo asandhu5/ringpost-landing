@@ -21,10 +21,12 @@ import {
   type BusinessType,
 } from "@/lib/content/industries";
 import { GUARDRAILS } from "@/lib/content/platform";
+import { GROUP_INFO, groupBySlug, groupFor } from "@/lib/content/groups";
+import { GroupPage } from "@/components/site/group-page";
 import { InViewGroup } from "@/components/site/motion";
 
 export function generateStaticParams() {
-  return [...TYPES.map((t) => ({ slug: slugFor(t) })), { slug: SOMETHING_ELSE.slug }];
+  return [...GROUP_INFO.map((g) => ({ slug: g.slug })), ...TYPES.map((t) => ({ slug: slugFor(t) })), { slug: SOMETHING_ELSE.slug }];
 }
 
 export const dynamicParams = false;
@@ -37,6 +39,12 @@ function aliasLine(t: BusinessType): string {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
+  const group = groupBySlug(slug);
+  if (group) {
+    const title = `RingPost for ${group.name.toLowerCase()}: AI front desk and content`;
+    const description = `${group.tagline} RingPost answers calls and messages, books appointments and makes your posts. ${group.pain}`;
+    return { title, description, openGraph: { title, description, url: `/industries/${slug}` } };
+  }
   if (slug === SOMETHING_ELSE.slug) {
     return {
       title: "AI receptionist for any local business",
@@ -60,6 +68,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const group = groupBySlug(slug);
+  if (group) return <GroupPage g={group} />;
   if (slug === SOMETHING_ELSE.slug) return <SomethingElse />;
   const t = typeBySlug(slug);
   if (!t) notFound();
@@ -85,6 +95,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         }
         crumbs={[
           { name: "Industries", href: "/industries" },
+          ...(groupFor(t) ? [{ name: groupFor(t)!.name, href: `/industries/${groupFor(t)!.slug}` }] : []),
           { name, href: `/industries/${slug}` },
         ]}
       >

@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { HeroWords, LiveDesk, NightMorning, UspSection } from "@/components/site/home-x";
-import { ContentStudio, ProblemSolution, UspCompare } from "@/components/site/home-v3";
-import { Marquee } from "@/components/site/motion";
+import { HeroWords, LiveDesk } from "@/components/site/hero-scene";
+import { UspCompare } from "@/components/site/product-comparison";
+import { LogoCloud, SeeAll, Showcase, VideoWall } from "@/components/site/product-showcase";
+import { GROUP_ICONS } from "@/components/site/group-page";
+import { GROUP_INFO } from "@/lib/content/groups";
+import { siteVideos } from "@/lib/content/videos";
+import { InViewGroup } from "@/components/site/motion";
 import { Reveal } from "@/components/site/reveal";
 import { ButtonLink, Container, Eyebrow, H2, JsonLd, Lede, Section } from "@/components/site/ui";
-import { DEEP, TYPES, shortLabel, slugFor } from "@/lib/content/industries";
+import { TYPES } from "@/lib/content/industries";
 import { COMPANY, START_URL, SITE } from "@/lib/site";
-import { PLANS, usd } from "@/lib/plans";
+import { BusinessExplorer } from "@/components/site/business-explorer";
 
 export const metadata: Metadata = {
   title: { absolute: `${SITE.name}: your AI business partner. Answers, books, grows.` },
@@ -46,8 +50,8 @@ const WEBSITE = {
 };
 
 export default function HomePage() {
-  const trades = TYPES.filter((t) => DEEP[t.id]);
-  const from = usd(PLANS[0].monthlyUsd);
+  // One video per industry, so the home page shows every kind of business.
+  const videos = siteVideos().filter((v, i, all) => all.findIndex((x) => x.group === v.group) === i).slice(0, 9);
 
   const cta = (
     <a href={START_URL} className="rp-cta-shine inline-flex h-12 items-center rounded-full bg-cta px-7 text-[15.5px] font-semibold text-[var(--rp-cta-ink)] shadow-[0_18px_50px_-15px_rgba(34,211,238,0.85)] transition-colors hover:bg-[var(--rp-cta-hover)]">
@@ -86,7 +90,7 @@ export default function HomePage() {
                 </ButtonLink>
               </div>
               <ul className="rp-enter rp-enter-5 mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[14px] text-muted-ink">
-                {["Set up in minutes", "Keep your number", "Cancel any time"].map((t) => (
+                {["Your business knowledge", "Keep your number", "You control autopilot"].map((t) => (
                   <li key={t} className="flex items-center gap-1.5">
                     <Check className="h-4 w-4 text-[#16a34a]" aria-hidden /> {t}
                   </li>
@@ -100,20 +104,21 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* The problem, and how each part is solved */}
+      {/* Six jobs, each shown in the real dashboard */}
+      <Section className="!pt-4"><Container><BusinessExplorer /></Container></Section>
       <Section className="!pt-6">
         <Container>
-          <Reveal className="mx-auto mb-10 max-w-3xl text-center">
-            <Eyebrow>The problem</Eyebrow>
-            <H2>Running a local business means doing five jobs at once.</H2>
-            <Lede className="mx-auto mt-4">RingPost takes each one off your plate.</Lede>
+          <Reveal className="mx-auto mb-6 max-w-4xl text-center">
+            <Eyebrow>One platform</Eyebrow>
+            <H2>From the first enquiry to your next campaign.</H2>
+            <Lede className="mx-auto mt-4">Explore the tools. See how they work together.</Lede>
           </Reveal>
-          <ProblemSolution />
+          <Showcase />
         </Container>
       </Section>
 
       {/* The USP */}
-      <Section className="!pt-0">
+      <Section>
         <Container>
           <Reveal>
             <UspCompare />
@@ -121,49 +126,49 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Everything it does */}
+      {/* Content Studio: real videos */}
+      {videos.length > 0 && (
+        <Section className="!pt-0">
+          <Container>
+            <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-4">
+              <div className="max-w-2xl">
+                <Eyebrow>Content Studio</Eyebrow>
+                <H2>Posts that look like your business, made every day.</H2>
+                <Lede className="mt-4">Each of these began as a single photo and became a short video in minutes, ready for Reels and TikTok. For every kind of business.</Lede>
+              </div>
+              <SeeAll href="/content-studio">See Content Studio</SeeAll>
+            </Reveal>
+            <VideoWall videos={videos} />
+          </Container>
+        </Section>
+      )}
+
+      {/* Industries */}
       <Section className="!pt-0">
         <Container>
-          <Reveal className="mx-auto mb-10 max-w-3xl text-center">
-            <Eyebrow>What it does</Eyebrow>
-            <H2>From the first call to the next post.</H2>
+          <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div className="max-w-2xl">
+              <Eyebrow>Industries</Eyebrow>
+              <H2>Set up for your kind of business.</H2>
+              <Lede className="mt-4">{TYPES.length} kinds of business, each with its own rules for what to say, what to hand to you and how to book.</Lede>
+            </div>
+            <SeeAll href="/industries">All industries</SeeAll>
           </Reveal>
-          <UspSection />
+          <InViewGroup className="grid grid-cols-2 gap-3 md:grid-cols-5">
+            {GROUP_INFO.map((g) => {
+              const Icon = GROUP_ICONS[g.icon];
+              return (
+                <Link key={g.slug} href={`/industries/${g.slug}`} className="rp-card rp-card-hover group flex flex-col items-start gap-3 rounded-2xl p-5">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl transition-transform group-hover:scale-110" style={{ background: `${g.tone}18`, color: g.tone }}>
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <span className="text-[15px] font-semibold leading-tight text-ink">{g.name}</span>
+                </Link>
+              );
+            })}
+          </InViewGroup>
         </Container>
       </Section>
-
-      {/* Content studio */}
-      <Section className="!pt-0">
-        <Container>
-          <Reveal>
-            <ContentStudio />
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* After hours */}
-      <Section className="!pt-0">
-        <Container>
-          <Reveal className="mb-8 max-w-2xl">
-            <Eyebrow>After closing</Eyebrow>
-            <H2>You lock up. RingPost keeps working.</H2>
-          </Reveal>
-          <NightMorning />
-        </Container>
-      </Section>
-
-      {/* Every trade, on a ribbon */}
-      <div className="border-y border-line bg-white py-5">
-        <Marquee speed={70}>
-          {trades.map((t) => (
-            <Link key={t.id} href={`/industries/${slugFor(t)}`} className="inline-flex h-9 shrink-0 items-center rounded-full border border-line px-4 text-[13.5px] text-muted-ink transition-colors hover:border-[#a594ff] hover:text-ink">
-              {shortLabel(t)}
-            </Link>
-          ))}
-        </Marquee>
-      </div>
-
-      <div className="h-16" />
 
       {/* Plans, in two families (the table lives on /pricing) */}
       <Section className="!pt-0">
@@ -191,24 +196,6 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Final call to action */}
-      <Section className="!pt-0">
-        <Container>
-          <Reveal className="relative overflow-hidden rounded-[36px] border border-line bg-white px-6 py-16 text-center sm:px-12">
-            <div aria-hidden className="rp-grid rp-fade-mask pointer-events-none absolute inset-0 opacity-70" />
-            <div className="relative mx-auto max-w-2xl">
-              <H2>Your next customer is calling. Be ready.</H2>
-              <Lede className="mx-auto mt-4">Your own number, set up in minutes. Plans from {from} a month, no setup fee, cancel any time.</Lede>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                {cta}
-                <ButtonLink href="/pricing" variant="ghost">
-                  See plans and pricing
-                </ButtonLink>
-              </div>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
     </>
   );
 }

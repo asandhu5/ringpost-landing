@@ -76,7 +76,7 @@ export default function DataProcessingPage() {
       <p>
         We will give you at least 30 days&rsquo; notice before adding or replacing a sub-processor. If
         you object on reasonable data-protection grounds and we cannot offer an alternative, you may
-        terminate without penalty and receive a pro-rata refund of any prepaid monthly fee.
+        terminate without penalty and receive a pro-rata refund of any fee prepaid for the time after you terminate.
       </p>
 
       <h2>5. International transfers</h2>

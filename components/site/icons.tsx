@@ -3,7 +3,6 @@ import {
   Bot,
   Brain,
   CalendarCheck,
-  Globe,
   ImagePlus,
   Camera,
   Inbox,

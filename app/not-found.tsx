@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const PLACES = [
   { href: "/product", title: "What RingPost does", body: "Calls, messages, bookings, posts and insights in one place." },
   { href: "/industries", title: "Your kind of business", body: "How it works for salons, clinics, trades, restaurants and more." },
-  { href: "/pricing", title: "Pricing", body: "Three plans, no setup fee." },
+  { href: "/pricing", title: "Pricing", body: "Four plans from $39, no setup fee." },
   { href: "/resources/blog", title: "Blog", body: "Guides for local businesses." },
   { href: "/faq", title: "Questions", body: "Setup, numbers, channels and the AI." },
   { href: "/contact", title: "Contact", body: "Talk to the RingPost team." },

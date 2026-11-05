@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import { ChannelLogo } from "@/components/site/channel-logos";
+import { Screen } from "@/components/site/product-showcase";
 import { PRODUCT_ICONS } from "@/components/site/icons";
+import { InViewGroup } from "@/components/site/motion";
 import { Reveal } from "@/components/site/reveal";
-import { Container, FaqList, OnThisPage, PageHero, ScreenshotFrame, Section, StartButtons, screenshotExists } from "@/components/site/ui";
+import { Container, Eyebrow, FaqList, H2, PageHero, Section, StartButtons, screenshotExists } from "@/components/site/ui";
 import { ProductVisual } from "@/components/site/visuals";
 import { GUARDRAILS } from "@/lib/content/platform";
-import { PILLARS, PRODUCTS, productBySlug, productsIn } from "@/lib/content/products";
-import { InViewGroup } from "@/components/site/motion";
+import { ExplainerSections } from "@/components/site/explainer-sections";
+import { PRODUCT_EXPLAINERS } from "@/lib/content/explainers";
+import { POST_PLATFORMS } from "@/lib/content/platforms";
+import { PRODUCTS, productBySlug } from "@/lib/content/products";
+import { CHANNEL_EXTRAS, CHANNEL_MENU, CONTENT_MENU, GROW_MENU, type NavLink } from "@/lib/nav";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -22,62 +28,87 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return { title: p.title, description: p.description, openGraph: { title: p.title, description: p.description, url: `/product/${p.slug}` } };
 }
 
+/** Which menu a feature belongs to (lib/nav.ts), for its breadcrumb and its neighbours. */
+function menuFor(slug: string): { name: string; href: string; links: NavLink[] } {
+  const href = `/product/${slug}`;
+  if (CONTENT_MENU.some((l) => l.href === href)) return { name: "Content Studio", href: "/content-studio", links: CONTENT_MENU };
+  if (GROW_MENU.some((l) => l.href === href)) return { name: "Grow", href: "/grow", links: GROW_MENU };
+  return { name: "Channels", href: "/channels", links: [...CHANNEL_EXTRAS, ...CHANNEL_MENU.slice(0, 3)] };
+}
+
+/** Pages where the networks themselves are the point: show their real logos. */
+const SHOW_PLATFORMS = new Set(["social", "reviews", "ai-media", "uploads"]);
+
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const product = productBySlug((await params).slug);
   if (!product) notFound();
-  const pillar = PILLARS[product.pillar];
-  const related = [...productsIn(product.pillar), ...PRODUCTS.filter((p) => p.pillar !== product.pillar)].filter((p) => p.slug !== product.slug).slice(0, 4);
+  const menu = menuFor(product.slug);
+  const related = menu.links.filter((l) => l.href !== `/product/${product.slug}`).slice(0, 4);
   const hasShot = Boolean(product.screen && screenshotExists(product.screen.src));
-  const visual = hasShot ? <ScreenshotFrame src={product.screen!.src} alt={product.screen!.alt} /> : <ProductVisual slug={product.slug} />;
+  const Icon = PRODUCT_ICONS[product.slug];
 
   return (
     <>
       <PageHero
-        eyebrow={pillar.name}
+        eyebrow={menu.name}
         title={product.hero.headline}
         lede={product.hero.lede}
         crumbs={[
-          { name: "Product", href: "/product" },
+          { name: menu.name, href: menu.href },
           { name: product.name, href: `/product/${product.slug}` },
         ]}
-        aside={visual}
+        aside={hasShot ? <Screen src={product.screen!.src} alt={product.screen!.alt} priority /> : <ProductVisual slug={product.slug} />}
       >
+        {SHOW_PLATFORMS.has(product.slug) && (
+          <div className="mb-8 flex flex-wrap gap-2">
+            {POST_PLATFORMS.map((p) => (
+              <ChannelLogo key={p.id} id={p.id} size={34} />
+            ))}
+          </div>
+        )}
         <StartButtons />
       </PageHero>
 
-      <OnThisPage
-        name={product.name}
-        links={[
-          { href: "#how-it-works", label: "How it works" },
-          ...(product.pillar === "answer" ? [{ href: "#guardrails", label: "Guardrails" }] : []),
-          ...(product.faq ? [{ href: "#questions", label: "Questions" }] : []),
-        ]}
-      />
-
-      <Section id="how-it-works" className="scroll-mt-32">
+      <Section id="how-it-works" className="scroll-mt-32 !pt-6">
         <Container>
-          <div className="grid gap-x-16 gap-y-10 md:grid-cols-2">
+          <Reveal className="mb-10 flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#5b4ee6]/10 text-[#5b4ee6]">
+              <Icon className="h-5 w-5" aria-hidden />
+            </span>
+            <div>
+              <Eyebrow className="!mb-0">{product.name}</Eyebrow>
+              <H2>What it does for your business.</H2>
+            </div>
+          </Reveal>
+          <InViewGroup className="grid gap-4 md:grid-cols-2">
             {product.sections.map((s, i) => (
-              <Reveal key={s.heading} delay={i * 60} className="border-t border-line pt-6">
-                <h2 className="text-[1.35rem] font-semibold leading-snug text-ink">{s.heading}</h2>
-                <p className="mt-2 text-[16px] leading-relaxed text-muted-ink">{s.body}</p>
-                {s.points && (
-                  <ul className="mt-4 flex flex-col gap-2">
-                    {s.points.map((pt) => (
-                      <li key={pt} className="flex gap-2.5 text-[15px] text-ink">
-                        <Check aria-hidden className="mt-1 h-4 w-4 shrink-0 text-success" />
-                        {pt}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </Reveal>
+              <article key={s.heading} className="rp-card rp-card-hover flex gap-5 rounded-3xl p-7">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5b4ee6] text-[14px] font-bold text-white">{i + 1}</span>
+                <div>
+                  <h3 className="text-[19px] font-semibold leading-snug text-ink">{s.heading}</h3>
+                  <p className="mt-2 text-[15.5px] leading-relaxed text-muted-ink">{s.body}</p>
+                  {s.points && (
+                    <ul className="mt-4 flex flex-col gap-2">
+                      {s.points.map((pt) => (
+                        <li key={pt} className="flex gap-2.5 text-[15px] text-ink">
+                          <Check aria-hidden className="mt-1 h-4 w-4 shrink-0 text-success" />
+                          {pt}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </article>
             ))}
-          </div>
+          </InViewGroup>
         </Container>
       </Section>
 
-      {product.pillar === "answer" && (
+      {PRODUCT_EXPLAINERS[product.slug] && (
+        <ExplainerSections ex={PRODUCT_EXPLAINERS[product.slug]} widget={product.slug === "social" || product.slug === "uploads" ? "posting" : product.slug === "insights" ? "insights" : undefined} />
+      )}
+
+      {menu.name === "Channels" && (
         <Section id="guardrails" tone="surface" className="scroll-mt-32">
           <Container className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
@@ -99,34 +130,36 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       {product.faq && (
         <Section id="questions" className="scroll-mt-32">
           <Container narrow>
-            <h2 className="mb-8 font-display text-4xl text-ink">Questions</h2>
+            <Eyebrow>Questions</Eyebrow>
+            <h2 className="mb-8 font-display text-4xl text-ink">{product.name}, answered.</h2>
             <FaqList items={product.faq} structuredData />
           </Container>
         </Section>
       )}
 
-      <Section className="border-t border-line">
+      <Section tone="surface">
         <Container>
-          <h2 className="mb-6 text-[15px] font-medium text-muted-ink">Keep exploring</h2>
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+            <h2 className="text-[22px] font-bold tracking-tight text-ink">More in {menu.name}</h2>
+            <Link href={menu.href} className="inline-flex items-center gap-1.5 text-[14.5px] font-semibold text-glow hover:text-ink">
+              See all <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
           <InViewGroup as="ul" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {related.map((p) => {
-              const I = PRODUCT_ICONS[p.slug];
-              return (
-                <li key={p.slug}>
-                  <Link href={`/product/${p.slug}`} className="rp-card rp-card-hover group block h-full rounded-2xl p-5">
-                    <span className="flex items-center gap-2 text-[15.5px] font-medium text-ink group-hover:text-glow">
-                      <I aria-hidden className="h-4 w-4 text-glow" />
-                      {p.name}
-                    </span>
-                    <span className="mt-1 block text-[13.5px] leading-snug text-muted-ink">{p.summary}</span>
-                  </Link>
-                </li>
-              );
-            })}
+            {related.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="rp-card rp-card-hover group flex h-full items-start gap-3 rounded-2xl p-5">
+                  {l.logo && <ChannelLogo id={l.logo} size={32} />}
+                  <span>
+                    <span className="block text-[15.5px] font-semibold text-ink group-hover:text-glow">{l.name}</span>
+                    <span className="mt-1 block text-[13.5px] leading-snug text-muted-ink">{l.summary}</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
           </InViewGroup>
         </Container>
       </Section>
-
     </>
   );
 }

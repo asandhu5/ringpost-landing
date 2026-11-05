@@ -94,7 +94,7 @@ export function knowledgePages(): KnowledgePage[] {
     {
       path: "/about",
       title: "About",
-      text: `RingPost is a product of ${COMPANY.legalName}. It does not publish a postal address. Today RingPost does not: offer a chat for a business's own website (don't suggest one); connect WhatsApp without help from the team; provide phone numbers outside the US and Canada; post to Snapchat or Google Business Profile.`,
+      text: `RingPost is a product of ${COMPANY.legalName}. It does not publish a postal address. Today RingPost does not: offer a chat for a business's own website (don't suggest one); connect WhatsApp without help from the team; provide phone numbers outside the US and Canada; post to Snapchat.`,
     },
     {
       path: "/contact",
