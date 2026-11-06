@@ -28,7 +28,7 @@ import { ChannelLogo } from "@/components/site/channel-logos";
 import { useInView } from "@/components/site/motion";
 
 /**
- * The explainers used on the channel, Content Studio and Grow pages (2026-11-04): a chat
+ * The explainers used on the channel, Content Studio and Grow pages: a chat
  * that plays out as it scrolls into view, a step-by-step flow, a tour of real dashboard
  * screens, and the posting flow (upload, approve, now or scheduled, out to every network).
  * Each one replays when scrolled back to, and settles at once for reduced motion.
@@ -202,7 +202,7 @@ export function ScreenTour({ items }: { items: { src: string; title: string; bod
           <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-          <span className="ml-3 truncate text-[11.5px] text-muted-ink">app.ringpost.tech</span>
+          
         </div>
         <div className="relative aspect-[1150/700] max-h-[60svh]">
           {items.map((it, k) => (
@@ -217,93 +217,13 @@ export function ScreenTour({ items }: { items: { src: string; title: string; bod
 
 const NETWORKS = ["instagram", "facebook", "tiktok", "youtube", "x", "linkedin", "threads", "pinterest", "bluesky"];
 
-/**
- * How a photo or video gets out: it is uploaded or made, the AI writes a caption for each
- * network, you approve it, then it goes now or at the time you pick, to every network you
- * chose. Plays as a loop while on screen.
- */
-export function PostingFlow({ image = "/made/videos/salon-blowdry.webp" }: { image?: string }) {
-  const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.25 }, false);
-  const [phase, setPhase] = useState(0);
-  useEffect(() => {
-    if (!inView) return setPhase(0);
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return setPhase(4);
-    setPhase(1);
-    let p = 1;
-    const t = setInterval(() => {
-      p = p >= 5 ? 1 : p + 1;
-      setPhase(p);
-    }, 1700);
-    return () => clearInterval(t);
-  }, [inView]);
-  const now = phase % 2 === 1;
-  const stage = [
-    { icon: Upload, label: "Uploaded or made by AI" },
-    { icon: PenLine, label: "Caption written for each network" },
-    { icon: ThumbsUp, label: "You approve it" },
-    { icon: now ? Send : Clock, label: now ? "Posted now" : "Scheduled for Fri 6:00 PM" },
-  ];
-  return (
-    <div ref={ref} className="relative overflow-hidden rounded-[32px] border border-line bg-[radial-gradient(120%_100%_at_0%_0%,#f4f2ff_0%,#ffffff_45%,#ecfeff_100%)] p-6 sm:p-10">
-      <div className="grid items-center gap-10 lg:grid-cols-[1fr_auto_1fr]">
-        <div className="mx-auto w-full max-w-[300px]">
-          <div className="overflow-hidden rounded-3xl bg-white shadow-[0_30px_60px_-30px_rgba(11,27,43,0.5)] ring-1 ring-line">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={image} alt="" className="aspect-[4/5] w-full object-cover" />
-            <div className="p-4">
-              <p className={`text-[13px] leading-snug text-ink transition-opacity duration-500 ${phase >= 2 ? "opacity-100" : "opacity-0"}`}>
-                Fresh look for the weekend ✨ Book in seconds, link in bio. <span className="text-[#5b4ee6]">#local #newlook</span>
-              </p>
-              <div className="mt-3 flex items-center justify-between">
-                <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11.5px] font-semibold transition-all duration-500 ${phase >= 3 ? "bg-[#dcfce7] text-[#15803d]" : "bg-[#f1f3f7] text-muted-ink"}`}>
-                  <Check className="h-3 w-3" aria-hidden /> {phase >= 3 ? "Approved" : "Waiting for you"}
-                </span>
-                <span className="text-[11.5px] text-muted-ink">Image · 4:5</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <ol className="flex flex-col gap-3">
-          {stage.map((s, k) => {
-            const Icon = s.icon;
-            const on = phase >= k + 1;
-            return (
-              <li key={k} className={`flex items-center gap-3 rounded-2xl px-4 py-3 transition-all duration-500 ${on ? "bg-white shadow-[0_14px_30px_-18px_rgba(11,27,43,0.45)] ring-1 ring-line" : "opacity-40"}`}>
-                <span className={`flex h-9 w-9 items-center justify-center rounded-xl ${on ? "bg-[#5b4ee6] text-white" : "bg-[#eef0f4] text-muted-ink"}`}>
-                  <Icon className="h-4.5 w-4.5" aria-hidden />
-                </span>
-                <span className="text-[14.5px] font-medium text-ink">{s.label}</span>
-              </li>
-            );
-          })}
-        </ol>
-
-        <div className="grid grid-cols-5 gap-3 justify-self-center">
-          {NETWORKS.map((n, k) => (
-            <span key={n} className="relative transition-all duration-500" style={{ transform: phase >= 4 ? "none" : "translateY(8px) scale(0.9)", opacity: phase >= 4 ? 1 : 0.35, transitionDelay: `${k * 60}ms` }}>
-              <ChannelLogo id={n} size={44} />
-              {phase >= 4 && (
-                <span className="rp-pop absolute -bottom-1 -right-1 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-[#16a34a] text-white ring-2 ring-white">
-                  <Check className="h-2.5 w-2.5" aria-hidden />
-                </span>
-              )}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/** Numbers that count up and bars that grow when on screen: what Insights looks like. */
 export function InsightsDemo() {
   const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.3 }, false);
   const bars = [
     { label: "Phone calls", v: 41, color: "#22c55e" },
     { label: "WhatsApp", v: 26, color: "#25d366" },
     { label: "Instagram", v: 18, color: "#e1306c" },
-    { label: "Website", v: 9, color: "#5b4ee6" },
+    { label: "Messenger", v: 9, color: "#5b4ee6" },
     { label: "Email", v: 6, color: "#1a6ff0" },
   ];
   const kpis = [

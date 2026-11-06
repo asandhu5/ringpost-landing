@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * The home page's moving parts (redesign 2026-10-30, light theme to match the dashboard).
+ * The home page's moving parts use a light theme to match the dashboard.
  * Everything shown is something the product really does; the business in the demos is a
  * salon, no invented customers, ratings or results.
  */

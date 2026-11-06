@@ -21,8 +21,7 @@ import { ZaraOrb } from "@/components/site/zara";
 const OPEN_EVENT = "rp:open-assistant";
 const GREETED_KEY = "rp-zara-greeted";
 
-/** Opens Zara's chat, optionally with a question already asked. (Chat only since
- * 2026-10-30: the browser call was removed.) */
+/** Opens Zara's chat, optionally with a question already asked. */
 export function openAssistant(question?: string) {
   window.dispatchEvent(new CustomEvent(OPEN_EVENT, { detail: { question } }));
 }

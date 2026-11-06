@@ -44,7 +44,7 @@ const SOFTWARE = {
 };
 
 export default function PricingPage() {
-  // "Extra images and videos on request" isn't listed on the website (owner decision 2026-10-01).
+  // Product rule: "Extra images and videos on request" isn't listed on the website.
   const features = (Object.keys(FEATURE_LABELS) as Feature[]).filter((f) => f !== "prompt_generation");
   const topUps = TOP_UPS;
 
@@ -59,6 +59,7 @@ export default function PricingPage() {
 
       <Section className="!pt-0">
         <Container>
+          <h2 className="sr-only">Plans</h2>
           <PricingCards />
           <p className="mt-5 text-center text-[13px] text-faint">US dollars. Taxes may apply. On an older plan? You keep it at your price.</p>
         </Container>

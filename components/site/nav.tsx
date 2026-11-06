@@ -6,11 +6,14 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { MessageSquareHeart, UsersRound, ChartNoAxesCombined, Bot, ArrowRight, BarChart3, BedDouble, BookOpen, Briefcase, CalendarCheck, Camera, Car, ChevronDown, Dumbbell, GraduationCap, Inbox, Menu, MessageCircleQuestion, RotateCcw, Send, ShoppingBag, Sparkles, Star, Stethoscope, UtensilsCrossed, Wand2, Wrench, X } from "lucide-react";
 import { ChannelLogo } from "@/components/site/channel-logos";
 import { Wordmark } from "@/components/site/logo";
-import { CHANNEL_EXTRAS, CHANNEL_MENU, CONTENT_MENU, GROW_MENU, INDUSTRY_MENU, type NavLink } from "@/lib/nav";
+import { CHANNEL_EXTRAS, CHANNEL_MENU, COMPANY_NAV, CONTENT_MENU, GROW_MENU, INDUSTRY_MENU, LEGAL_NAV, RESOURCES_NAV, type NavLink } from "@/lib/nav";
+import { INDUSTRY_SHOWCASE } from "@/lib/content/industry-showcase";
+import { IPhone16ProMax } from "@/components/site/phone/iphone";
+import { AppScreen } from "@/components/site/phone/apps";
 import { POST_PLATFORMS } from "@/lib/content/platforms";
 import { START_URL } from "@/lib/site";
 
-type PanelId = "channels" | "content" | "grow" | "industries";
+type PanelId = "channels" | "content" | "grow" | "industries" | "contact";
 
 const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   MessageSquareHeart, UsersRound, ChartNoAxesCombined, Bot, Inbox, CalendarCheck, BookOpen, Sparkles, Wand2, Camera, Send, Star, RotateCcw, BarChart3, MessageCircleQuestion,
@@ -124,10 +127,10 @@ export function SiteNav() {
           <nav aria-label="Main" className="hidden items-center lg:flex">
             {trigger("channels", "Channels")}
             {trigger("content", "Content Studio")}
-            <Link href="/posting" className="px-3 py-2 text-sm font-medium text-ink">Posting</Link>
             {trigger("grow", "Grow")}
             {trigger("industries", "Industries")}
             {plain("/pricing", "Pricing")}
+            {trigger("contact", "Contact")}
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
@@ -163,6 +166,7 @@ export function SiteNav() {
               {open === "content" && <ContentPanel />}
               {open === "grow" && <GrowPanel />}
               {open === "industries" && <IndustriesPanel />}
+              {open === "contact" && <ContactPanel />}
             </div>
           </div>
         )}
@@ -188,7 +192,6 @@ export function SiteNav() {
                 <MobileLink key={l.href} {...l} />
               ))}
             </MobileGroup>
-            <Link href="/posting" className="block px-4 py-3 font-semibold">Posting</Link>
             <MobileGroup title="Grow">
               {GROW_MENU.map((l) => (
                 <MobileLink key={l.href} {...l} />
@@ -201,6 +204,11 @@ export function SiteNav() {
               ))}
             </MobileGroup>
             <MobileLink href="/pricing" name="Pricing" top />
+            <MobileGroup title="Contact">
+              {[...COMPANY_NAV, ...RESOURCES_NAV, ...LEGAL_NAV].map((l) => (
+                <MobileLink key={l.href} {...l} />
+              ))}
+            </MobileGroup>
           </div>
         </div>
       )}
@@ -261,42 +269,98 @@ function ChannelsPanel() {
 }
 
 function ContentPanel() {
+  const pics = INDUSTRY_SHOWCASE.filter((x) => ["beauty-and-wellness", "food-and-drink", "auto", "stays-and-venues", "fitness", "shops"].includes(x.slug));
   return (
-    <div className="grid grid-cols-[1.35fr_1fr] gap-6">
-      <Link href="/content-studio" className="group relative flex min-h-[250px] overflow-hidden rounded-3xl bg-[#0b0b1f] text-white">
-        <video src="/made/videos/food-cafe.mp4" poster="/made/videos/food-cafe.webp" autoPlay muted loop playsInline aria-hidden className="absolute inset-y-0 right-0 h-full w-[46%] object-cover opacity-90 transition-transform duration-700 group-hover:scale-105" />
-        <span aria-hidden className="absolute inset-0 bg-[linear-gradient(90deg,#120f3a_0%,#120f3a_52%,rgba(18,15,58,0.15)_80%)]" />
-        <span className="relative flex max-w-[58%] flex-col p-6">
-          <span className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[#67e8f9]">Content Studio</span>
-          <span className="mt-2 text-[22px] font-bold leading-tight tracking-tight">Posts made and posted for you</span>
-          <span className="mt-2 text-[13.5px] leading-relaxed text-white/75">Images and short videos about your business every day, made with state-of-the-art AI models, posted to ten networks.</span>
-          <span className="mt-4 flex flex-wrap gap-1.5">
-            {POST_PLATFORMS.map((p) => (
-              <ChannelLogo key={p.id} id={p.id} size={22} />
-            ))}
-          </span>
-          <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-[13.5px] font-semibold text-[#67e8f9]">
-            Open Content Studio <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+    <div className="grid grid-cols-2 gap-6">
+      <Link href="/content-studio" className="group flex overflow-hidden rounded-3xl border-2 border-[#ddd8ff] bg-[linear-gradient(160deg,#f6f4ff,#ffffff_60%)] transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(91,78,230,0.6)]">
+        <span className="flex flex-1 flex-col p-6">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#5b4ee6] text-white"><Sparkles className="h-5 w-5" aria-hidden /></span>
+          <span className="mt-4 text-[20px] font-bold tracking-tight text-ink">Content Studio</span>
+          <span className="mt-1.5 text-[13.5px] leading-relaxed text-muted-ink">Your phone photo or one line, made into images and short videos for your kind of business, with your logo and offer on them. Fresh content every morning.</span>
+          <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-[13.5px] font-semibold text-[#5b4ee6]">Step inside the studio <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></span>
+        </span>
+        <span className="grid w-[44%] grid-cols-2 gap-1.5 p-3">
+          {pics.map((x) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img key={x.slug} src={x.after} alt="" className="aspect-square w-full rounded-xl object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+          ))}
+        </span>
+      </Link>
+      <Link href="/posting" className="group flex overflow-hidden rounded-3xl border-2 border-[#bdeffa] bg-[linear-gradient(160deg,#effcff,#ffffff_60%)] transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(8,145,178,0.6)]">
+        <span className="flex flex-1 flex-col p-6">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0891b2] text-white"><Send className="h-5 w-5" aria-hidden /></span>
+          <span className="mt-4 text-[20px] font-bold tracking-tight text-ink">Posting and uploads</span>
+          <span className="mt-1.5 text-[13.5px] leading-relaxed text-muted-ink">Upload from your phone or pick what Content Studio made. A caption for each platform, a preview in every app, then posted now or on schedule.</span>
+          <span className="mt-4 flex flex-wrap gap-1.5">{POST_PLATFORMS.map((p) => <ChannelLogo key={p.id} id={p.id} size={24} />)}</span>
+          <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-[13.5px] font-semibold text-[#0e7490]">See it in every app <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></span>
+        </span>
+        <span className="relative w-[40%] overflow-hidden">
+          <span className="absolute left-1/2 top-4 w-[150px] -translate-x-1/2 transition-transform duration-500 group-hover:-translate-y-1.5">
+            <IPhone16ProMax width={150}><AppScreen platform="instagram" post={{ media: { kind: "image", src: "/made/studio/beauty-post.webp", alt: "" }, business: { name: "Studio & Co.", handle: "studioandco", color: "#db2777" }, caption: "Soft, sunlit balayage for the new season." }} /></IPhone16ProMax>
           </span>
         </span>
       </Link>
-      <div className="flex flex-col gap-1">
-        {CONTENT_MENU.slice(1).map((l) => (
-          <MenuItem key={l.href} l={l} />
+    </div>
+  );
+}
+
+/** The channels each Grow tool works with, shown under its name in the menu. */
+const GROW_LOGOS: Record<string, string[]> = {
+  "/product/reviews": ["google", "instagram", "facebook", "tiktok", "x", "youtube"],
+  "/product/winback": ["sms", "whatsapp"],
+  "/product/insights": ["phone", "whatsapp", "instagram", "messenger", "sms", "email"],
+  "/product/advisor": ["phone", "whatsapp", "instagram", "google", "tiktok"],
+};
+
+const GROW_EXTRAS = [
+  "A review request after every visit",
+  "Low ratings sent to your phone first",
+  "What customers keep asking",
+  "Win-back groups made for you",
+];
+
+function GrowPanel() {
+  return (
+    <div className="grid grid-cols-[0.8fr_2fr_0.9fr] gap-6">
+      <Feature href="/grow" eyebrow="Grow" title="Win more customers, and keep them" body="Reviews and comments answered, quiet customers brought back, and a clear view of what's working." />
+      <div className="grid grid-cols-2 gap-1">
+        {GROW_MENU.map((l) => (
+          <div key={l.href}>
+            <MenuItem l={l} />
+            <span className="-mt-1 flex gap-1 pb-2 pl-[60px]" aria-hidden>
+              {(GROW_LOGOS[l.href] ?? []).map((id) => (id === "google" ? <span key={id} className="flex h-5 w-5 items-center justify-center rounded-md bg-white text-[10.5px] font-bold text-[#4285f4] ring-1 ring-line">G</span> : <ChannelLogo key={id} id={id} size={20} />))}
+            </span>
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col gap-2 border-l border-line pl-6">
+        <p className="pb-1 text-[12px] font-medium text-faint">Also in Grow</p>
+        {GROW_EXTRAS.map((t) => (
+          <span key={t} className="flex items-center gap-2 text-[13.5px] text-ink"><Star className="h-3.5 w-3.5 text-amber-500" aria-hidden />{t}</span>
         ))}
       </div>
     </div>
   );
 }
 
-function GrowPanel() {
+function ContactPanel() {
   return (
-    <div className="grid grid-cols-[0.9fr_2fr] gap-6">
-      <Feature href="/grow" eyebrow="Grow" title="Win more, and keep them" body="Reviews and comments answered, quiet customers brought back, and a clear view of what's working." />
-      <div className="grid grid-cols-2 gap-1">
-        {GROW_MENU.map((l) => (
-          <MenuItem key={l.href} l={l} />
-        ))}
+    <div className="grid grid-cols-[1fr_1fr_1.3fr] gap-6">
+      <div className="flex flex-col gap-1">
+        <p className="px-3 pb-1 text-[12px] font-medium text-faint">Reach out</p>
+        {COMPANY_NAV.map((l) => <MenuItem key={l.href} l={{ ...l, icon: l.href === "/contact" ? "MessageCircleQuestion" : "Briefcase" }} />)}
+      </div>
+      <div className="flex flex-col gap-1">
+        <p className="px-3 pb-1 text-[12px] font-medium text-faint">Learn</p>
+        {RESOURCES_NAV.map((l) => <MenuItem key={l.href} l={{ ...l, icon: l.href.includes("blog") ? "BookOpen" : "MessageCircleQuestion" }} />)}
+      </div>
+      <div className="border-l border-line pl-6">
+        <p className="pb-2 text-[12px] font-medium text-faint">Policies</p>
+        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+          {LEGAL_NAV.map((l) => (
+            <Link key={l.href} href={l.href} className="rounded-lg px-2 py-1.5 text-[14px] text-ink transition-colors hover:bg-surface-2">{l.name}</Link>
+          ))}
+        </div>
       </div>
     </div>
   );

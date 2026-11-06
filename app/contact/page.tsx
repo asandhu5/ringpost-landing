@@ -61,6 +61,27 @@ export default function ContactPage() {
           </div>
         </Container>
       </Section>
+      <Section>
+        <Container>
+          <h2 className="font-display text-3xl text-ink">What can we help with?</h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { t: "Getting started", b: "Questions about setup, keeping your number, connecting WhatsApp, Instagram or Facebook, or which plan fits your business.", href: "/faq", l: "Read the FAQ" },
+              { t: "Plans and billing", b: "Choosing, changing or cancelling a plan, invoices and receipts. Customers can manage most of this from the dashboard.", href: "/pricing", l: "See plans" },
+              { t: "Your data and privacy", b: "Seeing, correcting or deleting data, and how customer information is handled.", href: "/privacy", l: "Privacy policy" },
+              { t: "If you're a customer of a business", b: "If you talked to a business that uses RingPost, the business controls your data. Ask them first, and we'll help them if they need it.", href: "/data-deletion", l: "Data deletion" },
+              { t: "Reporting a problem", b: "Something RingPost said or posted that shouldn't have happened, or content that breaks our rules.", href: "/acceptable-use", l: "Acceptable use" },
+              { t: "Partnerships and press", b: "Working with us, integrations, or writing about RingPost. Use the form and tell us a little about yourself.", href: "/about", l: "About RingPost" },
+            ].map((x) => (
+              <div key={x.t} className="rp-card rp-card-hover flex flex-col rounded-[24px] p-6">
+                <p className="text-[17px] font-bold tracking-tight text-ink">{x.t}</p>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-muted-ink">{x.b}</p>
+                <a href={x.href} className="mt-auto pt-4 text-[14.5px] font-semibold text-glow hover:text-ink">{x.l}</a>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
     </>
   );
 }

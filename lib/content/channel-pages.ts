@@ -1,9 +1,9 @@
 import { CHANNELS, type Channel } from "@/lib/content/channels";
 
 /**
- * One page per channel (/channels/<id>), 2026-11-04: what the owner gets from it, how it
+ * One page per channel (/channels/<id>): what the owner gets from it, how it
  * works, what the AI does and what it hands over, and how it is set up. The setup facts
- * come from lib/content/channels.ts (checked against the platform); the words about value
+ * come from lib/content/channels.ts and are checked against the platform; the words about value
  * are written here. Screens are real conversations from the dashboard (public/screens/channels).
  */
 export interface ChannelPage {

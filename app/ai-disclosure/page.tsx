@@ -23,8 +23,9 @@ export const metadata: Metadata = {
 export default function AiDisclosurePage() {
   return (
     <LegalPage
+      summary={["The assistant always says it is a virtual assistant and never claims to be a person.", "Calls are announced as recorded at the start by default, because recording-consent rules differ from place to place.", "As the business, you're responsible for keeping the announcement on unless you've taken your own legal advice.", "A caller who doesn't want to be recorded is passed to you.", "The AI doesn't make important decisions on its own; anything it isn't sure about comes to you."]}
       title="Call Recording and AI Disclosure"
-      updated="30 September 2026"
+      updated="7 November 2026"
       intro={`${SITE.name} answers calls with an AI, and those calls may be recorded and transcribed. We think both facts should be said plainly rather than buried. This page explains what happens, what your business must do, and what a caller can ask for.`}
     >
       <h2>1. We say it is an AI</h2>

@@ -32,6 +32,20 @@ export interface Product {
   /** A real dashboard screenshot in /public/screens, shown when the file exists. */
   screen?: { src: string; alt: string };
   faq?: { q: string; a: string; link?: { href: string; label: string } }[];
+  /** The page this feature is presented on when it has no page of its own. Content
+   * creation lives on /content-studio, uploads and publishing on /posting, so the site
+   * explains each thing once. */
+  page?: string;
+}
+
+/** Where a feature is presented: its own page, or the page that covers it. */
+export function productHref(p: Product): string {
+  return p.page ?? `/product/${p.slug}`;
+}
+
+/** Features that have a page of their own under /product. */
+export function ownPageProducts(): Product[] {
+  return PRODUCTS.filter((p) => !p.page);
 }
 
 export const PILLARS: Record<Pillar, { name: string; line: string; lede: string }> = {
@@ -147,6 +161,7 @@ export const PRODUCTS: Product[] = [
   // ── GROW ──────────────────────────────────────────────────────────────────
   {
     slug: "ai-media",
+    page: "/content-studio",
     pillar: "grow",
     name: "AI content",
     summary: "Images and short videos made for your business every day, with your real prices and logo.",
@@ -177,6 +192,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "uploads",
+    page: "/posting#upload",
     pillar: "grow",
     name: "Your photos and videos",
     summary: "Upload from your phone. It fixes the format and polishes your caption.",
@@ -200,6 +216,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "social",
+    page: "/posting",
     pillar: "grow",
     name: "Social posting",
     summary: "Schedule or post now to your connected platforms, with replies to comments.",

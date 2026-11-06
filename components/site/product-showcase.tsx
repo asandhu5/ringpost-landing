@@ -1,16 +1,14 @@
 "use client";
 
 /**
- * The home page's story (2026-11-04): what RingPost does, shown with the real dashboard
- * instead of described twice. Everything here moves only when it is on screen, and every
+ * The home page shows what RingPost does using the real dashboard.
+ * Everything here moves only when it is on screen, and every
  * screenshot is the product itself (public/screens, captured from a demo business).
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { PlatformPreviewPanel } from "@/components/site/phone/platform-preview";
 import Link from "next/link";
 import { ArrowRight, BarChart3, CalendarCheck, Check, Clapperboard, MessageCircle, Send, Star } from "lucide-react";
-import { ChannelLogo } from "@/components/site/channel-logos";
-import { Marquee, useInView } from "@/components/site/motion";
-import { ANSWER_CHANNELS, POST_PLATFORMS } from "@/lib/content/platforms";
 
 const cx = (...p: (string | false | null | undefined)[]) => p.filter(Boolean).join(" ");
 
@@ -22,7 +20,7 @@ export function Screen({ src, alt, className, priority = false }: { src: string;
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <span className="ml-3 truncate rounded-md bg-white px-3 py-0.5 text-[11.5px] text-faint">app.ringpost.tech</span>
+        
       </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} loading={priority ? "eager" : "lazy"} className="block max-h-[43svh] w-full object-contain object-top" />
@@ -31,37 +29,6 @@ export function Screen({ src, alt, className, priority = false }: { src: string;
 }
 
 /** Real logos: where it answers, and where it posts. */
-export function LogoCloud() {
-  return (
-    <div className="grid gap-6 lg:grid-cols-2">
-      <div className="min-w-0 rounded-3xl border border-line bg-white p-6">
-        <p className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#5b4ee6]">Answers every message on</p>
-        <div className="mt-4 flex flex-wrap gap-4">
-          {ANSWER_CHANNELS.map((c) => (
-            <span key={c.id} className="flex flex-col items-center gap-1.5">
-              <ChannelLogo id={c.id} size={46} />
-              <span className="text-[12px] text-muted-ink">{c.name}</span>
-            </span>
-          ))}
-        </div>
-      </div>
-      <div className="min-w-0 overflow-hidden rounded-3xl border border-line bg-white p-6">
-        <p className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#5b4ee6]">Posts to</p>
-        <div className="mt-4 overflow-hidden">
-          <Marquee speed={40}>
-            {POST_PLATFORMS.map((p) => (
-              <span key={p.id} className="mx-2 flex flex-col items-center gap-1.5">
-                <ChannelLogo id={p.id} size={46} />
-                <span className="whitespace-nowrap text-[12px] text-muted-ink">{p.name}</span>
-              </span>
-            ))}
-          </Marquee>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 const STORY = [
   {
     key: "answer",
@@ -101,7 +68,7 @@ const STORY = [
     tone: "#0284c7",
     title: "Posts everywhere",
     body: "Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest, and Bluesky, each caption shaped for its platform. You approve, or switch on autopilot.",
-    points: ["Ten platforms, one click", "A preview for each one", "Scheduled at good times"],
+    points: ["Nine platforms, one approval", "A preview in each app", "Scheduled at good times"],
     shots: [
       { src: "/screens/preview.webp", alt: "Approving a post with a phone preview for each platform" },
     ],
@@ -139,92 +106,11 @@ const STORY = [
 export function Showcase() {
  const [active,setActive]=useState(0); const [shot,setShot]=useState(0); const step=STORY[active]!;
  useEffect(()=>{ if(step.shots.length<2)return; const timer=setInterval(()=>setShot(n=>(n+1)%step.shots.length),3000);return()=>clearInterval(timer);},[active,step.shots.length]);
- return <div><div className="mb-5 flex gap-2 overflow-x-auto pb-2" aria-label="Explore RingPost features">{STORY.map((s,i)=><button type="button" key={s.key} aria-pressed={active===i} onClick={()=>{setActive(i);setShot(0);}} className={`shrink-0 rounded-full border px-3 py-2 text-xs ${active===i?"border-[#5b4ee6] bg-[#5b4ee6] text-white":"border-line bg-white text-ink"}`}>{s.title}</button>)}</div><div className="grid items-center gap-7 lg:grid-cols-[.65fr_1.35fr]"><div><h3 className="text-3xl font-semibold tracking-tight text-ink">{step.title}</h3><p className="mt-4 text-base leading-relaxed text-muted-ink">{step.body}</p><ul className="mt-4 space-y-2">{step.points.map(p=><li key={p} className="flex items-center gap-2 text-sm text-ink"><Check size={16}/>{p}</li>)}</ul></div><Screen src={step.shots[shot]?.src || step.shots[0]!.src} alt={step.shots[shot]?.alt || step.shots[0]!.alt}/></div></div>;
+ return <div><div className="mb-5 flex gap-2 overflow-x-auto pb-2" aria-label="Explore RingPost features">{STORY.map((s,i)=><button type="button" key={s.key} aria-pressed={active===i} onClick={()=>{setActive(i);setShot(0);}} className={`shrink-0 rounded-full border px-3 py-2 text-xs ${active===i?"border-[#5b4ee6] bg-[#5b4ee6] text-white":"border-line bg-white text-ink"}`}>{s.title}</button>)}</div><div className="grid items-center gap-7 lg:grid-cols-[.65fr_1.35fr]"><div><h3 className="text-3xl font-semibold tracking-tight text-ink">{step.title}</h3><p className="mt-4 text-base leading-relaxed text-muted-ink">{step.body}</p><ul className="mt-4 space-y-2">{step.points.map(p=><li key={p} className="flex items-center gap-2 text-sm text-ink"><Check size={16}/>{p}</li>)}</ul></div>{step.key==="post"?<PlatformPreviewPanel/>:<Screen src={step.shots[shot]?.src || step.shots[0]!.src} alt={step.shots[shot]?.alt || step.shots[0]!.alt}/>}</div></div>;
 }
 
-const FLOW = [
-  { channel: "instagram", who: "Customer", text: "Hi! Do you have anything Saturday morning?" },
-  { channel: null, who: "RingPost", text: "Yes, 10:30 is free. Shall I book you in?" },
-  { channel: null, who: "Booked", text: "Sat 10:30 · in your calendar, confirmation sent", icon: CalendarCheck },
-  { channel: null, who: "Content Studio", text: "“Weekend offer” Reel made with your price and logo", icon: Clapperboard },
-  { channel: "multi", who: "Posted", text: "Instagram, TikTok and Facebook at 12:00" },
-  { channel: null, who: "Review reply", text: "“Thank you, Sarah! See you next time.” Published on Google" },
-];
 
 /** One customer, start to finish: each step lights up in turn while on screen. */
-export function CustomerFlow() {
-  const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.3 }, false);
-  const [lit, setLit] = useState(0);
-  useEffect(() => {
-    if (!inView) return;
-    const t = setInterval(() => setLit((n) => (n + 1) % (FLOW.length + 2)), 1100);
-    return () => clearInterval(t);
-  }, [inView]);
-  return (
-    <div ref={ref} className="relative">
-      <div aria-hidden className="absolute left-[22px] top-4 bottom-4 w-px bg-line md:left-0 md:right-0 md:top-[22px] md:bottom-auto md:h-px md:w-auto" />
-      <ol className="relative grid gap-4 md:grid-cols-6">
-        {FLOW.map((f, i) => {
-          const on = i < lit;
-          const Icon = "icon" in f ? f.icon : null;
-          return (
-            <li key={f.who} className="flex gap-4 md:flex-col md:gap-3">
-              <span className={cx("relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border transition-all duration-500", on ? "scale-100 border-transparent bg-white shadow-[0_10px_24px_-12px_rgba(91,78,230,0.7)]" : "scale-90 border-line bg-surface-2")}>
-                {f.channel === "multi" ? (
-                  <span className="flex -space-x-2">
-                    <ChannelLogo id="instagram" size={20} />
-                    <ChannelLogo id="tiktok" size={20} />
-                  </span>
-                ) : f.channel ? (
-                  <ChannelLogo id={f.channel} size={28} />
-                ) : Icon ? (
-                  <Icon className={cx("h-5 w-5 transition-colors", on ? "text-[#5b4ee6]" : "text-faint")} aria-hidden />
-                ) : (
-                  <span className={cx("text-[13px] font-bold transition-colors", on ? "text-[#5b4ee6]" : "text-faint")}>AI</span>
-                )}
-              </span>
-              <div className={cx("rounded-2xl border bg-white p-3.5 transition-all duration-500", on ? "border-line opacity-100 [transform:none]" : "border-transparent opacity-40 [transform:translateY(6px)]")}>
-                <p className="text-[11.5px] font-semibold uppercase tracking-[0.05em] text-[#5b4ee6]">{f.who}</p>
-                <p className="mt-1 text-[13.5px] leading-snug text-ink">{f.text}</p>
-              </div>
-            </li>
-          );
-        })}
-      </ol>
-    </div>
-  );
-}
-
-/** Real short videos made from a single image (Runway, public/made/videos), playing only while visible. */
-export function VideoWall({ videos }: { videos: { src: string; poster: string; label: string; tall?: boolean }[] }) {
-  return (
-    <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-      {videos.map((v) => (
-        <AutoVideo key={v.src} {...v} />
-      ))}
-    </div>
-  );
-}
-
-function AutoVideo({ src, poster, label, tall }: { src: string; poster: string; label: string; tall?: boolean }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [wrap, inView] = useInView<HTMLDivElement>({ threshold: 0.2 }, false);
-  useEffect(() => {
-    const v = ref.current;
-    if (!v) return;
-    if (inView) v.play().catch(() => {});
-    else v.pause();
-  }, [inView]);
-  return (
-    <figure ref={wrap} className="group relative mb-4 break-inside-avoid overflow-hidden rounded-3xl bg-ink">
-      <video ref={ref} src={src} poster={poster} muted loop playsInline preload="none" className={cx("w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]", tall ? "aspect-[9/16]" : "aspect-video")} aria-label={label} />
-      <figcaption className="absolute inset-x-3 bottom-3 flex items-center gap-2">
-        <span className="rounded-full bg-white/90 px-3 py-1 text-[12.5px] font-semibold text-ink backdrop-blur">{label}</span>
-      </figcaption>
-    </figure>
-  );
-}
-
 export function SeeAll({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Link href={href} className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-[#5b4ee6] hover:underline">

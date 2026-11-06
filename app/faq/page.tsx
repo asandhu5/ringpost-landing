@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: { title: "RingPost FAQ", url: "/faq" },
 };
 
-const GROUPS: FaqItem["group"][] = ["Getting started", "How it works", "Your data"];
+const GROUPS: FaqItem["group"][] = ["Getting started", "How it works", "Calls and messages", "Content and posting", "Growing your business", "Your data"];
 
 /** Pricing questions live only on /pricing. One source (lib/content/faq.ts) for the copy and the FAQPage markup. */
 export default function FaqPage() {

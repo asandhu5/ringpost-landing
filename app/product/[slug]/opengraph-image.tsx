@@ -3,7 +3,7 @@ import { productBySlug } from "@/lib/content/products";
 import { PRODUCTS } from "@/lib/content/products";
 
 export function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ slug: p.slug }));
+  return PRODUCTS.filter((p) => !p.page).map((p) => ({ slug: p.slug }));
 }
 
 export const alt = "RingPost";

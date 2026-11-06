@@ -29,7 +29,7 @@
   --rp-cyan: #0891b2;
   --rp-text: #0b1b2b;
   --rp-muted: #4a5666;
-  --rp-faint: #6b7684;
+  --rp-faint: #5c6775;
   --rp-navy: #0b1b2b;
 
   /* shadcn/ui names, mapped onto the tokens above */
@@ -149,17 +149,18 @@
     mask-image: radial-gradient(ellipse at 50% 30%, black, transparent 72%);
     -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black, transparent 72%);
   }
+  /* Cards stand off the page: a firmer border and real depth, so each box reads as its own thing. */
   .rp-card {
     background: var(--rp-surface);
-    border: 1px solid var(--rp-border);
-    box-shadow: 0 1px 2px rgba(11, 27, 43, 0.04);
+    border: 1px solid var(--rp-border-strong);
+    box-shadow: 0 1px 2px rgba(11, 27, 43, 0.05), 0 18px 40px -30px rgba(11, 27, 43, 0.45);
   }
   .rp-card-hover {
-    transition: border-color 0.25s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
+    transition: border-color 0.25s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, background 0.25s ease;
   }
   .rp-card-hover:hover {
-    border-color: rgba(91, 78, 230, 0.35);
-    transform: translateY(-2px);
+    border-color: rgba(91, 78, 230, 0.45);
+    box-shadow: 0 1px 2px rgba(11, 27, 43, 0.05), 0 30px 60px -32px rgba(91, 78, 230, 0.45);
   }
   .rp-glow-violet {
     box-shadow: 0 0 0 1px rgba(91, 78, 230, 0.35), 0 20px 80px -20px rgba(91, 78, 230, 0.45);
@@ -778,15 +779,16 @@ details.rp-faq summary:hover { background: rgba(11, 27, 43, 0.025); }
    ============================================================== */
 
 /* Headline: each word rises out of a soft blur, one after another. */
+/* Starts at 1% rather than 0% opacity: the headline is the page's largest paint, and a
+   fully transparent start keeps browsers from counting it until the animation ends. */
 .rp-word {
   display: inline-block;
-  opacity: 0;
+  opacity: 0.01;
   transform: translate3d(0, 0.45em, 0);
-  filter: blur(8px);
-  animation: rp-word-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: rp-word-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes rp-word-in {
-  to { opacity: 1; transform: none; filter: blur(0); }
+  to { opacity: 1; transform: none; }
 }
 
 /* A highlighted word with a slow light sweep. */
@@ -992,3 +994,53 @@ html { scroll-padding-top: 90px; }
 @keyframes creative-drift { from { transform:scale(1); } to { transform:scale(1.035); } }
 .creative-slow-motion { animation:creative-drift 8s ease-in-out infinite alternate; }
 @media (prefers-reduced-motion:reduce) { .creative-slow-motion { animation:none; } }
+
+/* Content Studio: the light that passes over a piece while it is being made. */
+@keyframes rp-studio-scan {
+  from { top: -6rem; }
+  to { top: 100%; }
+}
+.rp-studio-scan {
+  animation: rp-studio-scan 1.6s ease-in-out infinite;
+}
+/* Flow map: the dots that travel along each line. */
+@keyframes rp-flow-dash {
+  to { stroke-dashoffset: -40; }
+}
+.rp-flow-line {
+  stroke-dasharray: 4 6;
+  animation: rp-flow-dash 1.4s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rp-studio-scan,
+  .rp-flow-line {
+    animation: none;
+  }
+}
+/* Calculator sliders. */
+.rp-range {
+  accent-color: var(--rp-primary);
+  height: 1.5rem;
+  cursor: pointer;
+}
+/* A product card that stands on its own: a clear border, depth, and a lift on hover. */
+.rp-feature-card {
+  box-shadow: 0 1px 0 rgba(11, 27, 43, 0.04), 0 30px 60px -40px rgba(11, 27, 43, 0.45);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.rp-feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1px 0 rgba(11, 27, 43, 0.04), 0 44px 80px -40px rgba(11, 27, 43, 0.55);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rp-feature-card, .rp-feature-card:hover { transform: none; transition: none; }
+}
+/* A picture swapping in: a short fade. */
+@keyframes rp-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.rp-fade-in { animation: rp-fade-in 0.5s ease both; }
+@media (prefers-reduced-motion: reduce) { .rp-fade-in { animation: none; } }
+/* Gentle floating for decorative cards in page openings. */
+@keyframes rp-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.rp-float { animation: rp-float 6s ease-in-out infinite; }
+.rp-float-slow { animation: rp-float 9s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .rp-float, .rp-float-slow { animation: none; } }

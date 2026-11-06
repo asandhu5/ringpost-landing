@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: { title: "RingPost industries", description: DESCRIPTION, url: "/industries" },
 };
 
-/** The industries hub (2026-11-04): ten groups first, each opening its own page with every
+/** The industries hub shows ten groups first, each opening its own page with every
  * trade inside it; the trades are listed under each group so nothing is more than one click away. */
 export default function IndustriesHub() {
   return (

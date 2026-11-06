@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/hooks/use-motion";
 
 /**
- * The site's small motion kit (2026-10-22 redesign). Everything here is CSS-driven or
+ * The site's small motion kit. Everything here is CSS-driven or
  * runs off IntersectionObserver / a single scroll listener, so pages stay static and fast,
  * and anyone who asked their OS for reduced motion gets the finished state at once.
  */

@@ -1,7 +1,7 @@
 import { allPosts } from "@/lib/blog";
 import { CHANNELS } from "@/lib/content/channels";
 import { SOMETHING_ELSE, TYPES, isSparse, pluralFor, slugFor } from "@/lib/content/industries";
-import { PRODUCTS } from "@/lib/content/products";
+import { PRODUCTS, productHref } from "@/lib/content/products";
 import { PLANS } from "@/lib/plans";
 import { LEGAL_LINKS, SITE } from "@/lib/site";
 
@@ -40,10 +40,12 @@ export function GET() {
     "",
     "## Product",
     link("/product", "AI Front Desk", "what RingPost does and the checks that stop it making things up"),
-    ...PRODUCTS.map((p) => link(`/product/${p.slug}`, p.name, p.summary)),
+    ...PRODUCTS.map((p) => link(productHref(p), p.name, p.summary)),
     "",
-    "## Channels and pricing",
-    link("/content-studio", "Content Studio", "every image and video model on offer, its price in credits, and what each plan's credits make"),
+    "## Content, posting, channels and pricing",
+    link("/content-studio", "Content Studio", "a phone photo or one line made into finished images and short videos for any kind of business, with the logo and offer added exactly"),
+    link("/posting", "Posting and uploads", "uploading photos and videos, a caption per platform, a preview in every app, then posting now or on schedule to nine platforms"),
+    link("/grow", "Grow", "reviews and comments answered, win-back texts, insights and Talk to AI"),
     link("/channels", "Channels", `how ${channelNames} work with RingPost`),
     link("/pricing", "Pricing", "plans, what each includes, allowances and top-ups"),
     link("/faq", "FAQ", "common questions about setup, numbers, channels and the AI"),

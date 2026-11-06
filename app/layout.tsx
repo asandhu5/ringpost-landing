@@ -13,12 +13,14 @@ import "./globals.css";
 
 // One typeface, like the dashboard: Inter for text and (heavy, tight) for headings.
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", display: "swap" });
+// Mono is only used for small URL labels and code in posts: not preloaded, so it never
+// competes with Inter, which every headline waits for.
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", display: "swap", preload: false });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   // "./" resolves to each page's own path, so every page is canonical to itself on the
-  // www host. (It used to be "/" here, which made every page claim to be the homepage.)
+  // www host.
   alternates: { canonical: "./", types: { "application/rss+xml": [{ url: "/feed.xml", title: `${SITE.name} blog` }] } },
   title: {
     default: `${SITE.name}: your AI business partner. Answers, books, grows.`,
@@ -44,8 +46,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="bg-base">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+    <html lang="en" className="bg-base" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`} suppressHydrationWarning>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-base">
           Skip to content
         </a>

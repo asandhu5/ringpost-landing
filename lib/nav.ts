@@ -2,7 +2,7 @@ import { GROUP_INFO } from "@/lib/content/groups";
 import { LEGAL_LINKS } from "@/lib/site";
 
 /**
- * The site's menus (2026-11-04): Channels, then Content Studio (making and posting), then
+ * The site's menus: Channels, then Content Studio (making and posting), then
  * Grow (reviews, comments, win-back, insights, Talk to AI), then Industries and Pricing.
  * Company and resources live in the footer only.
  */
@@ -33,7 +33,7 @@ export const CHANNEL_EXTRAS: NavLink[] = [
 
 export const CONTENT_MENU: NavLink[] = [
   { name: "Content Studio", href: "/content-studio", summary: "Images and short videos made for your business, every day.", icon: "Sparkles" },
-  { name: "Your photos and videos", href: "/product/uploads", summary: "Upload from your phone. It polishes and captions them.", icon: "Camera" },
+  { name: "Posting and uploads", href: "/posting", summary: "Upload your own photos and videos, preview every app, post now or schedule.", icon: "Send" },
 ];
 
 export const GROW_MENU: NavLink[] = [

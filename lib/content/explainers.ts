@@ -1,9 +1,9 @@
 import type { ChatLine } from "@/components/site/explainers";
 
 /**
- * What each channel and feature page explains beyond its own copy (2026-11-04): a
- * conversation that plays out, how the work flows, and a tour of the real dashboard
- * screens (public/screens, captured from the dashboard with business names removed).
+ * What each channel and feature page explains beyond its own copy: a conversation that
+ * plays out, how the work flows, and a tour of the real dashboard screens
+ * (public/screens, captured from the dashboard with business names removed).
  * Generic on purpose: no business is named, and every line is something the product does.
  */
 

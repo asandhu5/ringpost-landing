@@ -22,7 +22,7 @@ const BEHIND = [
   { icon: BookOpen, title: "Your business knowledge", body: "Every channel answers from the same prices, hours and policies, so customers hear the same thing everywhere.", href: "/product/knowledge", shot: "/screens/knowledge.webp", alt: "The RingPost knowledge page" },
 ];
 
-/** The channels hub (2026-11-04): each channel and what it does for the owner, then what sits behind all of them. */
+/** The channels hub: each channel and what it does for the owner, then what sits behind all of them. */
 export default function ChannelsPage() {
   const pages = CHANNEL_PAGES.map((p) => channelPage(p.id)!);
   return (

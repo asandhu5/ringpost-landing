@@ -29,7 +29,7 @@ export interface Plan {
 
 export const PLANS = data.plans as Plan[];
 
-/** The product's TRIAL from plans.ts. Not offered since 2026-10-30 (`offered: false`);
+/** The product's TRIAL from plans.ts is not offered (`offered: false`);
  * kept so the data file and the product stay in step. */
 export const TRIAL = data.trial as { offered: boolean; days: number; minutes: number; messages: number; postsPerPlatform: number; numberKeptDays: number };
 export const TOP_UPS = data.topUps;

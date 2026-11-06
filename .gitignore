@@ -19,3 +19,7 @@ node_modules
 
 # IDE settings
 .idea/
+
+# Local review screenshots
+/docs/screenshots/
+/docs/mockups/

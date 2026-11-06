@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { ArrowRight, Check, Send, Sparkles } from "lucide-react";
 import { HeroWords, LiveDesk } from "@/components/site/hero-scene";
 import { UspCompare } from "@/components/site/product-comparison";
-import { LogoCloud, SeeAll, Showcase, VideoWall } from "@/components/site/product-showcase";
+import { SeeAll, Showcase } from "@/components/site/product-showcase";
+import { FlowMap } from "@/components/site/home/flow-map";
+import { ChannelLogo } from "@/components/site/channel-logos";
+import { IPhone16ProMax } from "@/components/site/phone/iphone";
+import { AppScreen } from "@/components/site/phone/apps";
+import { POST_PLATFORMS } from "@/lib/content/platforms";
+import { INDUSTRY_SHOWCASE } from "@/lib/content/industry-showcase";
+import { DailyWeek } from "@/components/site/home/daily-week";
+import { GrowTiles } from "@/components/site/home/grow-tiles";
 import { GROUP_ICONS } from "@/components/site/group-page";
 import { GROUP_INFO } from "@/lib/content/groups";
-import { siteVideos } from "@/lib/content/videos";
 import { InViewGroup } from "@/components/site/motion";
 import { Reveal } from "@/components/site/reveal";
 import { ButtonLink, Container, Eyebrow, H2, JsonLd, Lede, Section } from "@/components/site/ui";
 import { TYPES } from "@/lib/content/industries";
 import { COMPANY, START_URL, SITE } from "@/lib/site";
-import { BusinessExplorer } from "@/components/site/business-explorer";
 
 export const metadata: Metadata = {
   title: { absolute: `${SITE.name}: your AI business partner. Answers, books, grows.` },
@@ -32,11 +38,10 @@ const ORGANIZATION = {
 };
 
 /**
- * The home page (redesigned 2026-10-30, light, to match the dashboard): the promise and a
- * live demo up top, then the one thing nobody else does — calls, messages on every
- * channel, bookings, content, posting, comments, insights and Talk to AI in one platform
- * — in plain words, with the specifics one switch away. Real (RingPost-made) photos tell
- * the after-hours story. The full plan table lives on /pricing.
+ * The home page: the promise and a live demo up top, then the one thing nobody else does —
+ * calls, messages on every channel, bookings, content, posting, comments, insights and Talk
+ * to AI in one platform — in plain words, with the specifics one switch away. Real
+ * (RingPost-made) photos tell the after-hours story. The full plan table lives on /pricing.
  */
 /** The site itself: tells search engines the site's name, so results read "RingPost". */
 const WEBSITE = {
@@ -50,9 +55,6 @@ const WEBSITE = {
 };
 
 export default function HomePage() {
-  // One video per industry, so the home page shows every kind of business.
-  const videos = siteVideos().filter((v, i, all) => all.findIndex((x) => x.group === v.group) === i).slice(0, 9);
-
   const cta = (
     <a href={START_URL} className="rp-cta-shine inline-flex h-12 items-center rounded-full bg-cta px-7 text-[15.5px] font-semibold text-[var(--rp-cta-ink)] shadow-[0_18px_50px_-15px_rgba(34,211,238,0.85)] transition-colors hover:bg-[var(--rp-cta-hover)]">
       Get started
@@ -104,14 +106,23 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Six jobs, each shown in the real dashboard */}
-      <Section className="!pt-4"><Container><BusinessExplorer /></Container></Section>
-      <Section className="!pt-6">
+      {/* The whole product in one picture */}
+      <Section>
+        <Container>
+          <Reveal className="mx-auto mb-12 max-w-3xl text-center">
+            <H2>Every way customers reach you. One AI that knows your business.</H2>
+            <Lede className="mx-auto mt-4">Calls and messages come in from everywhere. RingPost answers them from your own prices, hours and policies, books them in, and keeps your feeds and reviews looked after.</Lede>
+          </Reveal>
+          <FlowMap />
+        </Container>
+      </Section>
+
+      {/* One tour of the real dashboard */}
+      <Section>
         <Container>
           <Reveal className="mx-auto mb-6 max-w-4xl text-center">
-            <Eyebrow>One platform</Eyebrow>
-            <H2>From the first enquiry to your next campaign.</H2>
-            <Lede className="mx-auto mt-4">Explore the tools. See how they work together.</Lede>
+            <H2>See it in your dashboard.</H2>
+            <Lede className="mx-auto mt-4">Each job RingPost does, in the screens you will use.</Lede>
           </Reveal>
           <Showcase />
         </Container>
@@ -126,25 +137,74 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Content Studio: real videos */}
-      {videos.length > 0 && (
-        <Section className="!pt-0">
-          <Container>
-            <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-4">
-              <div className="max-w-2xl">
-                <Eyebrow>Content Studio</Eyebrow>
-                <H2>Posts that look like your business, made every day.</H2>
-                <Lede className="mt-4">Each of these began as a single photo and became a short video in minutes, ready for Reels and TikTok. For every kind of business.</Lede>
-              </div>
-              <SeeAll href="/content-studio">See Content Studio</SeeAll>
-            </Reveal>
-            <VideoWall videos={videos} />
-          </Container>
-        </Section>
-      )}
+      {/* Content: two products, each its own card */}
+      <Section className="!pt-0">
+        <Container>
+          <Reveal className="mb-10 max-w-2xl">
+            <H2>Posts that look like your business, without the work.</H2>
+            <Lede className="mt-4">Make the content, then put it everywhere your customers scroll. Two tools that work together.</Lede>
+          </Reveal>
+          <div className="grid gap-7 lg:grid-cols-2">
+            <Link href="/content-studio" className="rp-feature-card group flex flex-col overflow-hidden rounded-[30px] border-2 border-[#ddd8ff] bg-[linear-gradient(160deg,#f6f4ff_0%,#ffffff_55%)]">
+              <span className="grid grid-cols-2 gap-2 p-3">
+                {INDUSTRY_SHOWCASE.filter((x) => ["beauty-and-wellness", "food-and-drink", "auto", "stays-and-venues"].includes(x.slug)).map((x) => (
+                  <span key={x.slug} className="relative block overflow-hidden rounded-[20px]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={x.after} alt={`${x.group}: ${x.title}`} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                    <span className="absolute bottom-2 left-2 rounded-full bg-white/90 px-2.5 py-0.5 text-[11.5px] font-semibold text-ink">{x.group}</span>
+                  </span>
+                ))}
+              </span>
+              <span className="flex flex-1 flex-col p-7 pt-4">
+                <span className="flex items-center gap-2.5"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#5b4ee6] text-white"><Sparkles className="h-5 w-5" aria-hidden /></span><span className="text-[22px] font-bold tracking-tight text-ink">Content Studio</span></span>
+                <span className="mt-3 block text-[16px] leading-relaxed text-muted-ink">Your phone photo or one line, made into images and short videos for your kind of business, with your logo and offer on them.</span>
+                <span className="mt-auto pt-5 text-[15px] font-semibold text-[#5b4ee6]">Step inside the studio <ArrowRight className="inline h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden /></span>
+              </span>
+            </Link>
+            <Link href="/posting" className="rp-feature-card group flex flex-col overflow-hidden rounded-[30px] border-2 border-[#bdeffa] bg-[linear-gradient(160deg,#effcff_0%,#ffffff_55%)]">
+              <span className="relative block h-[300px] overflow-hidden sm:h-[340px]">
+                <span className="absolute left-1/2 top-6 w-[190px] -translate-x-1/2 transition-transform duration-700 group-hover:-translate-y-2"><IPhone16ProMax width={190}><AppScreen platform="instagram" post={{ media: { kind: "image", src: "/made/studio/florist-post.webp", alt: "A bouquet post on Instagram" }, business: { name: "Bloom & Stem", handle: "bloomandstem", color: "#8a5cf6" }, caption: "Peony season is here. Same-day bouquets, wrapped and ready to go." }} /></IPhone16ProMax></span>
+                {POST_PLATFORMS.filter((x) => x.id !== "instagram").map((x, i) => {
+                  const left = i < 4;
+                  const row = i % 4;
+                  return <span key={x.id} title={x.name} className="absolute hidden sm:block" style={{ [left ? "left" : "right"]: `${8 + (row % 2) * 9}%`, top: `${12 + row * 21}%` }}><ChannelLogo id={x.id} size={42} /></span>;
+                })}
+              </span>
+              <span className="flex flex-1 flex-col p-7 pt-4">
+                <span className="flex items-center gap-2.5"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0891b2] text-white"><Send className="h-5 w-5" aria-hidden /></span><span className="text-[22px] font-bold tracking-tight text-ink">Posting and uploads</span></span>
+                <span className="mt-3 block text-[16px] leading-relaxed text-muted-ink">Upload from your phone or pick what Content Studio made. Each platform gets its own caption, and you see the post in every app before it goes out.</span>
+                <span className="mt-4 flex flex-wrap gap-1.5">{POST_PLATFORMS.map((x) => <span key={x.id} title={x.name}><ChannelLogo id={x.id} size={26} /></span>)}</span>
+                <span className="mt-auto pt-5 text-[15px] font-semibold text-[#0e7490]">See it in every app <ArrowRight className="inline h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden /></span>
+              </span>
+            </Link>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Daily content */}
+      <Section tone="surface">
+        <Container className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <Reveal>
+            <H2>Something new every morning.</H2>
+            <Lede className="mt-4">Switch on daily content and your Media Library fills itself: up to three fresh pictures a day and a 30-second video each week, depending on your plan. Nothing is posted until you pick it.</Lede>
+          </Reveal>
+          <DailyWeek />
+        </Container>
+      </Section>
+
+      {/* Grow */}
+      <Section>
+        <Container>
+          <Reveal className="mb-10 max-w-2xl">
+            <H2>Then it helps your business grow.</H2>
+            <Lede className="mt-4">Reviews and comments answered in your voice, quiet customers brought back, and a clear view of what&apos;s working, with an AI you can ask about any of it.</Lede>
+          </Reveal>
+          <GrowTiles />
+        </Container>
+      </Section>
 
       {/* Industries */}
-      <Section className="!pt-0">
+      <Section>
         <Container>
           <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">

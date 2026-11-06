@@ -9,14 +9,15 @@ export const metadata: Metadata = {
 };
 
 /**
- * Matches the product's billing (packages/core/src/billing/plans.ts): no setup fee since
- * 2026-09-29; there is no free trial (since 2026-10-30); a plan is billed when it is chosen.
+ * Matches the product's billing (packages/core/src/billing/plans.ts): no setup fee;
+ * there is no free trial; a plan is billed when it is chosen.
  */
 export default function RefundPolicyPage() {
   return (
     <LegalPage
+      summary={["You pay for one plan, monthly or yearly, with no setup fee and no long contract.", "Cancel any time: you keep access until the end of the period you've paid for and aren't charged again.", "Unused part-months and unused months of a yearly plan aren't refunded; moving to a smaller plan credits the difference.", "Billing mistakes are put right, and if a real failure on our side left you without the service, we'll discuss a fair credit or refund.", "Your data stays yours for 60 days after you leave so you can export it."]}
       title="Refund Policy"
-      updated="22 October 2026"
+      updated="7 November 2026"
       intro="Short, and meant to be clear. If something here doesn't seem fair in your situation, tell us. We'd rather sort it out than hide behind a policy page."
     >
       <h2>How you are billed</h2>

@@ -20,7 +20,7 @@ export function AppFrame({ children, title, className, caption = null }: { child
             <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
           </span>
           <span className="truncate text-[12px] font-medium text-muted-ink">{title}</span>
-          <span className="ml-auto hidden rounded-md bg-surface-2 px-2 py-0.5 font-mono text-[10px] text-faint sm:block">app.ringpost.tech</span>
+          
         </div>
         <div className="p-4 sm:p-5">{children}</div>
       </div>

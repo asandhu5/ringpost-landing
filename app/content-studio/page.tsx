@@ -1,22 +1,84 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container, Section, StartButtons, FaqList } from "@/components/site/ui";
-import { Sparkles, BookOpen, ImagePlus, Clapperboard, CalendarDays, Check, ArrowRight } from "lucide-react";
-import { KnowledgeVisual, WeeklyVisual } from "@/components/site/creative-story";
+import { BrainMap, IndustryBeforeAfter, Pipeline } from "@/components/site/studio/sections";
 import { IndustryGallery } from "@/components/site/product-showcase";
+import { StudioIntro } from "@/components/site/studio/intro";
+import { Container, FaqList, H2, Lede, Section, StartButtons } from "@/components/site/ui";
 import { GROUP_INFO } from "@/lib/content/groups";
+import { INDUSTRY_SHOWCASE } from "@/lib/content/industry-showcase";
 import { siteVideos } from "@/lib/content/videos";
-export const metadata: Metadata = { title: "Content Studio: a creative routine built around your business", description: "Turn business knowledge, reference photos and ideas into images, videos and daily content. Review everything in your RingPost Media Library." };
-const steps=[{Icon:BookOpen,title:"Teach it your business",body:"Add your services, products, opening hours, brand voice and approved offers. Your AI uses this shared knowledge to develop content around what you actually sell."},{Icon:ImagePlus,title:"Bring an idea or a reference",body:"Describe the image or video you have in mind, choose a suggested format, or add photos of your real product, team or space. References help preserve the details that make the business yours."},{Icon:Sparkles,title:"Generate and refine",body:"Choose an image or video, select its format and review the generation details in your dashboard. Explore a different angle or refine your brief when the first result needs work."},{Icon:CalendarDays,title:"Review, download or post",body:"Your content lands in the Media Library. Keep it for later, download it, or send it into Posting for platform captions, approval and scheduling."}];
-export default function ContentStudioPage(){
-const videos = siteVideos();
-const portfolio = [...GROUP_INFO].sort((a,b) => Number(b.slug === "stays-and-venues") - Number(a.slug === "stays-and-venues")).map(g => ({ slug:g.slug, name:g.name, tone:g.tone, content:g.content, videos:videos.filter(v => v.group === g.slug).slice(0,1), images:[g.image].filter((x):x is string => Boolean(x)) }));
-return <>
-<section className="overflow-hidden bg-[#10182b] pb-16 pt-28 text-white"><Container><div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr]"><div><p className="text-xs font-semibold uppercase tracking-[.18em] text-cyan-200">RingPost Content Studio</p><h1 className="mt-4 text-[clamp(2.2rem,4vw,3.7rem)] font-semibold leading-[1.07] tracking-[-.04em]">Photos and videos.<br/><span className="text-cyan-200">Made for your business.</span></h1><p className="mt-5 max-w-lg text-base leading-relaxed text-slate-300">Show customers what makes your business worth choosing. Create images and videos from your knowledge, reference photos and ideas—or let RingPost prepare your daily content.</p><div className="mt-7"><StartButtons/></div><p className="mt-4 text-xs text-slate-400">Images · Videos · Reference photos · Brand voice · Daily automation</p></div><div className="relative"><video src="/made/videos/stay-hotel.mp4" poster="/made/videos/stay-hotel.webp" autoPlay muted loop playsInline controls preload="metadata" aria-label="AI-created hotel video" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-2xl"/><div className="absolute -bottom-5 right-4 max-w-[60%] rounded-2xl bg-white p-2 shadow-xl"><img src="/made/reception-evening.webp" alt="A welcoming hotel reception" className="aspect-[16/9] w-44 rounded-xl object-cover"/><p className="px-1 py-2 text-[10px] font-semibold text-ink">Your space. A new creative direction.</p></div></div></div></Container></section>
-<Section><Container><div className="mx-auto mb-10 max-w-2xl text-center"><p className="text-xs font-semibold uppercase tracking-wider text-violet-600">From knowledge to creative</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Less blank canvas.<br/>More of your business.</h2><p className="mt-4 text-base leading-relaxed text-muted-ink">You should not have to explain your business from scratch every time you need a post. RingPost brings your saved knowledge into the creative process, so the idea, subject and caption have the same starting point.</p></div><div className="grid items-center gap-10 lg:grid-cols-2"><KnowledgeVisual/><div className="space-y-5">{[{t:"Your real offer",b:"Build content around your listed services and products. Approved offers provide the terms; the AI is instructed not to invent a discount or promise."},{t:"Your voice and visual direction",b:"Set a tone, preferred colours and words to avoid. Add reference photos when the real setting, product or identity matters."},{t:"One knowledge base, many uses",b:"The same business context supports customer replies, captions, campaign ideas and creative briefs. Update a fact once instead of rewriting every prompt."}].map(x=><div key={x.t}><h3 className="text-lg font-semibold text-ink">{x.t}</h3><p className="mt-2 text-sm leading-relaxed text-muted-ink">{x.b}</p></div>)}</div></div></Container></Section>
-<Section tone="surface"><Container><div className="mb-9 max-w-2xl"><p className="text-xs font-semibold uppercase tracking-wider text-violet-600">How creation works</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">An idea in. A useful piece of content out.</h2></div><div className="grid gap-7 md:grid-cols-2 lg:grid-cols-4">{steps.map(({Icon,title,body},i)=><div key={title} className="border-t border-line pt-5"><span className="flex items-center justify-between"><Icon className="text-violet-600" size={25}/><span className="text-xs text-faint">0{i+1}</span></span><h3 className="mt-4 text-lg font-semibold text-ink">{title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-ink">{body}</p></div>)}</div></Container></Section>
-<Section><Container><div className="grid items-center gap-10 lg:grid-cols-2"><div><p className="text-xs font-semibold uppercase tracking-wider text-violet-600">Images and motion</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Choose the format.<br/>Keep the creative direction.</h2><p className="mt-4 text-base leading-relaxed text-muted-ink">Use images for a product detail, a service spotlight or a seasonal message. Use video for a reveal, a walkthrough or a closer look at your work. Your dashboard gives you the generation controls and shows the credit requirement before you start.</p><ul className="mt-5 space-y-3 text-sm text-ink">{["Write a brief yourself or start from a suggested idea","Use reference photos for products, spaces and visual identity","Choose portrait, square or landscape formats","Review the result before using it publicly"].map(t=><li key={t} className="flex gap-2"><Check size={17} className="shrink-0 text-violet-600"/>{t}</li>)}</ul></div><div className="grid gap-3 sm:grid-cols-2"><img src="/made/ideas/products-flatlay.webp" alt="AI-created product composition" loading="lazy" className="aspect-[3/4] h-full w-full rounded-2xl object-cover"/><div className="flex flex-col gap-3"><video src="/made/videos/shop-florist.mp4" poster="/made/videos/shop-florist.webp" controls muted loop playsInline preload="metadata" aria-label="AI-created florist video" className="aspect-square w-full rounded-2xl object-cover"/><p className="rounded-2xl bg-violet-50 p-4 text-sm leading-relaxed text-ink">A still image for the detail.<br/>A moving story for the feeling.</p></div></div></div></Container></Section>
-<Section className="!pt-0"><Container><div className="rounded-[32px] bg-[#eae6ff] p-7 sm:p-10"><div className="grid items-center gap-10 lg:grid-cols-[.9fr_1.1fr]"><div><p className="text-xs font-semibold uppercase tracking-wider text-violet-700">Your content rhythm</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">Something ready.<br/>Without the blank-page ritual.</h2><p className="mt-4 text-sm leading-relaxed text-muted-ink">Enable automatic content creation to give your Media Library a steady flow of ideas about your business. The automatic routine targets three pictures each day and one 30-second video each week.</p><p className="mt-3 text-xs leading-relaxed text-muted-ink">Automatic output depends on an eligible plan, enabled automation, available credits and configured providers. Review your current settings in the dashboard. Creation and public posting have separate controls.</p><Link href="/posting" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-violet-700">See how posting works <ArrowRight size={16}/></Link></div><WeeklyVisual/></div></div></Container></Section>
-<Section><Container><div className="mb-8 max-w-2xl"><p className="text-xs font-semibold uppercase tracking-wider text-violet-600">Creative possibilities</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">Different businesses.<br/>One thoughtful creative process.</h2><p className="mt-4 text-sm leading-relaxed text-muted-ink">Explore images and generated videos by industry. Start with stays and venues, or choose the kind of business you run.</p></div><IndustryGallery industries={portfolio}/></Container></Section>
-<Section tone="surface"><Container narrow><h2 className="text-3xl font-semibold text-ink">Before you create.</h2><div className="mt-7"><FaqList items={[{q:"Does it know my business already?",a:"It uses the business knowledge you have saved in RingPost, including your offer, brand voice and approved business facts. Add the details and reference photos that matter before generating."},{q:"Can I make content myself as well as use automation?",a:"Yes. Describe an idea or select a suggested format in your dashboard. Automatic creation is a separate setting; all generation remains subject to your plan and available credits."},{q:"Does generating content publish it?",a:"Generation adds content to your Media Library. Publishing requires your chosen destinations and approval settings. Use Posting to review captions and choose when approved content should go live."},{q:"Where are models and credit costs shown?",a:"Your dashboard shows the available models, generation options and credit requirement before you create. The public site focuses on the workflow and results."}]}/></div><div className="mt-8"><StartButtons/></div></Container></Section>
-</>;}
+
+export const metadata: Metadata = {
+  title: "Content Studio: images and videos made from your own business",
+  description:
+    "Turn a phone photo or a single line into a finished post for your kind of business. Content Studio uses your prices, hours, voice, logo and photos, adds your words exactly, and checks every piece before it reaches your Media Library.",
+  openGraph: { url: "/content-studio" },
+};
+
+const FAQ = [
+  { q: "Does it know my business already?", a: "Yes. It works from what you've saved in RingPost: your services and prices, opening hours, offers, brand voice, words to avoid, logo, colours and photos. The more you add on the Knowledge page, the more it sounds like you." },
+  { q: "Can it get my prices or opening times wrong on a picture?", a: "Words on a picture, like an offer, a price or your phone number, are added by RingPost from your own details after the picture is made, then read back to check. They are never left to guesswork." },
+  { q: "Can I use my own photos?", a: "Yes. Add up to three photos of your product, place or team, and the new picture keeps what they show. You can also post your own photos and videos as they are, on the Posting page." },
+  { q: "Does anything get posted automatically?", a: "No. Everything lands in your Media Library first. You pick what to post, and it waits in Approvals for a yes, unless you switch on autopilot." },
+  { q: "Which plans include it?", a: "Every plan can look around Content Studio. Making images and videos comes with Growth and Pro, which include a monthly allowance." },
+];
+
+export default function ContentStudioPage() {
+  const videos = siteVideos();
+  const portfolio = [...GROUP_INFO].map((g) => ({ slug: g.slug, name: g.name, tone: g.tone, content: g.content, videos: videos.filter((v) => v.group === g.slug).slice(0, 1), images: [g.image].filter((x): x is string => Boolean(x)) }));
+
+  return (
+    <>
+      {/* Hero: every kind of business, before and after */}
+      <section className="relative overflow-hidden pb-14 pt-28 sm:pt-32">
+        <div aria-hidden className="rp-grid rp-fade-mask pointer-events-none absolute inset-0 opacity-50" />
+        <Container className="relative">
+          <StudioIntro actions={<StartButtons secondary={{ href: "#how", label: "How it works" }} />} />
+          <div className="mt-16"><IndustryBeforeAfter items={INDUSTRY_SHOWCASE} /></div>
+        </Container>
+      </section>
+
+      {/* Built on the business */}
+      <Section id="how" tone="surface" className="scroll-mt-24">
+        <Container>
+          <div className="mb-10 max-w-2xl">
+            <H2>Built on what you already told RingPost.</H2>
+            <Lede className="mt-4">The same knowledge that answers your phone writes your posts. Nothing starts from a blank page.</Lede>
+          </div>
+          <BrainMap />
+        </Container>
+      </Section>
+
+      {/* Pipeline */}
+      <Section>
+        <Container>
+          <div className="mb-10 max-w-2xl">
+            <H2>Every piece takes the same careful path.</H2>
+            <Lede className="mt-4">Checked before it is made and after, then waiting in your Media Library for you to pick.</Lede>
+          </div>
+          <Pipeline />
+          <p className="mt-6 text-[15px] text-muted-ink">Picked something? <Link href="/posting" className="font-semibold text-glow hover:text-ink">See how it goes out to every app</Link>.</p>
+        </Container>
+      </Section>
+
+      {/* Videos for every kind of business */}
+      <Section tone="surface">
+        <Container>
+          <div className="mb-8 max-w-2xl">
+            <H2>Short videos, made from a single picture.</H2>
+            <Lede className="mt-4">Reels, TikToks and Shorts for your kind of business. Choose one to see what it can make.</Lede>
+          </div>
+          <IndustryGallery industries={portfolio} />
+        </Container>
+      </Section>
+
+      <Section>
+        <Container narrow>
+          <H2>Before you make something.</H2>
+          <div className="mt-7"><FaqList items={FAQ} structuredData /></div>
+          <StartButtons className="mt-8" />
+        </Container>
+      </Section>
+    </>
+  );
+}

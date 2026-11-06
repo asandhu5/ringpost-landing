@@ -18,8 +18,9 @@ export const metadata: Metadata = {
 export default function AcceptableUsePage() {
   return (
     <LegalPage
+      summary={["No sexual content, nothing involving minors, no hate, no graphic violence, and no fabricated reviews or endorsements.", "Businesses whose everyday work involves the body (waxing, aesthetics, lingerie, tattoo, fitness) can market it normally. We judge intent and framing, not anatomy.", "No spam: only message people who agreed, and stop when they ask.", "Never present the AI as a named human when a customer sincerely asks.", "Breaking these rules can lead to content being blocked or an account being suspended. Report problems through the contact page."]}
       title="Acceptable Use Policy"
-      updated="30 September 2026"
+      updated="7 November 2026"
       intro={`This policy sets out what ${SITE.name} may and may not be used for. It applies to everything you do through the Service, and to everything you ask it to generate on your behalf. It forms part of the Terms of Service.`}
     >
       <h2>1. Who this applies to</h2>

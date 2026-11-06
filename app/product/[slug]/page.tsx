@@ -7,17 +7,20 @@ import { Screen } from "@/components/site/product-showcase";
 import { PRODUCT_ICONS } from "@/components/site/icons";
 import { InViewGroup } from "@/components/site/motion";
 import { Reveal } from "@/components/site/reveal";
-import { Container, Eyebrow, FaqList, H2, PageHero, Section, StartButtons, screenshotExists } from "@/components/site/ui";
+import { Container, Eyebrow, FaqList, H2, JsonLd, PageHero, Section, StartButtons, screenshotExists } from "@/components/site/ui";
+import { SITE } from "@/lib/site";
 import { ProductVisual } from "@/components/site/visuals";
 import { GUARDRAILS } from "@/lib/content/platform";
 import { ExplainerSections } from "@/components/site/explainer-sections";
 import { PRODUCT_EXPLAINERS } from "@/lib/content/explainers";
 import { POST_PLATFORMS } from "@/lib/content/platforms";
 import { PRODUCTS, productBySlug } from "@/lib/content/products";
+import { ReviewsPage } from "@/components/site/grow/reviews-page";
+import { AdvisorPage, InsightsPage, WinbackPage } from "@/components/site/grow/tool-pages";
 import { CHANNEL_EXTRAS, CHANNEL_MENU, CONTENT_MENU, GROW_MENU, type NavLink } from "@/lib/nav";
 
 export function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ slug: p.slug }));
+  return PRODUCTS.filter((p) => !p.page).map((p) => ({ slug: p.slug }));
 }
 
 export const dynamicParams = false;
@@ -37,11 +40,24 @@ function menuFor(slug: string): { name: string; href: string; links: NavLink[] }
 }
 
 /** Pages where the networks themselves are the point: show their real logos. */
-const SHOW_PLATFORMS = new Set(["social", "reviews", "ai-media", "uploads"]);
+const SHOW_PLATFORMS = new Set(["reviews"]);
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const product = productBySlug((await params).slug);
   if (!product) notFound();
+  const GrowPage = { reviews: ReviewsPage, winback: WinbackPage, insights: InsightsPage, advisor: AdvisorPage }[product.slug];
+  if (GrowPage) {
+    const crumbs = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Grow", item: `${SITE.url}/grow` },
+      { "@type": "ListItem", position: 2, name: product.name, item: `${SITE.url}/product/${product.slug}` },
+    ] };
+    return (
+      <>
+        <JsonLd data={crumbs} />
+        <GrowPage product={product} />
+      </>
+    );
+  }
   const menu = menuFor(product.slug);
   const related = menu.links.filter((l) => l.href !== `/product/${product.slug}`).slice(0, 4);
   const hasShot = Boolean(product.screen && screenshotExists(product.screen.src));
@@ -105,7 +121,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </Section>
 
       {PRODUCT_EXPLAINERS[product.slug] && (
-        <ExplainerSections ex={PRODUCT_EXPLAINERS[product.slug]} widget={product.slug === "social" || product.slug === "uploads" ? "posting" : product.slug === "insights" ? "insights" : undefined} />
+        <ExplainerSections ex={PRODUCT_EXPLAINERS[product.slug]} widget={product.slug === "insights" ? "insights" : undefined} />
       )}
 
       {menu.name === "Channels" && (

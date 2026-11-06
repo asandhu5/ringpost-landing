@@ -31,7 +31,7 @@ export const COMPANY = {
 } as const;
 
 /**
- * The one email address the site shows, and only on /contact (owner decision 2026-09-30).
+ * Product rule: the site shows one email address, and only on /contact.
  * admin@ is live on Titan. The legal pages point to /contact instead of naming a mailbox.
  */
 export const PRIMARY_EMAIL = "support@ringpost.tech";
@@ -59,7 +59,7 @@ export const SITE = {
     "RingPost is the AI business partner for local businesses. It answers calls, texts, WhatsApp, Instagram, Messenger and email around the clock, books appointments into your calendar, makes and posts your content, replies to comments and reviews, and tells you what's working.",
   /**
    * The host the site actually serves. The apex (ringpost.tech) 308-redirects to www,
-   * so canonicals, og:url and the sitemap all use www (checked 2026-09-30).
+   * so canonicals, og:url and the sitemap all use www.
    */
   url: "https://www.ringpost.tech",
   year: new Date().getFullYear(),

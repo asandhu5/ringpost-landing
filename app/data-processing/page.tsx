@@ -20,8 +20,9 @@ export const metadata: Metadata = {
 export default function DataProcessingPage() {
   return (
     <LegalPage
+      summary={["For your customers' data, you are the controller and RingPost is your processor, acting only on your instructions.", "We use trusted sub-processors for hosting, messaging, calls and AI, under contracts that protect the data.", "Data is protected with encryption and strict separation between businesses.", "We help you answer your customers' requests to see, correct or delete their data, and tell you promptly about any breach.", "When your account ends, data is kept for 60 days so you can export it, then deleted from live systems."]}
       title="Data Processing Addendum"
-      updated="30 September 2026"
+      updated="7 November 2026"
       intro={`When you use ${SITE.name}, your customers' personal data passes through our systems. You decide what happens to it; we carry out your instructions. This addendum sets out that relationship and forms part of the Terms of Service.`}
     >
       <h2>1. Roles</h2>

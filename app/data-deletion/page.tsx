@@ -11,8 +11,9 @@ export const metadata: Metadata = {
 export default function DataDeletionPage() {
   return (
     <LegalPage
+      summary={["If you own a business account, ask through the contact page with “Account data deletion” and your account details.", "If you're a customer of a business using RingPost, ask that business first. If you can't reach them, contact us and we'll coordinate.", "You can also remove RingPost from Threads, Facebook or Instagram in the platform's own settings, and we delete what we stored for that account.", "We acknowledge a request within 72 hours and complete deletion from live systems within 30 days of verification."]}
       title="Data Deletion Instructions"
-      updated="30 September 2026"
+      updated="7 November 2026"
       intro={`Businesses using ${SITE.name} and customers who have interacted with those businesses can request deletion of personal data. The route differs because the business controls its customers’ data and ${SITE.name} processes that data on the business’s behalf.`}
     >
       <h2>1. If your business uses RingPost</h2>

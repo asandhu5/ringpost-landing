@@ -19,8 +19,9 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <LegalPage
+      summary={["RingPost answers your customers, books appointments, makes and posts content and helps you grow, on the plan you choose.", "You pay for the period you choose in advance, and can cancel any time; access continues to the end of that period.", "You're responsible for how you use it with your customers: consent for marketing, honest content, and following the rules of each platform you connect.", "AI can make mistakes. RingPost hands over when it isn't sure, and you can review posts and replies before they go out.", "Your data stays yours, and you can take it with you if you leave."]}
       title="Terms of Service"
-      updated="22 October 2026"
+      updated="7 November 2026"
       intro={`These terms govern your use of ${SITE.name}. They're written to be readable rather than impressive. If anything here is unclear, ask us before you agree to it.`}
     >
       <h2>1. What RingPost is</h2>

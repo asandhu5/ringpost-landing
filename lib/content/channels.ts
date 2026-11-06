@@ -1,13 +1,13 @@
 /**
- * The six channels, checked against the platform code (2026-10-01):
+ * The six channels:
  *  - phone and SMS: a new number or forwarding, from the dashboard;
- *  - WhatsApp: connected with WhatsApp Business account details (not one-click yet);
+ *  - WhatsApp: connected with WhatsApp Business account details (not one-click);
  *  - Instagram: connect from the dashboard with your Instagram login (no Facebook Page
  *    needed); Messenger: connect your Facebook Page with your Facebook login. The two are
- *    separate connections since 2026-10-22;
+ *    separate connections;
  *  - email: every business gets its own RingPost address (Connections → Email); forward
  *    your mailbox to it or publish it; replies go out under your name and thread;
- *  Website chat isn't offered to businesses and isn't mentioned (owner decision 2026-10-01).
+ *  Product rule: website chat isn't offered to businesses and isn't mentioned.
  */
 
 export interface Channel {

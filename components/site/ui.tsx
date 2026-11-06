@@ -124,8 +124,8 @@ export function ButtonLink({
   );
 }
 
-/** The page's call to action: "Get started", with plans beside it. (No free trial since
- * 2026-10-30.) */
+/** The page's call to action: "Get started", with plans beside it.
+ * Product rule: no free trial. */
 export function StartButtons({ secondary = { href: "/pricing", label: "See plans and pricing" }, className }: { secondary?: { href: string; label: string } | null; className?: string }) {
   return (
     <div className={cx("flex flex-wrap items-center gap-3", className)}>
@@ -392,7 +392,7 @@ export function ScreenshotFrame({ src, alt, caption, className }: { src: string;
           <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
           <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
           <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
-          <span className="ml-3 truncate rounded-md bg-surface-2 px-3 py-1 font-mono text-[11px] text-faint">app.ringpost.tech</span>
+          
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt={alt} loading="lazy" className="block h-auto w-full" />

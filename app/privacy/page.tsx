@@ -9,15 +9,15 @@ export const metadata: Metadata = {
 };
 
 /**
- * Providers are described by what they do, not named (owner decision 2026-09-30), with
- * one line each for Meta and Google. If the product starts sending data somewhere new,
- * make sure section 4 still describes it.
+ * Providers are described by what they do, not named, with one line each for Meta and Google.
+ * If the product starts sending data somewhere new, make sure section 4 still describes it.
  */
 export default function PrivacyPage() {
   return (
     <LegalPage
+      summary={["Businesses who sign up and their customers are treated separately. For a business's customers, the business decides and we only process on its instructions.", "We collect what's needed to run the service: account details, your business knowledge, and the calls, messages, bookings and posts that pass through it.", "Customer data is never sold, never used to advertise to those people, never used to train an AI model of our own and never used for another business.", "Sensitive values are stored encrypted and each business's data is kept separate at the database level.", "You can see, correct, export or delete your data. A business's customers should ask that business first, and we'll help."]}
       title="Privacy Policy"
-      updated="2 November 2026"
+      updated="7 November 2026"
       intro="This explains what RingPost collects, what we do with it, and who else touches it. There are two different sets of people here: businesses who sign up, and their customers who never did. This policy treats them separately, because the second group is the one that matters most."
     >
       <p>

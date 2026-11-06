@@ -28,16 +28,17 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Pages retired after launch keep working links: /demo and /call (the Zara page,
-  // removed 2026-10-30; the chat stays in the corner), and case studies until there are
-  // customers to feature.
+  // Keep working links for /demo and /call by redirecting them to /contact.
+  // Chat stays in the corner, and case studies require customers to feature.
   async redirects() {
     return [
       { source: "/demo", destination: "/contact", permanent: true },
       { source: "/call", destination: "/contact", permanent: true },
       { source: "/resources/case-studies", destination: "/resources", permanent: true },
-      // AI content is Content Studio itself (2026-11-04), so its old page goes there.
+      // AI content is Content Studio, so /product/ai-media redirects there.
       { source: "/product/ai-media", destination: "/content-studio", permanent: true },
+      { source: "/product/uploads", destination: "/posting#upload", permanent: true },
+      { source: "/product/social", destination: "/posting", permanent: true },
     ];
   },
   async headers() {

@@ -10,7 +10,7 @@ import { Container, H2, Lede, OnThisPage, PageHero, Section, StepFlow, StartButt
 import { ProductVisual } from "@/components/site/visuals";
 import { ANSWER_CHANNELS, POST_PLATFORMS } from "@/lib/content/platforms";
 import { AUTOMATIONS, GUARDRAILS, HOW_IT_WORKS } from "@/lib/content/platform";
-import { PILLARS, PRODUCTS, productsIn, type Pillar } from "@/lib/content/products";
+import { PILLARS, PRODUCTS, productHref, productsIn, type Pillar } from "@/lib/content/products";
 import { InViewGroup } from "@/components/site/motion";
 
 const TITLE = "AI Front Desk for local businesses";
@@ -60,7 +60,7 @@ export default function ProductHub() {
               const Icon = PRODUCT_ICONS[p.slug];
               const shot = p.screen && screenshotExists(p.screen.src) ? p.screen : null;
               return (
-                <Link key={p.slug} href={`/product/${p.slug}`} className="rp-card rp-card-hover group flex flex-col overflow-hidden rounded-3xl">
+                <Link key={p.slug} href={productHref(p)} className="rp-card rp-card-hover group flex flex-col overflow-hidden rounded-3xl">
                   {shot && (
                     <span className="block h-40 overflow-hidden border-b border-line bg-surface-2">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -119,7 +119,7 @@ export default function ProductHub() {
                     const Icon = PRODUCT_ICONS[p.slug];
                     return (
                       <li key={p.slug}>
-                        <Link href={`/product/${p.slug}`} className="group flex items-start gap-3 py-3.5">
+                        <Link href={productHref(p)} className="group flex items-start gap-3 py-3.5">
                           <Icon aria-hidden className="mt-1 h-4 w-4 shrink-0 text-glow" />
                           <span>
                             <span className="block text-[15.5px] font-medium text-ink group-hover:text-glow">{p.name}</span>

@@ -1,63 +1,146 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CalendarClock, Captions, Check, CheckCircle2, ImagePlus, Send } from "lucide-react";
-import { PostingStudio, SocialPhones } from "@/components/site/posting-studio";
+import { Check } from "lucide-react";
 import { ChannelLogo } from "@/components/site/channel-logos";
-import { POST_PLATFORMS } from "@/lib/content/platforms";
-import { Container, FaqList, Section, StartButtons } from "@/components/site/ui";
+import { IPhone16ProMax } from "@/components/site/phone/iphone";
+import { AppScreen } from "@/components/site/phone/apps";
+import { PostComposer } from "@/components/site/posting/composer";
+import { ScheduleWeek, UploadJourney } from "@/components/site/posting/sections";
+import { Container, FaqList, H2, Lede, Section, StartButtons } from "@/components/site/ui";
+import { DEMO_ITEMS, POST_TARGETS } from "@/lib/content/posting-demo";
 
-export const metadata = {
-  title: "Social posting: your content, captions and schedule in one place",
-  description: "Preview your videos on Instagram, TikTok and YouTube. Review platform captions, publish now or plan ahead with RingPost.",
+export const metadata: Metadata = {
+  title: "Posting: upload, preview in every app, post now or schedule",
+  description:
+    "Upload your own photos and videos or use what Content Studio made. See the post in Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest and Bluesky, then post now or schedule it.",
+  openGraph: { url: "/posting" },
 };
 
+const hero = (id: string) => {
+  const item = DEMO_ITEMS.find((i) => i.id === id)!;
+  return { media: item.media, business: item.business, caption: item.captions.social };
+};
+
+const FAQ = [
+  { q: "Can I post my own photos and videos?", a: "Yes. Upload from your phone or computer: photos up to 20 MB and videos up to 100 MB, as JPEG, PNG, WEBP, HEIC, MP4 or MOV. Add a short note and RingPost writes the caption for each platform." },
+  { q: "Does anything go out without me?", a: "No, unless you switch on autopilot. Every post waits in Approvals, where you can edit the caption, change the platforms or the time, or turn it down." },
+  { q: "Which accounts can it post to?", a: "The ones you connect: Instagram, Facebook, TikTok, YouTube, X, LinkedIn (your profile or company page), Threads, Pinterest and Bluesky. Each post goes out from your own account." },
+  { q: "What happens if one platform fails?", a: "Each platform has its own result, so a post that went out on Instagram but not on X shows exactly that. You can retry the one that failed after checking the account." },
+  { q: "Do I need Content Studio to post?", a: "No. Posting works with your own uploads. Content Studio is there when you want images and videos made for you." },
+];
+
 export default function PostingPage() {
-  return <>
-    <section className="overflow-hidden bg-[#f0edff] pb-12 pt-28 sm:pt-32">
-      <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-[.72fr_1.28fr]">
-        <div className="mx-auto max-w-2xl text-center lg:text-left">
-          <p className="text-xs font-semibold uppercase tracking-[.18em] text-violet-700">RingPost · Social publishing</p>
-          <h1 className="mt-4 text-[clamp(2.2rem,4.3vw,3.8rem)] font-semibold leading-[1.06] tracking-[-.04em] text-ink">Your next customer<br/>could be one post away.</h1>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-ink">Turn your content into a consistent social presence. Review the caption, choose your accounts and publish now—or have the week ready in advance.</p>
-          <div className="mt-6 flex justify-center lg:justify-start"><StartButtons/></div>
-        </div>
-        <div className="mx-auto w-full max-w-[900px]"><SocialPhones/></div>
-        </div>
-        <p className="mt-8 text-center text-xs text-muted-ink">App-style previews with AI-created business videos. Your posts publish through your own connected accounts.</p>
-      </Container>
-    </section>
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden pb-10 pt-28 sm:pt-32 lg:pb-16">
+        <div aria-hidden className="rp-grid rp-fade-mask pointer-events-none absolute inset-0 opacity-50" />
+        <Container className="relative grid items-center gap-12 lg:grid-cols-[1fr_1.05fr]">
+          <div>
+            <h1 className="text-[clamp(2.5rem,5.4vw,4.3rem)] font-bold leading-[1.02] tracking-[-0.04em] text-ink">
+              One post. Every app. Your timing.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-ink sm:text-xl">
+              Upload a photo from your phone or pick something Content Studio made. RingPost writes the caption for each platform, shows you exactly how it will look, and posts it now or when you choose.
+            </p>
+            <StartButtons secondary={{ href: "#try", label: "Try the composer" }} className="mt-8" />
+            <ul className="mt-8 flex flex-wrap gap-2" aria-label="Platforms RingPost posts to">
+              {POST_TARGETS.map((p) => (
+                <li key={p.id} className="flex items-center gap-1.5 rounded-full border border-line bg-white py-1 pl-1 pr-3 text-[13px] font-medium text-ink">
+                  <ChannelLogo id={p.id} size={22} />{p.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative mx-auto h-[440px] w-full max-w-[400px] sm:h-[600px] sm:max-w-[560px]" aria-label="The same business posting to Instagram, TikTok and LinkedIn">
+            <div className="absolute left-0 top-12 w-[44%] -rotate-[7deg]"><IPhone16ProMax width={240}><AppScreen platform="linkedin" post={hero("bakery")} /></IPhone16ProMax></div>
+            <div className="absolute right-0 top-12 w-[44%] rotate-[7deg]"><IPhone16ProMax width={240}><AppScreen platform="tiktok" post={hero("salon")} /></IPhone16ProMax></div>
+            <div className="absolute left-1/2 top-0 z-10 w-[50%] -translate-x-1/2"><IPhone16ProMax width={270}><AppScreen platform="instagram" post={hero("florist")} /></IPhone16ProMax></div>
+          </div>
+        </Container>
+      </section>
 
-    <Section><Container>
-      <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
-        <div><p className="text-xs font-semibold uppercase tracking-wider text-violet-600">Stay visible. Save the admin.</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">One place to prepare.<br/>More places to be seen.</h2><p className="mt-4 text-sm leading-relaxed text-muted-ink">You should not have to upload the same file and rewrite the same message over and over. Bring a photo or video, then prepare it for the networks your customers use.</p><Link href="/content-studio" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-violet-700">Need content first? Meet Content Studio <ArrowRight size={16}/></Link></div>
-        <div className="grid gap-5 sm:grid-cols-2">{[
-          {Icon:ImagePlus,title:"Your content, ready to use",body:"Choose from your Media Library or upload your own images and videos. Keep each creative with its caption."},
-          {Icon:Captions,title:"A caption for each audience",body:"RingPost writes from your business knowledge. Review the wording, hashtags and call to action before publishing."},
-          {Icon:Send,title:"Publish now",body:"An announcement, a new arrival or today's availability: approve your post and send it to selected accounts."},
-          {Icon:CalendarClock,title:"Plan ahead",body:"Pick the publishing date and time. Keep approved posts in a schedule instead of remembering every upload."},
-        ].map(({Icon,title,body}) => <div key={title} className="rounded-2xl border border-line bg-white p-5"><Icon size={23} className="text-violet-600"/><h3 className="mt-4 text-base font-semibold text-ink">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted-ink">{body}</p></div>)}</div>
-      </div>
-      <div className="mt-10 border-t border-line pt-6"><p className="mb-4 text-xs font-medium text-muted-ink">Prepare posts for your connected destinations</p><div className="flex flex-wrap gap-x-5 gap-y-4">{POST_PLATFORMS.map(p => <span key={p.id} className="flex items-center gap-2 text-xs font-medium text-ink"><ChannelLogo id={p.id} size={24}/>{p.name}</span>)}</div></div>
-    </Container></Section>
+      {/* The composer */}
+      <Section id="try" className="scroll-mt-24 !pt-6">
+        <Container>
+          <div className="mb-8 max-w-2xl">
+            <H2>See your post in every app.</H2>
+            <Lede className="mt-4">Choose the content and the platforms, then switch apps on the phone to see each version with the caption written for it. Try it with your own photo too.</Lede>
+          </div>
+          <PostComposer />
+        </Container>
+      </Section>
 
-    <Section tone="surface"><Container>
-      <div className="mb-8 max-w-2xl"><p className="text-xs font-semibold uppercase tracking-wider text-violet-600">A clearer publishing routine</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">Choose the message.<br/>Then choose the moment.</h2><p className="mt-4 text-sm leading-relaxed text-muted-ink">Select destinations, review captions and set the timing. RingPost handles delivery after approval, while you carry on running the business.</p></div>
-      <PostingStudio/>
-    </Container></Section>
+      {/* Uploads */}
+      <Section id="upload" tone="surface" className="scroll-mt-24">
+        <Container className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <H2>Your own photos and videos, posted properly.</H2>
+            <Lede className="mt-4">Real work from your phone often does better than anything made up. Upload it as it is and add a quick note. RingPost does the rest.</Lede>
+            <ul className="mt-7 flex flex-col gap-3">
+              {[
+                "Photos up to 20 MB and videos up to 100 MB",
+                "JPEG, PNG, WEBP, HEIC, MP4 or MOV, straight from the camera roll",
+                "Resumes after a dropped connection, even after closing the page",
+                "Your note becomes a caption for each platform, in your voice",
+                "Campaigns use your real photos first",
+              ].map((t) => (
+                <li key={t} className="flex gap-2.5 text-[15.5px] text-ink"><Check className="mt-1 h-4 w-4 shrink-0 text-success" aria-hidden />{t}</li>
+              ))}
+            </ul>
+          </div>
+          <UploadJourney />
+        </Container>
+      </Section>
 
-    <Section><Container><div className="grid items-center gap-10 lg:grid-cols-2">
-      <div className="rounded-3xl border border-line bg-white p-6 shadow-sm"><div className="flex items-center justify-between border-b border-line pb-4"><h3 className="text-sm font-semibold text-ink">Your publishing schedule</h3><CalendarClock size={20} className="text-violet-600"/></div>{[
-        {day:"MON",title:"Introduce your business",type:"Image + caption",state:"Ready for review",color:"bg-amber-50 text-amber-700"},
-        {day:"WED",title:"Show the work behind it",type:"Video + caption",state:"Scheduled",color:"bg-violet-50 text-violet-700"},
-        {day:"FRI",title:"Give customers a next step",type:"Image + caption",state:"Published",color:"bg-emerald-50 text-emerald-700"},
-      ].map(x => <div key={x.day} className="flex flex-wrap items-center gap-3 border-b border-line py-5 last:border-0"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-[10px] font-bold text-muted-ink">{x.day}</span><div className="min-w-0 flex-1"><p className="text-sm font-semibold text-ink">{x.title}</p><p className="mt-1 text-xs text-muted-ink">{x.type}</p></div><span className={`rounded-full px-3 py-1 text-[10px] font-semibold ${x.color}`}>{x.state}</span></div>)}</div>
-      <div><p className="text-xs font-semibold uppercase tracking-wider text-violet-600">Know what is going out</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">A schedule you can follow.<br/>Results you can check.</h2><p className="mt-4 text-sm leading-relaxed text-muted-ink">See what needs approval, what is scheduled and what has been delivered. Each destination has its own result, so you can check a problem before trying again.</p><ul className="mt-6 space-y-4">{["Keep creative work and publishing organised","Use approvals or your chosen automation settings","Follow post performance where the platform supports it"].map(t => <li key={t} className="flex items-center gap-3 text-sm text-ink"><CheckCircle2 size={19} className="shrink-0 text-violet-600"/>{t}</li>)}</ul></div>
-    </div></Container></Section>
+      {/* The week */}
+      <Section>
+        <Container>
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+            <div className="max-w-2xl">
+              <H2>A week of posts, for every kind of business.</H2>
+              <Lede className="mt-4">Salons, clinics, gyms, restaurants, trades, garages, offices, groomers, shops and hotels: what went out, what is booked in and what needs a yes, with every platform it goes to.</Lede>
+            </div>
+            <Link href="/content-studio" className="text-[15px] font-semibold text-glow hover:text-ink">Where the content comes from</Link>
+          </div>
+          <ScheduleWeek />
+        </Container>
+      </Section>
 
-    <Section tone="surface"><Container narrow><h2 className="text-3xl font-semibold text-ink">Before your first post.</h2><div className="mt-7"><FaqList items={[
-      {q:"Do I need Content Studio to publish?",a:"No. You can upload your own images and videos, or choose AI-created content from your Media Library. Posting prepares the caption, destinations and publishing time."},
-      {q:"Can I review the caption?",a:"Yes. Review and edit captions before approval. Your saved business knowledge helps RingPost write about your actual services and offers."},
-      {q:"Will it post to every social account automatically?",a:"You choose the connected destinations and approval settings. Accounts must be connected and support the selected media format before a post can be delivered."},
-    ]}/></div><div className="mt-8"><StartButtons/></div></Container></Section>
-  </>;
+      {/* Each app its own way */}
+      <Section tone="surface">
+        <Container>
+          <div className="mb-8 max-w-2xl">
+            <H2>Each app, done its own way.</H2>
+            <Lede className="mt-4">One approval, then every platform gets the version that suits it, from your own connected account.</Lede>
+          </div>
+          <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {POST_TARGETS.map((p) => (
+              <li key={p.id} className="flex items-center gap-3.5 bg-white p-5">
+                <ChannelLogo id={p.id} size={36} />
+                <span><span className="block text-[15.5px] font-semibold text-ink">{p.name}</span><span className="block text-[14px] text-muted-ink">{p.note}</span></span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            {[
+              { t: "A caption per platform", b: "Hashtags where they help, short where it is short, professional on LinkedIn. You can edit any of them." },
+              { t: "Post now or schedule", b: "RingPost suggests a good hour for your trade, and nudges you if a post is still waiting 12 hours before its time." },
+              { t: "A result for each platform", b: "See exactly where a post went out and where it didn't, then fix and retry just that one." },
+            ].map((x) => (
+              <div key={x.t}><p className="text-[16px] font-semibold text-ink">{x.t}</p><p className="mt-1.5 text-[15px] leading-relaxed text-muted-ink">{x.b}</p></div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container narrow>
+          <H2>Before your first post.</H2>
+          <div className="mt-7"><FaqList items={FAQ} structuredData /></div>
+          <StartButtons className="mt-8" />
+        </Container>
+      </Section>
+    </>
+  );
 }
