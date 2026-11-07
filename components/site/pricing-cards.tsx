@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Building2, Check } from "lucide-react";
 import Link from "next/link";
-import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, YEARLY_DISCOUNT, num, type Plan, type PlanId } from "@/lib/plans";
+import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, YEARLY_BILLING, YEARLY_DISCOUNT, num, type Plan, type PlanId } from "@/lib/plans";
 import { START_URL } from "@/lib/site";
 
 /** Growth is shown as the recommended plan: it's where content and posting start.
@@ -60,7 +60,7 @@ export function PricingCards() {
   const off = Math.round(YEARLY_DISCOUNT * 100);
   return (
     <>
-      {YEARLY_DISCOUNT > 0 && (
+      {YEARLY_BILLING && (
         <div className="mb-8 flex justify-center">
           <div className="inline-flex items-center rounded-full border border-line bg-white p-1 shadow-sm" role="group" aria-label="Billing period">
             {[false, true].map((y) => (

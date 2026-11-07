@@ -35,6 +35,10 @@ export const TRIAL = data.trial as { offered: boolean; days: number; minutes: nu
 export const TOP_UPS = data.topUps;
 /** Off every plan when paid yearly (the product's plans.ts YEARLY_DISCOUNT). */
 export const YEARLY_DISCOUNT = (data as { yearlyDiscount?: number }).yearlyDiscount ?? 0;
+/** Yearly billing is on sale (its Paddle prices are live). */
+export const YEARLY_BILLING = YEARLY_DISCOUNT > 0;
+/** "monthly or yearly", or "monthly" while yearly isn't on sale. */
+export const BILLING_PERIODS = YEARLY_BILLING ? "monthly or yearly" : "monthly";
 export const FEATURE_LABELS = data.featureLabels as Record<Feature, string>;
 export const USAGE_WARNING_PERCENT = Math.round(data.usageWarningRatio * 100);
 

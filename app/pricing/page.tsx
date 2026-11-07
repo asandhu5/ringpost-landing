@@ -3,7 +3,7 @@ import { Check, Minus } from "lucide-react";
 import { PricingCards } from "@/components/site/pricing-cards";
 import { Container, FaqList, JsonLd, PageHero, Section, SectionHeader } from "@/components/site/ui";
 import { PRICING_FAQ } from "@/lib/content/faq";
-import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, USAGE_WARNING_PERCENT, YEARLY_DISCOUNT, num, usd, type Feature } from "@/lib/plans";
+import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, USAGE_WARNING_PERCENT, YEARLY_BILLING, YEARLY_DISCOUNT, num, usd, type Feature } from "@/lib/plans";
 import { InViewGroup } from "@/components/site/motion";
 import { SITE } from "@/lib/site";
 
@@ -54,7 +54,7 @@ export default function PricingPage() {
       <PageHero
         eyebrow="Pricing"
         title={`Start at ${usd(PLANS[0].monthlyUsd)} a month.`}
-        lede={`Monthly or yearly${YEARLY_DISCOUNT > 0 ? ` (save ${Math.round(YEARLY_DISCOUNT * 100)}%)` : ""}. No setup fee, no contract, cancel any time.`}
+        lede={`${YEARLY_BILLING ? `Monthly or yearly (save ${Math.round(YEARLY_DISCOUNT * 100)}%)` : "Billed monthly"}. No setup fee, no contract, cancel any time.`}
       />
 
       <Section className="!pt-0">
@@ -115,7 +115,7 @@ export default function PricingPage() {
         <Container>
           <SectionHeader eyebrow="Good to know" title="Simple billing, no surprises." />
           <InViewGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <SmallCard title="Billing">Billed the day you choose a plan, then monthly or yearly. Upgrades are prorated. Cancel from your dashboard.</SmallCard>
+            <SmallCard title="Billing">Billed the day you choose a plan, then {YEARLY_BILLING ? "monthly or yearly" : "every month"}. Upgrades are prorated. Cancel from your dashboard.</SmallCard>
             <SmallCard title="If you go over">Service never stops. You get a heads-up at {USAGE_WARNING_PERCENT}% and top up only if you want to.</SmallCard>
             <SmallCard title="Media credits">
               Growth and Pro include credits for AI {SHOW_AI_VIDEO ? "images and videos" : "images"}. You see the price before you make anything, and failed ones are refunded.

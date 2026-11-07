@@ -1,4 +1,4 @@
-import { PLANS, TOP_UPS, USAGE_WARNING_PERCENT, usd } from "@/lib/plans";
+import { PLANS, TOP_UPS, USAGE_WARNING_PERCENT, YEARLY_BILLING, YEARLY_DISCOUNT, usd } from "@/lib/plans";
 
 /**
  * The one FAQ source. /faq shows every group except "Pricing and billing", which appears
@@ -20,7 +20,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "Pricing and billing",
     q: "What does it cost?",
-    a: `Four plans: ${planLine}. Pay monthly, or yearly for 20% off. No setup fee and no contract. Billed from the day you choose a plan.`,
+    a: `Four plans: ${planLine}. ${YEARLY_BILLING ? `Pay monthly, or yearly for ${Math.round(YEARLY_DISCOUNT * 100)}% off.` : "Paid monthly."} No setup fee and no contract. Billed from the day you choose a plan.`,
   },
   {
     group: "Pricing and billing",
@@ -40,7 +40,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "Pricing and billing",
     q: "Can I cancel?",
-    a: "Yes, any time, with no fee. Your plan runs to the end of the month (or year, if you pay yearly) you've paid for and isn't billed again.",
+    a: `Yes, any time, with no fee. Your plan runs to the end of the month${YEARLY_BILLING ? " (or year, if you pay yearly)" : ""} you've paid for and isn't billed again.`,
     link: { href: "/refund-policy", label: "Refund policy" },
   },
   {

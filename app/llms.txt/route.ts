@@ -2,7 +2,7 @@ import { allPosts } from "@/lib/blog";
 import { CHANNELS } from "@/lib/content/channels";
 import { SOMETHING_ELSE, TYPES, isSparse, pluralFor, slugFor } from "@/lib/content/industries";
 import { PRODUCTS, productHref } from "@/lib/content/products";
-import { PLANS } from "@/lib/plans";
+import { PLANS, YEARLY_BILLING } from "@/lib/plans";
 import { LEGAL_LINKS, SITE } from "@/lib/site";
 
 /**
@@ -36,7 +36,7 @@ export function GET() {
     "",
     `RingPost is for local businesses such as salons, clinics, restaurants, gyms and trades. It answers ${channelNames} from the business's own information (services, prices, hours and policies), books into the business's calendar, and hands anything it can't handle to the owner. It never invents a price, a time or a booking. It also makes daily images and videos for social media, drafts replies to reviews and comments, and wins back customers who haven't returned.`,
     "",
-    `There are ${PLANS.length} plans (${list(PLANS.map((p) => p.name))}), paid monthly or yearly (20% off), with no setup fee and no contract. Current prices are on the pricing page.`,
+    `There are ${PLANS.length} plans (${list(PLANS.map((p) => p.name))}), paid ${YEARLY_BILLING ? "monthly or yearly (20% off)" : "monthly"}, with no setup fee and no contract. Current prices are on the pricing page.`,
     "",
     "## Product",
     link("/product", "AI Front Desk", "what RingPost does and the checks that stop it making things up"),

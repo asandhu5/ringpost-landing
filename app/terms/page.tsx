@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/landing/legal-page";
 import { COMPANY, SITE } from "@/lib/site";
+import { YEARLY_BILLING } from "@/lib/plans";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -56,7 +57,7 @@ export default function TermsPage() {
       <ul>
         <li>
           RingPost is offered as a plan (Starter, Essential, Growth or Pro), paid
-          monthly or yearly in advance (yearly is 20% off twelve months), with no setup fee, at the prices shown on our{" "}
+          {YEARLY_BILLING ? "monthly or yearly in advance (yearly is 20% off twelve months)" : "monthly in advance"}, with no setup fee, at the prices shown on our{" "}
           <a href="/pricing">pricing page</a> when you sign up. Each plan includes
           stated monthly allowances; top-up packs are only charged when you choose
           to buy one.
