@@ -142,6 +142,13 @@ export default function PrivacyPage() {
           anyone.
         </strong>
       </p>
+      <p>
+        <strong>Text messages.</strong> Businesses using RingPost send their customers booking
+        confirmations, changes, cancellations and reminders by text. Mobile numbers and text
+        messaging consent are never shared with or sold to third parties or affiliates for
+        marketing or promotional purposes. Customers can reply STOP to any text to stop receiving
+        them, or HELP for help. Message and data rates may apply.
+      </p>
 
       <h2>4. Who else touches your data</h2>
       <p>

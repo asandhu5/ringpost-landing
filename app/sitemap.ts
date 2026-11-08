@@ -12,7 +12,7 @@ import { LEGAL_LINKS, SITE } from "@/lib/site";
  * sitemap never lists a page that asks not to be indexed.
  */
 /** When the pages below last changed meaningfully. */
-const UPDATED = "2026-11-07";
+const UPDATED = "2026-11-08";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entry = (path: string, priority: number, changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] = "monthly", lastModified?: string) => ({

@@ -18,6 +18,7 @@ import { InViewGroup } from "@/components/site/motion";
 import { Reveal } from "@/components/site/reveal";
 import { ButtonLink, Container, Eyebrow, H2, JsonLd, Lede, Section } from "@/components/site/ui";
 import { TYPES } from "@/lib/content/industries";
+import { PLANS } from "@/lib/plans";
 import { COMPANY, START_URL, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -34,7 +35,40 @@ const ORGANIZATION = {
   legalName: COMPANY.legalName,
   url: SITE.url,
   logo: `${SITE.url}/logo.png`,
+  description: SITE.description,
+  contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: `${SITE.url}/contact` },
   ...(COMPANY.registrationNumber ? { identifier: COMPANY.registrationNumber } : {}),
+};
+
+/** The product itself, with its current price range, so search engines and AI
+ * assistants can say what it is and what it costs. Prices come from the plan catalog. */
+const PRODUCT = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, iOS, Android (in the browser)",
+  audience: { "@type": "BusinessAudience", audienceType: "Local and small businesses" },
+  featureList: [
+    "AI receptionist that answers phone calls 24/7",
+    "Missed-call callbacks",
+    "Books, moves and cancels appointments in the business's calendar",
+    "Answers WhatsApp, Instagram, Facebook Messenger and email",
+    "Daily social media images, videos and posting",
+    "Replies to reviews and social comments",
+    "Customer win-back and business insights",
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    lowPrice: Math.min(...PLANS.map((p) => p.monthlyUsd)),
+    highPrice: Math.max(...PLANS.map((p) => p.monthlyUsd)),
+    offerCount: PLANS.length,
+    url: `${SITE.url}/pricing`,
+  },
+  publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
 };
 
 /**
@@ -65,6 +99,7 @@ export default function HomePage() {
     <>
       <JsonLd data={ORGANIZATION} />
       <JsonLd data={WEBSITE} />
+      <JsonLd data={PRODUCT} />
 
       {/* Hero */}
       <section className="relative overflow-hidden pb-14 pt-28 sm:pt-32 lg:pb-20 lg:pt-36">
