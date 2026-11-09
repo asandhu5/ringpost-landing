@@ -61,7 +61,7 @@ export function PricingCards() {
   return (
     <>
       {YEARLY_BILLING && (
-        <div className="mb-8 flex justify-center">
+        <div className="mb-6 flex justify-center">
           <div className="inline-flex items-center rounded-full border border-line bg-white p-1 shadow-sm" role="group" aria-label="Billing period">
             {[false, true].map((y) => (
               <button
@@ -98,9 +98,9 @@ export function PricingCards() {
                 {highlight && <span className="whitespace-nowrap rounded-full bg-[#0b1b2b] px-2.5 py-1 text-[11.5px] font-semibold text-white">Recommended</span>}
               </div>
               <p className="mt-2 min-h-[3rem] text-[13.5px] leading-relaxed text-muted-ink">{FOR_WHO[plan.id]}</p>
-              <p className="mt-4 flex items-baseline gap-1.5 whitespace-nowrap">
-                <span className={cx("font-bold tabular-nums tracking-[-0.04em] text-ink", perMonth % 1 === 0 ? "text-[40px]" : "text-[32px] lg:text-[30px] xl:text-[34px]")}>{money(perMonth)}</span>
-                <span className="shrink-0 text-[14px] text-muted-ink">a month</span>
+              <p className="mt-4 flex flex-wrap items-baseline gap-x-1.5">
+                <span className={cx("whitespace-nowrap font-bold tabular-nums tracking-[-0.04em] text-ink", perMonth % 1 === 0 ? "text-[40px]" : "text-[34px] xl:text-[28px]")}>{money(perMonth)}</span>
+                <span className="whitespace-nowrap text-[13.5px] text-muted-ink">a month</span>
               </p>
               <p className="mt-1 min-h-[1.25rem] text-[12.5px] text-muted-ink">
                 {yearly ? (

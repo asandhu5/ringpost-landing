@@ -195,7 +195,10 @@ export function PageHero({
   crumbs,
   children,
   aside,
+  compact = false,
 }: {
+  /** A short header for pages whose content should start straight away (Pricing). */
+  compact?: boolean;
   eyebrow?: string;
   title: React.ReactNode;
   lede?: React.ReactNode;
@@ -204,7 +207,7 @@ export function PageHero({
   aside?: React.ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden pb-10 pt-24 sm:pt-28 lg:pb-14 lg:pt-32">
+    <section className={cx("relative overflow-hidden", compact ? "pb-6 pt-16 sm:pt-20 lg:pb-8 lg:pt-20" : "pb-10 pt-24 sm:pt-28 lg:pb-14 lg:pt-32")}>
       <div aria-hidden className="rp-aurora rp-aurora--soft">
         <span />
         <span />
@@ -216,8 +219,8 @@ export function PageHero({
         <div className={cx("rp-hero-enter", aside ? "grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]" : "")}>
           <div className="max-w-3xl">
             {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-            <h1 className="font-display text-[clamp(2.4rem,4.6vw,4.2rem)] leading-[1] tracking-[-0.02em] text-ink">{title}</h1>
-            {lede && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-ink">{lede}</p>}
+            <h1 className={cx("font-display leading-[1] tracking-[-0.02em] text-ink", compact ? "text-[clamp(2rem,3.4vw,3rem)]" : "text-[clamp(2.4rem,4.6vw,4.2rem)]")}>{title}</h1>
+            {lede && <p className={cx("max-w-2xl text-lg leading-relaxed text-muted-ink", compact ? "mt-3" : "mt-6")}>{lede}</p>}
             {children && <div className="mt-9">{children}</div>}
           </div>
           {aside}

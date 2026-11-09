@@ -52,6 +52,7 @@ export default function PricingPage() {
     <>
       <JsonLd data={SOFTWARE} />
       <PageHero
+        compact
         eyebrow="Pricing"
         title={`Start at ${usd(PLANS[0].monthlyUsd)} a month.`}
         lede={`${YEARLY_BILLING ? `Monthly or yearly (save ${Math.round(YEARLY_DISCOUNT * 100)}%)` : "Billed monthly"}. No setup fee, no contract, cancel any time.`}
