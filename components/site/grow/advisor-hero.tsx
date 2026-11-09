@@ -13,7 +13,7 @@ const ANSWERS: Answer[] = [
     intro: "A busy month. Here's the breakdown:",
     points: [
       { k: "Bookings", v: "64 new bookings, up from 49 the month before." },
-      { k: "Calls", v: "397 calls answered, and 78 missed calls followed up by text and recovered." },
+      { k: "Calls", v: "397 calls answered, and 78 missed calls called back and recovered." },
       { k: "Messages", v: "611 conversations across WhatsApp, Instagram, Messenger, texts and email." },
       { k: "Reviews", v: "9 new Google reviews, averaging 4.8 stars." },
       { k: "Win-back", v: "24 texts sent, 6 customers booked again." },

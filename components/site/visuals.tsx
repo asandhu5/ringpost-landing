@@ -84,7 +84,7 @@ function ReceptionistVisual() {
 }
 
 const THREADS = [
-  { icon: Phone, who: "Missed call", said: "Texted back · asking about Friday", state: "AI handling", tone: "violet" as const },
+  { icon: Phone, who: "Missed call", said: "Called back · asking about Friday", state: "AI handling", tone: "violet" as const },
   { icon: Instagram, who: "Instagram DM", said: "How much is a full set?", state: "AI handling", tone: "violet" as const },
   { icon: MessageCircle, who: "WhatsApp", said: "I'd like to speak to the manager", state: "Needs you", tone: "coral" as const },
   { icon: Mail, who: "Email", said: "Can I move my booking to Tuesday?", state: "Rescheduled", tone: "green" as const },

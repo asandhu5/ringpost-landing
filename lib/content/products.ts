@@ -74,7 +74,7 @@ export const PRODUCTS: Product[] = [
     name: "AI receptionist",
     summary: "Answers every call, day or night, and books while the caller is on the line.",
     title: "AI receptionist that answers every call and books appointments",
-    description: "RingPost's AI receptionist answers your business calls day and night, quotes your real prices and hours, books during the call and texts back anyone it missed.",
+    description: "RingPost's AI receptionist answers your business calls day and night, quotes your real prices and hours, books during the call and calls back anyone it missed.",
     hero: {
       headline: "Every call answered. Even the ones you can't reach.",
       lede: "A natural voice picks up when you can't. It knows your prices and hours, and books the appointment on the call.",
@@ -82,14 +82,14 @@ export const PRODUCTS: Product[] = [
     sections: [
       { heading: "Knows your business", body: "It reads your services, prices, hours and calendar before it answers. If something isn't in your information, it takes a message instead of guessing." },
       { heading: "Books on the call", body: "It offers times that are actually free and confirms a booking only once it's made." },
-      { heading: "Texts back missed callers", body: "A missed call gets a text from your number within seconds, and the conversation carries on by text." },
+      { heading: "Calls back missed callers", body: "About a minute after a missed call, the AI calls the person back from your number, talks with them about whatever they needed and books it. If they don't pick up, you're told." },
       {
         heading: "Hands over when it should",
         body: "When a caller asks for a person, or something is urgent for your trade, it tells them what happens next and alerts you.",
         points: ["Keep your number and forward it, or get a new local one", "US and Canadian numbers", "Introduces itself as your virtual assistant"],
       },
     ],
-    plans: [{ label: "Answering calls, booking and missed-call text-back", feature: null }],
+    plans: [{ label: "Answering calls, booking and missed-call callbacks", feature: null }],
     screen: { src: "/screens/inbox-call.webp", alt: "The RingPost calls page with answered calls and their outcomes" },
     faq: [
       { q: "Can I keep my existing number?", a: "Yes. Forward it to RingPost, only the calls you miss or every call. The dashboard shows the exact code to dial and tests it. Or pick a new local number." },
@@ -269,19 +269,19 @@ export const PRODUCTS: Product[] = [
     pillar: "grow",
     name: "Win-back",
     summary: "Find customers who haven't been back, and invite them in.",
-    title: "Win back lapsed customers with AI-written texts",
-    description: "RingPost finds customers who haven't been back and drafts a text in your voice. You choose who gets it; only customers who opted in are included.",
+    title: "Win back lapsed customers with AI-written messages",
+    description: "RingPost finds customers who haven't been back and drafts a message in your voice, by email or WhatsApp. You choose who gets it; only customers who opted in are included.",
     hero: {
       headline: "Bring back the customers who drifted.",
-      lede: "See who hasn't been back in a while, get a text drafted in your voice, and send it to the people you choose.",
+      lede: "See who hasn't been back in a while, get a message drafted in your voice, and send it by email, or by WhatsApp to customers outside the US and Canada.",
     },
     sections: [
       { heading: "You choose who", body: "Nothing sends itself. You see the list and the message, then press send." },
-      { heading: "Only people who agreed", body: "Only customers who opted in to marketing texts are included." },
+      { heading: "Only people who agreed", body: "Only customers who opted in to marketing messages are included, and every email carries an unsubscribe link." },
       { heading: "See who came back", body: "Your dashboard shows how many came back after the message." },
     ],
-    plans: [{ label: "Win-back texts", feature: "winback" }],
-    screen: { src: "/screens/win-back.webp", alt: "Choosing customers for a win-back text in RingPost" },
+    plans: [{ label: "Win-back messages", feature: "winback" }],
+    screen: { src: "/screens/win-back.webp", alt: "Choosing customers for a win-back message in RingPost" },
   },
 
   // ── UNDERSTAND ────────────────────────────────────────────────────────────

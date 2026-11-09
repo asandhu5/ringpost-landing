@@ -31,7 +31,7 @@ export const CHANNELS: Channel[] = [
     worksWith: "Your business line",
     searchPhrase: "AI that answers your business phone",
     arrives: "Calls to your RingPost number, or your own number forwarded to it.",
-    aiDoes: "Answers in a natural voice, books on the call, and texts back anyone it missed.",
+    aiDoes: "Answers in a natural voice, books on the call, and calls back anyone it missed.",
     ownerSees: "Every call with what was said and how it ended.",
     setup: "Pick a local US or Canadian number, or forward your own. The dashboard gives you the code and tests it.",
     availableToBusinesses: true,

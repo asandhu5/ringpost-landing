@@ -29,7 +29,7 @@ export interface Automation {
 
 /** What happens while the owner is busy. Every row is a real worker job. */
 export const AUTOMATIONS: Automation[] = [
-  { when: "Seconds after a missed call", title: "A text back", body: "From your number, so the caller can carry on by text." },
+  { when: "About a minute after a missed call", title: "An AI call back", body: "From your number, so the caller gets what they needed. If they don't pick up, you're told." },
   { when: "Before every visit", title: "A reminder", body: "On the customer's channel, in your time zone." },
   { when: "After every visit", title: "A review request", body: "Your review link, plus a private way to talk to you." },
   { when: "06:00 daily", title: "Occasion campaigns", body: "Drafted two days before each occasion you choose." },

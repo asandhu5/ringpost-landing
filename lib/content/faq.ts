@@ -127,7 +127,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "Calls and messages",
     q: "What about texts after hours?",
-    a: "Customers can text your number any time and get an answer straight away. Marketing messages, like win-back texts, are never sent during quiet hours, and every one has an easy way to stop.",
+    a: "Customers can text your number any time and get an answer straight away. Marketing messages, like win-back messages, are never sent during quiet hours, and every one has an easy way to stop.",
     link: { href: "/channels/sms", label: "Text messages" },
   },
   {

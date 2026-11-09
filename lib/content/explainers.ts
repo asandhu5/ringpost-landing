@@ -41,7 +41,7 @@ export const CHANNEL_EXPLAINERS: Record<string, Explainer> = {
         { icon: "BookOpen", title: "It knows your business", body: "Prices, services, hours and policies come from your knowledge, never made up." },
         { icon: "CalendarCheck", title: "It books", body: "Checks live availability for the right person and service, and books it." },
         { icon: "BellRing", title: "Urgent? To you", body: "Emergencies, complaints or 'I want a person' go straight to your phone." },
-        { icon: "Inbox", title: "You see it all", body: "Transcript, outcome and a text-back for anyone it couldn't help." },
+        { icon: "Inbox", title: "You see it all", body: "Transcript, outcome and a call back for anyone it missed." },
       ],
     },
     tour: {
@@ -142,7 +142,7 @@ export const CHANNEL_EXPLAINERS: Record<string, Explainer> = {
     demo: {
       channel: "sms",
       title: "Texts, answered and remembered.",
-      lede: "Missed a call? It texts them back. Got a text? It answers and books.",
+      lede: "Missed a call? It calls them back. Got a text? It answers and books.",
       lines: [
         { from: "ai", text: "Sorry we missed your call! This is your business. How can we help?" },
         { from: "customer", text: "Wanted to move my appointment to next week" },
@@ -156,7 +156,7 @@ export const CHANNEL_EXPLAINERS: Record<string, Explainer> = {
       title: "How texts work.",
       lede: "From your RingPost number, with the rules carriers require already handled.",
       steps: [
-        { icon: "Phone", title: "Missed call text-back", body: "Anyone you couldn't answer gets a text within a minute." },
+        { icon: "Phone", title: "Missed calls called back", body: "Anyone you couldn't answer gets a call back from the AI about a minute later." },
         { icon: "MessageCircle", title: "Texts answered", body: "Questions, bookings and changes, in a natural tone." },
         { icon: "BellRing", title: "Reminders sent", body: "The day before, so fewer people forget." },
         { icon: "CheckCircle2", title: "STOP honoured", body: "Opt-outs are respected automatically, every time." },
@@ -324,7 +324,7 @@ export const PRODUCT_EXPLAINERS: Record<string, Explainer> = {
   },
   winback: {
     demo: {
-      channel: "sms",
+      channel: "whatsapp",
       title: "A win-back message that works.",
       lede: "Pick a group, your AI writes it, you check it and send.",
       lines: [
@@ -341,7 +341,7 @@ export const PRODUCT_EXPLAINERS: Record<string, Explainer> = {
       steps: [
         { icon: "UserRound", title: "Groups made for you", body: "Slipping away, lapsed, long gone, or asked but never booked." },
         { icon: "PenLine", title: "Your AI writes it", body: "From your services and any offer you're running. Never a made-up discount." },
-        { icon: "CheckCircle2", title: "Only people who agreed", body: "Customers who opted in to texts. STOP is added automatically." },
+        { icon: "CheckCircle2", title: "Only people who agreed", body: "Customers who opted in. Every email has an unsubscribe link; WhatsApp messages say how to stop." },
         { icon: "CalendarCheck", title: "Replies get booked", body: "Anyone who answers is handled like any other chat." },
         { icon: "BarChart3", title: "See who came back", body: "Sent, replied and booked, counted for you." },
       ],
@@ -368,7 +368,7 @@ export const PRODUCT_EXPLAINERS: Record<string, Explainer> = {
       lede: "Talk to AI reads your own bookings, calls, reviews and posts, and answers straight.",
       lines: [
         { from: "customer", text: "How did we do over the last 30 days?" },
-        { from: "ai", text: "222 new bookings, up on last month. You missed 99 calls but 78 of them were recovered by text. Reviews average 4.6★." },
+        { from: "ai", text: "222 new bookings, up on last month. You missed 99 calls but 78 of them were recovered by a call back. Reviews average 4.6★." },
         { from: "customer", text: "What should I do this week?" },
         { from: "ai", text: "Most missed calls are Saturday 9–11 AM. Add a team member then, or forward those calls so none are lost." },
       ],

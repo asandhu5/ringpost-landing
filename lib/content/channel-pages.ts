@@ -31,7 +31,7 @@ const PAGES: ChannelPage[] = [
     steps: [
       { title: "Keep your number", body: "Forward your existing number (only missed calls, or all of them), or pick a new local number." },
       { title: "It answers in your voice", body: "Greets callers with your business name and answers from your own prices, hours and policies." },
-      { title: "You see every call", body: "A transcript, the outcome and any booking land in your inbox, with a text-back for anyone it missed." },
+      { title: "You see every call", body: "A transcript, the outcome and any booking land in your inbox, with a call back for anyone it missed." },
     ],
     stat: { value: "24/7", label: "Every call answered, including evenings, weekends and holidays" },
     faq: [
@@ -116,7 +116,7 @@ const PAGES: ChannelPage[] = [
     lede: "Customers text back about times, prices and changes. RingPost answers every text, moves bookings and sends reminders from your business number.",
     benefits: [
       { title: "Answers every text", body: "Opening hours, prices, changes and cancellations, answered straight away." },
-      { title: "Missed call? Text back", body: "Anyone whose call was missed gets a text within seconds, so the conversation carries on." },
+      { title: "Missed call? Called back", body: "Anyone whose call was missed gets a call back from your number about a minute later, so the conversation carries on." },
       { title: "Reminders cut no-shows", body: "A reminder before every visit, and replies to it are handled for you." },
       { title: "The law handled", body: "Opt-out words like STOP are always honoured, by code." },
     ],
@@ -125,7 +125,7 @@ const PAGES: ChannelPage[] = [
       { title: "It replies and books", body: "Moves, cancels and books from what's actually free." },
       { title: "Everything recorded", body: "Every text thread in the inbox, marked as handled or waiting for you." },
     ],
-    stat: { value: "Seconds", label: "From a missed call to a text back" },
+    stat: { value: "A minute", label: "From a missed call to the AI calling back" },
     faq: [
       { q: "Which number do texts come from?", a: "Your RingPost number, so replies come back to your business." },
       { q: "Does it handle STOP?", a: "Yes. Opt-out words are handled by code, never by the AI." },
