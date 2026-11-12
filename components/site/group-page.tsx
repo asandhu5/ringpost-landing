@@ -29,7 +29,7 @@ export function GroupPage({ g }: { g: GroupInfo }) {
           g.image ? (
             <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-[28px] shadow-[0_30px_70px_-30px_rgba(11,27,43,0.55)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={g.image} alt="" className="aspect-[4/5] w-full object-cover" />
+              <img src={g.image} alt="" className="h-[clamp(240px,calc(100svh-var(--header-h)-170px),520px)] w-full object-cover" />
               <div className="absolute inset-x-4 bottom-4 flex items-center gap-2 rounded-2xl bg-white/90 p-3 backdrop-blur">
                 {ANSWERS_ON.slice(0, 4).map((c) => (
                   <ChannelLogo key={c} id={c} size={28} />
@@ -119,7 +119,7 @@ export function GroupPage({ g }: { g: GroupInfo }) {
                 <ChannelLogo key={c} id={c} size={48} />
               ))}
             </div>
-            <Link href="/channels" className="mt-6 inline-flex items-center gap-1.5 text-[15px] font-semibold text-glow hover:text-ink">
+            <Link href="/messages" className="mt-6 inline-flex items-center gap-1.5 text-[15px] font-semibold text-glow hover:text-ink">
               How each channel works <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>

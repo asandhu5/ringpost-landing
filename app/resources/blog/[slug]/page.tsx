@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import { seoDescription } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { BlogCard } from "@/components/site/blog-card";
 import { Markdown } from "@/components/site/markdown";
-import { Breadcrumbs, Container, JsonLd, Section } from "@/components/site/ui";
+import { JsonLd } from "@/components/site/ui";
+import { PageHeader } from "@/components/site/ui/page-header";
+import { Container, Section } from "@/components/site/ui/primitives";
+import { ROUTES } from "@/lib/routes";
 import { allPosts, formatDate, postBySlug } from "@/lib/blog";
 import { COMPANY, SITE } from "@/lib/site";
-import { InViewGroup } from "@/components/site/motion";
 
 export function generateStaticParams() {
   return allPosts().map((p) => ({ slug: p.slug }));
@@ -17,9 +20,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = postBySlug((await params).slug);
   if (!post) return {};
   return {
-    title: post.title,
-    description: post.description,
-    openGraph: { type: "article", title: post.title, description: post.description, url: `/resources/blog/${post.slug}`, publishedTime: post.date },
+    // Long titles drop the " · RingPost" suffix so search results show them whole.
+    title: post.title.length > 58 ? { absolute: post.title } : post.title,
+    description: seoDescription(post.description),
+    openGraph: { type: "article", title: post.title, description: seoDescription(post.description), url: `/resources/blog/${post.slug}`, publishedTime: post.date },
   };
 }
 
@@ -29,32 +33,15 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const more = allPosts().filter((p) => p.slug !== post.slug).slice(0, 3);
   return (
     <>
-      <article className="relative pb-16 pt-28 lg:pt-36">
-        <div aria-hidden className="rp-aurora rp-aurora--soft">
-          <span />
-          <span />
-          <span />
+      <PageHeader crumbs={[{ name: "Blog", href: ROUTES.blog }, { name: post.title, href: `/resources/blog/${post.slug}` }]} title={post.title} lede={post.description}>
+        <p className="mt-3 text-small text-muted-ink">
+          <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.readingMinutes} min read · Written by the RingPost team
+        </p>
+      </PageHeader>
+      <article className="mx-auto w-full max-w-[1240px] px-4 pb-14 pt-4 sm:px-6 lg:px-10">
+        <div className="post-prose">
+          <Markdown source={post.body} />
         </div>
-        <div aria-hidden className="rp-grid rp-fade-mask pointer-events-none absolute inset-x-0 top-0 h-[420px] opacity-60" />
-        <Container narrow className="relative">
-          <Breadcrumbs
-            items={[
-              { name: "Resources", href: "/resources" },
-              { name: "Blog", href: "/resources/blog" },
-              { name: post.title, href: `/resources/blog/${post.slug}` },
-            ]}
-          />
-          <p className="text-[14px] text-glow">
-            <time dateTime={post.date}>{formatDate(post.date)}</time>, {post.readingMinutes} min read
-          </p>
-          <h1 className="mt-4 font-display text-[clamp(2.2rem,4.2vw,3.5rem)] leading-[1.02] tracking-[-0.015em] text-ink">{post.title}</h1>
-          <p className="mt-5 text-xl leading-relaxed text-muted-ink">{post.description}</p>
-          <div className="rp-hairline my-10" />
-          <div className="post-prose">
-            <Markdown source={post.body} />
-          </div>
-          <p className="mt-12 text-[14px] text-faint">Written by the RingPost team.</p>
-        </Container>
       </article>
       <JsonLd
         data={{
@@ -70,14 +57,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         }}
       />
       {more.length > 0 && (
-        <Section tone="surface">
+        <Section tone="white">
           <Container>
-            <h2 className="mb-6 font-display text-3xl text-ink">Keep reading</h2>
-            <InViewGroup className="grid gap-4 md:grid-cols-3">
+            <h2 className="mb-6 font-display text-h2 text-ink">Keep reading</h2>
+            <ul className="grid gap-4 md:grid-cols-3">
               {more.map((p) => (
-                <BlogCard key={p.slug} post={p} />
+                <li key={p.slug}><BlogCard post={p} /></li>
               ))}
-            </InViewGroup>
+            </ul>
           </Container>
         </Section>
       )}

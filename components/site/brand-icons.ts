@@ -1,6 +1,6 @@
 /**
  * Official brand marks from Simple Icons v15 (CC0, simpleicons.org): one 24x24 path per
- * network, drawn white on the network's own colour by ChannelLogo. LinkedIn is not in
+ * network, drawn white on the network's own color by ChannelLogo. LinkedIn is not in
  * Simple Icons (LinkedIn asked for its removal), so its mark stays in channel-logos.tsx.
  */
 export const BRAND_PATHS: Record<string, string> = {

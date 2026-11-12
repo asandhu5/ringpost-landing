@@ -9,7 +9,7 @@ import { Reveal } from "@/components/site/reveal";
 
 /* ──────────────────────────────────────────────────────────────────
  *  The component kit. Pages are assembled from these, so spacing,
- *  type and colour stay consistent across ~90 routes.
+ *  type and color stay consistent across ~90 routes.
  * ────────────────────────────────────────────────────────────────── */
 
 export function cx(...parts: (string | false | null | undefined)[]) {
@@ -38,7 +38,7 @@ export function Section({
       id={id}
       className={cx(
         "relative",
-        bleed ? "" : "py-14 sm:py-16 lg:py-20",
+        bleed ? "" : "py-[var(--section-y)]",
         tone === "surface" && "bg-surface/60 border-y border-line",
         className,
       )}
@@ -51,11 +51,11 @@ export function Section({
 
 /** A short context line above a heading, in plain sentence case. Used sparingly. */
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <p className={cx("mb-4 inline-flex items-center gap-2 text-[15px] font-medium text-glow", className)}>{children}</p>;
+  return <p className={cx("mb-2.5 inline-flex items-center gap-2 text-small font-semibold text-violet", className)}>{children}</p>;
 }
 
 export function H2({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <h2 className={cx("font-display text-[clamp(1.9rem,3.5vw,3rem)] leading-[1.04] tracking-[-0.015em] text-ink", className)}>{children}</h2>;
+  return <h2 className={cx("font-display text-h2 text-ink", className)}>{children}</h2>;
 }
 
 export function Lede({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -96,8 +96,8 @@ export function ButtonLink({
     link: "px-0 text-glow hover:text-ink",
   };
   const cls = cx(
-    "group inline-flex min-h-11 items-center justify-center gap-2 rounded-full text-[15px] font-medium transition-all duration-200",
-    variant !== "link" && "px-5 py-2.5",
+    "rp-btn group inline-flex min-h-12 items-center justify-center gap-2 rounded-full text-[15.5px] font-semibold",
+    variant !== "link" && "px-6 py-2.5",
     styles[variant],
     className,
   );
@@ -157,7 +157,7 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
   const all = [{ name: "Home", href: "/" }, ...items];
   return (
     <>
-      <nav aria-label="Breadcrumb" className={cx("mb-8", className)}>
+      <nav aria-label="Breadcrumb" className={cx("mb-[clamp(0.75rem,2.5svh,2rem)]", className)}>
         <ol className="flex flex-wrap items-center gap-1.5 text-[13px] text-faint">
           {all.map((c, i) => (
             <li key={c.href} className="flex items-center gap-1.5">
@@ -207,7 +207,7 @@ export function PageHero({
   aside?: React.ReactNode;
 }) {
   return (
-    <section className={cx("relative overflow-hidden", compact ? "pb-6 pt-16 sm:pt-20 lg:pb-8 lg:pt-20" : "pb-10 pt-24 sm:pt-28 lg:pb-14 lg:pt-32")}>
+    <section className={cx("relative overflow-hidden", compact ? "pb-6 pt-[calc(var(--header-h)+1.5rem)] lg:pb-8" : "pb-[clamp(1.5rem,5svh,3.5rem)] pt-[calc(var(--header-h)+clamp(1rem,4svh,2.5rem))]")}>
       <div aria-hidden className="rp-aurora rp-aurora--soft">
         <span />
         <span />
@@ -219,9 +219,9 @@ export function PageHero({
         <div className={cx("rp-hero-enter", aside ? "grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]" : "")}>
           <div className="max-w-3xl">
             {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-            <h1 className={cx("font-display leading-[1] tracking-[-0.02em] text-ink", compact ? "text-[clamp(2rem,3.4vw,3rem)]" : "text-[clamp(2.4rem,4.6vw,4.2rem)]")}>{title}</h1>
-            {lede && <p className={cx("max-w-2xl text-lg leading-relaxed text-muted-ink", compact ? "mt-3" : "mt-6")}>{lede}</p>}
-            {children && <div className="mt-9">{children}</div>}
+            <h1 className="font-display text-h1 text-ink">{title}</h1>
+            {lede && <p className={cx("max-w-2xl text-body text-muted-ink", compact ? "mt-3" : "mt-[clamp(0.75rem,2.5svh,1.5rem)]")}>{lede}</p>}
+            {children && <div className="mt-[clamp(1rem,3.5svh,2.25rem)]">{children}</div>}
           </div>
           {aside}
         </div>
@@ -416,7 +416,7 @@ export function Conversation({ turns, label }: { turns: Turn[]; label?: string }
           <span className="animate-ringpost-ping absolute inline-flex h-full w-full rounded-full bg-success" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
         </span>
-        <span className="text-[12px] font-medium text-muted-ink">Front desk</span>
+        <span className="text-[12px] font-medium text-muted-ink">Answering</span>
       </div>
       <InViewGroup className="flex flex-col gap-3 p-5">
         {turns.map((t, i) =>

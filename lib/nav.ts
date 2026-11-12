@@ -1,10 +1,10 @@
 import { GROUP_INFO } from "@/lib/content/groups";
 import { LEGAL_LINKS } from "@/lib/site";
+import { ROUTES } from "@/lib/routes";
 
 /**
- * The site's menus: Channels, then Content Studio (making and posting), then
- * Grow (reviews, comments, win-back, insights, Talk to AI), then Industries and Pricing.
- * Company and resources live in the footer only.
+ * The site's menus: Product ▾ · Industries ▾ · Pricing · Contact. Company, blog, FAQ and
+ * legal pages live in the footer only.
  */
 export interface NavLink {
   name: string;
@@ -16,45 +16,64 @@ export interface NavLink {
   icon?: string;
 }
 
-export const CHANNEL_MENU: NavLink[] = [
-  { name: "Phone calls", href: "/channels/phone", summary: "Every call answered in a natural voice, and booked.", logo: "phone" },
-  { name: "WhatsApp", href: "/channels/whatsapp", summary: "Replies in seconds on the app your customers use most.", logo: "whatsapp" },
-  { name: "Instagram", href: "/channels/instagram", summary: "DMs turned into bookings, day and night.", logo: "instagram" },
-  { name: "Facebook Messenger", href: "/channels/messenger", summary: "Every Page message answered and booked.", logo: "messenger" },
-  { name: "Text messages", href: "/channels/sms", summary: "Texts answered, reminders sent, STOP honoured.", logo: "sms" },
-  { name: "Email", href: "/channels/email", summary: "Customer emails answered in the same thread.", logo: "email" },
-];
-
-export const CHANNEL_EXTRAS: NavLink[] = [
-  { name: "One inbox for everything", href: "/product/inbox", summary: "Every channel in one place. Step in any time.", icon: "Inbox" },
-  { name: "Bookings and calendar", href: "/product/booking", summary: "Booked on the call, synced with Google Calendar.", icon: "CalendarCheck" },
-  { name: "Your business knowledge", href: "/product/knowledge", summary: "It answers from your own prices, hours and policies.", icon: "BookOpen" },
-];
-
-export const CONTENT_MENU: NavLink[] = [
-  { name: "Content Studio", href: "/content-studio", summary: "Images and short videos made for your business, every day.", icon: "Sparkles" },
-  { name: "Posting and uploads", href: "/posting", summary: "Upload your own photos and videos, preview every app, post now or schedule.", icon: "Send" },
-];
-
-export const GROW_MENU: NavLink[] = [
-  { name: "Reviews and comments", href: "/product/reviews", summary: "Google reviews and comments answered, in your voice.", icon: "MessageSquareHeart" },
-  { name: "Win-back", href: "/product/winback", summary: "Bring back customers who haven't been in for a while.", icon: "UsersRound" },
-  { name: "Insights", href: "/product/insights", summary: "Where customers come from, and what keeps coming up.", icon: "ChartNoAxesCombined" },
-  { name: "Talk to AI", href: "/product/advisor", summary: "Ask about your business and get a straight answer.", icon: "Bot" },
-];
-
 export const INDUSTRY_MENU: NavLink[] = GROUP_INFO.map((g) => ({ name: g.name, href: `/industries/${g.slug}`, summary: g.tagline, icon: g.icon }));
-
-export const RESOURCES_NAV: NavLink[] = [
-  { name: "Blog", href: "/resources/blog", summary: "On missed calls, messaging and what an AI front desk should never say." },
-  { name: "FAQ", href: "/faq", summary: "Pricing, channels, your data." },
-];
-
-export const COMPANY_NAV: NavLink[] = [
-  { name: "About", href: "/about", summary: "What we're building, for whom, and who we are." },
-  { name: "Contact", href: "/contact", summary: "Ask our assistant, or reach a person." },
-];
 
 export const LEGAL_NAV: NavLink[] = LEGAL_LINKS.map((l) => ({ name: l.name, href: l.href }));
 
-export const POSTING_MENU: NavLink[] = [{ name: "Posting", href: "/posting", summary: "Captions, platforms, post now and scheduling.", icon: "Send" }];
+/* ── The 2026-11-12 menu: Product ▾ · Industries ▾ · Pricing · Contact ───────────── */
+
+export type ProductArea = "answer" | "create" | "grow";
+
+export interface ProductColumn {
+  area: ProductArea;
+  title: string;
+  blurb: string;
+  links: NavLink[];
+}
+
+/** One panel, three columns, the same card for every offering. */
+export const PRODUCT_COLUMNS: ProductColumn[] = [
+  {
+    area: "answer",
+    title: "Answer",
+    blurb: "Every customer gets a reply.",
+    links: [
+      { name: "Calls", href: ROUTES.calls, summary: "Every call answered. Missed calls called back.", icon: "Phone" },
+      { name: "Messages", href: ROUTES.messages, summary: "WhatsApp, Instagram DMs, Messenger, texts, email.", icon: "MessagesSquare" },
+      { name: "One inbox", href: ROUTES.inbox, summary: "Every conversation in one place. Step in any time.", icon: "Inbox" },
+      { name: "Bookings & calendar", href: ROUTES.booking, summary: "Booked on the spot, synced with Google Calendar.", icon: "CalendarCheck" },
+      { name: "Business Brain", href: ROUTES.brain, summary: "Tell it once. Everything runs from it.", icon: "BrainCircuit" },
+    ],
+  },
+  {
+    area: "create",
+    title: "Create",
+    blurb: "Your content, made and posted.",
+    links: [
+      { name: "Content Studio", href: ROUTES.studio, summary: "Images and short videos from one idea.", icon: "Sparkles" },
+      { name: "Posting", href: ROUTES.posting, summary: "One post, the right way for each app.", icon: "Send" },
+    ],
+  },
+  {
+    area: "grow",
+    title: "Grow",
+    blurb: "More customers, coming back.",
+    links: [
+      { name: "Reviews & comments", href: ROUTES.reviews, summary: "Answered in your voice, after your OK.", icon: "Star" },
+      { name: "Win-back", href: ROUTES.winback, summary: "Bring back customers who went quiet.", icon: "RotateCcw" },
+      { name: "Campaigns", href: ROUTES.campaigns, summary: "Plan an offer once. Send it everywhere.", icon: "Megaphone" },
+      { name: "Insights", href: ROUTES.insights, summary: "What's working, in plain words.", icon: "ChartNoAxesCombined" },
+      { name: "Talk to AI", href: ROUTES.talk, summary: "Ask about your business. Get a straight answer.", icon: "Bot" },
+    ],
+  },
+];
+
+export const INDUSTRY_TILES: NavLink[] = GROUP_INFO.map((g) => ({ name: g.name, href: `/industries/${g.slug}`, icon: g.icon }));
+
+export const FOOTER_COMPANY: NavLink[] = [
+  { name: "About", href: ROUTES.about },
+  { name: "Contact", href: ROUTES.contact },
+  { name: "Blog", href: ROUTES.blog },
+  { name: "FAQ", href: ROUTES.faq },
+  { name: "Pricing", href: ROUTES.pricing },
+];

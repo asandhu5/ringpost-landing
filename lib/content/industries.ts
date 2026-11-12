@@ -7,7 +7,7 @@ import data from "@/data/business-types.json";
  *
  * Every page is assembled from that trade's OWN data: its ways of selling, its customers'
  * questions, the lines its AI never crosses, the topics it always hands to the owner,
- * what it asks a customer, its catalogue labels and the words people search for it by.
+ * what it asks a customer, its catalog labels and the words people search for it by.
  * Eight trades are also written by hand (DEEP below). A trade whose spec carries no rules,
  * no hand-off topics and no vertical template has little of its own to say yet; those
  * pages are built but marked noindex until the spec is filled in (see `isSparse`), so
@@ -62,15 +62,15 @@ export interface DeepContent {
 export const DEEP: Record<string, DeepContent> = {
   hair_salon: {
     intro: [
-      "A salon's phone rings hardest when every chair is full and every hand is busy with colour or scissors. The client who can't get through books with the salon down the road, and the one who messaged on Instagram last night is still waiting.",
+      "A salon's phone rings hardest when every chair is full and every hand is busy with color or scissors. The client who can't get through books with the salon down the road, and the one who messaged on Instagram last night is still waiting.",
       "RingPost answers every call and message from your own service menu, prices and stylists' availability, books the appointment, and sends a reminder before it.",
     ],
     handling: [
-      { q: "\"How much is a full head of colour?\"", a: "It gives the price from your own service list. If a price depends on hair length or a consultation, it says so, because it can't state a price that isn't in your list." },
+      { q: "\"How much is a full head of color?\"", a: "It gives the price from your own service list. If a price depends on hair length or a consultation, it says so, because it can't state a price that isn't in your list." },
       { q: "\"Can I see Maria on Saturday?\"", a: "It checks that stylist's own diary, not just the salon's, and offers the times she's actually free." },
-      { q: "\"I had a reaction to my last colour\"", a: "It doesn't give advice. A salon's AI passes allergic reactions, burns and anything about chemicals straight to you." },
+      { q: "\"I had a reaction to my last color\"", a: "It doesn't give advice. A salon's AI passes allergic reactions, burns and anything about chemicals straight to you." },
     ],
-    booking: "Appointments, booked against each stylist's own calendar, with the service's real duration so a colour and a trim never collide.",
+    booking: "Appointments, booked against each stylist's own calendar, with the service's real duration so a color and a trim never collide.",
     conversation: [
       { from: "customer", text: "hi do you have anything for a cut and blow dry tomorrow after work?" },
       { from: "ai", text: "We do. Tomorrow there's 5:30 pm with Jess or 6:15 pm with Sam. Which suits you?" },
@@ -81,7 +81,7 @@ export const DEEP: Record<string, DeepContent> = {
   },
   dental: {
     intro: [
-      "Dental reception is a juggling act: new-patient enquiries, insurance questions, reschedules, and the patient in pain who needs to be seen today. Miss the call and an anxious patient doesn't always ring back.",
+      "Dental reception is a juggling act: new-patient inquiries, insurance questions, reschedules, and the patient in pain who needs to be seen today. Miss the call and an anxious patient doesn't always ring back.",
       "RingPost answers from your own treatments, prices and hours, books into your clinicians' diaries, and passes anything clinical straight to your team.",
     ],
     handling: [
@@ -99,7 +99,7 @@ export const DEEP: Record<string, DeepContent> = {
   },
   restaurant: {
     intro: [
-      "Service is when the phone rings most and when nobody can answer it. Reservations, \"are you open?\", allergy questions and big-group enquiries all arrive at once, on the phone, on Instagram and on WhatsApp.",
+      "Service is when the phone rings most and when nobody can answer it. Reservations, \"are you open?\", allergy questions and big-group inquiries all arrive at once, on the phone, on Instagram and on WhatsApp.",
       "RingPost takes reservations from your real table availability, answers from your own menu, and passes allergies, private dining and anything unusual to you.",
     ],
     handling: [
@@ -171,7 +171,7 @@ export const DEEP: Record<string, DeepContent> = {
   },
   gym: {
     intro: [
-      "A gym's enquiries are about memberships, timetables and trials, and they arrive at 6 am and 10 pm, when the front desk is empty.",
+      "A gym's inquiries are about memberships, timetables and trials, and they arrive at 6 am and 10 pm, when the front desk is empty.",
       "RingPost answers from your own membership options and timetable, books classes, trials and sessions, and passes injuries and billing disputes to you.",
     ],
     handling: [
@@ -305,7 +305,7 @@ const PLURAL: Record<string, string> = {
   optometrist: "opticians and eye clinics",
   veterinary: "veterinary clinics",
   therapy: "therapists and counsellors",
-  gym: "gyms and fitness centres",
+  gym: "gyms and fitness centers",
   yoga_pilates: "yoga and Pilates studios",
   martial_arts: "martial arts and dance schools",
   personal_trainer: "personal trainers and coaches",

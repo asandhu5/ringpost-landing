@@ -1,26 +1,29 @@
 import type { Metadata } from "next";
 import { BlogCard } from "@/components/site/blog-card";
-import { Container, PageHero, Section } from "@/components/site/ui";
+import { PageHeader } from "@/components/site/ui/page-header";
+import { Container, Section } from "@/components/site/ui/primitives";
 import { allPosts } from "@/lib/blog";
-import { InViewGroup } from "@/components/site/motion";
+import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "The RingPost blog: missed calls, messaging, cancellations, and the rules an AI front desk should follow.",
+  description: "The RingPost blog: missed calls, messaging, cancellations, posting, and the rules an AI assistant should follow.",
   openGraph: { title: "RingPost blog", url: "/resources/blog" },
 };
 
 export default function BlogIndex() {
+  const [first, ...rest] = allPosts();
   return (
     <>
-      <PageHero eyebrow="Blog" title="The RingPost blog" crumbs={[{ name: "Resources", href: "/resources" }, { name: "Blog", href: "/resources/blog" }]} />
-      <Section className="!pt-0">
+      <PageHeader crumbs={[{ name: "Blog", href: ROUTES.blog }]} eyebrow="Blog" title="Ideas for busy local businesses." lede="Short, practical reads on calls, messages, bookings and posting." />
+      <Section className="!pt-4">
         <Container>
-          <InViewGroup className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {allPosts().map((p) => (
-              <BlogCard key={p.slug} post={p} />
+          {first && <BlogCard post={first} featured />}
+          <ul className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {rest.map((p) => (
+              <li key={p.slug}><BlogCard post={p} /></li>
             ))}
-          </InViewGroup>
+          </ul>
         </Container>
       </Section>
     </>

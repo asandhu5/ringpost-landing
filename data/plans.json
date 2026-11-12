@@ -65,7 +65,7 @@
       "tagline": "Everything in Essential, plus daily posts, auto-posting and Talk to AI.",
       "minutesPerMonth": 400,
       "messagesPerMonth": 1500,
-      "mediaCreditsPerMonth": 1500,
+      "mediaCreditsPerMonth": 2000,
       "imagesPerDay": 3,
       "videos": {
         "count": 1,
@@ -89,7 +89,7 @@
       "tagline": "The whole front of house: comment replies, reviews, campaigns, insights and win-backs.",
       "minutesPerMonth": 650,
       "messagesPerMonth": 3000,
-      "mediaCreditsPerMonth": 4000,
+      "mediaCreditsPerMonth": 5000,
       "imagesPerDay": 4,
       "videos": {
         "count": 1,

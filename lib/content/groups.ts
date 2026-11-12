@@ -28,11 +28,11 @@ const INFO: Record<string, Omit<GroupInfo, "name" | "slug">> = {
     pain: "Your hands are busy with a client when the phone rings, and half your bookings arrive as Instagram DMs at 10 pm.",
     does: [
       { title: "Books while you work", body: "Answers calls and DMs, checks each stylist's real availability and books the right service and length." },
-      { title: "Quotes your real prices", body: "Cut, colour, balayage, lashes: it answers from your own price list and never guesses." },
+      { title: "Quotes your real prices", body: "Cut, color, balayage, lashes: it answers from your own price list and never guesses." },
       { title: "Fills the gaps", body: "Reminders cut no-shows, and win-back messages bring back clients who haven't been in for a while." },
       { title: "Posts that book chairs", body: "Hair reveals, close-ups and before-and-afters, made about your salon and posted for you." },
     ],
-    content: ["Colour reveal Reels", "Before and after", "Satisfying close-ups", "This week's openings"],
+    content: ["Color reveal Reels", "Before and after", "Satisfying close-ups", "This week's openings"],
     image: "/made/ideas/result-closeup.webp",
   },
   Health: {
@@ -53,7 +53,7 @@ const INFO: Record<string, Omit<GroupInfo, "name" | "slug">> = {
     icon: "Dumbbell",
     tone: "#ea580c",
     tagline: "Gyms, studios, martial arts, dance and personal trainers.",
-    pain: "Enquiries arrive at 6 am and 10 pm, when the front desk is empty, and a trial that isn't booked tonight is lost.",
+    pain: "Inquiries arrive at 6 am and 10 pm, when the front desk is empty, and a trial that isn't booked tonight is lost.",
     does: [
       { title: "Trials booked tonight", body: "Answers about memberships, timetables and trials, and books a class or a first session on the spot." },
       { title: "The timetable, answered", body: "What's on, what to bring, how to cancel: from your own timetable and policies." },
@@ -111,9 +111,9 @@ const INFO: Record<string, Omit<GroupInfo, "name" | "slug">> = {
     tagline: "Law firms, accountants, estate agents, insurance and photographers.",
     pain: "A new client calls once. If nobody answers, they call the next firm on the list.",
     does: [
-      { title: "Every enquiry taken", body: "Takes the details of each new enquiry and books a consultation with the right person." },
+      { title: "Every inquiry taken", body: "Takes the details of each new inquiry and books a consultation with the right person." },
       { title: "Nothing it shouldn't say", body: "It never gives advice: legal, tax or financial questions go to you." },
-      { title: "Follow-ups that land", body: "Reminders before consultations and a polite nudge to enquiries that went quiet." },
+      { title: "Follow-ups that land", body: "Reminders before consultations and a polite nudge to inquiries that went quiet." },
       { title: "A trusted presence", body: "Clear explainers, team intros and client stories, posted on LinkedIn and beyond." },
     ],
     content: ["Team intros", "Plain-English explainers", "Client stories", "Deadline reminders"],
@@ -151,9 +151,9 @@ const INFO: Record<string, Omit<GroupInfo, "name" | "slug">> = {
     icon: "BedDouble",
     tone: "#be123c",
     tagline: "Hotels and guest houses, event venues and rentals.",
-    pain: "Booking enquiries arrive in every time zone, and a slow reply is a lost booking.",
+    pain: "Booking inquiries arrive in every time zone, and a slow reply is a lost booking.",
     does: [
-      { title: "Enquiries at any hour", body: "Answers availability, prices and policies day and night, in a friendly voice." },
+      { title: "Inquiries at any hour", body: "Answers availability, prices and policies day and night, in a friendly voice." },
       { title: "Bookings and viewings", body: "Books stays, viewings and hires, and passes large or special requests to you." },
       { title: "Guests looked after", body: "Check-in details, directions and reminders sent before they arrive." },
       { title: "Somewhere people want to be", body: "Space tours, seasonal moments and guest reviews, posted for you." },

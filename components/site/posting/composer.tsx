@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, Lock, Sparkles, Upload } from "lucide-react";
 import { ChannelLogo } from "@/components/site/channel-logos";
 import { IPhone16ProMax } from "@/components/site/phone/iphone";
+import { Tilt3D } from "@/components/site/ui/tilt-3d";
 import { AppScreen, type PreviewPlatform } from "@/components/site/phone/apps";
 import { DEMO_ITEMS, POST_TARGETS, type DemoItem } from "@/lib/content/posting-demo";
 
@@ -73,7 +74,7 @@ export function PostComposer() {
         <span className="text-[14px] font-semibold text-ink">New post</span>
       </div>
 
-      <div className="grid lg:grid-cols-[1.05fr_minmax(0,0.95fr)]">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_minmax(0,0.95fr)]">
         <div className="border-b border-line p-5 sm:p-7 lg:border-b-0 lg:border-r">
           {/* 1. Content */}
           <p className="text-[13.5px] font-semibold text-ink">What to post</p>
@@ -119,6 +120,31 @@ export function PostComposer() {
           </div>
           <p key={key} className="rp-fade-in mt-2.5 rounded-xl border border-line bg-surface-2 p-3.5 text-[14.5px] leading-relaxed text-ink">{caption}</p>
           <p className="mt-2 text-[13px] text-muted-ink">Switch platforms to see how the caption changes for each one.</p>
+
+          {/* 4. When */}
+          <p className="mt-7 text-[13.5px] font-semibold text-ink">When it goes out</p>
+          <div className="mt-3 grid grid-cols-3 gap-2">
+            {[
+              { t: "Now", d: "Right away" },
+              { t: "Best time", d: "Today, 6 pm", on: true },
+              { t: "Later", d: "Your pick" },
+            ].map((o) => (
+              <span key={o.t} className={`rounded-xl border px-3 py-2.5 ${o.on ? "border-glow bg-[#f3f1ff]" : "border-line"}`}>
+                <span className="block text-[13px] font-semibold text-ink">{o.t}</span>
+                <span className="block text-[12px] text-muted-ink">{o.d}</span>
+              </span>
+            ))}
+          </div>
+          <p className="mt-2 text-[12.5px] text-faint">Best time is picked for your kind of business, in your own timezone.</p>
+
+          {/* 5. Approve */}
+          <div className="mt-7 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-ink p-4 text-white">
+            <span className="min-w-0">
+              <span className="block text-[14px] font-semibold">Ready to approve</span>
+              <span className="block text-[12.5px] text-white/70">Going to {live.length || 1} {live.length === 1 ? "platform" : "platforms"}. Nothing is sent until you approve.</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-cta px-4 py-2 text-[13.5px] font-semibold text-[var(--rp-cta-ink)]"><Check className="h-4 w-4" aria-hidden /> Approve and schedule</span>
+          </div>
         </div>
         {/* Phone preview */}
         <div className="flex flex-col items-center bg-[linear-gradient(180deg,#f7f8fa,#eef1f6)] px-5 py-7">
@@ -129,9 +155,11 @@ export function PostComposer() {
               </button>
             ))}
           </div>
+          <Tilt3D rest={[4, 12]} className="w-full max-w-[300px]">
           <IPhone16ProMax width={300} label={`Preview of the post on ${target.name}, on an iPhone 16 Pro Max screen`}>
             <AppScreen platform={shown} post={post} />
           </IPhone16ProMax>
+          </Tilt3D>
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
 import { OG_SIZE, ogImage } from "@/lib/og";
 
-export const alt = "The front desk small businesses never had time to staff";
+export const alt = "Built for owners who would rather be doing the work";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
 export default function Image() {
-  return ogImage("The front desk small businesses never had time to staff", "About");
+  return ogImage("Built for owners who would rather be doing the work", "About");
 }

@@ -20,13 +20,9 @@ export const FAQ: FaqItem[] = [
   {
     group: "Pricing and billing",
     q: "What does it cost?",
-    a: `Four plans: ${planLine}. ${YEARLY_BILLING ? `Pay monthly, or yearly for ${Math.round(YEARLY_DISCOUNT * 100)}% off.` : "Paid monthly."} No setup fee and no contract. Billed from the day you choose a plan.`,
+    a: `Four plans: ${planLine}. ${YEARLY_BILLING ? `Pay monthly, or yearly for ${Math.round(YEARLY_DISCOUNT * 100)}% off.` : "Paid monthly."} Billed from the day you choose a plan.`,
   },
-  {
-    group: "Pricing and billing",
-    q: "Is there a free trial?",
-    a: `No. Instead, plans start low: ${PLANS[0].name} is ${usd(PLANS[0].monthlyUsd)} a month, with no setup fee and no contract. You can sign up and look around the whole dashboard first, and cancel any time.`,
-  },
+
   {
     group: "Pricing and billing",
     q: "What if I go over my allowance?",
@@ -47,7 +43,7 @@ export const FAQ: FaqItem[] = [
     group: "Getting started",
     q: "Do I have to change my phone number?",
     a: "No. Forward your existing number to RingPost, either only the calls you miss or every call, and the dashboard tests the forwarding for you. If you'd rather keep your number for personal use, you can pick a new local number in a few clicks instead.",
-    link: { href: "/product/ai-receptionist", label: "AI receptionist" },
+    link: { href: "/calls", label: "AI receptionist" },
   },
   {
     group: "Getting started",
@@ -69,7 +65,7 @@ export const FAQ: FaqItem[] = [
     group: "Getting started",
     q: "Can I keep using WhatsApp on my phone?",
     a: "Yes. RingPost connects to the WhatsApp Business app you already use, so you keep your number, your chats and the app on your phone. When you reply from your phone, the AI steps back from that conversation.",
-    link: { href: "/channels/whatsapp", label: "WhatsApp" },
+    link: { href: "/messages#whatsapp", label: "WhatsApp" },
   },
   {
     group: "How it works",
@@ -81,7 +77,7 @@ export const FAQ: FaqItem[] = [
     group: "How it works",
     q: "Where does it get its answers from?",
     a: "From your business: your services and prices, opening hours, staff, policies, offers and the knowledge you add or upload. It uses the same knowledge for calls, messages, captions and review replies, so everything says the same thing.",
-    link: { href: "/product/knowledge", label: "Your business knowledge" },
+    link: { href: "/brain", label: "Your business knowledge" },
   },
   {
     group: "How it works",
@@ -93,7 +89,7 @@ export const FAQ: FaqItem[] = [
     group: "How it works",
     q: "Can I take over a conversation?",
     a: "Any time. Reply from the inbox, or from WhatsApp on your phone, and the AI steps back until you hand it back.",
-    link: { href: "/product/inbox", label: "The inbox" },
+    link: { href: "/inbox", label: "The inbox" },
   },
   {
     group: "How it works",
@@ -104,31 +100,31 @@ export const FAQ: FaqItem[] = [
     group: "Calls and messages",
     q: "Does it work with Instagram and WhatsApp?",
     a: "Yes. Connect Instagram with your Instagram login and Messenger with your Facebook Page. WhatsApp connects to your WhatsApp Business account with a few clicks, and we guide you through it.",
-    link: { href: "/channels", label: "All channels" },
+    link: { href: "/messages", label: "All channels" },
   },
   {
     group: "Calls and messages",
     q: "What does a call sound like?",
     a: "A natural voice that answers in your business's name, understands what the caller wants, checks your real availability and books them in. It can pass the call to you or take a message whenever a person is needed.",
-    link: { href: "/channels/phone", label: "Phone calls" },
+    link: { href: "/calls", label: "Phone calls" },
   },
   {
     group: "Calls and messages",
     q: "Can it book appointments into my calendar?",
     a: "Yes. It books into your RingPost calendar and, if you connect it, your Google Calendar, using each staff member's working hours and the length of each service. The customer gets a confirmation and a reminder before the visit.",
-    link: { href: "/product/booking", label: "Bookings and calendar" },
+    link: { href: "/booking", label: "Bookings and calendar" },
   },
   {
     group: "Calls and messages",
     q: "How does email work?",
     a: "Your business gets its own RingPost email address. Customers write to it, or you forward your usual mailbox. Replies go out under your business's name, in the same conversation.",
-    link: { href: "/channels/email", label: "Email" },
+    link: { href: "/messages#email", label: "Email" },
   },
   {
     group: "Calls and messages",
     q: "What about texts after hours?",
     a: "Customers can text your number any time and get an answer straight away. Marketing messages, like win-back messages, are never sent during quiet hours, and every one has an easy way to stop.",
-    link: { href: "/channels/sms", label: "Text messages" },
+    link: { href: "/messages#sms", label: "Text messages" },
   },
   {
     group: "Content and posting",
@@ -158,25 +154,25 @@ export const FAQ: FaqItem[] = [
     group: "Growing your business",
     q: "Does it reply to Google reviews and comments?",
     a: "Yes. Google reviews and comments on your posts come into one list, each with a reply drafted in your voice from your own details. You approve it and it's posted where the comment came from. Low ratings are sent to your phone first.",
-    link: { href: "/product/reviews", label: "Reviews and comments" },
+    link: { href: "/reviews", label: "Reviews and comments" },
   },
   {
     group: "Growing your business",
     q: "How does win-back work?",
     a: "RingPost groups customers by their last visit. You pick a group, jot a rough idea, and your AI writes the text from your services and offers. It goes only to customers who agreed to messages, and replies are answered and booked like any other chat.",
-    link: { href: "/product/winback", label: "Win-back" },
+    link: { href: "/win-back", label: "Win-back" },
   },
   {
     group: "Growing your business",
     q: "What does Insights show me?",
     a: "How many people got in touch, how many booked, which channel brought them, how your posts did on each platform and what customers keep asking, each with a short note on what it means and what to do next.",
-    link: { href: "/product/insights", label: "Insights" },
+    link: { href: "/insights", label: "Insights" },
   },
   {
     group: "Growing your business",
     q: "What can I ask Talk to AI?",
     a: "Anything about your business, in your own words: how last month went, which posts brought customers, who to win back, or what to do on a quiet day. It answers from your own numbers and ends with one clear next step.",
-    link: { href: "/product/advisor", label: "Talk to AI" },
+    link: { href: "/talk-to-ai", label: "Talk to AI" },
   },
   {
     group: "Your data",
@@ -195,6 +191,81 @@ export const FAQ: FaqItem[] = [
     q: "Can I delete my data?",
     a: "Yes. You can delete individual customers from your dashboard, or close your account and have your business's data deleted. The data deletion page explains each step.",
     link: { href: "/data-deletion", label: "Data deletion" },
+  },
+  {
+    group: "Getting started",
+    q: "I don't have a website. Can I still set it up?",
+    a: "Yes. Type your details into the Knowledge page one section at a time: what you do, your prices, your hours, your team and the questions customers ask.",
+    link: { href: "/brain", label: "Business Brain" },
+  },
+  {
+    group: "Getting started",
+    q: "Which countries does it work in?",
+    a: "Business phone numbers are available in the US and Canada. WhatsApp, Instagram, Messenger and email work wherever your customers are.",
+  },
+  {
+    group: "How it works",
+    q: "What is the Business Brain?",
+    a: "It is everything RingPost knows about your business, kept in one place: services, prices, hours, team, policies and tone. Calls, messages, posts and Talk to AI all work from it, so you only explain your business once.",
+    link: { href: "/brain", label: "Business Brain" },
+  },
+  {
+    group: "How it works",
+    q: "What is autopilot?",
+    a: "One switch on the Automation page. On: replies send, posts publish and review replies go out on their own. Off: each one waits for your OK on the Approvals page. Phone calls are answered live either way.",
+  },
+  {
+    group: "How it works",
+    q: "How do I know when I'm needed?",
+    a: "Conversations that need a person are listed under Needs you in the Inbox, and you get an alert by WhatsApp or text message.",
+    link: { href: "/inbox", label: "One inbox" },
+  },
+  {
+    group: "Calls and messages",
+    q: "What happens to a call I miss?",
+    a: "With call forwarding set to the calls you miss, an unanswered call goes to RingPost, which answers it. A caller who rang out is called back by the AI.",
+    link: { href: "/calls", label: "Calls" },
+  },
+  {
+    group: "Calls and messages",
+    q: "Does it work with my booking tool?",
+    a: "RingPost has its own booking calendar, synced both ways with Google Calendar. It does not connect to Vagaro, Fresha, Mindbody, Jobber or OpenTable. If you use one of those, block those hours in Google Calendar and RingPost books around them.",
+    link: { href: "/booking", label: "Bookings and calendar" },
+  },
+  {
+    group: "Content and posting",
+    q: "What happens if a post fails on one platform?",
+    a: "You see a result for every platform. If one didn't go through, you can retry just that one.",
+    link: { href: "/posting", label: "Posting" },
+  },
+  {
+    group: "Content and posting",
+    q: "What are media credits?",
+    a: "Each image or video uses credits from your monthly allowance. You see the cost before anything is made, and a failed one gives the credits back.",
+    link: { href: "/content-studio", label: "Content Studio" },
+  },
+  {
+    group: "Growing your business",
+    q: "Does it show how my posts did on each app?",
+    a: "Yes. Insights shows views, likes, comments and shares for each post on each social app, so you can see what is working and what is not.",
+    link: { href: "/insights", label: "Insights" },
+  },
+  {
+    group: "Growing your business",
+    q: "Does it learn from what worked?",
+    a: "Yes. RingPost looks at which of your recent posts your audience responded to most, and builds your next captions on those.",
+    link: { href: "/insights", label: "Insights" },
+  },
+  {
+    group: "Growing your business",
+    q: "What is a campaign?",
+    a: "Describe an offer or an occasion once. RingPost makes the picture and a caption for each social app you have connected, and nothing goes out until you send it to Approvals and post it.",
+    link: { href: "/campaigns", label: "Campaigns" },
+  },
+  {
+    group: "Your data",
+    q: "Are phone calls recorded?",
+    a: "Callers always hear that the call may be recorded. You choose how long recordings are kept, from 30 days to a year, or switch recording off.",
   },
 ];
 

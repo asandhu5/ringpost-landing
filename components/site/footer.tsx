@@ -2,11 +2,66 @@ import Link from "next/link";
 import { Wordmark } from "./logo";
 import { ChannelLogo } from "./channel-logos";
 import { COMPANY, LOGIN_URL, SITE } from "@/lib/site";
-import { LEGAL_NAV } from "@/lib/nav";
+import { FOOTER_COMPANY, INDUSTRY_TILES, LEGAL_NAV, PRODUCT_COLUMNS } from "@/lib/nav";
+import { ROUTES } from "@/lib/routes";
 import { SOCIAL_PROFILES } from "@/lib/social-profiles";
-const COLUMNS = [
- { title:"Product",links:[{name:"Calls and messages",href:"/channels"},{name:"Content Studio",href:"/content-studio"},{name:"Posting and scheduling",href:"/posting"},{name:"Reviews and growth",href:"/grow"},{name:"All features",href:"/product"}] },
- { title:"Explore",links:[{name:"Industries",href:"/industries"},{name:"Plans and pricing",href:"/pricing"},{name:"Guides and ideas",href:"/resources/blog"},{name:"Common questions",href:"/faq"}] },
- { title:"RingPost",links:[{name:"About us",href:"/about"},{name:"Contact support",href:"/contact"},{name:"Your dashboard",href:LOGIN_URL}] },
-];
-export function SiteFooter(){return <footer className="border-t border-line bg-white"><div className="mx-auto max-w-[1240px] px-5 py-10 sm:px-8"><div className="grid gap-9 lg:grid-cols-[1.2fr_2fr]"><div><Wordmark/><p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-ink">More time for your business.<br/>One place for the conversations and content that keep it moving.</p><div className="mt-5 flex flex-wrap gap-3" aria-label="RingPost social profiles">{SOCIAL_PROFILES.map(p=><a key={p.id} href={p.href} aria-label={`RingPost on ${p.name}`} title={p.name} target="_blank" rel="noopener noreferrer" className="rounded-lg transition-transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500"><ChannelLogo id={p.id} size={27}/></a>)}</div></div><div className="grid grid-cols-2 gap-6 sm:grid-cols-3">{COLUMNS.map(col=><div key={col.title}><p className="text-xs font-semibold uppercase tracking-[.12em] text-ink">{col.title}</p><ul className="mt-4 space-y-3">{col.links.map(l=><li key={l.href}><Link href={l.href} className="text-sm text-muted-ink hover:text-violet-600">{l.name}</Link></li>)}</ul></div>)}</div></div><div className="mt-9 flex flex-col gap-5 border-t border-line pt-6 sm:flex-row sm:items-start sm:justify-between"><p className="shrink-0 text-xs text-faint">© {SITE.year} {COMPANY.legalName}</p><nav aria-label="Legal" className="flex max-w-2xl flex-wrap gap-x-5 gap-y-2">{LEGAL_NAV.map(l=><Link key={l.href} href={l.href} className="text-xs text-faint hover:text-ink">{l.name}</Link>)}</nav></div></div></footer>;}
+
+const linkCls = "inline-flex min-h-8 items-center text-small text-muted-ink transition-colors duration-200 hover:text-ink";
+
+function Column({ title, links, className }: { title: string; links: { name: string; href: string }[]; className?: string }) {
+  return (
+    <div className={className}>
+      <p className="text-small font-semibold text-ink">{title}</p>
+      <ul className="mt-3">
+        {links.map((l) => (
+          <li key={l.name}>
+            <Link href={l.href} className={linkCls}>
+              {l.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** Four link columns (Product, Industries, Company, Legal), the dashboard log-in, the
+ * social profiles and a small still ring. */
+export function SiteFooter() {
+  const product = [...PRODUCT_COLUMNS.flatMap((c) => c.links.map((l) => ({ name: l.name, href: l.href })))];
+  return (
+    <footer className="border-t border-line bg-white">
+      <div className="mx-auto max-w-[1240px] px-4 py-12 sm:px-6 lg:px-10">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_3fr]">
+          <div>
+            <Link href="/" aria-label="RingPost home" className="inline-flex">
+              <Wordmark />
+            </Link>
+            <p className="mt-4 max-w-[17rem] text-small text-muted-ink">Your AI business partner. It answers, books, posts and helps your business grow.</p>
+            <a href={LOGIN_URL} className="mt-4 inline-flex min-h-11 items-center text-small font-semibold text-violet hover:text-ink">
+              Log in to your dashboard
+            </a>
+            <div className="mt-3 flex flex-wrap gap-2.5" aria-label="RingPost on social media">
+              {SOCIAL_PROFILES.map((p) => (
+                <a key={p.id} href={p.href} aria-label={`RingPost on ${p.name}`} title={p.name} target="_blank" rel="noopener noreferrer" className="rounded-lg transition-transform duration-200 hover:-translate-y-0.5">
+                  <ChannelLogo id={p.id} size={28} />
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
+            <Column title="Product" links={product} />
+            <Column title="Industries" links={[...INDUSTRY_TILES, { name: "All industries", href: ROUTES.industries }]} />
+            <Column title="Company" links={FOOTER_COMPANY} />
+            <Column title="Legal" links={LEGAL_NAV} />
+          </div>
+        </div>
+        <div className="mt-10 border-t border-line pt-6 text-center">
+          <p className="text-small text-muted-ink">
+            © {SITE.year} {COMPANY.legalName}. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}

@@ -5,7 +5,7 @@ import { YEARLY_BILLING } from "@/lib/plans";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: `The terms governing use of ${SITE.name}.`,
+  description: `The terms that govern using ${SITE.name}: your account, your plan, billing, acceptable use and your data.`,
   robots: { index: true, follow: true },
 };
 

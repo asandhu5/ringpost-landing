@@ -4,7 +4,7 @@ import { COMPANY, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: `How ${SITE.name} collects, uses and protects data.`,
+  description: `How ${SITE.name} collects, uses and protects the data of the businesses that use it and of their customers.`,
   robots: { index: true, follow: true },
 };
 

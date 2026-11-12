@@ -4,7 +4,37 @@
     {
       "name": "landing",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "--port", "3100"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "3200"
+      ],
+      "port": 3200
+    },
+    {
+      "name": "product-api",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--dir",
+        "/Users/muhammadahmed/Documents/ringpost",
+        "--filter",
+        "@agos/api",
+        "dev"
+      ],
+      "port": 4000
+    },
+    {
+      "name": "product-dashboard",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--dir",
+        "/Users/muhammadahmed/Documents/ringpost",
+        "--filter",
+        "@agos/dashboard",
+        "dev"
+      ],
       "port": 3100
     }
   ]

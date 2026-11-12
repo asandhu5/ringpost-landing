@@ -1,0 +1,32 @@
+/**
+ * Example content made with RingPost's own tools (2026-11-11), one per business group:
+ * the owner's quick phone photo, the finished post made from it, and a short video made
+ * from the post. Shown on the website and as ideas in the dashboard, with the prompts.
+ * Originals are kept outside the repo in ~/Documents/ringpost-showcase-originals.
+ */
+export interface ShowcaseItem {
+  id: string;
+  group: string;
+  business: string;
+  name: string;
+  caption: string;
+  photo: string;
+  image: string;
+  video: string;
+  poster: string;
+  postPrompt: string;
+  videoPrompt: string;
+}
+
+export const SHOWCASE: ShowcaseItem[] = [
+  {"id": "beauty", "group": "Beauty and wellness", "business": "Hair salon", "name": "Golden Hour Hair", "caption": "Honey balayage, lived-in and glossy. Two chairs free this Saturday.", "photo": "/showcase/beauty-photo.webp", "image": "/showcase/beauty-post.webp", "video": "/showcase/beauty-video.mp4", "poster": "/showcase/beauty-video.webp", "postPrompt": "Turn this phone photo into a premium social media post photo for a hair salon: the same honey-blonde balayage waves, now perfectly styled and glossy, soft warm window light catching the color, softly blurred salon background.", "videoPrompt": "The glossy balayage waves move gently as she turns her head slightly, warm light catching the color, slow push-in."},
+  {"id": "food", "group": "Food and drink", "business": "Bakery", "name": "Crumb & Co.", "caption": "Out of the oven at 7. Butter croissants until they're gone.", "photo": "/showcase/food-photo.webp", "image": "/showcase/food-post.webp", "video": "/showcase/food-video.mp4", "poster": "/showcase/food-video.webp", "postPrompt": "The same golden croissants on a rustic wooden board, flaky layers in focus, warm morning light, a little steam.", "videoPrompt": "Steam rises from the warm croissants, slow push-in across the flaky layers."},
+  {"id": "auto", "group": "Auto", "business": "Car detailing", "name": "Mirror Finish Detailing", "caption": "Full exterior detail, back to showroom shine in an afternoon.", "photo": "/showcase/auto-photo.webp", "image": "/showcase/auto-post.webp", "video": "/showcase/auto-video.mp4", "poster": "/showcase/auto-video.webp", "postPrompt": "The same black SUV, fully washed and gleaming, mirror-like gloss, clean dark studio bay, light strips reflecting along the paint.", "videoPrompt": "Slow cinematic glide along the SUV, light strips sliding across the glossy paint."},
+  {"id": "fitness", "group": "Fitness", "business": "Gym", "name": "Ironside Gym", "caption": "6am kettlebell class. Three spots left this week.", "photo": "/showcase/fitness-photo.webp", "image": "/showcase/fitness-post.webp", "video": "/showcase/fitness-video.mp4", "poster": "/showcase/fitness-video.webp", "postPrompt": "A low-angle close shot of an athlete at the top of a kettlebell swing, chalk dust in a hard warm rim light, dark gym background.", "videoPrompt": "The athlete drives the kettlebell down and swings it back up, chalk dust drifting in the warm light."},
+  {"id": "home", "group": "Home services", "business": "Plumber", "name": "Northline Plumbing", "caption": "New basin, new tap, same-day fit. Free quotes this week.", "photo": "/showcase/home-photo.webp", "image": "/showcase/home-post.webp", "video": "/showcase/home-video.mp4", "poster": "/showcase/home-video.webp", "postPrompt": "The same new sink and chrome tap, straightened and bright, sparkling tiles, soft daylight, a folded towel and a small plant.", "videoPrompt": "Slow pan across the new sink, a hand turns the tap and clear water flows."},
+  {"id": "health", "group": "Health", "business": "Dental clinic", "name": "Brightwater Dental", "caption": "New patients welcome this month. Calm rooms, gentle care, evening appointments.", "photo": "/showcase/health-photo.webp", "image": "/showcase/health-post.webp", "video": "/showcase/health-video.mp4", "poster": "/showcase/health-video.webp", "postPrompt": "Create a magazine-quality photo of the reception corner: the plant, soft armchairs, a smiling receptionist, golden late-afternoon sunlight, warm and reassuring.", "videoPrompt": "Calm slow dolly forward into the sunlit reception, the receptionist looks up and smiles warmly."},
+  {"id": "education", "group": "Education and care", "business": "Music school", "name": "Little Keys Music", "caption": "First lessons for ages 5 to 9. Your child's first song in four weeks.", "photo": "/showcase/education-photo.webp", "image": "/showcase/education-post.webp", "video": "/showcase/education-video.mp4", "poster": "/showcase/education-video.webp", "postPrompt": "A close side view of a child's hands on the piano keys, a teacher's hand guiding, warm lamp light, glowing bokeh.", "videoPrompt": "The child's fingers play a gentle melody as the teacher guides, slow side dolly."},
+  {"id": "stays", "group": "Stays and venues", "business": "Boutique hotel", "name": "The Linden", "caption": "Breakfast in bed is on us for weekend stays this month.", "photo": "/showcase/stays-photo.webp", "image": "/showcase/stays-post.webp", "video": "/showcase/stays-video.mp4", "poster": "/showcase/stays-video.webp", "postPrompt": "A low angle across the white bed to the window, a breakfast tray in focus, golden sunrise light through sheer curtains.", "videoPrompt": "Sunrise light grows through the curtains as steam rises from the cappuccino, slow push-in."},
+  {"id": "shops", "group": "Shops", "business": "Florist", "name": "Stem & Story", "caption": "Peonies are back. Same-day delivery on orders before 2pm.", "photo": "/showcase/shops-photo.webp", "image": "/showcase/shops-post.webp", "video": "/showcase/shops-video.mp4", "poster": "/showcase/shops-video.webp", "postPrompt": "The same bouquet wrapped in kraft paper in a clean vase, soft diffused daylight, airy pale background.", "videoPrompt": "Slow orbit around the bouquet, petals moving slightly in a soft breeze."},
+  {"id": "pro", "group": "Professional services", "business": "Accountant", "name": "Ledger & Lane", "caption": "Tax returns done properly, with time to spare. Book a free 20-minute call.", "photo": "/showcase/pro-photo.webp", "image": "/showcase/pro-post.webp", "video": "/showcase/pro-video.mp4", "poster": "/showcase/pro-video.webp", "postPrompt": "The same desk, tidy and minimal, laptop and calculator, fresh coffee, warm afternoon window light.", "videoPrompt": "Slow push-in over the desk, steam curling from the coffee, sunlight drifting across the surface."},
+];

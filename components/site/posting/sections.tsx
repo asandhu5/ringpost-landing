@@ -10,7 +10,7 @@ const STEPS = [
   { Icon: CloudUpload, title: "Uploading from your phone", body: "If the signal drops, it carries on from where it stopped." },
   { Icon: Wand2, title: "Made ready for every app", body: "iPhone photos converted and turned upright; videos put in the format each app accepts." },
   { Icon: ShieldCheck, title: "Checked", body: "Every upload passes the same safety check as AI-made content." },
-  { Icon: Sparkles, title: "Caption written from your note", body: "“New colour today, few spaces Friday” becomes a caption for each platform." },
+  { Icon: Sparkles, title: "Caption written from your note", body: "“New color today, few spaces Friday” becomes a caption for each platform." },
   { Icon: Check, title: "Waiting in Approvals", body: "Nothing goes out until you approve it, unless you switch on autopilot." },
 ];
 
@@ -29,7 +29,7 @@ export function UploadJourney() {
     <div ref={ref} className="rounded-[28px] border border-line bg-white p-5 shadow-[0_30px_70px_-45px_rgba(11,27,43,0.45)] sm:p-7">
       <div className="flex items-center gap-4 rounded-2xl border-2 border-dashed border-line-strong bg-surface-2 p-4">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/made/studio/florist-phone.webp" alt="A phone photo of a bouquet on a workbench (made with AI)" className="h-20 w-20 shrink-0 rounded-xl object-cover" />
+        <img src="/made/studio/florist-phone.webp" alt="A phone photo of a bouquet on a workbench" className="h-20 w-20 shrink-0 rounded-xl object-cover" />
         <div className="min-w-0 flex-1">
           <p className="flex items-center gap-2 text-[14.5px] font-semibold text-ink"><FileVideo className="h-4 w-4 text-glow" aria-hidden />IMG_4821.HEIC <span className="font-normal text-faint">· 6.4 MB</span></p>
           <p className="mt-1 text-[13px] text-muted-ink">&ldquo;Peonies are in. Same-day bouquets.&rdquo;</p>
@@ -91,7 +91,7 @@ export function ScheduleWeek() {
               const x = INDUSTRY_SHOWCASE.find((i) => i.slug === slot.slug)!;
               const delay = n++ * 90;
               return (
-                <div key={slot.slug} className={`overflow-hidden rounded-2xl border border-line bg-white transition-[opacity,transform] duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_-25px_rgba(11,27,43,0.5)] ${inView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`} style={{ transitionDelay: `${delay}ms` }}>
+                <div key={slot.slug} className={`overflow-hidden rounded-2xl border border-line bg-white transition-[opacity,transform] duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_-25px_rgba(11,27,43,0.5)] ${inView ? "translate-y-0" : "translate-y-3"}`} style={{ transitionDelay: `${delay}ms` }}>
                   <div className="relative aspect-[4/5]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={x.after} alt={`${x.group}: ${x.title}`} loading="lazy" className="h-full w-full object-cover" />

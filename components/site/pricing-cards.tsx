@@ -1,163 +1,139 @@
 "use client";
 
 import { useState } from "react";
-import { Building2, Check } from "lucide-react";
-import Link from "next/link";
-import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, YEARLY_BILLING, YEARLY_DISCOUNT, num, type Plan, type PlanId } from "@/lib/plans";
+import { Check } from "lucide-react";
+import { Button } from "@/components/site/ui/button";
+import { PageHeader } from "@/components/site/ui/page-header";
+import { cx } from "@/components/site/ui/cx";
+import { FEATURE_LABELS, PLANS, YEARLY_BILLING, YEARLY_DISCOUNT, num, type Plan, type PlanId } from "@/lib/plans";
+import { ROUTES } from "@/lib/routes";
 import { START_URL } from "@/lib/site";
 
 /** Growth is shown as the recommended plan: it's where content and posting start.
  * (A layout choice, not a claim about what most businesses buy.) */
 const HIGHLIGHT: PlanId = "grow";
 
-/** Who each plan is for, in an owner's words. Copy only: every number comes from plans.json. */
+/** Who each plan is for, and its headline extra. Copy only: every number comes from plans.json. */
 const FOR_WHO: Record<PlanId, string> = {
-  starter: "Stop missing calls and messages, and nothing more.",
-  essential: "For a busy business that lives on the phone and WhatsApp.",
-  grow: "Be seen online, with fresh posts made every day.",
-  pro: "The whole front of house handled, reviews and insights included.",
+  starter: "Stop missing calls and messages.",
+  essential: "For a busy phone and a busy inbox.",
+  grow: "Be seen online, with posts made for you.",
+  pro: "Everything, with reviews and insights.",
 };
-
-const cx = (...p: (string | false | null | undefined)[]) => p.filter(Boolean).join(" ");
-
-/** The plan buttons. (ui.tsx's ButtonLink can't be used here: that file reads the disk.) */
-function PlanButton({ href, cta, children }: { href: string; cta: boolean; children: React.ReactNode }) {
-  const cls = cx(
-    "mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-full px-5 py-2.5 text-[15px] font-semibold transition-all duration-200",
-    cta ? "bg-cta text-[var(--rp-cta-ink)] shadow-[0_10px_40px_-12px_rgba(34,211,238,0.7)] hover:bg-[var(--rp-cta-hover)]" : "border border-line-strong bg-white text-ink hover:bg-surface-2",
-  );
-  return /^https?:/.test(href) ? (
-    <a href={href} className={cls}>
-      {children}
-    </a>
-  ) : (
-    <Link href={href} className={cls}>
-      {children}
-    </Link>
-  );
-}
+const HEADLINE_EXTRA: Record<PlanId, string> = {
+  starter: "Every channel answered",
+  essential: "Every channel answered",
+  grow: "Content, posting, Talk to AI",
+  pro: "Reviews, campaigns, insights",
+};
 
 const money = (n: number) => `$${n.toLocaleString("en-US", { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 })}`;
 
-/** Everything a plan includes, from the product's plans.ts. */
-export function planLines(plan: Plan): string[] {
+/** The five lines that tell the plans apart. */
+function keyLines(plan: Plan): string[] {
   return [
-    `${num(plan.minutesPerMonth)} calling minutes a month`,
-    `${num(plan.messagesPerMonth)} replies a month, every channel`,
-    `Up to ${plan.bookableStaff} bookable ${plan.bookableStaff === 1 ? "person" : "staff"}`,
-    "Bookings, reminders and review requests",
-    "Call forwarding from your own number",
-    ...(plan.mediaCreditsPerMonth ? [`${num(plan.mediaCreditsPerMonth)} media credits a month for AI images${SHOW_AI_VIDEO ? " and videos" : ""}`] : []),
+    `${num(plan.minutesPerMonth)} call minutes`,
+    `${num(plan.messagesPerMonth)} replies`,
+    `Up to ${plan.bookableStaff} bookable staff`,
+    plan.mediaCreditsPerMonth ? `${num(plan.mediaCreditsPerMonth)} media credits` : "Bookings and reminders",
+    HEADLINE_EXTRA[plan.id],
   ];
 }
 
-function newFeatures(plan: Plan, prev: Plan | null): string[] {
-  return plan.features.filter((f) => f !== "prompt_generation" && !prev?.features.includes(f)).map((f) => FEATURE_LABELS[f]);
+/** Everything else a plan includes, from the product's plans.ts. */
+export function planLines(plan: Plan): string[] {
+  return [
+    "Call forwarding from your own number",
+    ...(plan.mediaCreditsPerMonth ? [`About ${num(Math.round(plan.mediaCreditsPerMonth / 8 / 10) * 10)} pictures, or ${Math.round(plan.mediaCreditsPerMonth / 60)} short videos`] : []),
+    ...plan.features.filter((f) => f !== "prompt_generation").map((f) => FEATURE_LABELS[f]),
+  ];
 }
 
-export function PricingCards() {
-  const [yearly, setYearly] = useState(false);
+export function BillingSwitch({ yearly, onChange }: { yearly: boolean; onChange: (y: boolean) => void }) {
+  if (!YEARLY_BILLING) return null;
   const off = Math.round(YEARLY_DISCOUNT * 100);
   return (
+    <div className="inline-flex items-center rounded-full border border-line bg-white p-1 shadow-rp-1" role="group" aria-label="Billing period">
+      {[false, true].map((y) => (
+        <button key={String(y)} type="button" aria-pressed={yearly === y} onClick={() => onChange(y)} className={cx("flex h-10 items-center gap-2 rounded-full px-4 text-small font-semibold transition-colors duration-200", yearly === y ? "bg-ink text-white" : "text-ink hover:bg-surface-2")}>
+          {y ? "Yearly" : "Monthly"}
+          {y && <span className={cx("rounded-full px-2 py-0.5 text-[12px]", yearly ? "bg-cta text-cta-ink" : "bg-grow-soft text-grow")}>Save {off}%</span>}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+const Line = ({ children, dark }: { children: React.ReactNode; dark?: boolean }) => (
+  <li className={cx("flex gap-2 text-[13.5px] leading-snug", dark ? "text-white/90" : "text-ink")}>
+    <Check aria-hidden className={cx("mt-0.5 h-4 w-4 shrink-0", dark ? "text-cta" : "text-grow")} strokeWidth={2.25} />
+    {children}
+  </li>
+);
+
+/**
+ * The four plans and Business in one row. Every card lists everything its plan includes
+ * (owner's choice, 2026-11-12: nothing hidden behind a "see everything" link).
+ */
+export function PricingCards({ title, lede }: { title: string; lede: string }) {
+  const [yearly, setYearly] = useState(false);
+  const card = "relative flex scroll-mt-28 flex-col rounded-rp-md border p-4";
+  return (
     <>
-      {YEARLY_BILLING && (
-        <div className="mb-6 flex justify-center">
-          <div className="inline-flex items-center rounded-full border border-line bg-white p-1 shadow-sm" role="group" aria-label="Billing period">
-            {[false, true].map((y) => (
-              <button
-                key={String(y)}
-                type="button"
-                aria-pressed={yearly === y}
-                onClick={() => setYearly(y)}
-                className={cx("flex items-center gap-2 rounded-full px-5 py-2 text-[14.5px] font-semibold transition-colors", yearly === y ? "bg-ink text-white" : "text-muted-ink hover:text-ink")}
-              >
-                {y ? "Yearly" : "Monthly"}
-                {y && <span className={cx("rounded-full px-2 py-0.5 text-[12px]", yearly ? "bg-cta text-[var(--rp-cta-ink)]" : "bg-[#dcfce7] text-[#15803d]")}>Save {off}%</span>}
-              </button>
-            ))}
+      <PageHeader
+        crumbs={[{ name: "Pricing", href: ROUTES.pricing }]}
+        title={title}
+        lede={lede}
+        aside={
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <BillingSwitch yearly={yearly} onChange={setYearly} />
           </div>
-        </div>
-      )}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {PLANS.map((plan, i) => {
-          const prev = i > 0 ? PLANS[i - 1] : null;
+        }
+      />
+      <h2 className="sr-only">Plans</h2>
+      <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-10">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        {PLANS.map((plan) => {
           const highlight = plan.id === HIGHLIGHT;
-          const adds = newFeatures(plan, prev);
           const perMonth = yearly ? Math.round(plan.monthlyUsd * (1 - YEARLY_DISCOUNT) * 100) / 100 : plan.monthlyUsd;
           return (
-            <div
-              key={plan.id}
-              id={`plan-${plan.id}`}
-              className={cx(
-                "rp-card-hover relative flex scroll-mt-28 flex-col rounded-3xl border bg-white p-6",
-                highlight ? "rp-brand-ring shadow-[0_30px_70px_-30px_rgba(91,78,230,0.55)]" : "border-line shadow-[0_1px_2px_rgba(11,27,43,0.04)]",
-              )}
-            >
+            <div key={plan.id} id={`plan-${plan.id}`} className={cx(card, "bg-white", highlight ? "border-violet shadow-rp-3 ring-2 ring-primary-soft" : "border-line shadow-rp-1")}>
               <div className="flex items-center justify-between gap-2">
-                <h3 className="text-xl font-bold tracking-tight text-ink">{plan.name}</h3>
-                {highlight && <span className="whitespace-nowrap rounded-full bg-[#0b1b2b] px-2.5 py-1 text-[11.5px] font-semibold text-white">Recommended</span>}
+                <h3 className="text-h3 font-semibold text-ink">{plan.name}</h3>
+                {highlight && <span className="whitespace-nowrap rounded-full bg-ink px-2.5 py-1 text-[11.5px] font-semibold text-white">Recommended</span>}
               </div>
-              <p className="mt-2 min-h-[3rem] text-[13.5px] leading-relaxed text-muted-ink">{FOR_WHO[plan.id]}</p>
-              <p className="mt-4 flex flex-wrap items-baseline gap-x-1.5">
-                <span className={cx("whitespace-nowrap font-bold tabular-nums tracking-[-0.04em] text-ink", perMonth % 1 === 0 ? "text-[40px]" : "text-[34px] xl:text-[28px]")}>{money(perMonth)}</span>
+              <p className="mt-1 min-h-[2.6em] text-[13.5px] leading-snug text-muted-ink">{FOR_WHO[plan.id]}</p>
+              <p className="mt-2 flex flex-wrap items-baseline gap-x-1.5">
+                <span className="whitespace-nowrap font-display text-[clamp(1.75rem,2.6vw,2.4rem)] tabular-nums leading-none text-ink">{money(perMonth)}</span>
                 <span className="whitespace-nowrap text-[13.5px] text-muted-ink">a month</span>
               </p>
-              <p className="mt-1 min-h-[1.25rem] text-[12.5px] text-muted-ink">
-                {yearly ? (
-                  <>
-                    {money(Math.round(plan.monthlyUsd * 12 * (1 - YEARLY_DISCOUNT)))} billed yearly <s className="text-faint">{money(plan.monthlyUsd * 12)}</s>
-                  </>
-                ) : (
-                  "Billed monthly, cancel any time"
-                )}
+              <p className="mt-1 min-h-[1.3em] text-[12.5px] text-muted-ink">
+                {yearly ? <>{money(Math.round(plan.monthlyUsd * 12 * (1 - YEARLY_DISCOUNT)))} billed yearly <s>{money(plan.monthlyUsd * 12)}</s></> : "Billed monthly"}
               </p>
-              <PlanButton href={`${START_URL}?plan=${plan.id}${yearly ? "&billing=yearly" : ""}`} cta={highlight}>
+              <Button href={`${START_URL}?plan=${plan.id}${yearly ? "&billing=yearly" : ""}`} variant={highlight ? "primary" : "secondary"} size="sm" className="mt-2.5 !h-11 w-full">
                 Choose {plan.name}
-              </PlanButton>
-              <ul className="mt-6 flex flex-col gap-2.5 border-t border-line pt-5">
-                {planLines(plan).map((line) => (
-                  <li key={line} className="flex gap-2.5 text-[13.5px] leading-snug text-muted-ink">
-                    <Check aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-[#15803d]" />
-                    {line}
-                  </li>
-                ))}
+              </Button>
+              <ul className="mt-3 flex flex-col gap-1 border-t border-line pt-2.5">
+                {keyLines(plan).map((l) => <Line key={l}>{l}</Line>)}
+                {planLines(plan).map((l) => <Line key={l}>{l}</Line>)}
               </ul>
-              {adds.length > 0 && (
-                <div className="mt-5">
-                  <p className="mb-2.5 text-[12.5px] font-semibold text-ink">{prev ? `Everything in ${prev.name}, plus:` : "Also included:"}</p>
-                  <ul className="flex flex-col gap-2.5">
-                    {adds.map((line) => (
-                      <li key={line} className="flex gap-2.5 text-[13.5px] leading-snug text-ink">
-                        <Check aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-[#5b4ee6]" />
-                        {line}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
           );
         })}
-        <div className="rp-card-hover relative flex flex-col rounded-3xl bg-[#0b1b2b] p-6 text-white">
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10">
-            <Building2 className="h-5 w-5" aria-hidden />
-          </span>
-          <h3 className="mt-4 text-xl font-bold tracking-tight">Business</h3>
-          <p className="mt-2 text-[13.5px] leading-relaxed text-white/70">Several locations, a large team or heavy call volume.</p>
-          <p className="mt-4 text-[40px] font-bold tracking-[-0.04em]">Custom</p>
-          <p className="mt-1 text-[12.5px] text-white/70">Limits and a price set for you</p>
-          <PlanButton href="/contact" cta>
+        <div className={cx(card, "border-ink bg-ink text-white")}>
+          <h3 className="text-h3 font-semibold">Business</h3>
+          <p className="mt-1 min-h-[2.6em] text-[13.5px] leading-snug text-white/75">Several locations or a large team.</p>
+          <p className="mt-2 font-display text-[clamp(1.75rem,2.6vw,2.4rem)] leading-none">Custom</p>
+          <p className="mt-1 min-h-[1.3em] text-[12.5px] text-white/75">Limits and a price set for you</p>
+          <Button href={ROUTES.contact} size="sm" className="mt-2.5 !h-11 w-full">
             Talk to us
-          </PlanButton>
-          <ul className="mt-6 flex flex-col gap-2.5 border-t border-white/15 pt-5">
-            {[`Everything in ${PLANS[PLANS.length - 1]!.name}`, "Several locations in one account", "Minutes, messages and credits to fit", "A dedicated account manager", "Onboarding done with your team"].map((l) => (
-              <li key={l} className="flex gap-2.5 text-[13.5px] leading-snug text-white/85">
-                <Check aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-cta" />
-                {l}
-              </li>
-            ))}
+          </Button>
+          <ul className="mt-3 flex flex-col gap-1 border-t border-white/15 pt-2.5">
+            {[`Everything in ${PLANS[PLANS.length - 1]!.name}`, "Several locations", "Limits set to fit you", "An account manager", "Onboarding for your team"].map((l) => <Line key={l} dark>{l}</Line>)}
           </ul>
         </div>
+        </div>
+        <p className="mt-4 text-center text-small text-muted-ink">Each month, per plan. US dollars. Taxes may apply. On an older plan? You keep it at your price.</p>
       </div>
     </>
   );

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
-import { API_URL, PRIMARY_EMAIL } from "@/lib/site";
+import { API_URL } from "@/lib/site";
 
 /**
  * "Talk to a person": this lands in RingPost's own inbox as a conversation marked as
@@ -27,14 +27,14 @@ export function ContactForm() {
         body: JSON.stringify({ sessionId, name: data.name, contact: data.contact, business: data.business || undefined, message: data.message || undefined, website: data.website || undefined }),
       });
       if (res.status === 429) {
-        setError(`We've had a lot of messages from your connection today. Please email ${PRIMARY_EMAIL} instead.`);
+        setError("We've had a lot of messages from your connection today. Please try again tomorrow, or ask the assistant in the corner.");
         setState("error");
         return;
       }
       if (!res.ok) throw new Error(`http_${res.status}`);
       setState("sent");
     } catch {
-      setError(`Your message didn't send. Please try again, or email ${PRIMARY_EMAIL}.`);
+      setError("Your message didn't send. Please try again in a minute.");
       setState("error");
     }
   }

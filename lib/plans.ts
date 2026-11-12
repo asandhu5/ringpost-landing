@@ -27,7 +27,14 @@ export interface Plan {
   features: Feature[];
 }
 
-export const PLANS = data.plans as Plan[];
+/** The site's brand line is "AI business partner", so the two taglines that still say
+ * "front desk" / "front of house" in the product's plans.ts are reworded here for display.
+ * OWNER: change them at the source (packages/core/src/billing/plans.ts) and delete this. */
+const TAGLINE_FIX: Partial<Record<PlanId, string>> = {
+  essential: "Every channel answered and booked, for a busy business.",
+  pro: "Everything: comment replies, reviews, campaigns, insights and win-backs.",
+};
+export const PLANS = (data.plans as Plan[]).map((p) => ({ ...p, tagline: TAGLINE_FIX[p.id] ?? p.tagline }));
 
 /** The product's TRIAL from plans.ts is not offered (`offered: false`);
  * kept so the data file and the product stay in step. */

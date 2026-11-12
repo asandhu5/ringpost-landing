@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Acceptable Use Policy",
-  description: `What ${SITE.name} may and may not be used for.`,
+  description: `What ${SITE.name} may and may not be used for, including messaging, calls, content and posting rules.`,
   robots: { index: true, follow: true },
 };
 

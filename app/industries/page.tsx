@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoDescription } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { GROUP_ICONS } from "@/components/site/group-page";
@@ -7,10 +8,10 @@ import { Container, PageHero, Section } from "@/components/site/ui";
 import { GROUP_INFO, tradesIn } from "@/lib/content/groups";
 import { SOMETHING_ELSE, TYPES, shortLabel, slugFor } from "@/lib/content/industries";
 
-const DESCRIPTION = `An AI front desk set up for your kind of business: ${TYPES.length} trades in ${GROUP_INFO.length} groups, from salons and clinics to plumbers, restaurants and law firms, each with its own rules and hand-offs.`;
+const DESCRIPTION = seoDescription(`An AI business partner set up for your kind of business: ${TYPES.length} trades in ${GROUP_INFO.length} groups, from salons and clinics to plumbers, restaurants and law firms, each with its own rules and hand-offs.`);
 
 export const metadata: Metadata = {
-  title: "Industries: an AI front desk for your kind of business",
+  title: "Industries: an AI partner for your kind of business",
   description: DESCRIPTION,
   openGraph: { title: "RingPost industries", description: DESCRIPTION, url: "/industries" },
 };

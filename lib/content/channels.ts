@@ -42,7 +42,7 @@ export const CHANNELS: Channel[] = [
     worksWith: "SMS",
     searchPhrase: "AI that answers text messages",
     arrives: "Texts to your RingPost number, and replies to reminders.",
-    aiDoes: "Answers, books, moves and cancels. Opt-out words like STOP are always honoured.",
+    aiDoes: "Answers, books, moves and cancels. Opt-out words like STOP are always honored.",
     ownerSees: "Every text thread, marked as handled or waiting for you.",
     setup: "Comes with your RingPost number.",
     availableToBusinesses: true,

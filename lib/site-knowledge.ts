@@ -3,10 +3,10 @@ import { CHANNELS, SOCIAL_PLATFORMS } from "@/lib/content/channels";
 import { FAQ } from "@/lib/content/faq";
 import { DEEP, MODE_LABELS, SOMETHING_ELSE, TYPES, bookingFor, escalationsFor, pluralFor, rulesFor, slugFor } from "@/lib/content/industries";
 import { AUTOMATIONS, GUARDRAILS, HOW_IT_WORKS } from "@/lib/content/platform";
-import { PILLARS, PRODUCTS, productHref } from "@/lib/content/products";
+import { FEATURES, FEATURE_PATH, type FeatureKey } from "@/lib/content/features";
 import { POST_TARGETS } from "@/lib/content/posting-demo";
 import { FEATURE_LABELS, PLANS, SHOW_AI_VIDEO, TOP_UPS, USAGE_WARNING_PERCENT, plansWithLabel } from "@/lib/plans";
-import { COMPANY, PRIMARY_EMAIL, SITE } from "@/lib/site";
+import { COMPANY, SITE } from "@/lib/site";
 
 /**
  * The whole site as plain text, page by page, built from the same content modules the
@@ -19,17 +19,23 @@ export interface KnowledgePage {
   text: string;
 }
 
-function productPages(): KnowledgePage[] {
-  return PRODUCTS.map((p) => ({
-    path: productHref(p),
-    title: p.name,
-    text: [
-      `${p.hero.headline} ${p.hero.lede}`,
-      ...p.sections.map((s) => `${s.heading}: ${s.body}${s.points ? ` (${s.points.join("; ")})` : ""}`),
-      `Plans: ${p.plans.map((row) => `${row.label}: ${plansWithLabel(row.feature)}`).join(". ")}.`,
-      ...(p.faq ?? []).map((f) => `Q: ${f.q} A: ${f.a}`),
-    ].join("\n"),
-  }));
+/** One page per offering, from the same content the pages render (lib/content/features.ts). */
+function featurePages(): KnowledgePage[] {
+  return (Object.keys(FEATURES) as FeatureKey[]).map((k) => {
+    const f = FEATURES[k];
+    return {
+      path: FEATURE_PATH[k],
+      title: f.name,
+      text: [
+        `${f.title} ${f.promise}`,
+        `How it works: ${f.steps.map((s, i) => `${i + 1}. ${s.title}. You: ${s.you} RingPost: ${s.ringpost}`).join(" ")}`,
+        `Controls: ${f.controls.map((c) => `${c.where}: ${c.what}`).join(" ")}`,
+        `Set it up: ${f.setup.map((s, i) => `${i + 1}. ${s.path.join(" > ")}: ${s.text}`).join(" ")}`,
+        `Plans: ${f.plan ? plansWithLabel(f.plan) : "Every plan"}.`,
+        ...f.faq.map((q) => `Q: ${q.q} A: ${q.a}`),
+      ].join("\n"),
+    };
+  });
 }
 
 function industryPages(): KnowledgePage[] {
@@ -57,37 +63,36 @@ export function knowledgePages(): KnowledgePage[] {
       title: "Home",
       text: [
         SITE.description,
-        ...Object.values(PILLARS).map((p) => `${p.name}: ${p.line}. ${p.lede}`),
+        "Positioning: tell RingPost about your business once (the Business Brain) and everything runs from it: answering, booking, content, posting and growth.",
         `How it works: ${HOW_IT_WORKS.map((s) => `${s.title}: ${s.body}`).join(" ")}`,
         `What runs automatically: ${AUTOMATIONS.map((a) => `${a.when}: ${a.title}. ${a.body}`).join(" ")}`,
       ].join("\n"),
     },
     {
-      path: "/product",
-      title: "AI Front Desk and guardrails",
+      path: "/#guardrails",
+      title: "Guardrails",
       text: [GUARDRAILS.headline, GUARDRAILS.lede, ...GUARDRAILS.rules.map((r) => `${r.title}: ${r.body}`), ...GUARDRAILS.extras, `When unsure it says: "${GUARDRAILS.fallbackLine}"`].join("\n"),
     },
-    ...productPages(),
+    ...featurePages(),
     {
-      path: "/channels",
-      title: "Channels",
-      text: [
+      path: "/messages#channels",
+      title: "Channels in detail",      text: [
         ...CHANNELS.map((c) => `${c.name} (available to businesses on every plan). Arrives: ${c.arrives} The AI: ${c.aiDoes} The owner sees: ${c.ownerSees} Setup: ${c.setup}`),
         `Social publishing (Growth and Pro; Starter and Essential answer calls and messages only): ${SOCIAL_PLATFORMS.join(", ")}.`,
       ].join("\n"),
     },
     {
-      path: "/content-studio",
-      title: "Content Studio",
+      path: "/content-studio#detail",
+      title: "Content Studio in detail",
       text: [
-        "Content Studio turns a phone photo or one line into a finished image or video post. It builds the brief from the business's own knowledge: services and prices, hours and offers, brand voice and words to avoid, logo and colours, up to three reference photos, the website and what customers ask.",
+        "Content Studio turns a phone photo or one line into a finished image or video post. It builds the brief from the business's own knowledge: services and prices, hours and offers, brand voice and words to avoid, logo and colors, up to three reference photos, the website and what customers ask.",
         "Every piece is safety-checked before it is made, then RingPost adds the logo and words (offers, prices, phone number) itself and reads them back to check. Finished pieces land in the Media Library; picking one sends it to Approvals. A failed piece gets its credits back automatically.",
         "Daily content: up to three pictures a day and a 30-second video each week (three ten-second shots), depending on the plan, paid from monthly credits only, never top-ups. Making images and videos comes with Growth and Pro.",
       ].join("\n"),
     },
     {
-      path: "/posting",
-      title: "Posting and uploads",
+      path: "/posting#detail",
+      title: "Posting and uploads in detail",
       text: [
         `RingPost posts to ${POST_TARGETS.map((t) => `${t.name} (${t.note})`).join(", ")}, from the business's own connected accounts. TikTok and YouTube Shorts take videos only.`,
         "Owners upload their own photos (up to 20 MB) and videos (up to 100 MB) as JPEG, PNG, WEBP, HEIC, MP4 or MOV; uploads resume after a dropped connection, are made ready for every app, safety-checked, and a short note becomes a caption for each platform.",
@@ -118,7 +123,7 @@ export function knowledgePages(): KnowledgePage[] {
     {
       path: "/contact",
       title: "Contact",
-      text: `To reach a person, use the form on /contact (it goes to the RingPost team) or email ${PRIMARY_EMAIL}. The email address is shown only on /contact.`,
+      text: "To reach a person, use the \"Talk to a person\" form on /contact. It goes to the RingPost team by email. The site shows no email address.",
     },
     ...industryPages(),
     { path: "/resources/blog", title: "Blog", text: allPosts().map((p) => `${p.title}: ${p.description} (/resources/blog/${p.slug})`).join("\n") },

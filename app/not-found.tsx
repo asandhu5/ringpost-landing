@@ -1,46 +1,26 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Container, PageHero, Section, StartButtons } from "@/components/site/ui";
+import { RingStill } from "@/components/site/three/ring-still";
+import { Button } from "@/components/site/ui/button";
+import { ROUTES } from "@/lib/routes";
 
-export const metadata: Metadata = {
-  title: "Page not found",
-  robots: { index: false, follow: true },
-};
+export const metadata: Metadata = { title: "Page not found", robots: { index: false, follow: true } };
 
-/** Where most people are headed when a link breaks. */
-const PLACES = [
-  { href: "/product", title: "What RingPost does", body: "Calls, messages, bookings, posts and insights in one place." },
-  { href: "/industries", title: "Your kind of business", body: "How it works for salons, clinics, trades, restaurants and more." },
-  { href: "/pricing", title: "Pricing", body: "Four plans from $39, no setup fee." },
-  { href: "/resources/blog", title: "Blog", body: "Guides for local businesses." },
-  { href: "/faq", title: "Questions", body: "Setup, numbers, channels and the AI." },
-  { href: "/contact", title: "Contact", body: "Talk to the RingPost team." },
-];
-
+/** A friendly dead end: the ring, one line, and the three places people are usually headed. */
 export default function NotFound() {
   return (
-    <>
-      <PageHero eyebrow="404" title="This page isn't here." lede="The link may be old, or the address mistyped. These are the places most people are looking for.">
-        <StartButtons />
-      </PageHero>
-      <Section className="!pt-0">
-        <Container>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {PLACES.map((p) => (
-              <li key={p.href}>
-                <Link href={p.href} className="rp-card rp-card-hover group flex h-full items-start justify-between gap-4 rounded-2xl p-6">
-                  <span>
-                    <span className="block text-[16px] font-medium text-ink">{p.title}</span>
-                    <span className="mt-1 block text-[14px] text-muted-ink">{p.body}</span>
-                  </span>
-                  <ArrowRight aria-hidden className="mt-1 h-4 w-4 shrink-0 text-faint transition-transform group-hover:translate-x-1 group-hover:text-ink" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
-    </>
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-[var(--header-h)]">
+      <div aria-hidden className="rp-hero-wash pointer-events-none absolute inset-0" />
+      <div className="relative mx-auto w-full max-w-[720px] px-4 py-12 text-center sm:px-6">
+        <RingStill id="lost-ring" className="mx-auto h-[clamp(96px,20svh,160px)] w-[clamp(96px,20svh,160px)]" />
+        <p className="mt-6 text-small font-semibold text-violet">Page not found</p>
+        <h1 className="mt-2 font-display text-h1 text-ink">This page went quiet.</h1>
+        <p className="mx-auto mt-4 max-w-[30rem] text-body text-muted-ink">The link may be old, or the address mistyped. Here is where most people are headed.</p>
+        <div className="mt-7 flex flex-wrap justify-center gap-3">
+          <Button href="/">Home</Button>
+          <Button href={ROUTES.pricing} variant="secondary">Pricing</Button>
+          <Button href={ROUTES.contact} variant="secondary">Contact</Button>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -1,7 +1,7 @@
 /**
  * One example for each of the ten kinds of business: the owner's phone photo, the post
  * RingPost makes from it, and a caption. Used on the home page, Content Studio and
- * Posting so every page shows the same businesses. The pictures were made with AI for the
+ * Posting so every page shows the same businesses. The pictures were for the
  * website (docs/ASSETS.md); the businesses are invented examples.
  */
 export interface IndustryShowcase {
@@ -17,7 +17,7 @@ export interface IndustryShowcase {
 const img = (id: string) => ({ before: `/made/studio/${id}-phone.webp`, after: `/made/studio/${id}-post.webp` });
 
 export const INDUSTRY_SHOWCASE: IndustryShowcase[] = [
-  { slug: "beauty-and-wellness", group: "Beauty and wellness", business: { name: "Studio & Co.", handle: "studioandco", color: "#db2777" }, title: "Fresh balayage", ...img("beauty"), caption: "Soft, sunlit balayage for the new season. A few colour appointments are free this week. Message us to book. #Balayage #HairColour" },
+  { slug: "beauty-and-wellness", group: "Beauty and wellness", business: { name: "Studio & Co.", handle: "studioandco", color: "#db2777" }, title: "Fresh balayage", ...img("beauty"), caption: "Soft, sunlit balayage for the new season. A few color appointments are free this week. Message us to book. #Balayage #HairColour" },
   { slug: "health", group: "Health", business: { name: "Brightside Dental", handle: "brightsidedental", color: "#0284c7" }, title: "A calm first visit", ...img("health"), caption: "Nervous about the dentist? Our rooms are calm and we never rush. New patients welcome, message us for a time that suits you." },
   { slug: "fitness", group: "Fitness", business: { name: "Forge Fitness", handle: "forgefitness", color: "#ea580c" }, title: "6 am, ready for you", ...img("fitness"), caption: "The racks are loaded and the coffee's on. Early classes start at 6 am, all levels welcome. #MorningWorkout #StrengthTraining" },
   { slug: "food-and-drink", group: "Food and drink", business: { name: "Ember Grill", handle: "embergrill", color: "#d97706" }, title: "Friday burger", ...img("burger"), caption: "Friday means the house cheeseburger: aged beef, melted cheddar and fries on the side. Tables free from 7 pm. #Burger #FridayNight" },

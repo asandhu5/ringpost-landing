@@ -20,7 +20,7 @@ export const DEMO_ITEMS: DemoItem[] = [
     id: "bakery",
     label: "Strawberry cream cake",
     source: "studio",
-    media: { kind: "image", src: "/made/studio/bakery-post.webp", alt: "A strawberry cream cake on a marble stand by a window (made with AI)" },
+    media: { kind: "image", src: "/made/studio/bakery-post.webp", alt: "A strawberry cream cake on a marble stand by a window" },
     business: { name: "Crumb & Co.", handle: "crumbandco", color: "#e0627a" },
     captions: {
       social: "Fresh strawberries, whipped cream and a sponge baked this morning. Whole cakes for the weekend can be ordered until Thursday. Message us to reserve yours. #Bakery #StrawberryCake #FreshlyBaked",
@@ -33,7 +33,7 @@ export const DEMO_ITEMS: DemoItem[] = [
     id: "florist",
     label: "Peony bouquet",
     source: "studio",
-    media: { kind: "image", src: "/made/studio/florist-post.webp", alt: "A bouquet of peonies and eucalyptus in brown paper, held in a flower shop (made with AI)" },
+    media: { kind: "image", src: "/made/studio/florist-post.webp", alt: "A bouquet of peonies and eucalyptus in brown paper, held in a flower shop" },
     business: { name: "Bloom & Stem", handle: "bloomandstem", color: "#8a5cf6" },
     captions: {
       social: "Peony season is here. Soft pink, deep magenta and fresh eucalyptus, wrapped and ready to go. Order by message for same-day collection. #Peonies #FlowerShop #Bouquet",
@@ -46,7 +46,7 @@ export const DEMO_ITEMS: DemoItem[] = [
     id: "burger",
     label: "House cheeseburger",
     source: "studio",
-    media: { kind: "image", src: "/made/studio/burger-post.webp", alt: "A cheeseburger and fries on a wooden table in a warmly lit restaurant (made with AI)" },
+    media: { kind: "image", src: "/made/studio/burger-post.webp", alt: "A cheeseburger and fries on a wooden table in a warmly lit restaurant" },
     business: { name: "Ember Grill", handle: "embergrill", color: "#d97706" },
     captions: {
       social: "Friday means the house cheeseburger: aged beef, melted cheddar, a toasted bun and fries on the side. Tables free from 7 pm, book by message. #Burger #FridayNight #EmberGrill",
@@ -59,7 +59,7 @@ export const DEMO_ITEMS: DemoItem[] = [
     id: "salon",
     label: "Blow-dry reveal",
     source: "studio",
-    media: { kind: "video", src: "/made/videos/salon-blowdry.mp4", poster: "/made/videos/salon-blowdry.webp", alt: "A blow-dry being finished in a salon (made with AI)" },
+    media: { kind: "video", src: "/made/videos/salon-blowdry.mp4", poster: "/made/videos/salon-blowdry.webp", alt: "A blow-dry being finished in a salon" },
     business: { name: "Studio & Co.", handle: "studioandco", color: "#db2777" },
     captions: {
       social: "The finish that makes the week. Blow-dries from Tuesday to Saturday, and this week has a few evening spaces left. Message us to book. #BlowDry #HairSalon #SalonLife",
@@ -72,7 +72,7 @@ export const DEMO_ITEMS: DemoItem[] = [
     id: "auto",
     label: "Detailing finish",
     source: "studio",
-    media: { kind: "video", src: "/made/videos/auto-detailing.mp4", poster: "/made/videos/auto-detailing.webp", alt: "A car being polished to a mirror finish (made with AI)" },
+    media: { kind: "video", src: "/made/videos/auto-detailing.mp4", poster: "/made/videos/auto-detailing.webp", alt: "A car being polished to a mirror finish" },
     business: { name: "Mirror Finish", handle: "mirrorfinish", color: "#0f766e" },
     captions: {
       social: "From the first rinse to the last buff. A full detail takes about four hours, and we have two slots left on Saturday. Message us to book. #CarDetailing #MirrorFinish",

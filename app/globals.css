@@ -58,7 +58,7 @@
 @theme inline {
   --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, monospace;
-  --font-display: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-display: var(--font-display-face), var(--font-inter), system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -121,10 +121,18 @@
     background: rgba(34, 211, 238, 0.35);
     color: var(--rp-text);
   }
-  /* Display type: Inter, heavy and tight, like the dashboard's headings. */
+  /* Display type: Schibsted Grotesk, heavy and tight. */
   .font-display {
-    font-weight: 700;
-    letter-spacing: -0.035em;
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  h1, h2 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+  h3 {
+    text-wrap: balance;
   }
   :where(a, button, [role="button"], input, textarea, select, summary):focus-visible {
     outline: 2px solid var(--rp-glow);
@@ -1044,3 +1052,231 @@ html { scroll-padding-top: 90px; }
 .rp-float { animation: rp-float 6s ease-in-out infinite; }
 .rp-float-slow { animation: rp-float 9s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .rp-float, .rp-float-slow { animation: none; } }
+
+/* ── Home, 2026-11 ─────────────────────────────────────────────── */
+.rp-hero-wash {
+  background:
+    radial-gradient(60% 50% at 78% 38%, rgba(124, 107, 255, 0.14), transparent 70%),
+    radial-gradient(40% 40% at 92% 70%, rgba(34, 211, 238, 0.14), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, var(--rp-base) 100%);
+}
+.rp-ink-gradient {
+  background: linear-gradient(100deg, #5b4ee6 0%, #7c6bff 45%, #0891b2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes rp-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.rp-float { animation: rp-float 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .rp-float { animation: none; }
+}
+@keyframes rp-wave { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
+.rp-wave { animation: rp-wave 0.9s ease-in-out infinite; transform-origin: bottom; }
+@keyframes rp-ring-pulse { 0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.55); } 100% { box-shadow: 0 0 0 16px rgba(22, 163, 74, 0); } }
+.rp-ring-pulse { animation: rp-ring-pulse 1.2s ease-out infinite; }
+.rp-caret { display: inline-block; width: 2px; height: 1em; margin-left: 2px; vertical-align: -2px; background: #5b4ee6; animation: rp-blink 1s steps(2) infinite; }
+@keyframes rp-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .rp-wave, .rp-ring-pulse, .rp-caret { animation: none; }
+}
+.rp-no-scrollbar { scrollbar-width: none; }
+.rp-no-scrollbar::-webkit-scrollbar { display: none; }
+@keyframes rp-script-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.rp-script > li { animation: rp-script-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@media (prefers-reduced-motion: reduce) { .rp-script > li { animation: none; } }
+
+/* ══════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM · 2026-11-12 redesign
+   One set of tokens for colour, type, shape, depth and motion. New pages use only
+   these; nothing new is typed by hand. Names are kept flat so they can be synced to
+   Figma variables later (colour/…, radius/…, shadow/…, text/…).
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+  --header-h: 64px;
+
+  /* Brand */
+  --rp-primary-soft: #efedff;
+  --rp-primary-line: #cfc9ff;
+  --rp-primary-strong: #4338ca;
+
+  /* One accent per product area: icons, chips and that area's lighting. All three read
+     at 4.5:1 or better as text on white. */
+  --rp-answer: #5b4ee6;
+  --rp-answer-soft: #efedff;
+  --rp-create: #be185d;
+  --rp-create-soft: #fce7f1;
+  --rp-grow: #166534;
+  --rp-grow-soft: #e2f5e9;
+  --rp-amber: #92400e;
+  --rp-amber-soft: #fdf0d5;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-ui: 220ms;
+  --dur-scene: 650ms;
+
+  /* Layout: one section rhythm, taller screens get more air. */
+  --section-y: clamp(3.25rem, 9svh, 6rem);
+  /* The space a first screen or a pinned scene may use. */
+  --stage-h: calc(100svh - var(--header-h));
+}
+
+@theme {
+  /* Shape: three radii only. */
+  --radius-rp-sm: 12px;
+  --radius-rp-md: 20px;
+  --radius-rp-lg: 32px;
+
+  /* Depth: one soft, navy-tinted family. */
+  --shadow-rp-1: 0 1px 2px rgba(11, 27, 43, 0.06);
+  --shadow-rp-2: 0 1px 2px rgba(11, 27, 43, 0.05), 0 18px 40px -26px rgba(11, 27, 43, 0.38);
+  --shadow-rp-3: 0 2px 4px rgba(11, 27, 43, 0.05), 0 44px 90px -44px rgba(11, 27, 43, 0.5);
+
+  /* Type: six sizes. The three headline sizes shrink on short screens as well as narrow
+     ones, so a first screen fits a laptop at 100% zoom. */
+  --text-display: clamp(2.5rem, min(6.2vw, 10.4svh), 5.25rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.045em;
+  --text-h1: clamp(2.15rem, min(4.8vw, 8svh), 3.9rem);
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.04em;
+  --text-h2: clamp(1.75rem, min(3.5vw, 6svh), 2.85rem);
+  --text-h2--line-height: 1.06;
+  --text-h2--letter-spacing: -0.035em;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: -0.02em;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.55;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.45;
+
+  --color-answer: var(--rp-answer);
+  --color-answer-soft: var(--rp-answer-soft);
+  --color-create: var(--rp-create);
+  --color-create-soft: var(--rp-create-soft);
+  --color-grow: var(--rp-grow);
+  --color-grow-soft: var(--rp-grow-soft);
+  --color-amber: var(--rp-amber);
+  --color-amber-soft: var(--rp-amber-soft);
+  --color-primary-soft: var(--rp-primary-soft);
+  --color-primary-line: var(--rp-primary-line);
+  --color-cta-ink: var(--rp-cta-ink);
+  --color-cta-hover: var(--rp-cta-hover);
+
+  --ease-rp: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Buttons: lift a pixel on hover, settle on press. */
+.rp-btn {
+  transition: transform var(--dur-ui) var(--ease-out), background-color var(--dur-ui) ease, border-color var(--dur-ui) ease, box-shadow var(--dur-ui) ease, color var(--dur-ui) ease;
+}
+.rp-btn:hover { transform: translateY(-1.5px); }
+.rp-btn:active { transform: translateY(0); }
+.rp-btn[aria-disabled="true"], .rp-btn:disabled { opacity: 0.5; pointer-events: none; }
+
+/* ── Home hero: what you tell it flows in, results settle around the ring ── */
+.rp-hero-stage { container-type: inline-size; }
+.rp-hero-chip { font-size: clamp(11px, 2.55cqw, 14px); }
+.rp-hero-pill { font-size: clamp(11px, 2.4cqw, 13.5px); }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rp-absorb {
+    0% { opacity: 0; transform: translate(-6cqw, -50%) scale(0.96); }
+    3% { opacity: 1; transform: translate(0, -50%) scale(1); }
+    11% { opacity: 1; transform: translate(4cqw, -50%) scale(1); }
+    18% { opacity: 0; transform: translate(34cqw, -50%) scale(0.35); }
+    100% { opacity: 0; transform: translate(34cqw, -50%) scale(0.35); }
+  }
+  .rp-hero-pill { opacity: 0; animation: rp-absorb 12.5s var(--ease-out) infinite; animation-delay: calc(var(--i) * 2.5s + 0.6s); }
+  @keyframes rp-chip-land {
+    0%, 100% { transform: none; box-shadow: var(--shadow-rp-2); }
+    2% { transform: translateY(-5px) scale(1.035); box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.55), 0 24px 50px -24px rgba(91, 78, 230, 0.6); }
+    9% { transform: none; box-shadow: var(--shadow-rp-2); }
+  }
+  .rp-hero-chip { animation: rp-chip-land 12.5s var(--ease-out) infinite; animation-delay: calc(var(--i) * 3.1s + 2.4s); }
+}
+
+/* ── "Tell it once": five tools fold into the ring, the ring lights five areas ──
+   Without JavaScript the finished picture shows. JavaScript arms the start state and
+   plays it once, when the section is on screen. */
+.rp-once-tool, .rp-once-area, .rp-once-core { transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out), filter 0.7s ease, box-shadow 0.7s ease, border-color 0.7s ease; }
+.rp-once.is-armed .rp-once-area { filter: grayscale(1); background: var(--rp-base); box-shadow: none; transform: translateX(-8px); }
+.rp-once.is-armed .rp-once-core { transform: scale(0.92); box-shadow: none; }
+.rp-once.is-armed.is-go .rp-once-core { transform: none; box-shadow: 0 0 0 10px rgba(124, 107, 255, 0.1), 0 30px 70px -30px rgba(91, 78, 230, 0.7); transition-delay: 500ms; }
+.rp-once.is-armed.is-go .rp-once-area { filter: none; background: var(--rp-surface); box-shadow: var(--shadow-rp-1); transform: none; transition-delay: calc(var(--i) * 160ms + 900ms); }
+.rp-once-line { stroke-dasharray: 3 5; }
+@media (prefers-reduced-motion: no-preference) {
+  .rp-once-line { animation: rp-flow 1.6s linear infinite; }
+  @keyframes rp-mini-fill { 0% { transform: scaleX(0.05); } 70%, 100% { transform: scaleX(1); } }
+  .rp-mini-fill { transform-origin: left; animation: rp-mini-fill 3.2s var(--ease-out) infinite; }
+  @keyframes rp-mini-tick { 0%, 15% { opacity: 0.25; transform: scale(0.7); } 30%, 100% { opacity: 1; transform: none; } }
+  .rp-mini-tick { animation: rp-mini-tick 3.6s var(--ease-out) infinite; animation-delay: calc(var(--i) * 0.5s); }
+  @keyframes rp-mini-switch { 0%, 20% { transform: translateX(0); } 35%, 100% { transform: translateX(12px); } }
+  @keyframes rp-mini-track { 0%, 20% { background: #c9d1db; } 35%, 100% { background: #15803d; } }
+  .rp-mini-knob { animation: rp-mini-switch 4s var(--ease-out) infinite; animation-delay: calc(var(--i) * 0.6s); }
+  .rp-mini-track { animation: rp-mini-track 4s var(--ease-out) infinite; animation-delay: calc(var(--i) * 0.6s); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rp-once-tool, .rp-once-area, .rp-once-core { transition: none; }
+  .rp-mini-knob { transform: translateX(12px); }
+  .rp-mini-track { background: #15803d; }
+}
+
+/* ── Inbox demo ── */
+@media (prefers-reduced-motion: no-preference) {
+  /* Movement only: a message is never invisible while it waits for its animation. */
+  @keyframes rp-msg-in { from { transform: translateY(8px) scale(0.98); } to { transform: none; } }
+  .rp-msg-in { animation: rp-msg-in 0.45s var(--ease-out) both; }
+}
+
+/* ── Home, phase 2 ── */
+.rp-making { background: linear-gradient(110deg, #f1eeff 20%, #ffffff 45%, #e7fbff 70%); background-size: 250% 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rp-making { from { background-position: 100% 0; } to { background-position: -50% 0; } }
+  .rp-making { animation: rp-making 1.1s linear infinite; }
+  @keyframes rp-bar-up { from { transform: scaleY(0.25); } to { transform: scaleY(1); } }
+  .rp-bar-up { transform-origin: bottom; animation: rp-bar-up 2.8s var(--ease-out) infinite alternate; animation-delay: calc(var(--i) * 0.18s); }
+  @keyframes rp-dot { 0%, 60%, 100% { opacity: 0.3; transform: none; } 30% { opacity: 1; transform: translateY(-2px); } }
+  .rp-dot { animation: rp-dot 1.2s ease-in-out infinite; animation-delay: calc(var(--i) * 0.15s); }
+}
+.rp-tile-media video { opacity: 0; transition: opacity 0.4s ease; }
+.rp-tile-media.is-playing video { opacity: 1; }
+
+/* ── Feature pages ── */
+.rp-stage { container-type: inline-size; }
+@media (prefers-reduced-motion: no-preference) {
+  /* Movement only, so nothing is ever invisible while it waits to animate. */
+  @keyframes rp-drop { from { transform: translateY(-18px) scale(0.97); } to { transform: none; } }
+  .rp-drop { animation: rp-drop 0.8s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 0.16s + 0.2s); }
+  @keyframes rp-slide-in { from { transform: translateX(var(--from, 30px)) rotate(var(--tilt, 0deg)); } to { transform: none; } }
+  .rp-slide-in { animation: rp-slide-in 1s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 0.14s + 0.2s); }
+  @keyframes rp-orbit { to { transform: rotate(360deg); } }
+  .rp-orbit { animation: rp-orbit 46s linear infinite; }
+  .rp-orbit > * > * { animation: rp-orbit 46s linear infinite reverse; }
+  @keyframes rp-pulse-chip { 0%, 100% { box-shadow: var(--shadow-rp-1); border-color: var(--rp-border); } 4%, 12% { box-shadow: 0 0 0 3px rgba(124, 107, 255, 0.22), var(--shadow-rp-2); border-color: var(--rp-primary); } }
+  .rp-pulse-chip { animation: rp-pulse-chip 12s ease-in-out infinite; animation-delay: calc(var(--i, 0) * 1.5s); }
+  @keyframes rp-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  .rp-bob { animation: rp-bob 6s ease-in-out infinite; animation-delay: calc(var(--i, 0) * -1.3s); }
+}
+.rp-tilt-3d { transform: perspective(1400px) rotateX(9deg) rotateY(-11deg) rotateZ(1.5deg); transform-style: preserve-3d; }
+
+/* Content first, motion second (brief §6.5): the older entrance animations may still move
+   things into place, but they can no longer hide or blur anything while they wait. A
+   page opened in a background tab, or with animations paused, reads in full. */
+.rp-reveal, .rp-enter, .rp-hero-enter > *, .rp-stagger, .rp-group > *, .rp-tilt, .rp-step, .rp-word, .rp-tools .rp-tool, .rp-tools-one, .rp-fade-in, .rp-rise, .rp-pop, .rp-scale-in, .rp-lab-scene, .rp-script > li {
+  opacity: 1 !important;
+  filter: none !important;
+}
+/* The comparison table's header stays in view while its rows scroll. */
+@media (min-width: 1024px) {
+  .rp-sticky-head th { position: sticky; top: var(--header-h); z-index: 2; }
+}
+
+/* Long reading (legal pages, blog posts): the site's own headline face, one measure. */
+.legal-prose h2, .post-prose h2 { font-family: var(--font-display-face), var(--font-inter), system-ui, sans-serif; font-weight: 800; letter-spacing: -0.03em; }
+.post-prose { max-width: 680px; }

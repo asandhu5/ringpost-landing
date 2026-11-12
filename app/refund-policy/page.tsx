@@ -5,7 +5,7 @@ import { BILLING_PERIODS, YEARLY_BILLING } from "@/lib/plans";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
-  description: `Cancellations and refunds for ${SITE.name}.`,
+  description: `How cancelling works on ${SITE.name}, what happens to your plan, and when a refund is given.`,
   robots: { index: true, follow: true },
 };
 

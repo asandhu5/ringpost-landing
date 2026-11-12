@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoDescription } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AlertTriangle, Ban, CalendarCheck, Check, MessageSquareText } from "lucide-react";
@@ -41,8 +42,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const group = groupBySlug(slug);
   if (group) {
-    const title = `RingPost for ${group.name.toLowerCase()}: AI front desk and content`;
-    const description = `${group.tagline} RingPost answers calls and messages, books appointments and makes your posts. ${group.pain}`;
+    const title = `AI receptionist for ${group.name.toLowerCase()}`;
+    const description = seoDescription(`${group.tagline} RingPost answers calls and messages, books appointments and makes your posts. ${group.pain}`);
     return { title, description, openGraph: { title, description, url: `/industries/${slug}` } };
   }
   if (slug === SOMETHING_ELSE.slug) {
@@ -55,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const t = typeBySlug(slug);
   if (!t) return {};
   const title = `AI receptionist for ${pluralFor(t)}`;
-  const description = `An AI receptionist for ${pluralFor(t)}${t.aliases.length ? ` (${aliasLine(t)})` : ""}. It answers calls and messages from your own ${t.catalogLabel.toLowerCase()}, knows what to hand to you, and ${bookingFor(t).replace(/^For [^,]+, RingPost /, "").replace(/\.$/, "")}.`;
+  const description = seoDescription(`An AI receptionist for ${pluralFor(t)}${t.aliases.length ? ` (${aliasLine(t)})` : ""}. It answers calls and messages from your own ${t.catalogLabel.toLowerCase()}, knows what to hand to you, and ${bookingFor(t).replace(/^For [^,]+, RingPost /, "").replace(/\.$/, "")}.`);
   return {
     title,
     description,

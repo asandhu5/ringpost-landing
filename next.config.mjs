@@ -23,8 +23,6 @@ const contentSecurityPolicy = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // A self-contained server for the container image (Dockerfile).
-  output: "standalone",
   images: {
     unoptimized: true,
   },
@@ -34,11 +32,29 @@ const nextConfig = {
     return [
       { source: "/demo", destination: "/contact", permanent: true },
       { source: "/call", destination: "/contact", permanent: true },
-      { source: "/resources/case-studies", destination: "/resources", permanent: true },
-      // AI content is Content Studio, so /product/ai-media redirects there.
+      { source: "/resources/case-studies", destination: "/resources/blog", permanent: true },
+      // 2026-11-12 redesign: one page per offering, at a short address of its own.
+      { source: "/channels", destination: "/messages", permanent: true },
+      { source: "/channels/phone", destination: "/calls", permanent: true },
+      { source: "/channels/whatsapp", destination: "/messages#whatsapp", permanent: true },
+      { source: "/channels/instagram", destination: "/messages#instagram", permanent: true },
+      { source: "/channels/messenger", destination: "/messages#messenger", permanent: true },
+      { source: "/channels/sms", destination: "/messages#sms", permanent: true },
+      { source: "/channels/email", destination: "/messages#email", permanent: true },
+      { source: "/product/ai-receptionist", destination: "/calls", permanent: true },
+      { source: "/product/inbox", destination: "/inbox", permanent: true },
+      { source: "/product/booking", destination: "/booking", permanent: true },
+      { source: "/product/knowledge", destination: "/brain", permanent: true },
+      { source: "/product/reviews", destination: "/reviews", permanent: true },
+      { source: "/product/winback", destination: "/win-back", permanent: true },
+      { source: "/product/insights", destination: "/insights", permanent: true },
+      { source: "/product/advisor", destination: "/talk-to-ai", permanent: true },
       { source: "/product/ai-media", destination: "/content-studio", permanent: true },
       { source: "/product/uploads", destination: "/posting#upload", permanent: true },
       { source: "/product/social", destination: "/posting", permanent: true },
+      { source: "/grow", destination: "/reviews", permanent: true },
+      { source: "/product", destination: "/", permanent: true },
+      { source: "/resources", destination: "/resources/blog", permanent: true },
     ];
   },
   async headers() {
