@@ -26,8 +26,6 @@ export const COMPANY = {
    * null nothing is shown. Never invent one or infer one from anywhere.
    */
   registrationNumber: null as string | null,
-  city: "Islamabad, Pakistan",
-  governingLaw: "Pakistan",
 } as const;
 
 /* Product rule: the site shows no email address anywhere. Contact goes through the

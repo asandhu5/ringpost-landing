@@ -21,7 +21,7 @@ export default function PrivacyPage() {
       intro="This explains what RingPost collects, what we do with it, and who else touches it. There are two different sets of people here: businesses who sign up, and their customers who never did. This policy treats them separately, because the second group is the one that matters most."
     >
       <p>
-        <strong>Who we are.</strong> RingPost is operated by <strong>{COMPANY.legalName}</strong> ({COMPANY.city}),
+        <strong>Who we are.</strong> RingPost is operated by <strong>{COMPANY.legalName}</strong>,
         referred to here as &ldquo;RingPost&rdquo;, &ldquo;we&rdquo; or &ldquo;us&rdquo;. You can reach us about
         anything in this policy through our <a href="/contact">contact page</a>.
       </p>

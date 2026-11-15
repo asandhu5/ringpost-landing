@@ -10,9 +10,8 @@ export const metadata: Metadata = {
 };
 
 /**
- * Operator: RingPost Limited (lib/site.ts COMPANY). The name is reserved
- * with the SECP; add the registration number here once incorporation completes.
- * Governing law: Pakistan, where the company is formed and operated.
+ * Operator: RingPost Limited (lib/site.ts COMPANY). Add the registration number
+ * there once incorporation completes. The site names no country of registration.
  *
  * These terms are intended to describe the Service clearly and accurately.
  * They are not a substitute for legal advice.
@@ -240,9 +239,9 @@ export default function TermsPage() {
 
       <h2>15. Governing law</h2>
       <p>
-        These terms are governed by the laws of the Islamic Republic of
-        Pakistan, where {COMPANY.legalName} is formed and operates the Service
-        from, without regard to conflict-of-law rules.
+        These terms are governed by the laws of the jurisdiction in which
+        {COMPANY.legalName} is registered, without regard to conflict-of-law
+        rules.
       </p>
 
       <h2>16. Contact</h2>
