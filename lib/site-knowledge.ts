@@ -103,12 +103,11 @@ export function knowledgePages(): KnowledgePage[] {
       path: "/pricing",
       title: "Pricing",
       text: [
-        "There is no setup fee of any kind.",
         ...PLANS.map(
           (p) =>
             `${p.name}: $${p.monthlyUsd}/month. ${p.tagline} ${p.minutesPerMonth} calling minutes and ${p.messagesPerMonth} messages a month, up to ${p.bookableStaff} bookable staff, call forwarding from the business's own number, ${p.mediaCreditsPerMonth ? `${p.mediaCreditsPerMonth.toLocaleString("en-US")} media credits a month for AI images${SHOW_AI_VIDEO ? " and videos" : ""}` : "no AI images or social posting (calls and messages only)"}. Includes: ${p.features.filter((f) => SHOW_AI_VIDEO || f !== "prompt_generation").map((f) => FEATURE_LABELS[f]).join(", ") || "answering every channel, booking, reminders, review requests and daily images"}.`,
         ),
-        "There is no free trial. A business signs up, can look around the whole dashboard, and switches the AI on by choosing a plan, billed that day and then monthly. Plans start with Starter.",
+        "A business signs up, can look around the whole dashboard, and switches the AI on by choosing a plan, billed that day and then monthly. The only charges are the plan and any top-up the owner chooses to buy. Plans start with Starter.",
         "Media credits pay for AI images and videos: the owner picks quick image, best image, quick video or cinematic video and sees the price in credits first. Credits for a generation that fails come back automatically. Monthly credits renew with the plan; top-up credits last 90 days.",
         `Going over a monthly allowance for calls or messages never stops the service. A warning comes at ${USAGE_WARNING_PERCENT}%. Top-ups are only added when the owner clicks: ${TOP_UPS.map((t) => `${t.label} $${t.priceUsd}`).join(", ")}.`,
         SHOW_AI_VIDEO ? "" : "AI video generation is not offered on the website at the moment; do not describe video allowances.",

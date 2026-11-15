@@ -519,7 +519,7 @@ function Billing() {
       </div>
       <div className={`${card} mt-3 p-4`}>
         <p className="text-[13px] font-semibold text-ink">Plan &amp; billing</p>
-        <p className="mt-1.5 text-[12.5px] leading-relaxed text-muted-ink">See your plan, change it, switch between monthly and yearly, and download receipts. No contract and no setup fee. Cancel any time.</p>
+        <p className="mt-1.5 text-[12.5px] leading-relaxed text-muted-ink">See your plan, change it, switch between monthly and yearly, and download receipts. No contract. Cancel any time.</p>
         <div className="mt-3 flex gap-2"><Btn>Change plan</Btn><Btn>Receipts</Btn></div>
       </div>
       <p className="mt-3 text-[12px] text-muted-ink">You get a warning before you reach an allowance, so nothing stops without notice.</p>

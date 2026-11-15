@@ -30,11 +30,8 @@ export const COMPANY = {
   governingLaw: "Pakistan",
 } as const;
 
-/**
- * Product rule: the site shows one email address, and only on /contact.
- * admin@ is live on Titan. The legal pages point to /contact instead of naming a mailbox.
- */
-export const PRIMARY_EMAIL = "support@ringpost.tech";
+/* Product rule: the site shows no email address anywhere. Contact goes through the
+ * /contact form and "Talk to a person", which reach the support inbox server-side. */
 
 /**
  * Where business owners sign up and log in: the dashboard app, a separate deployment

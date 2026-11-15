@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 };
 
 /**
- * Matches the product's billing (packages/core/src/billing/plans.ts): no setup fee;
- * there is no free trial; a plan is billed when it is chosen.
+ * Matches the product's billing (packages/core/src/billing/plans.ts): a plan is billed
+ * from the day it is chosen.
  */
 export default function RefundPolicyPage() {
   return (
     <LegalPage
-      summary={[`You pay for one plan, ${BILLING_PERIODS}, with no setup fee and no long contract.`, "Cancel any time: you keep access until the end of the period you've paid for and aren't charged again.", YEARLY_BILLING ? "Unused part-months and unused months of a yearly plan aren't refunded; moving to a smaller plan credits the difference." : "Unused part-months aren't refunded; moving to a smaller plan credits the difference.", "Billing mistakes are put right, and if a real failure on our side left you without the service, we'll discuss a fair credit or refund.", "Your data stays yours for 60 days after you leave so you can export it."]}
+      summary={[`You pay for one plan, ${BILLING_PERIODS}, from the day you choose it, with no long contract.`, "Cancel any time: you keep access until the end of the period you've paid for and aren't charged again.", YEARLY_BILLING ? "Unused part-months and unused months of a yearly plan aren't refunded; moving to a smaller plan credits the difference." : "Unused part-months aren't refunded; moving to a smaller plan credits the difference.", "Billing mistakes are put right, and if a real failure on our side left you without the service, we'll discuss a fair credit or refund.", "Your data stays yours for 60 days after you leave so you can export it."]}
       title="Refund Policy"
       updated="7 November 2026"
       intro="Short, and meant to be clear. If something here doesn't seem fair in your situation, tell us. We'd rather sort it out than hide behind a policy page."
@@ -25,7 +25,7 @@ export default function RefundPolicyPage() {
       <p>
         You choose <strong>one plan</strong> (Starter, Essential, Growth or Pro), shown on the{" "}
         <a href="/pricing">pricing page</a>, paid <strong>{BILLING_PERIODS}</strong>
-        {YEARLY_BILLING ? " (yearly is 20% off twelve months)" : ""}. There is no setup fee and no contract beyond the period you paid for.
+        {YEARLY_BILLING ? " (yearly is 20% off twelve months)" : ""}. There is no contract beyond the period you paid for.
         Top-up packs are only charged when you choose to buy one.
       </p>
 
@@ -33,7 +33,6 @@ export default function RefundPolicyPage() {
       <ul>
         <li>
           Your plan is billed when you choose it, then {YEARLY_BILLING ? "monthly or yearly, in advance, as you chose" : "monthly, in advance"}.
-          There is no setup fee.
         </li>
         <li>
           You can cancel your plan at any time. Cancellation takes effect at the{" "}

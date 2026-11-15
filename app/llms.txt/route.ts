@@ -40,7 +40,7 @@ export function GET() {
     "",
     `RingPost is for local businesses such as salons, clinics, restaurants, gyms and trades. It answers ${channelNames} from the business's own information (services, prices, hours and policies), books into the business's calendar, and hands anything it can't handle to the owner. It never invents a price, a time or a booking. It also makes daily images and videos for social media, drafts replies to reviews and comments, and wins back customers who haven't returned.`,
     "",
-    `There are ${PLANS.length} plans (${list(PLANS.map((p) => p.name))}), paid ${YEARLY_BILLING ? `monthly or yearly (${Math.round(YEARLY_DISCOUNT * 100)}% off)` : "monthly"}, with no setup fee and no contract. There is no free trial.`,
+    `There are ${PLANS.length} plans (${list(PLANS.map((p) => p.name))}), paid ${YEARLY_BILLING ? `monthly or yearly (${Math.round(YEARLY_DISCOUNT * 100)}% off)` : "monthly"}, billed from the day a plan is chosen, with no contract.`,
     "",
     "## Plans and prices (USD, current)",
     ...PLANS.map((p) => {
