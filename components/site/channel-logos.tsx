@@ -8,7 +8,7 @@ import { BRAND_PATHS } from "@/components/site/brand-icons";
  * email and LinkedIn are drawn here.
  */
 
-type ChannelId = "phone" | "sms" | "whatsapp" | "instagram" | "messenger" | "email" | "facebook" | "tiktok" | "youtube" | "x" | "linkedin" | "threads" | "pinterest" | "bluesky" | "google_business_profile";
+type ChannelId = "phone" | "sms" | "whatsapp" | "instagram" | "messenger" | "email" | "facebook" | "tiktok" | "youtube" | "x" | "linkedin" | "threads" | "pinterest" | "google_business_profile";
 
 const BACKGROUND: Record<ChannelId, string> = {
   phone: "linear-gradient(180deg, #5ef08a, #1fbf4f)",
@@ -25,7 +25,6 @@ const BACKGROUND: Record<ChannelId, string> = {
   linkedin: "#0a66c2",
   threads: "#000000",
   pinterest: "#e60023",
-  bluesky: "#1185fe",
   google_business_profile: "#ffffff",
 };
 
@@ -87,10 +86,6 @@ function Glyph({ id }: { id: ChannelId }) {
           <circle cx="12" cy="12" r="2.3" fill="none" stroke="#fff" strokeWidth="1.6" />
           <path d="M14.3 12v1.3c0 1.2 1.6 1.6 2.2.5" fill="none" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" />
         </>
-      );
-    case "bluesky":
-      return (
-        <path d="M12 10.6c-.9-1.8-3.4-5.1-5.7-6.7C4.1 2.4 3.3 2.6 2.8 2.9 2.2 3.2 2.1 4.1 2.1 4.6s.3 4.1.5 4.7c.6 2.1 2.8 2.8 4.8 2.6-2.9.4-5.5 1.5-2.1 5.3 3.7 3.8 5.1-.8 5.8-3.2.7 2.4 1.5 6.9 5.7 3.2 3.2-3.2.9-4.9-2-5.3 2 .2 4.2-.5 4.8-2.6.2-.6.5-4.2.5-4.7s-.1-1.4-.7-1.7c-.5-.3-1.3-.5-3.5 1-2.3 1.6-4.8 4.9-5.7 6.7Z" fill="#fff" />
       );
     case "pinterest":
       return <path fill="#fff" d="M12.3 4.5c-4.4 0-6.6 3.1-6.6 5.7 0 1.6.6 3 1.9 3.5.2.1.4 0 .5-.2l.2-.8c.1-.2 0-.3-.1-.5-.4-.5-.7-1.1-.7-1.9 0-2.5 1.9-4.7 4.9-4.7 2.7 0 4.1 1.6 4.1 3.8 0 2.9-1.3 5.3-3.2 5.3-1 0-1.8-.9-1.6-1.9.3-1.3.9-2.6.9-3.5 0-.8-.4-1.5-1.3-1.5-1.1 0-1.9 1.1-1.9 2.6 0 .9.3 1.6.3 1.6l-1.2 5.2c-.4 1.5-.1 3.4 0 3.6 0 .1.2.1.2 0 .1-.1 1.3-1.6 1.7-3.1l.6-2.6c.3.6 1.3 1.1 2.3 1.1 3 0 5-2.7 5-6.4 0-2.8-2.3-5.4-5.9-5.4Z" />;

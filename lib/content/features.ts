@@ -343,7 +343,7 @@ export const FEATURES: Record<FeatureKey, FeatureContent> = {
     ],
     related: ["studio", "campaigns", "reviews"],
     faq: [
-      { q: "Which platforms can it post to?", a: "Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest, Bluesky and Google Business." },
+      { q: "Which platforms can it post to?", a: "Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest and Google Business." },
       { q: "Does every platform get the same caption?", a: "No. RingPost writes a caption for each platform, and you can edit any of them." },
       { q: "What if a post fails on one platform?", a: "You see a result for every platform. If one didn't go through, you can retry just that one." },
       { q: "Can I schedule posts?", a: "Yes. Post now or choose a day and time." },

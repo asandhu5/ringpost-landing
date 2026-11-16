@@ -147,7 +147,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "Content and posting",
     q: "Which platforms can it post to?",
-    a: "Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads, Pinterest and Bluesky, from your own connected accounts. Each one gets a caption written for it.",
+    a: "Instagram, Facebook, TikTok, YouTube, X, LinkedIn, Threads and Pinterest, from your own connected accounts. Each one gets a caption written for it.",
     link: { href: "/posting", label: "Posting" },
   },
   {

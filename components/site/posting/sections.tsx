@@ -68,7 +68,7 @@ const WEEK: { day: string; date: number; slots: Slot[] }[] = [
   { day: "Thu", date: 12, slots: [{ slug: "auto", time: "18:00", state: "scheduled", platforms: ["tiktok", "instagram"] }] },
   { day: "Fri", date: 13, slots: [{ slug: "professional-services", time: "10:00", state: "approve", platforms: ["linkedin", "x"] }, { slug: "education-and-care", time: "16:00", state: "approve", platforms: ["instagram", "threads"] }] },
   { day: "Sat", date: 14, slots: [{ slug: "shops", time: "09:30", state: "approve", platforms: ["instagram", "pinterest"] }] },
-  { day: "Sun", date: 15, slots: [{ slug: "stays-and-venues", time: "11:00", state: "scheduled", platforms: ["instagram", "facebook", "bluesky"] }] },
+  { day: "Sun", date: 15, slots: [{ slug: "stays-and-venues", time: "11:00", state: "scheduled", platforms: ["instagram", "facebook", "threads"] }] },
 ];
 const STATE = {
   approve: { label: "Needs you", cls: "bg-amber-50 text-amber-800" },

@@ -8,7 +8,7 @@ import {
 import { BRAND_PATHS } from "@/components/site/brand-icons";
 import { HomeIndicator, StatusBar } from "./iphone";
 
-export type PreviewPlatform = "instagram" | "facebook" | "tiktok" | "youtube" | "x" | "linkedin" | "threads" | "pinterest" | "bluesky";
+export type PreviewPlatform = "instagram" | "facebook" | "tiktok" | "youtube" | "x" | "linkedin" | "threads" | "pinterest";
 
 export interface PreviewMedia {
   kind: "image" | "video";
@@ -242,29 +242,8 @@ function Pinterest({ post }: { post: PreviewPost }) {
   );
 }
 
-/* ── Bluesky ──────────────────────────────────────────────────── */
-function Bluesky({ post }: { post: PreviewPost }) {
-  return (
-    <div className="flex h-full flex-col bg-white text-[#0b0f14]">
-      <StatusBar />
-      <div className="flex h-[46px] items-center justify-center border-b border-black/10"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden><path fill="#1185fe" d={BRAND_PATHS.bluesky} /></svg></div>
-      <div className="flex gap-[12px] px-[16px] pt-[14px]">
-        <Avatar post={post} size={42} />
-        <div className="min-w-0 flex-1">
-          <p className="text-[15px]"><span className="font-bold">{post.business.name}</span> <span className="text-[#6f869f]">@{post.business.handle}.bsky.social · {post.when ?? "now"}</span></p>
-          <p className="mt-[4px] line-clamp-4 text-[15px] leading-[1.4]">{post.caption.slice(0, 300)}</p>
-          <div className="relative mt-[10px] w-full overflow-hidden rounded-[12px]" style={{ aspectRatio: "4 / 5" }}><Media media={post.media} className="absolute inset-0 h-full w-full" /></div>
-          <div className="mt-[12px] flex justify-between pr-[20px] text-[14px] text-[#6f869f]"><span className="flex items-center gap-[4px]"><MessageCircle size={19} />4</span><span className="flex items-center gap-[4px]"><Repeat2 size={19} />11</span><span className="flex items-center gap-[4px]"><Heart size={19} />63</span><Ellipsis size={19} /></div>
-        </div>
-      </div>
-      <div className="mt-auto flex h-[83px] items-start justify-around border-t border-black/10 pt-[12px] text-[#42576c]"><House size={26} /><Search size={26} /><MessageSquare size={26} /><Bell size={26} /><UserRound size={26} /></div>
-      <HomeIndicator />
-    </div>
-  );
-}
-
 const APPS: Record<PreviewPlatform, (p: { post: PreviewPost }) => React.ReactElement> = {
-  instagram: Instagram, facebook: Facebook, tiktok: TikTok, youtube: YouTube, x: X, linkedin: LinkedIn, threads: Threads, pinterest: Pinterest, bluesky: Bluesky,
+  instagram: Instagram, facebook: Facebook, tiktok: TikTok, youtube: YouTube, x: X, linkedin: LinkedIn, threads: Threads, pinterest: Pinterest,
 };
 
 /** The full app screen a post appears on, for one platform. */

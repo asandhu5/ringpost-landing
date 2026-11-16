@@ -92,5 +92,4 @@ export const POST_TARGETS: { id: PreviewPlatform; name: string; style: keyof Dem
   { id: "linkedin", name: "LinkedIn", style: "professional", note: "Your profile or company page" },
   { id: "threads", name: "Threads", style: "short", note: "Posts with a photo or video" },
   { id: "pinterest", name: "Pinterest", style: "social", note: "Pins" },
-  { id: "bluesky", name: "Bluesky", style: "short", note: "Posts with a photo or video" },
 ];
