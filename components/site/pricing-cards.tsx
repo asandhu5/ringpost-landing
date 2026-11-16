@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, Globe2, PhoneCall } from "lucide-react";
 import { Button } from "@/components/site/ui/button";
 import { PageHeader } from "@/components/site/ui/page-header";
 import { cx } from "@/components/site/ui/cx";
@@ -134,7 +134,42 @@ export function PricingCards({ title, lede }: { title: string; lede: string }) {
         </div>
         </div>
         <p className="mt-4 text-center text-small text-muted-ink">Each month, per plan. US dollars. Taxes may apply. On an older plan? You keep it at your price.</p>
+        <CallingCountries />
       </div>
     </>
+  );
+}
+
+/** Where phone calls are answered today. Everything else works in every country. */
+function CallingCountries() {
+  return (
+    <div className="mx-auto mt-8 max-w-[880px] overflow-hidden rounded-rp-md border border-line bg-white">
+      <div className="flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:gap-6 sm:p-6">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-answer-soft text-answer" aria-hidden="true">
+          <PhoneCall className="h-5 w-5" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="text-[15px] font-semibold text-ink">Phone calls are answered in the United States and Canada.</p>
+          <p className="mt-1 text-[13.5px] leading-relaxed text-muted-ink">
+            More countries are coming soon. WhatsApp, Instagram, Messenger, posts and everything else work wherever your business is.
+          </p>
+        </div>
+        <ul className="flex shrink-0 flex-wrap gap-2 sm:flex-col sm:items-stretch" aria-label="Calling availability">
+          {["United States", "Canada"].map((c) => (
+            <li key={c} className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-1.5 text-[12.5px] font-medium text-ink">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60 motion-reduce:animate-none" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              </span>
+              {c}
+            </li>
+          ))}
+          <li className="inline-flex items-center gap-2 rounded-full border border-dashed border-line px-3 py-1.5 text-[12.5px] text-muted-ink">
+            <Globe2 className="h-3.5 w-3.5" aria-hidden="true" />
+            More coming soon
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 }
