@@ -24,7 +24,7 @@
       "monthlyUsd": 39,
       "tagline": "Calls and messages answered, so you stop missing customers.",
       "minutesPerMonth": 30,
-      "messagesPerMonth": 300,
+      "messagesPerMonth": 1000,
       "mediaCreditsPerMonth": 0,
       "imagesPerDay": 0,
       "videos": {
@@ -44,7 +44,7 @@
       "monthlyUsd": 149,
       "tagline": "Your whole front desk on every channel, for a busy business.",
       "minutesPerMonth": 150,
-      "messagesPerMonth": 1000,
+      "messagesPerMonth": 2500,
       "mediaCreditsPerMonth": 0,
       "imagesPerDay": 0,
       "videos": {
@@ -64,8 +64,8 @@
       "monthlyUsd": 399,
       "tagline": "Everything in Essential, plus daily posts, auto-posting and Talk to AI.",
       "minutesPerMonth": 400,
-      "messagesPerMonth": 1500,
-      "mediaCreditsPerMonth": 2000,
+      "messagesPerMonth": 5000,
+      "mediaCreditsPerMonth": 3000,
       "imagesPerDay": 3,
       "videos": {
         "count": 1,
@@ -88,8 +88,8 @@
       "monthlyUsd": 799,
       "tagline": "The whole front of house: comment replies, reviews, campaigns, insights and win-backs.",
       "minutesPerMonth": 650,
-      "messagesPerMonth": 3000,
-      "mediaCreditsPerMonth": 5000,
+      "messagesPerMonth": 10000,
+      "mediaCreditsPerMonth": 7000,
       "imagesPerDay": 4,
       "videos": {
         "count": 1,

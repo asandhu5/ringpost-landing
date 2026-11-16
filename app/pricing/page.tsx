@@ -172,7 +172,7 @@ const HINTS: Record<string, string> = {
   "Calls, WhatsApp, Instagram, Messenger, texts and email": "Your AI answers every one of these in your business's name, day and night.",
   "Keep your number (call forwarding)": "Forward your existing number, all calls or only missed ones, or pick a new local number.",
   "Bookings, reminders and review requests": "Appointments go straight into your calendar, customers get reminders, and happy ones are asked for a Google review.",
-  "Media credits a month (AI images and videos)": "Spent on pictures and short videos made for you. For example, 2,000 credits make about 250 pictures, or about 30 ten-second videos. You see the price before anything is made.",
+  "Media credits a month (AI images and videos)": "Spent on pictures and short videos made for you. For example, 3,000 credits make about 375 pictures, or about 45 ten-second videos. You see the price before anything is made.",
   "Media credits a month (AI images)": "Spent on images made for you. You see the price of each one before it's made.",
   "Uploading your own photos and videos": "Post your own photos and videos, sized for every app, with a caption written for you.",
   "Auto-posting to social media": "Approved posts go out to Instagram, Facebook, TikTok, YouTube, X, LinkedIn and more, now or at a time you pick.",

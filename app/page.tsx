@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SOCIAL_PROFILES } from "@/lib/social-profiles";
 import { HomeHero } from "@/components/site/home/hero";
 import { TellOnce } from "@/components/site/home/tell-once";
 import { InboxSection } from "@/components/site/home/inbox-section";
@@ -36,6 +37,7 @@ const ORGANIZATION = {
   logo: `${SITE.url}/logo.png`,
   description: SITE.description,
   contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: `${SITE.url}/contact` },
+  sameAs: SOCIAL_PROFILES.map((p) => p.href),
   ...(COMPANY.registrationNumber ? { identifier: COMPANY.registrationNumber } : {}),
 };
 
