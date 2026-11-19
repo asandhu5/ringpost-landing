@@ -22,7 +22,7 @@ const option = (on: boolean) => cx("flex min-h-11 items-center justify-between g
 /**
  * The Bookings page's centrepiece: choose a service and a team member, see the free
  * times a customer would be offered, pick one, and watch what follows — the booking, the
- * Google Calendar event and the reminder text.
+ * calendar event (Google Calendar or Calendly) and the reminder text.
  */
 export function BookingDemo() {
   const [svc, setSvc] = useState(0);
@@ -71,7 +71,7 @@ export function BookingDemo() {
             );
           })}
         </div>
-        <p className="mt-3 text-[13px] text-muted-ink">Crossed-out times are already taken, or blocked in Google Calendar.</p>
+        <p className="mt-3 text-[13px] text-muted-ink">Crossed-out times are already taken, or blocked in Google Calendar or Calendly.</p>
       </div>
 
       <div className={cx(group, "flex flex-col gap-3")} aria-live="polite">
@@ -85,7 +85,7 @@ export function BookingDemo() {
             </div>
             <div className="rp-msg-in flex items-center gap-3 rounded-rp-sm border border-line p-3.5">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-rp-sm bg-[#e8f0fe] text-[#4285f4]"><CalendarCheck className="h-5 w-5" aria-hidden /></span>
-              <p className="text-small text-ink"><b className="block font-semibold">Added to Google Calendar</b>{s.name} · Fri {SLOTS[slot]} · {s.mins} minutes</p>
+              <p className="text-small text-ink"><b className="block font-semibold">Added to your calendar</b>{s.name} · Fri {SLOTS[slot]} · {s.mins} minutes</p>
             </div>
             <div className="rp-msg-in flex items-start gap-3 rounded-rp-sm border border-line p-3.5">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-rp-sm bg-primary-soft text-violet"><MessageSquareText className="h-5 w-5" aria-hidden /></span>

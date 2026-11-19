@@ -29,7 +29,7 @@ const SIDEBAR: { label: string; items: { id?: DashId; name: string; icon: IconTy
 export const DASH_TABS: { id: DashId; name: string; caption: string }[] = [
   { id: "home", name: "Home", caption: "what happened today and what needs you." },
   { id: "inbox", name: "Inbox", caption: "every call and message, from every channel, in one list." },
-  { id: "calendar", name: "Calendar", caption: "each person's bookings, synced with Google Calendar." },
+  { id: "calendar", name: "Calendar", caption: "each person's bookings, synced with Google Calendar or Calendly." },
   { id: "knowledge", name: "Knowledge", caption: "everything RingPost knows about your business." },
   { id: "media", name: "Media Library", caption: "your photos, your videos and fresh posts each morning." },
   { id: "approvals", name: "Approvals", caption: "anything waiting for your OK, in one place." },
@@ -155,7 +155,7 @@ function CalendarScreen() {
   const blocks: [number, number, number, string, string][] = [[0, 0, 2, "Cut and style", "bg-primary-soft text-violet"], [0, 3, 2, "Blow-dry", "bg-grow-soft text-grow"], [1, 1, 4, "Full color", "bg-create-soft text-create"], [2, 0, 1, "Fade", "bg-amber-soft text-amber"], [2, 2, 1, "Beard trim", "bg-primary-soft text-violet"], [2, 4, 2, "Cut and style", "bg-grow-soft text-grow"], [1, 6, 1, "Consultation", "bg-primary-soft text-violet"]];
   return (
     <>
-      <Head title="Calendar" right={<><Pill tone="grey">Synced with Google Calendar</Pill><Btn primary>New booking</Btn></>} />
+      <Head title="Calendar" right={<><Pill tone="grey">Synced with your calendar</Pill><Btn primary>New booking</Btn></>} />
       <div className={`${card} overflow-hidden`}>
         <div className="grid grid-cols-[56px_repeat(3,1fr)] border-b border-line text-[12px] font-semibold text-ink">
           <span className="p-2.5 text-muted-ink">Thu</span>
@@ -443,7 +443,7 @@ function Connections() {
       </div>
       <div className={`${card} mt-2.5 flex items-center gap-3 px-3.5 py-3`}>
         <Calendar className="h-5 w-5 text-[#4285f4]" />
-        <span className="flex-1 text-[13px] font-semibold text-ink">Google Calendar <span className="ml-1 font-normal text-muted-ink">Bookings land in your Google Calendar, and busy times are respected.</span></span>
+        <span className="flex-1 text-[13px] font-semibold text-ink">Google Calendar or Calendly <span className="ml-1 font-normal text-muted-ink">Bookings land in your calendar, and busy times are respected.</span></span>
         <Pill>Connected</Pill>
       </div>
     </>

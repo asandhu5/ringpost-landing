@@ -176,12 +176,19 @@ export default function PrivacyPage() {
         <a href="/data-deletion">Data Deletion Instructions</a>.
       </p>
 
-      <h2>6. Google user data</h2>
+      <h2>6. Google and Calendly data</h2>
       <p>
         RingPost uses Google Calendar data only to check availability and manage the appointments
         booked through it, and its use of information received from Google APIs adheres to the{" "}
         <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
         including the Limited Use requirements.
+      </p>
+      <p>
+        When a business connects Calendly instead, RingPost reads its event types, open and busy
+        times and its bookings, and books, cancels and creates one-time booking links on its behalf,
+        only to manage the appointments booked through RingPost. Bookings made on the business&rsquo;s
+        Calendly page are copied into its RingPost calendar. Disconnecting Calendly stops this and
+        revokes RingPost&rsquo;s access.
       </p>
 
       <h2>7. TikTok</h2>

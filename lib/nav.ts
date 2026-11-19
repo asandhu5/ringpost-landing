@@ -41,7 +41,7 @@ export const PRODUCT_COLUMNS: ProductColumn[] = [
       { name: "Calls", href: ROUTES.calls, summary: "Every call answered. Missed calls called back.", icon: "Phone" },
       { name: "Messages", href: ROUTES.messages, summary: "WhatsApp, Instagram DMs, Messenger, texts, email.", icon: "MessagesSquare" },
       { name: "One inbox", href: ROUTES.inbox, summary: "Every conversation in one place. Step in any time.", icon: "Inbox" },
-      { name: "Bookings & calendar", href: ROUTES.booking, summary: "Booked on the spot, synced with Google Calendar.", icon: "CalendarCheck" },
+      { name: "Bookings & calendar", href: ROUTES.booking, summary: "Booked on the spot, synced with Google Calendar or Calendly.", icon: "CalendarCheck" },
       { name: "Business Brain", href: ROUTES.brain, summary: "Tell it once. Everything runs from it.", icon: "BrainCircuit" },
     ],
   },

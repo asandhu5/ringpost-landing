@@ -154,7 +154,7 @@ export default function TermsPage() {
 
       <h2>8. Third-party platforms</h2>
       <p>
-        The Service connects to platforms you already use, including Google Calendar, WhatsApp,
+        The Service connects to platforms you already use, including Google Calendar, Calendly, WhatsApp,
         Instagram and Facebook, as well as telephony, messaging and publishing providers. When you
         connect any of those accounts, you authorise RingPost to act on that connected account on
         your business&rsquo;s behalf within the permissions and scope you grant.

@@ -136,14 +136,14 @@ export const TRUST = {
     { id: "honest", t: "Always honest", d: "It introduces itself as your virtual assistant and never pretends to be a person. Anyone who asks for you is passed to you." },
     { id: "charge", t: "You stay in charge", d: "Switch autopilot off and every reply, post and review answer waits for your OK. Calls are still answered live." },
     { id: "data", t: "Your customers' data", d: "Delete any customer and their history. Callers hear that calls may be recorded. Leave any time and export your data for 60 days." },
-    { id: "where", t: "Where it works", d: "Business phone numbers in the US and Canada. It books into its own calendar, synced both ways with Google Calendar." },
+    { id: "where", t: "Where it works", d: "Business phone numbers in the US and Canada. It books into its own calendar, synced both ways with Google Calendar or Calendly." },
   ],
 } as const;
 
 export const HOME_FAQ = [
   { q: "How long does setup take?", a: "An afternoon. Paste your website and RingPost reads your services, prices and hours. Check what it found on the Knowledge page, choose or forward a phone number, then try it yourself before any customer does. Connecting WhatsApp, Instagram and Facebook takes a few more minutes each." },
   { q: "Do I have to change my phone number?", a: "No. Forward your existing number to RingPost, either only the calls you miss or every call. Or pick a new local number in the US or Canada in a few clicks." },
-  { q: "Does it work with my calendar and booking tool?", a: "RingPost has its own booking calendar for each person on your team, synced both ways with Google Calendar. It doesn't connect to Vagaro, Fresha, Mindbody, Jobber or OpenTable: block those hours in Google Calendar and RingPost books around them." },
+  { q: "Does it work with my calendar and booking tool?", a: "RingPost has its own booking calendar for each person on your team, synced both ways with Google Calendar or Calendly. It doesn't connect to Vagaro, Fresha, Mindbody, Jobber or OpenTable: block those hours in Google Calendar and RingPost books around them." },
   { q: "Will customers know they're talking to an AI?", a: "Yes. It introduces itself as your business's virtual assistant and never pretends to be a person. Anyone who asks for you is passed to you." },
   { q: "What if it doesn't know the answer?", a: "It doesn't guess. It tells the customer it will check, and passes the question to you. Questions that keep coming up are shown to you as gaps to fill." },
   { q: "Does it post or reply without asking me?", a: "Only if you want it to. With autopilot off, every reply, post and review answer waits for your OK. Phone calls are always answered live." },

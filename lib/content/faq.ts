@@ -111,7 +111,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "Calls and messages",
     q: "Can it book appointments into my calendar?",
-    a: "Yes. It books into your RingPost calendar and, if you connect it, your Google Calendar, using each staff member's working hours and the length of each service. The customer gets a confirmation and a reminder before the visit.",
+    a: "Yes. It books into your RingPost calendar and, if you connect one, your Google Calendar or Calendly, using each staff member's working hours and the length of each service. The customer gets a confirmation and a reminder before the visit.",
     link: { href: "/booking", label: "Bookings and calendar" },
   },
   {
@@ -229,7 +229,7 @@ export const FAQ: FaqItem[] = [
   {
     group: "Calls and messages",
     q: "Does it work with my booking tool?",
-    a: "RingPost has its own booking calendar, synced both ways with Google Calendar. It does not connect to Vagaro, Fresha, Mindbody, Jobber or OpenTable. If you use one of those, block those hours in Google Calendar and RingPost books around them.",
+    a: "RingPost has its own booking calendar, synced both ways with Google Calendar or Calendly. It does not connect to Vagaro, Fresha, Mindbody, Jobber or OpenTable. If you use one of those, block those hours in Google Calendar and RingPost books around them.",
     link: { href: "/booking", label: "Bookings and calendar" },
   },
   {
